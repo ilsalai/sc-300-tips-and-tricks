@@ -1,0 +1,38 @@
+<section id="lab26" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Lab 26 · M4 · PIM para Microsoft Entra roles</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Eligible, con approval y activación</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#F6F8FB; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> ID Governance &gt; Privileged Identity Management &gt; Microsoft Entra roles</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li>Settings &gt; Compliance Administrator &gt; <b>Edit</b></li>
+        <li><b>Require approval to activate</b> y elige al aprobador</li>
+        <li>Add assignments: Miriam Graham como <b>Eligible</b></li>
+        <li>Miriam: My roles &gt; <b>Activate</b>, MFA y justificación</li>
+        <li>Revisa Scope type: Directory o Administrative unit</li>
+        <li>Assignments &gt; <b>Update</b> y luego <b>Remove</b></li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Con approval, la activación queda <b>pending</b>: no es error.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12"><b>Eligible</b> se activa; <b>Active</b> ya da el permiso.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/8a11c1d47cff20d7c5fa062bee98320b" alt="Role settings de un rol en PIM con el botón Edit" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/8a78bdca29601ad13fe4f164eec5d1bd" alt="Pane Activate de PIM con duración y justificación" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Lab oficial: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_26_ConfigurePrivilegedIdentityManagementForAADRoles.html"><span style="color:#0E7490">Lab 26 · PIM for Microsoft Entra roles</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">16 / 19</p>
+  <aside>Objetivo: el ciclo completo de PIM: settings, asignación eligible, activación y retiro. Estado final: Compliance Administrator pide approval para activarse con tu admin como aprobador; Miriam Graham fue Eligible, lo activó con MFA y justificación, y al final la asignación se quitó. Frase clave: "Solo cuando lo necesitan, con MFA y aprobación: Eligible más Require approval to activate". Trampa favorita: con approval la activación queda pendiente hasta que alguien apruebe, no es un error; y una asignación no se puede quitar en sus primeros 5 minutos. Si Miriam no tiene MFA registrado se atora en Additional verification required. Riesgo de lockout: approval sin aprobadores y todos los admins solo eligible; para eso existen las break-glass. Un Helpdesk admin de una sucursal: Scope type Administrative unit. Practican: M4 Q21, Q22, Q23, Q30, Q31. Tiempo: 2 minutos.</aside>
+</section>

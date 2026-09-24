@@ -1,0 +1,28 @@
+<section id="t-kerberos" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:32px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 6 · Windows Hello y Entra Kerberos</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Kerberos sin PKI</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Cloud Kerberos trust: cero PKI. Entra Kerberos en Azure Files: cero MFA para esa app."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:14px">
+      <h3 style="font-size:30px; font-weight:700; color:#0E7490">WHfB híbrido con cloud Kerberos trust</h3>
+      <ol style="font-size:26px; line-height:1.45; color:#334155">
+        <li>Crear el objeto Microsoft Entra Kerberos con Set-AzureADKerberosServer.</li>
+        <li>Activar "Use cloud trust for on-premises authentication".</li>
+        <li>Enrolar con línea de vista al DC la primera vez. Si "Use certificate" está activo, gana certificate trust.</li>
+      </ol>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:14px">
+      <h3 style="font-size:30px; font-weight:700; color:#0E7490">Azure Files con Entra Kerberos</h3>
+      <ol style="font-size:26px; line-height:1.45; color:#334155">
+        <li>Habilitar Entra Kerberos en el storage account y dar admin consent a su app.</li>
+        <li>Clientes con CloudKerberosTicketRetrievalEnabled.</li>
+        <li>Un solo identity source por storage account, y la app del storage <b>se excluye de las políticas de MFA</b>.</li>
+      </ol>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/authentication/kerberos#mfa-incompatibility-for-azure-files-authentication"><span style="color:#0E7490">MFA incompatibility for Azure Files</span></a> · Delata: "no PKI", "FSLogix", "profile containers fail to mount"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">9 / 28</p>
+  <aside>Objetivo: dos recetas cortas. Frase clave: "Cloud Kerberos trust: cero PKI. Entra Kerberos en Azure Files: cero MFA para esa app". El escenario clásico: AVD con FSLogix que deja de montar perfiles después de una política de MFA para All resources. Practican: Q9, Q12. Tiempo: 1 minuto.</aside>
+</section>

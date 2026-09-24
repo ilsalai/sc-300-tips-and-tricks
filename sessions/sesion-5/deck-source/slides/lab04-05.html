@@ -1,0 +1,38 @@
+<section id="lab04-05" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Labs 04 + 05 · M1 · External users and tenants</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Guests con el acceso más restringido</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> Entra ID &gt; External Identities &gt; External collaboration settings · Users &gt; All users</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li><b>Guest self-service sign up</b> via user flows: Yes</li>
+        <li>All identity providers &gt; <b>Email one-time passcode</b>: Yes</li>
+        <li>Guest user access: <b>most restrictive</b></li>
+        <li>Invite settings: members y admin roles invitan</li>
+        <li>New user &gt; <b>Invite external user</b>, User type Guest</li>
+        <li><b>Bulk invite</b> con el CSV, o New-MgInvitation</li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Los settings viven en <b>External Identities</b>, no en Users.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Solo admin roles: invitan User Admin y <b>Guest Inviter</b>.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/e1f2276178519df853d16f718fea47eb" alt="Opciones de Guest user access en External collaboration settings" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/cb764718f13d7314177342ae772d9208" alt="Pestaña Basics de Invite external user" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Labs oficiales: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_04_ConfigureExternalCollaborationSettings.html"><span style="color:#0E7490">Lab 04 · External collaboration</span></a> · <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_05_AddGuestUsersToTheDirectory.html"><span style="color:#0E7490">Lab 05 · Add guest users</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">9 / 19</p>
+  <aside>Objetivo: ubicar los settings de externos y los tres caminos para invitar. Estado final: guest self-service sign up via user flows en Yes, Email one-time passcode en Yes, Guest user access en most restrictive, invitaciones para member users y admin roles, y guests invitados uno por uno, en bulk y por PowerShell. Frase clave: "Most restrictive: el guest solo ve su propio objeto". Trampa favorita: con "Only users assigned to specific admin roles" solo invitan User Administrator y Guest Inviter. Tampoco se invitan emails de grupo ni direcciones con +. Un partner sin cuenta Microsoft ni Entra redime con Email one-time passcode. Practican: M1 Q21, Q22, Q23, Q24. Tiempo: 2 minutos.</aside>
+</section>

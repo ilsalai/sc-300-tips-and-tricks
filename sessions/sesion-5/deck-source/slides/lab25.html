@@ -1,0 +1,38 @@
+<section id="lab25" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Lab 25 · M4 · Plan, create y configure access reviews</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Un access review anual con revisor</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> ID Governance &gt; Access reviews &gt; + New access review</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li><b>New access review</b> &gt; template de recursos</li>
+        <li><b>Teams + Groups</b>: Sales and Marketing, All users</li>
+        <li>Reviewers: <b>Selected user(s)</b>, Alex Wilber</li>
+        <li>Recurrence: <b>Annually</b>, duración por defecto</li>
+        <li>Settings por defecto &gt; Review + Create</li>
+        <li>Name <b>SC300 Access Review Test</b> &gt; Create</li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Varios grupos seleccionados: <b>un review por grupo</b>.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Group owner(s) solo existe en reviews de grupos.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/d90c10effe8a30c9745e7d04479124ca" alt="Pestaña Reviews de un access review con los revisores" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/d86706c6da447108e6d4964ab19e8271" alt="Upon completion settings: Auto apply e If reviewers don't respond" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Lab oficial: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_25_CreatingAccessReviewsForUsers.html"><span style="color:#0E7490">Lab 25 · Creating access reviews for users</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">15 / 19</p>
+  <aside>Objetivo: las cuatro pestañas de un access review. Estado final: existe SC300 Access Review Test sobre el grupo Sales and Marketing, scope All users, revisor Alex Wilber y recurrencia Annually. Frase clave: "Que el dueño confirme cada año y que los rechazados salgan solos: Auto apply results to resource más If reviewers don't respond". Enseñar la segunda captura: Upon completion es donde vive el examen (Auto apply, Remove access, decision helpers como no sign-in en 30 días). Trampa favorita: seleccionar varios grupos crea un review por grupo; Group owner(s) solo existe para grupos y con Managers o Group owner(s) se ponen fallback reviewers. Licencia Governance para quien revisa o es revisado. Un guest revisor debe aceptar antes la invitación. Practican: M4 Q13 a Q20. Tiempo: 2 minutos.</aside>
+</section>

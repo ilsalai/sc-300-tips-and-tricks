@@ -1,0 +1,521 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>SC-300 Tips and Tricks · Simulacro</title><style>
+@page { size: A4; margin: 16mm 14mm; }
+* { box-sizing: border-box }
+body { font-family: "Segoe UI", Inter, Arial, sans-serif; color: #1E293B; line-height: 1.5; font-size: 10.5pt; margin: 0 }
+a { color: #0E7490; text-decoration: none; word-break: break-all }
+h1 { font-size: 30pt; color: #0B1F3A; margin: 0 0 6pt; line-height: 1.1 }
+h2 { font-size: 20pt; color: #0F172A; margin: 30pt 0 10pt; padding-bottom: 6pt; border-bottom: 3px solid #22D3EE; page-break-after: avoid; letter-spacing: -0.3px }
+h3.sub { font-size: 13.5pt; color: #0E7490; margin: 18pt 0 6pt; page-break-after: avoid }
+h4 { margin: 0 0 4pt; color: #0B1F3A }
+p { margin: 4pt 0 }
+ul, ol { margin: 4pt 0 4pt 18pt; padding: 0 }
+li { margin: 2pt 0 }
+code { font-family: Consolas, "JetBrains Mono", Menlo, monospace; font-size: 9pt; background: #F1F5F9; padding: 1px 4px; border-radius: 3px }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 9.5pt }
+th, td { border: 1px solid #CBD5E1; padding: 4pt 6pt; vertical-align: top; text-align: left }
+th { background: #0B1F3A; color: #fff }
+.cover { background: #0B1F3A; color: #F1F5F9; padding: 36pt 32pt; border-radius: 14pt; margin-bottom: 18pt; page-break-after: always; min-height: 240mm; display: flex; flex-direction: column; justify-content: space-between }
+.cover h1 { color: #fff; font-size: 40pt }
+.cover .eyebrow { color: #22D3EE; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; font-size: 10pt }
+.cover .big { font-size: 15pt; color: #BFD8F0 }
+.cover .meta { color: #94A3B8; font-size: 10pt }
+.pill { display: inline-block; background: #22D3EE; color: #0B1F3A; font-weight: 700; padding: 3pt 10pt; border-radius: 999px; font-size: 9pt; margin-right: 6pt }
+.box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 8pt 0; page-break-inside: avoid }
+.box.cyan { border-color: #22D3EE; background: #ECFEFF }
+.box.amber { border-color: #FBBF24; background: #FFFBEB }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt }
+.grid3 .box { margin: 0 }
+.mod { font-size: 9.5pt; color: #475569; margin-bottom: 8pt }
+.skill { border: 1px solid #E2E8F0; border-radius: 8pt; padding: 8pt 12pt; margin: 6pt 0; page-break-inside: avoid }
+.skill-h { font-weight: 700; color: #0B1F3A; margin-bottom: 3pt }
+.tag { display: inline-block; background: #0B1F3A; color: #22D3EE; font-size: 8pt; padding: 1pt 6pt; border-radius: 4px; margin-right: 6pt; letter-spacing: 1px }
+.punto { margin: 3pt 0 }
+.main { font-size: 9.5pt; color: #475569 }
+.deep { font-size: 9.5pt; margin-left: 16pt }
+.anchor { color: #94A3B8 }
+.trap { border: 1.5px solid #E2E8F0; border-radius: 12pt; padding: 12pt 16pt; margin: 10pt 0; page-break-inside: avoid; background: #fff }
+.trap-h { font-weight: 700; font-size: 12.5pt; color: #0B1F3A }
+.num { display: inline-block; width: 22pt; height: 22pt; line-height: 22pt; text-align: center; background: #0B1F3A; color: #22D3EE; border-radius: 50%; font-size: 10.5pt; margin-right: 6pt }
+.frase { font-size: 12.5pt; color: #9A3412; font-weight: 700; margin: 6pt 0; background: #FFF1E6; padding: 6pt 10pt; border-radius: 8pt }
+.delata { font-size: 9.5pt }
+.meta { font-size: 9pt; color: #64748B }
+.visual { margin: 10pt 0 14pt; page-break-inside: avoid }
+.visual svg { width: 100%; height: auto; border-radius: 10pt }
+.visual p { font-size: 9.5pt; color: #475569; margin-top: 4pt }
+.case { background: #FFFBEB; border: 1px solid #FBBF24; border-radius: 8pt; padding: 8pt 12pt; margin: 8pt 0; page-break-inside: avoid }
+.q, .a { border: 1.5px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 9pt 0; page-break-inside: avoid }
+.a { background: #F8FAFC }
+.q-h { display: flex; gap: 6pt; align-items: center; margin-bottom: 4pt; flex-wrap: wrap }
+.qid { font-weight: 800; color: #0B1F3A; font-size: 12pt }
+.fmt { background: #ECFEFF; color: #0E7490; font-size: 8.5pt; padding: 1pt 7pt; border-radius: 999px; font-weight: 600 }
+.skill-tag { color: #64748B; font-size: 8.5pt }
+.checklist li { list-style: none; margin: 4pt 0 }
+.checklist li:before { content: "\\2610\\00a0\\00a0"; color: #0E7490 }
+.toc { columns: 2; font-size: 10pt }
+.toc li { margin: 2pt 0 }
+
+.sheet { border: 1.5px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 10pt 0; page-break-inside: avoid }
+.sheet table td { padding: 5pt 8pt }
+.score { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt }
+.score .box { margin: 0; text-align: center }
+.score b { font-size: 16pt; color: #0F172A }
+</style></head><body>
+
+<div class="cover">
+  <div>
+    <p class="eyebrow">SC-300 Tips and Tricks · SC-300 · Sesión 5 de 5</p>
+    <h1>Simulacro<br>30 preguntas</h1>
+    <p class="big">8 de Identities, 8 de Authentication and access, 7 de Workload identities, 7 de Identity governance. En inglés, como el examen.</p>
+    <p class="big"><b>45 minutos, sin apuntes.</b> Anota tus respuestas en la hoja de la página siguiente. Las respuestas y explicaciones van al final; no las mires hasta terminar.</p>
+  </div>
+  <div>
+    <p class="meta"><span class="pill">Meta</span> 21 de 30 (70%). El examen real califica en escala ajustada a 700 de 1000, así que 70% es una referencia, no una garantía.</p>
+    <p class="meta">Yes/No series, select two y drag/order cuentan todo o nada, como en el examen.</p>
+  </div>
+</div>
+
+
+<h2>Hoja de respuestas</h2>
+<div class="sheet">
+<table><tr><th style="width:8%">#</th><th style="width:12%">Dominio</th><th>Tu respuesta</th><th>Correcta</th></tr><tr><td>1</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>2</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>3</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>4</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>5</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>6</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>7</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>8</td><td>M1</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>9</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>10</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>11</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>12</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>13</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>14</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>15</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>16</td><td>M2</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>17</td><td>M3</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>18</td><td>M3</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>19</td><td>M3</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>20</td><td>M3</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>21</td><td>M3</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>22</td><td>M3</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>23</td><td>M3</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>24</td><td>M4</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>25</td><td>M4</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>26</td><td>M4</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>27</td><td>M4</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>28</td><td>M4</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>29</td><td>M4</td><td style="width:38%"></td><td style="width:12%"></td></tr><tr><td>30</td><td>M4</td><td style="width:38%"></td><td style="width:12%"></td></tr></table>
+</div>
+<div class="score">
+  <div class="box"><b>M1</b><p>___ de 8</p></div>
+  <div class="box"><b>M2</b><p>___ de 8</p></div>
+  <div class="box"><b>M3</b><p>___ de 7</p></div>
+  <div class="box"><b>M4</b><p>___ de 7</p></div>
+</div>
+<p class="meta">Cómo leer tu resultado: el dominio con menos aciertos es el que estudias primero. Lleva la hoja al debrief de la sesión 5.</p>
+
+<h2>Preguntas</h2>
+<p class="meta">30 preguntas tomadas de los bancos de los cuatro módulos, ninguna usada en los Kahoots. Los ids (M2 · Q15) te llevan a la guía del módulo si quieres profundizar.</p>
+<div class="q"><div class="q-h"><span class="qid">1</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q2 · Configure and manage built-in and custom Microsoft Entra roles</span></div><p>Contoso has an app registration named Payroll-API. Five developers must be able to update only the credentials (secrets and certificates) and the basic properties of Payroll-API. They must not be able to modify any other app registration. You must use Microsoft Entra role-based access control, and the solution must follow the principle of least privilege.</p>
+<p>What should you do?</p>
+<p>A. Assign the Application Administrator built-in role at tenant scope.<br />
+B. Create a custom role that contains <code>microsoft.directory/applications/credentials/update</code> and <code>microsoft.directory/applications/basic/update</code>, and assign it at the scope of the Payroll-API app registration.<br />
+C. Clone the Cloud Application Administrator built-in role, remove the permissions you don't need, and assign the clone at tenant scope.<br />
+D. Assign the Application Developer built-in role at tenant scope.</p></div><div class="q"><div class="q-h"><span class="qid">2</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q11 · Automate bulk operations by using the Microsoft Entra admin center and PowerShell</span></div><p>HR sends Contoso a spreadsheet with 450 new employees. You plan to use Bulk create in the Microsoft Entra admin center and you download the CSV template.</p>
+<p>Which columns must have a value for every user for the upload to succeed?</p>
+<p>A. Name, User name, Initial password, and Block sign in (Yes/No)<br />
+B. Name, User name, Usage location, and Department<br />
+C. Email address to invite and Redirection url<br />
+D. User name, Initial password, Usage location, and Manager</p></div><div class="q"><div class="q-h"><span class="qid">3</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q12 · Assign, modify, and report on licenses</span></div><p>A PowerShell script creates 200 users with <code>New-MgUser</code> from a CSV file, and then runs <code>Set-MgUserLicense</code> to assign Microsoft 365 E5 directly to each user. The users are created, but the license assignment fails for all of them. The CSV contains UserPrincipalName, DisplayName, MailNickname, and Department.</p>
+<p>What should you add to the <code>New-MgUser</code> command to fix the issue?</p>
+<p>A. <code>-UsageLocation</code> with a two-letter ISO country code<br />
+B. <code>-Country</code> with the full country name<br />
+C. <code>-PreferredDataLocation</code><br />
+D. <code>-UserType "Member"</code></p></div><div class="q"><div class="q-h"><span class="qid">4</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q13 · Create, configure, and manage groups</span></div><p>Contoso uses Microsoft Entra ID Free. Users must be able to request membership to security groups from the My Groups portal, and group owners must approve or deny the requests. In Groups &gt; General, "Owners can manage group membership requests in My Groups" is Yes and "Restrict user ability to access groups features in My Groups" is No. Users still can't request to join groups that require owner approval.</p>
+<p>What should you do?</p>
+<p>A. Purchase and assign Microsoft Entra ID P1 or P2 licenses.<br />
+B. Set "Users can create security groups in Azure portals, API or PowerShell" to Yes.<br />
+C. Convert the security groups to dynamic membership groups.<br />
+D. Make the security groups role-assignable.</p></div><div class="q"><div class="q-h"><span class="qid">5</span><span class="fmt">Select two</span><span class="skill-tag">M1 · Q23 · Invite external users, individually or in bulk</span></div><p>Contoso must invite 250 partner users as B2B guests with the least administrative effort. After redeeming the invitation, the guests must land on the My Apps portal.</p>
+<p>Which two actions should you perform? Each correct answer presents part of the solution.</p>
+<p>A. In Users, select Bulk operations &gt; Bulk invite and download the CSV template.<br />
+B. In each row, set Email address to invite, and set Redirection url to https://myapplications.microsoft.com.<br />
+C. Use Bulk create and set the user type to Guest in the CSV.<br />
+D. Run <code>New-MgInvitation</code> for each address without the <code>-SendInvitationMessage</code> parameter, so that the default invitation email is sent.<br />
+E. Remove the version row from the CSV template before you upload it.</p></div><div class="q"><div class="q-h"><span class="qid">6</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q28 · Configure external identity providers, including protocols such as SAML and WS-Fed</span></div><p>Contoso wants users from the partner Tailwind Traders to redeem B2B invitations with their own corporate credentials. Tailwind uses a third-party SAML 2.0 identity provider, not Microsoft Entra ID. Tailwind users have email addresses in tailwindtraders.com. The IdP passive authentication endpoint is https://login.tailwind-idp.net/saml2.</p>
+<p>What must happen for the federation to work?</p>
+<p>A. Tailwind must add a DNS TXT record to tailwindtraders.com with the value <code>DirectFedAuthUrl=https://login.tailwind-idp.net/saml2</code>.<br />
+B. Contoso must add and verify tailwindtraders.com as a custom domain in its own tenant.<br />
+C. Tailwind must configure its IdP to send the NameID claim in transient format.<br />
+D. Contoso must add Tailwind under cross-tenant access Organizational settings and trust its MFA.</p></div><div class="q"><div class="q-h"><span class="qid">7</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q33 · Implement and manage pass-through authentication</span></div><p>Contoso enabled pass-through authentication. The only authentication agent runs on the Microsoft Entra Connect server. For production, sign-ins must continue if that server fails.</p>
+<p>What should you do?</p>
+<p>A. Install standalone authentication agents on at least two additional servers, close to the domain controllers.<br />
+B. Install a second authentication agent on the Microsoft Entra Connect server.<br />
+C. Deploy a second Microsoft Entra Connect Sync server in staging mode and rely on it for sign-in failover.<br />
+D. Publish the agents behind an inbound load balancer in the perimeter network.</p></div><div class="q"><div class="q-h"><span class="qid">8</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q37 · Implement and manage Microsoft Entra Connect Sync</span></div><p>Contoso has two Microsoft Entra Connect Sync servers. SYNC1 is active. SYNC2 is in staging mode, has its scheduler enabled, and has synchronized recently. SYNC1's hardware fails permanently. You must resume exports to Microsoft Entra ID as fast as possible.</p>
+<p>What should you do?</p>
+<p>A. On SYNC2, run the Microsoft Entra Connect wizard, select Configure staging mode, clear the staging mode checkbox, and start synchronization.<br />
+B. On SYNC2, run <code>Start-ADSyncSyncCycle -PolicyType Initial</code>.<br />
+C. Install Microsoft Entra Connect on a new server by using express settings.<br />
+D. On SYNC2, enable password writeback so that it takes over from SYNC1.</p></div><div class="q"><div class="q-h"><span class="qid">9</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q4 · Implement and manage authentication methods (Microsoft Authenticator)</span></div><p>Contoso wants a pilot group named Pilot-PK to sign in with passkeys stored in Microsoft Authenticator on their phones. All other users must keep using Authenticator push notifications for MFA and must not be able to register passkeys in Authenticator.</p>
+<p>What should you configure?</p>
+<p>A. In the Microsoft Authenticator method policy, target Pilot-PK and set Authentication mode to Passwordless.<br />
+B. In the Passkey (FIDO2) method policy, use passkey profiles: one profile for Pilot-PK that is Device-bound and allows the Microsoft Authenticator AAGUIDs, and one profile for all other users that blocks the Microsoft Authenticator AAGUIDs.<br />
+C. Create a registration campaign that targets Pilot-PK with Microsoft Authenticator as the authentication method.<br />
+D. Create a Conditional Access policy for Pilot-PK that requires the built-in Passwordless MFA authentication strength.</p></div><div class="q"><div class="q-h"><span class="qid">10</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q13 · Plan Conditional Access policies</span></div><p>Contoso's Microsoft Entra tenant was created in 2023 and has security defaults enabled. The company buys Microsoft Entra ID P1 licenses for all users. The new requirements are:</p>
+<ul>
+<li>Users must perform MFA only when they access the Payroll app from outside the office.</li>
+<li>A service account used by a multifunction printer must be excluded from MFA.</li>
+</ul>
+<p>You need to implement the requirements by using Conditional Access. What should you do first?</p>
+<p>A. Create the Conditional Access policies and turn them on. Security defaults are disabled automatically.<br />
+B. Disable security defaults.<br />
+C. Enable per-user MFA for all users.<br />
+D. Add the office public IP range to trusted IPs in the MFA service settings.</p></div><div class="q"><div class="q-h"><span class="qid">11</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q15 · Implement Conditional Access policy assignments</span></div><p>Contoso collaborates with two partners, Fabrikam and Tailspin, by using B2B collaboration. Guests from Fabrikam must perform MFA when they access Contoso's SharePoint Online. Guests from Tailspin must not be affected by this policy.</p>
+<p>What should you configure in the Users assignment of the policy?</p>
+<p>A. Include &gt; Select users and groups &gt; Guest or external users &gt; B2B collaboration guest users, and then specify Fabrikam's Microsoft Entra tenant.<br />
+B. Include &gt; Directory roles &gt; Guest Inviter.<br />
+C. Include a dynamic group with the membership rule (user.userType -eq "Guest").<br />
+D. Include All users, and exclude Guest or external users with all external user types selected.</p></div><div class="q"><div class="q-h"><span class="qid">12</span><span class="fmt">Yes/No series</span><span class="skill-tag">M2 · Q19 · Test and troubleshoot Conditional Access policies</span></div><p>A user reports that she's prompted for MFA in Microsoft Teams, and you don't know which policy causes it. You open the Conditional Access What If tool.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>What If evaluates policies whose state is Off, so you can see what would happen if you turned them on.</li>
+<li>If you simulate access to Microsoft Teams, the result also lists the policies that apply to Exchange Online and SharePoint Online because Teams depends on them.</li>
+<li>For each policy that doesn't apply, What If shows the first condition that wasn't satisfied.</li>
+</ol></div><div class="q"><div class="q-h"><span class="qid">13</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q26 · Create a Conditional Access policy from a template</span></div><p>Carlos, a Conditional Access Administrator, creates a policy from the template Require phishing-resistant multifactor authentication for administrators. Contoso has two cloud-only emergency access accounts that hold the Global Administrator role and don't have phishing-resistant methods.</p>
+<p>What should Carlos do before he sets the policy to On?</p>
+<p>A. Nothing. Templates automatically exclude emergency access accounts.<br />
+B. Edit the policy and exclude the two emergency access accounts, because the template excludes only the user who created the policy.<br />
+C. Change the policy state from Off to Report-only, because templates create policies in the Off state.<br />
+D. Export the template JSON, add the exclusions, and create the policy again with Upload policy file, because template policies can't be edited.</p></div><div class="q"><div class="q-h"><span class="qid">14</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q31 · Implement and manage user risk by using Microsoft Entra ID Protection or Conditional Access policies</span></div><p>Contoso is a hybrid organization that uses password hash synchronization. Many users work on Microsoft Entra hybrid joined devices and change their passwords on-premises by pressing Ctrl+Alt+Del. When these users are flagged with user risk, the risk stays At risk after they change their password on-premises.</p>
+<p>You need on-premises password changes to remediate user risk. What should you do?</p>
+<p>A. Enable password writeback in Microsoft Entra Connect.<br />
+B. In ID Protection settings, select Allow on-premises password change to reset user risk.<br />
+C. Enable SSPR for all users.<br />
+D. Dismiss the user risk for all risky users every week.</p></div><div class="q"><div class="q-h"><span class="qid">15</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q35 · Monitor, investigate and remediate risky users and risky sign-ins</span></div><p>ID Protection flags an Atypical travel detection for Diego: one sign-in from Mexico City and, 20 minutes later, one from Frankfurt. Your investigation shows that the Frankfurt IP address is the egress IP of Contoso's sanctioned corporate VPN. Several users get similar detections every week.</p>
+<p>What should you do?</p>
+<p>A. Confirm the sign-in as compromised and reset Diego's password.<br />
+B. Confirm the sign-in as safe, and add the VPN egress IP range to named locations in Microsoft Entra ID and in Microsoft Defender for Cloud Apps.<br />
+C. Dismiss Diego's user risk and exclude Diego from the sign-in risk policy.<br />
+D. Turn off the Atypical travel detection in ID Protection settings.</p></div><div class="q"><div class="q-h"><span class="qid">16</span><span class="fmt">Select two</span><span class="skill-tag">M2 · Q42 · Deploy and manage Internet Access</span></div><p>Contoso must block the Gambling web category for members of the Sales group only. The Internet Access traffic forwarding profile is enabled and the Global Secure Access client is deployed. You already created a web content filtering policy with a Block rule for the Gambling category.</p>
+<p>Which two additional configurations are required? Each correct answer presents part of the solution.</p>
+<p>A. A security profile that links the web content filtering policy.<br />
+B. A Conditional Access policy for the Sales group that targets All internet resources with Global Secure Access and uses the session control Use Global Secure Access security profile.<br />
+C. Linking the web content filtering policy to the baseline security profile.<br />
+D. Enabling the Microsoft traffic forwarding profile.<br />
+E. A named location for the Sales office.</p></div><div class="q"><div class="q-h"><span class="qid">17</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q1 · Select appropriate identities for applications and Azure workloads</span></div><p>Contoso runs an order-processing workload on a virtual machine scale set. Instances are deleted and re-created several times a day. The security team must grant the workload access to an Azure Key Vault <strong>before</strong> the new instances are deployed, and every instance must use <strong>the same identity</strong>. Developers must not manage any credentials.</p>
+<p>Which identity should you use?</p>
+<p>A. A system-assigned managed identity enabled on each instance<br />
+B. A user-assigned managed identity assigned to the scale set<br />
+C. An app registration with a client secret stored in the application settings<br />
+D. A synchronized Active Directory user account used as a service account</p></div><div class="q"><div class="q-h"><span class="qid">18</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q9 · Assign appropriate Microsoft Entra roles to manage enterprise applications</span></div><p>An administrator named Marta must publish on-premises web apps by using Microsoft Entra Application Proxy, create connector groups, and configure SAML single sign-on for gallery apps. You must follow the principle of least privilege.</p>
+<p>Which role should you assign to Marta?</p>
+<p>A. Cloud Application Administrator<br />
+B. Application Administrator<br />
+C. Application Developer<br />
+D. Global Administrator</p></div><div class="q"><div class="q-h"><span class="qid">19</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q12 · Design and implement integration for on-premises apps by using Application Proxy</span></div><p>You publish an app through Application Proxy. Users must reach it at <code>https://expenses.contoso.com</code>. The domain contoso.com is already verified in Microsoft Entra ID.</p>
+<p>What else must you do?</p>
+<p>A. Upload a PFX certificate that includes the private key for expenses.contoso.com, and create a CNAME record that points expenses.contoso.com to the msappproxy.net address shown on the Application proxy page.<br />
+B. Upload a .cer certificate for expenses.contoso.com, and create an A record that points to the public IP address of the connector server.<br />
+C. Create a TXT record for expenses.contoso.com. No certificate is required because Microsoft provides one.<br />
+D. Install the certificate on the connector server and open inbound TCP 443 to it.</p></div><div class="q"><div class="q-h"><span class="qid">20</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q16 · Configure and manage user and admin consent</span></div><p>Contoso sets User consent for applications to <strong>Allow user consent for apps from verified publishers, for selected permissions</strong>. The admin consent workflow is off. A user tries to sign in to a third-party app from an <strong>unverified</strong> publisher that requests delegated Files.Read. The user sees a message that admin approval is needed, with no way to ask for it.</p>
+<p>You need users to be able to send a request for review directly from the consent prompt. Security settings must not be weakened.</p>
+<p>What should you do?</p>
+<p>A. Change User consent for applications to Allow user consent for apps.<br />
+B. Turn on Users can request admin consent to apps they are unable to consent to, and select reviewers.<br />
+C. Classify Files.Read as a low impact permission.<br />
+D. Disable risk-based step-up consent.</p></div><div class="q"><div class="q-h"><span class="qid">21</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q21 · Create app registrations</span></div><p>Contoso set <strong>Users can register applications</strong> to No. A developer named Dev1 must be able to create app registrations. You must follow the principle of least privilege.</p>
+<p>What should you do?</p>
+<p>A. Assign Dev1 the Application Developer role.<br />
+B. Assign Dev1 the Cloud Application Administrator role.<br />
+C. Assign Dev1 the Application Administrator role.<br />
+D. Set Users can register applications back to Yes.</p></div><div class="q"><div class="q-h"><span class="qid">22</span><span class="fmt">Drag/order</span><span class="skill-tag">M3 · Q25 · Configure API permissions</span></div><p>You register a web API named OrdersAPI and a client web app named OrdersWeb. OrdersWeb must call OrdersAPI <strong>on behalf of the signed-in user</strong> with a permission named Orders.Read. Users must not see a consent prompt.</p>
+<p>Which <strong>four</strong> actions should you perform, <strong>in sequence</strong>?</p>
+<p>A. In OrdersAPI, open Expose an API and add the Application ID URI (<code>api://&lt;client-id&gt;</code>).<br />
+B. In OrdersAPI, select Add a scope, name it Orders.Read, and set Who can consent to Admins and users.<br />
+C. In OrdersWeb, open API permissions &gt; Add a permission &gt; My APIs, select OrdersAPI, and add the delegated permission Orders.Read.<br />
+D. In OrdersWeb API permissions, select Grant admin consent for the tenant.<br />
+E. In OrdersAPI, create an app role with Allowed member types set to Applications.<br />
+F. Add the OrdersWeb redirect URI to the OrdersAPI app registration.</p></div><div class="q"><div class="q-h"><span class="qid">23</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q36 · Create access and session policies in Defender for Cloud Apps</span></div><p>Contoso routes Dropbox sessions to Defender for Cloud Apps by using Conditional Access app control. Users must be able to use Dropbox in a browser, but the Dropbox <strong>desktop sync client</strong> must be blocked so it can't bypass the browser controls.</p>
+<p>What should you create?</p>
+<p>A. A session policy with the action Block for Dropbox<br />
+B. An access policy with the Client app filter set to Mobile and desktop and the action Block<br />
+C. An OAuth app policy that revokes Dropbox<br />
+D. An app discovery policy that tags Dropbox as Unsanctioned</p></div><div class="q"><div class="q-h"><span class="qid">24</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q3 · Create and configure catalogs (adding resources)</span></div><p>Pat is a user with no Microsoft Entra directory role. Pat is the catalog owner of the Research catalog. Pat needs to add the security group SG-Lab to the catalog, but SG-Lab doesn't appear in the resource picker.</p>
+<p>You need to let Pat add SG-Lab by granting the least privilege.</p>
+<p>What should you do?</p>
+<p>A. Assign Pat the Identity Governance Administrator role.<br />
+B. Assign Pat the Groups Administrator role.<br />
+C. Add Pat as an owner of SG-Lab.<br />
+D. Add Pat as an access package manager of the Research catalog.</p></div><div class="q"><div class="q-h"><span class="qid">25</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q4 · Create and configure access packages (policy audience)</span></div><p>You are creating the Project Falcon access package. Requirements:</p>
+<ul>
+<li>Member users of Contoso (not guests) can request it, with approval from their manager.</li>
+<li>Users from Fabrikam, an existing connected organization, can request it, with approval from the Fabrikam external sponsor.</li>
+</ul>
+<p>What is the minimum number of policies the access package needs?</p>
+<p>A. One<br />
+B. Two<br />
+C. Three<br />
+D. Four</p></div><div class="q"><div class="q-h"><span class="qid">26</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q15 · Create and configure access reviews (if reviewers don&#x27;t respond)</span></div><p>You create a recurring review of the Sales-Apps group with the decision helper "No sign-in within 30 days" enabled and Auto apply results to resource enabled. Reviewers are the users' managers.</p>
+<p>When a manager doesn't respond, users who haven't signed in during the last 30 days must lose access, and active users must keep access.</p>
+<p>Which "If reviewers don't respond" option should you select?</p>
+<p>A. No change<br />
+B. Remove access<br />
+C. Approve access<br />
+D. Take recommendations</p></div><div class="q"><div class="q-h"><span class="qid">27</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q21 · PIM for Microsoft Entra roles (assignments)</span></div><p>Three helpdesk leads need the User Administrator role only when they run a bulk task during a six-month migration project. After the project ends, they must lose the ability to use the role without any manual cleanup.</p>
+<p>Which assignment should you create in PIM?</p>
+<p>A. Active, permanent<br />
+B. Eligible, permanent<br />
+C. Eligible, time-bound with an end date at the end of the project<br />
+D. Active, time-bound with an end date at the end of the project</p></div><div class="q"><div class="q-h"><span class="qid">28</span><span class="fmt">Yes/No series</span><span class="skill-tag">M4 · Q22 · PIM for Microsoft Entra roles (settings)</span></div><p>The PIM role settings of the Exchange Administrator role are:</p>
+<ul>
+<li>Activation maximum duration (hours): 4</li>
+<li>On activation, require: Azure MFA</li>
+<li>Require justification on activation: Yes</li>
+<li>Require ticket information on activation: Yes</li>
+<li>Require approval to activate: Yes, no approvers selected</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>An eligible user can activate the role for six hours.</li>
+<li>Active Privileged Role Administrators and Global Administrators can approve the activation requests.</li>
+<li>PIM checks that the ticket number exists in the company's ticketing system before it activates the role.</li>
+</ol></div><div class="q"><div class="q-h"><span class="qid">29</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q26 · PIM for Groups</span></div><p>SQL-Admins is a cloud security group that isn't role-assignable. Membership gives access to Azure SQL. You want members to activate their membership just-in-time with approval.</p>
+<p>Which statement is true?</p>
+<p>A. You must first convert SQL-Admins into a role-assignable group.<br />
+B. You can enable SQL-Admins in PIM for Groups, because the group doesn't have to be role-assignable.<br />
+C. PIM for Groups supports only Microsoft 365 groups.<br />
+D. You can enable PIM for Groups only if the group uses dynamic membership.</p></div><div class="q"><div class="q-h"><span class="qid">30</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q33 · Review and analyze sign-in, audit, and provisioning logs (retention)</span></div><p>Fabrikam used Microsoft Entra ID Free and never exported its logs. Today, Fabrikam buys Microsoft Entra ID P1. An investigator needs the sign-in logs from 20 days ago.</p>
+<p>What can you tell the investigator?</p>
+<p>A. The data isn't available. Only up to seven days of data from the Free period can be seen.<br />
+B. 30 days of data are available right away, because P1 keeps 30 days.<br />
+C. The data will appear within three days of the upgrade.<br />
+D. The data can be restored by opening a support request.</p></div>
+<h2>Respuestas y explicaciones</h2>
+<p class="meta">Lee el "por qué las otras no" incluso en las que acertaste: ahí está la diferencia entre acertar por suerte y acertar por método.</p>
+<div class="a"><div class="q-h"><span class="qid">1</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q2</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Un custom role son dos pasos: la definición (lista de permisos) y la asignación con scope. Learn usa justo esos dos permisos como ejemplo y dice que el custom role se puede asignar a nivel directorio o a nivel de una app registration. Ojo: cada usuario con custom role necesita <strong>licencia Microsoft Entra ID P1</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Application Administrator a nivel tenant les da control sobre todas las apps. Demasiado privilegio.</li>
+<li>C. <strong>No puedes clonar un rol built-in</strong>, solo un custom role. Además, el scope de tenant les daría acceso a todas las app registrations.</li>
+<li>D. Application Developer sirve para que alguien pueda crear app registrations cuando ese permiso está apagado para usuarios. No da permisos sobre Payroll-API.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/custom-create#create-a-custom-role</p></div><div class="a"><div class="q-h"><span class="qid">2</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q11</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> En la plantilla de Bulk create <strong>solo las primeras cuatro columnas son obligatorias</strong>. El bulk create hace usuarios internos con el password del CSV y <strong>no manda correos de invitación</strong>. Deja intactas la fila de versión y los encabezados.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Usage location y Department son opcionales en la plantilla. Usage location importa después para licencias directas, pero no para crear.</li>
+<li>C. Esas son las columnas de Bulk invite, que es para guests.</li>
+<li>D. Usage location y Manager no son obligatorios para crear el usuario.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/users-bulk-add#example-csv-file</p></div><div class="a"><div class="q-h"><span class="qid">3</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q12</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn dice que <strong>no puedes asignar una licencia a un usuario que no tiene UsageLocation</strong> (código ISO 3166-1 alpha-2, por ejemplo US o MX). Dato extra: en group-based licensing, si el usuario no tiene ubicación, hereda la del tenant.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Country es un dato de perfil. El requisito para licenciar es UsageLocation.</li>
+<li>C. PreferredDataLocation no tiene que ver con asignar licencias.</li>
+<li>D. UserType define la relación con la organización. No bloquea la licencia.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/microsoft-365/enterprise/create-user-accounts-with-microsoft-365-powershell#create-multiple-user-accounts y https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses</p></div><div class="a"><div class="q-h"><span class="qid">4</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q13</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn: pedir unirse a un grupo y que el owner apruebe <strong>requiere Microsoft Entra ID P1 o P2</strong>. Sin P1, los usuarios manejan sus grupos pero no pueden crear grupos con aprobación ni pedir unirse.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Ese setting controla quién crea grupos, no las solicitudes de membresía.</li>
+<li>C. En un grupo dinámico no se agregan miembros a mano ni por solicitud. La regla manda.</li>
+<li>D. Role-assignable es para asignar roles de Entra. Complica más la gestión y no habilita solicitudes.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/groups-self-service-management#make-a-group-available-for-user-self-service</p></div><div class="a"><div class="q-h"><span class="qid">5</span><span class="fmt">Select two</span><span class="skill-tag">M1 · Q23</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Bulk invite es el camino de menor esfuerzo. Las columnas obligatorias son <strong>Email address to invite y Redirection url</strong>, y para caer en My Apps pones https://myapplications.microsoft.com (o myapps).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. <strong>Bulk create hace usuarios internos con password y no manda invitaciones.</strong></li>
+<li>D. En <code>New-MgInvitation</code>, si no pones <code>-SendInvitationMessage</code>, <strong>no se manda correo</strong>. El default es no enviar.</li>
+<li>E. La fila de versión y los encabezados no se tocan o el archivo no se procesa.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/tutorial-bulk-invite#invite-guest-users-in-bulk y https://learn.microsoft.com/entra/external-id/b2b-quickstart-invite-powershell#send-an-invitation</p></div><div class="a"><div class="q-h"><span class="qid">6</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q28</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El endpoint (tailwind-idp.net) no es el dominio tailwindtraders.com ni un host dentro de él. En ese caso <strong>el partner agrega un TXT DirectFedAuthUrl</strong> en su DNS. Del lado de Contoso, el IdP se agrega en All identity providers &gt; Custom &gt; SAML/WS-Fed y conviene poner la metadata URL para que el certificado se renueve solo.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. El dominio del partner no debe estar verificado en el tenant de Contoso. Es un dominio de Tailwind.</li>
+<li>C. SAML requiere <strong>NameID persistent</strong> y el claim de emailaddress.</li>
+<li>D. Cross-tenant access settings son para organizaciones que usan Microsoft Entra ID. Tailwind no lo usa.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/direct-federation#step-1-determine-if-the-partner-needs-to-update-their-dns-text-records y https://learn.microsoft.com/entra/external-id/direct-federation#to-configure-a-saml-20-identity-provider</p></div><div class="a"><div class="q-h"><span class="qid">7</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q33</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn recomienda <strong>mínimo 3 authentication agents en producción</strong>, en servidores distintos al de Connect y cerca de los DCs.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. <strong>Solo cabe un agente por servidor.</strong></li>
+<li>C. Staging mode es para disaster recovery de la sincronización. No es el método documentado de HA para PTA.</li>
+<li>D. Los agentes solo hacen conexiones de salida (443 y 80), así que no necesitan DMZ ni publicarse hacia adentro. Además, varios agentes dan alta disponibilidad, no load balancing.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta-quick-start#step-4-ensure-high-availability y https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta-faq#can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server</p></div><div class="a"><div class="q-h"><span class="qid">8</span><span class="fmt">Multiple choice</span><span class="skill-tag">M1 · Q37</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Un servidor en staging mode <strong>importa y sincroniza, pero no exporta ni hace password sync ni writeback</strong>. Para que tome el control, quitas el staging mode en el wizard. Antes, asegúrate de que SYNC1 no vuelva a encender. <strong>Solo puede haber un servidor activo.</strong></p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Un ciclo completo en staging sigue sin exportar.</li>
+<li>C. Reconstruir es más lento. Para eso tienes el standby listo.</li>
+<li>D. Password writeback no activa las exportaciones. En staging mode, PHS y writeback están apagados hasta que sales de staging.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-staging-server#staging-mode y https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-staging-server#change-current-staging-sync-server-to-active-mode</p></div><div class="a"><div class="q-h"><span class="qid">9</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q4</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Un passkey en Authenticator es una credencial <strong>FIDO2 device-bound</strong>. Por eso se controla en la política <strong>Passkey (FIDO2)</strong>, con key restrictions por AAGUID (Authenticator for iOS y for Android). Learn trae este mismo patrón para un rollout piloto: un perfil que bloquea los AAGUIDs de Authenticator para todos y otro que los permite para los grupos piloto. Si un usuario está en varios perfiles, basta con que el passkey cumpla uno.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. El modo Passwordless de la política de Authenticator es <strong>passwordless phone sign-in</strong> (notificación con número), no un passkey. Es la confusión clásica.</li>
+<li>C. La campaign solo empuja a registrar algo. No habilita passkeys en Authenticator ni impide que otros los registren.</li>
+<li>D. Una authentication strength no habilita ningún método. Y Passwordless MFA también acepta phone sign-in.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/how-to-enable-authenticator-passkey#configure-a-profile-for-passkeys-in-authenticator y https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#passkey-profiles</p></div><div class="a"><div class="q-h"><span class="qid">10</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q13</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Security defaults y CA <strong>no se combinan</strong>. Learn dice que las organizaciones que implementan CA para reemplazar security defaults <strong>deben deshabilitarlos</strong>. El rol mínimo para tocar security defaults es <strong>Conditional Access Administrator</strong>. Al deshabilitarlos, Microsoft ofrece Microsoft-managed policies para no perder la protección base.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. No hay apagado automático. Es un paso explícito en Properties &gt; Manage security defaults.</li>
+<li>C. Per-user MFA es legacy y no permite condiciones por app ni por ubicación.</li>
+<li>D. Trusted IPs es de la configuración legacy de MFA, no de CA, y no resuelve la exclusión de la cuenta de servicio.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/fundamentals/security-defaults#disabling-security-defaults y https://learn.microsoft.com/entra/fundamentals/security-defaults#move-from-security-defaults-to-conditional-access</p></div><div class="a"><div class="q-h"><span class="qid">11</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q15</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> En Guest or external users puedes elegir <strong>el tipo de usuario externo</strong> (B2B collaboration guest, B2B collaboration member, B2B direct connect, local guest, service provider, other) y <strong>uno o varios tenants</strong> específicos. Así la política pega solo a Fabrikam.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Guest Inviter es un rol para invitar, no representa a los guests.</li>
+<li>C. El grupo dinámico incluye a los guests de Tailspin también.</li>
+<li>D. Deja fuera a todos los guests, incluido Fabrikam.</li>
+</ul>
+<p>Trampa extra de assignments: en Directory roles, CA <strong>solo soporta roles built-in</strong>. No aplica a roles con scope de administrative unit ni a custom roles.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-users-groups#include-users</p></div><div class="a"><div class="q-h"><span class="qid">12</span><span class="fmt">Yes/No series</span><span class="skill-tag">M2 · Q19</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. What If <strong>solo incluye políticas On o en report-only</strong>.</li>
+<li>2 No. Learn lo dice directo: What If <strong>no prueba service dependencies</strong>. Si simulas Teams, no ves la política de Exchange Online.</li>
+<li>3 Yes. La lista de políticas que no aplican trae la razón: <strong>la primera condición que no se cumplió</strong>.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: usar What If para "probar" una política apagada. Primero pásala a report-only.</li>
+<li>Trampa de la 2: pensar que What If entiende las dependencias de Teams. No las entiende; para eso target al grupo Office 365.</li>
+<li>Dato extra: en el What If nuevo (basado en API), grupos de apps como Office 365 no hacen match; se da el App ID.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool#how-it-works y https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool#evaluation</p></div><div class="a"><div class="q-h"><span class="qid">13</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q26</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Learn es explícito: las políticas creadas desde template <strong>solo excluyen al usuario que las crea</strong>. Las demás exclusiones (break-glass) se agregan editando la política después.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. No hay exclusión automática de break-glass.</li>
+<li>C. Los templates crean la política <strong>en Report-only por default</strong>, no en Off.</li>
+<li>D. Las políticas de template se editan como cualquier otra. Exportar e importar JSON existe, pero no es necesario.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common#template-categories y https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common#user-exclusions</p></div><div class="a"><div class="q-h"><span class="qid">14</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q31</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Con <strong>PHS habilitado</strong>, el setting <strong>"Allow on-premises password change to reset user risk"</strong> hace que un cambio de password on-prem remedie el user risk automáticamente. Es opt-in y lo configura como mínimo un Security Operator.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Writeback va de la nube hacia AD. No hace que un cambio hecho en AD cuente como remedio.</li>
+<li>C. Un reset por SSPR en la nube sí remedia, pero estos usuarios cambian el password on-prem.</li>
+<li>D. Dismiss no cambia el password y deja la identidad igual de expuesta.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#allow-on-premises-password-reset-to-remediate-user-risks</p></div><div class="a"><div class="q-h"><span class="qid">15</span><span class="fmt">Multiple choice</span><span class="skill-tag">M2 · Q35</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> La guía de investigación de Learn para atypical travel dice: si el rango de IP es de una VPN autorizada, <strong>confirma el sign-in como safe</strong> y <strong>agrega el rango de la VPN a named locations</strong> en Entra y en Defender for Cloud Apps. Eso reduce falsos positivos futuros.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. No hay evidencia de compromiso. Confirmar compromised sube el riesgo sin razón.</li>
+<li>C. Excluir usuarios de la política debilita la protección y no arregla la causa (la VPN).</li>
+<li>D. No hay un switch documentado para apagar una detección. La vía es named locations y dar feedback (safe o compromised).</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk#atypical-travel-detections y https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk#mitigate-future-risks</p></div><div class="a"><div class="q-h"><span class="qid">16</span><span class="fmt">Select two</span><span class="skill-tag">M2 · Q42</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> El flujo de Learn: filtering policy, <strong>security profile</strong> que la agrupa y <strong>política de CA</strong> que entrega ese security profile a los usuarios. CA es el mecanismo que hace la política <strong>consciente del usuario</strong>: target "All internet resources with Global Secure Access" y sesión "Use Global Secure Access security profile".</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. El baseline profile <strong>aplica a todo el tráfico</strong> (incluidas remote networks) sin CA. Bloquearía a todos, no solo a Sales.</li>
+<li>D. El Microsoft profile es para tráfico de Microsoft 365; no filtra categorías de internet.</li>
+<li>E. No hace falta ubicación para este requisito.</li>
+</ul>
+<p>Datos que caen: un security profile nuevo tarda de 60 a 90 minutos (viaja en el access token); un bloqueo HTTPS se ve como "Connection Reset"; sin TLS inspection solo aplican reglas por SNI.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#high-level-steps, https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#create-a-security-profile y https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#create-and-link-conditional-access-policy</p></div><div class="a"><div class="q-h"><span class="qid">17</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q1</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> La user-assigned managed identity es un recurso aparte con <strong>ciclo de vida independiente</strong> y se puede asignar a muchos recursos. Learn la pone justo para "workloads needing preauthorization to a secure resource" y "resources recycled frequently, but permissions should stay consistent". Sin credenciales que manejar.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: la system-assigned nace y muere con cada instancia, no se comparte y no existe antes del deploy, así que no puedes pre-autorizarla.</li>
+<li>C: funciona, pero obliga a manejar y rotar un secreto. La pregunta dice "must not manage any credentials".</li>
+<li>D: user accounts como service accounts no se recomiendan, y una cuenta sincronizada no se convierte en service principal.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities</p></div><div class="a"><div class="q-h"><span class="qid">18</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q9</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> <strong>Application Administrator</strong> administra todo en enterprise apps y app registrations <strong>más los settings de Application Proxy</strong>. Learn lo pone como least privileged para configurar apps de App Proxy y crear o borrar connector groups.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Cloud Application Administrator tiene lo mismo que Application Administrator <strong>excepto Application Proxy</strong>. Esa es toda la diferencia, y el examen la busca.</li>
+<li>C: Application Developer solo registra apps (y consiente por sí mismo). No toca App Proxy ni SSO de apps ajenas.</li>
+<li>D: puede todo, pero rompe least privilege.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#assign-built-in-application-administrator-roles y https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-by-task#application-proxy-least-privileged-roles</p></div><div class="a"><div class="q-h"><span class="qid">19</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q12</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Para custom domains, Learn pide un certificado <strong>PFX con la private key</strong> (y la cadena intermedia), subido en la página Application proxy de la app, y un registro <strong>CNAME</strong> que apunte el external URL al dominio <code>msappproxy.net</code>. El certificado se sube una vez por dominio y se reusa en apps nuevas.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: un .cer no trae private key, y Learn dice que no apuntes a IPs ni a nombres de servers porque no son estáticos.</li>
+<li>C: el TXT es para <strong>verificar el dominio</strong>, paso que ya está hecho. Con custom domain el certificado lo pones tú.</li>
+<li>D: el connector no recibe tráfico de internet. Todo es outbound.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-custom-domain#certificates-for-custom-domains y https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-custom-domain#set-up-and-use-custom-domains</p></div><div class="a"><div class="q-h"><span class="qid">20</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q16</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> El <strong>admin consent workflow</strong> deja que el usuario pida aprobación desde el prompt cuando no puede consentir. La solicitud llega por correo a los reviewers. No cambia lo que el usuario puede consentir, así que no baja la seguridad.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: quita la protección de verified publishers y permisos low impact. Justo lo que se pidió no hacer.</li>
+<li>C: aunque Files.Read fuera low impact, el publisher sigue sin estar verificado, así que el usuario tampoco podría consentir.</li>
+<li>D: step-up consent no es la causa aquí (el bloqueo viene del setting de verified publisher), y apagarlo <strong>reduce</strong> la seguridad.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow#enable-the-admin-consent-workflow y https://learn.microsoft.com/entra/identity/enterprise-apps/configure-user-consent#configure-user-consent-settings</p></div><div class="a"><div class="q-h"><span class="qid">21</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q21</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn dice que cuando el switch global está en No, le devuelves la capacidad a personas específicas con el rol <strong>Application Developer</strong>. Además queda como owner de las apps que crea.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: puede registrar apps, pero también administra todas las apps del tenant. Más privilegio del necesario.</li>
+<li>C: igual que B, y encima Application Proxy.</li>
+<li>D: abre el registro para <strong>todos</strong> los usuarios, no solo para Dev1.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#restrict-who-can-create-applications</p></div><div class="a"><div class="q-h"><span class="qid">22</span><span class="fmt">Drag/order</span><span class="skill-tag">M3 · Q25</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> "On behalf of the signed-in user" = permiso <strong>delegated</strong> = <strong>scope</strong>. El App ID URI es el prefijo de los scopes y va primero; después creas el scope, el cliente lo pide en My APIs, y el admin consent para el tenant evita el prompt a cada usuario.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: un app role con Applications crea una <strong>application permission</strong> (sin usuario). No es lo que pide el escenario.</li>
+<li>F: el redirect URI es del cliente y se configura en el cliente, no en la API.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-expose-web-apis#add-a-scope y https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent#grant-admin-consent-in-app-registrations-pane</p></div><div class="a"><div class="q-h"><span class="qid">23</span><span class="fmt">Multiple choice</span><span class="skill-tag">M3 · Q36</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Las <strong>access policies</strong> sirven para browser, mobile y desktop. Learn: bloquea los clientes nativos con una access policy y el filtro <strong>Client app = Mobile and desktop</strong>. Sin ese filtro, la access policy solo aplica a sesiones de browser.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: las session policies trabajan <strong>en el browser</strong>. No ven al cliente de escritorio.</li>
+<li>C: las OAuth app policies revisan permisos que usuarios dieron a apps OAuth. No bloquean un cliente de sync.</li>
+<li>D: Unsanctioned bloquearía Dropbox completo, incluido el browser, y el requisito dice que el browser sigue.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/session-policy-aad#access-controls-in-session-policies y https://learn.microsoft.com/defender-cloud-apps/access-policy-aad#create-a-defender-for-cloud-apps-access-policy</p></div><div class="a"><div class="q-h"><span class="qid">24</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q3</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Para agregar un recurso al catalog hacen falta <strong>dos cosas: ser catalog owner y tener permiso sobre el recurso</strong>. La tabla de Learn dice que un usuario normal que es catalog owner puede agregar un grupo "only if group owner". Ser owner de ese único grupo es lo más acotado.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: trampa clásica. En la tabla de Learn, Identity Governance Administrator puede agregar <strong>apps</strong>, pero no security groups ni Microsoft 365 groups.</li>
+<li>B: Groups Administrator más catalog owner sí funciona, pero es un rol de todo el tenant. No es least privilege.</li>
+<li>D: el access package manager usa recursos que ya están en el catalog. No agrega recursos.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-delegate#required-roles-to-add-resources-to-a-catalog</p></div><div class="a"><div class="q-h"><span class="qid">25</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q4</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Learn lo dice claro: <strong>una sola policy no puede asignar identidades internas y externas</strong> al mismo access package. Necesitas una policy "For users, service principals, and agent identities in your directory" (All members excluding guests, manager como approver) y otra "For users not in your directory" (Specific connected organizations, external sponsor como approver).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: una policy tiene un solo público. No mezcla "in your directory" con "not in your directory".</li>
+<li>C: tres sería si además quisieras asignación automática o solo directa por admin. No se pide.</li>
+<li>D: no hay cuatro públicos distintos en el escenario.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-request-policy#choose-between-one-or-multiple-policies</p></div><div class="a"><div class="q-h"><span class="qid">26</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q15</span></div><p><strong>Respuesta:</strong> D</p>
+<p><strong>Por qué es correcta:</strong> <strong>Take recommendations</strong> aplica lo que recomienda el sistema. Con el helper "No sign-in within 30 days", el sistema recomienda aprobar a quien entró en los últimos 30 días y <strong>denegar a quien no entró</strong>. Justo lo que se pide.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: deja a todos igual, incluidos los inactivos.</li>
+<li>B: quita el acceso a todos los no revisados, incluidos los activos. Learn avisa que con auto apply esto puede quitar todo el acceso al recurso.</li>
+<li>C: aprueba a todos, incluidos los inactivos.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/create-access-review#next-settings</p></div><div class="a"><div class="q-h"><span class="qid">27</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q21</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> <strong>Eligible</strong> significa que activan el rol solo cuando lo necesitan (JIT). <strong>Time-bound</strong> con fecha de fin hace que la elegibilidad termine sola al acabar el proyecto.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: tendrían el rol siempre activo y para siempre.</li>
+<li>B: nunca vence. Alguien tendría que quitarla a mano.</li>
+<li>D: tendrían el rol activo los seis meses completos, sin JIT.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-add-role-to-user#assign-a-role</p></div><div class="a"><div class="q-h"><span class="qid">28</span><span class="fmt">Yes/No series</span><span class="skill-tag">M4 · Q22</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. El usuario elige una duración <strong>dentro del máximo</strong> configurado, aquí 4 horas. El slider va de 1 a 24.</li>
+<li>2 Yes. En roles de Entra, <strong>si no eliges approvers, los Privileged Role Administrators y Global Administrators activos son los approvers por default</strong>.</li>
+<li>3 No. El ticket es <strong>solo informativo</strong>. PIM no lo valida contra ningún sistema.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: confundir el máximo que pone el admin con lo que pide el usuario.</li>
+<li>Trampa de la 2: aplicar la regla de Azure resources y PIM for Groups, donde <strong>no hay approvers por default</strong>.</li>
+<li>Trampa de la 3: creer que PIM se integra con ServiceNow para validar tickets.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#require-approval-to-activate y https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#activation-maximum-duration</p></div><div class="a"><div class="q-h"><span class="qid">29</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q26</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Desde enero de 2023, <strong>cualquier security group o Microsoft 365 group</strong> puede entrar a PIM for Groups, sea role-assignable o no. Las excepciones son los grupos <strong>dinámicos</strong> y los <strong>sincronizados desde on-premises</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: ser role-assignable ya no es requisito. Además, un grupo existente no se convierte en role-assignable.</li>
+<li>C: funciona con security groups y con Microsoft 365 groups.</li>
+<li>D: al revés. Los grupos dinámicos <strong>no</strong> se pueden usar en PIM for Groups.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups#relationship-between-role-assignable-groups-and-pim-for-groups</p></div><div class="a"><div class="q-h"><span class="qid">30</span><span class="fmt">Multiple choice</span><span class="skill-tag">M4 · Q33</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Free guarda <strong>7 días</strong> de sign-ins y audit. Learn dice que el cambio de retención <strong>no es retroactivo</strong>: al pasar a P1 solo ves lo que seguía dentro de los 7 días. Lo que ya venció no vuelve, salvo que lo hubieras exportado.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: los 30 días de P1 cuentan hacia adelante, no hacia atrás.</li>
+<li>C: los "hasta tres días" aplican cuando <strong>no había datos</strong> y empiezan a aparecer después del upgrade. No recuperan datos vencidos.</li>
+<li>D: soporte no restaura logs que ya se borraron.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/reference-reports-data-retention#activity-reports</p></div>
+</body></html>

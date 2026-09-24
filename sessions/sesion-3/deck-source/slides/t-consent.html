@@ -1,0 +1,30 @@
+<section id="t-consent" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampas 4 y 5 · API permissions y consent</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Como tú, como yo y quién aprueba</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Delegated = actúo como tú; application = actúo como yo. Y 'como yo' siempre lo aprueba un admin."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:22px 26px">
+      <table style="width:920px; font-size:25px; color:#0F172A">
+        <tr style="background:#F1F5F9"><th style="width:230px; text-align:left; padding:8px 12px"></th><th style="width:300px; text-align:left; padding:8px 12px">Delegated</th><th style="width:300px; text-align:left; padding:8px 12px">Application</th></tr>
+        <tr><td style="padding:8px 12px">Usuario</td><td style="padding:8px 12px">Sí. La app no ve más que él</td><td style="padding:8px 12px">No. Ve todo lo del permiso</td></tr>
+        <tr style="background:#F8FAFC"><td style="padding:8px 12px">Se declara</td><td style="padding:8px 12px">Scope</td><td style="padding:8px 12px">App role</td></tr>
+        <tr><td style="padding:8px 12px">Consienten</td><td style="padding:8px 12px">Usuarios o admin</td><td style="padding:8px 12px"><b>Solo admin</b></td></tr>
+        <tr style="background:#F8FAFC"><td style="padding:8px 12px">En Graph</td><td style="padding:8px 12px">App Admin o Cloud App Admin</td><td style="padding:8px 12px"><b>Privileged Role Admin</b></td></tr>
+      </table>
+    </div>
+    <div style="width:660px; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:26px 30px; display:flex; flex-direction:column; gap:10px">
+      <h3 style="font-size:28px; font-weight:700; color:#0E7490">Admin consent workflow</h3>
+      <ul style="font-size:25px; line-height:1.4; color:#334155">
+        <li>Si el usuario no puede consentir, le da un botón para pedir.</li>
+        <li>Ser reviewer no da superpoderes: para aprobar hace falta el rol.</li>
+        <li>Los reviewers nuevos no ven solicitudes viejas, y estas expiran.</li>
+        <li>Assignment required o scope Admins only: siempre admin.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/permissions-consent-overview#types-of-permissions"><span style="color:#0E7490">Types of permissions</span></a> · <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow#enable-the-admin-consent-workflow"><span style="color:#0E7490">Admin consent workflow</span></a> · Delata: "daemon", "Admins only"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">7 / 27</p>
+  <aside>Objetivo: separar quién actúa de quién aprueba. Frase clave de la trampa 4: "Delegated = actúo como tú; application = actúo como yo. Y 'como yo' siempre lo aprueba un admin". Frase clave de la trampa 5: "Si el usuario no puede consentir, el workflow le da un botón para pedir; ser reviewer no te da superpoderes". Application permissions de Microsoft Graph las consiente Privileged Role Administrator (o Global Admin); Application Admin y Cloud Application Admin consienten todo lo demás. User consent tiene cuatro opciones: no permitir, verified publishers con permisos low impact, permitir todo, o dejar que Microsoft lo maneje (default en tenants nuevos). Risk-based step-up consent viene activo y solo actúa si hay user consent. Delata: "without a signed-in user", "daemon", "on behalf of the signed-in user", "Grant admin consent is unavailable", "Admins only", "request approval from the consent prompt", "unverified publisher", "added later as a reviewer", "AADSTS90094". Practican: Q7, Q18, Q27, Q30 (trampa 4) y Q16, Q17 (trampa 5). Tiempo: 2 minutos.</aside>
+</section>

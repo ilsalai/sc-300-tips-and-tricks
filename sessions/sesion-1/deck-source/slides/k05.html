@@ -1,0 +1,35 @@
+<section id="k05" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 5 de 10 · Trampa 5 · Banco Q18</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">La licencia que no se asigna</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">Julia gets Office 365 E1 from one group and E3 from another. The E3 assignment shows an error, and 150 E3 licenses are free. Why?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">Conflicting service plans (Exchange Plan 1 vs Plan 2)</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">Not enough E3 licenses</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">C</p>
+        <p style="font-size:26px; color:#334155">Nested groups aren't supported</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">Her usage location blocks E3</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">E1 y E3 juntos chocan: <b>Exchange Online Plan 1 y Plan 2 se excluyen</b>. En PowerShell sale como MutuallyExclusiveViolation. Se arregla sacándola del grupo E1 o apagando el plan.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> El escenario dice que hay 150 libres. Dato que descarta, no que confunde.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>C.</b> Nada dice "nested". Y anidar no da error: el segundo nivel simplemente no recibe licencia.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> Sería otro error, y no lo menciona.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/users/licensing-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time"><span style="color:#0E7490">Service plans that can't be assigned together</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">21 / 29</p>
+  <aside>Debrief de 45 segundos. Enseñar a usar los datos del escenario para descartar: "150 licencias libres" mata B. Frase clave: "Si hay licencias y hay usage location, el error es conflicto de service plans".</aside>
+</section>

@@ -1,0 +1,38 @@
+<section id="lab08-09" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Labs 08 + 09 · M2 · Tenant-wide MFA y SSPR</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">MFA por CA y SSPR para un piloto</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#F6F8FB; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> Entra ID &gt; Conditional Access · Users &gt; Per-user MFA · Password reset</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li>CA &gt; <b>New policy</b> MFA_for_Delia: Delia, Office 365</li>
+        <li>Grant: <b>Require multifactor authentication</b>, On</li>
+        <li>Per-user MFA &gt; Adele Vance &gt; <b>Enable MFA</b></li>
+        <li>Grupo Security <b>SSPRTesters</b> con tres usuarios</li>
+        <li>Password reset &gt; Properties: <b>Selected</b>, SSPRTesters</li>
+        <li>Allan registra en aka.ms/ssprsetup y prueba el reset</li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12"><b>Security defaults</b> activos: no hay CA. Apágalos antes.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Selected: <b>un solo grupo</b>. Prueba con usuario sin rol.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/2d55010401c06c527ac6d5ad68367e28" alt="Nueva política de Conditional Access con el panel Grant y Grant access" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/7c4c7bfd8dfae06302b66b1535a3ed3a" alt="SSPR en Selected con un grupo en Password reset, Properties" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Labs oficiales: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_08_EnableAzureADMultiFactorAuthentication.html"><span style="color:#0E7490">Lab 08 · Enable MFA</span></a> · <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_09_ConfigureAndDeploySelfServicePasswordReset.html"><span style="color:#0E7490">Lab 09 · SSPR</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">10 / 19</p>
+  <aside>Objetivo: MFA para un piloto con CA y SSPR para un grupo. Estado final: la política MFA_for_Delia en On pide MFA para Office 365; Adele Vance tiene per-user MFA en Enabled; SSPR en Selected con SSPRTesters y Allan Deyoung registrado y probado; GradyA, fuera del grupo, no puede resetear. Frase clave: "MFA para un grupo piloto sin tocar al resto es Conditional Access, no security defaults ni per-user MFA". Trampa favorita: security defaults activos impiden usar CA; y no se mezcla per-user MFA con CA, Learn lo desaconseja. En el portal SSPR Selected acepta un solo grupo, y los admins siempre usan la política de dos métodos, por eso se prueba con un usuario sin rol. Practican: M2 Q6, Q7, Q8. Tiempo: 2 minutos.</aside>
+</section>

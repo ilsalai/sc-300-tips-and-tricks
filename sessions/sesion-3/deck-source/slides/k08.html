@@ -1,0 +1,35 @@
+<section id="k08" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 8 de 10 · Trampa 10 · Banco Q26</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">Un claim con Survey.Create</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">Tokens must carry a claim with value Survey.Create. Admins will grant it to users and groups. What do you configure?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">A</p>
+        <p style="font-size:26px; color:#334155">A scope named Survey.Create in Expose an API</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">A groups claim in Token configuration</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">App role (Users/Groups, value Survey.Create), assigned in Enterprise apps</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">A custom Microsoft Entra directory role named Survey.Create</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">Un <b>app role</b> con Allowed member types <b>Users/Groups</b> sale en el claim <b>roles</b> con el Value que definiste. Luego lo asignas en Enterprise apps.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>A.</b> Un scope es un permiso delegated: sale en scp, no es el rol del usuario.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> Manda object IDs de grupos; el código tendría que mapearlos.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> Los roles de directorio administran Entra, no la lógica de tu app.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps#declare-roles-for-an-application"><span style="color:#0E7490">Declare roles for an application</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">23 / 27</p>
+  <aside>Debrief de 45 segundos. Frase clave: "Scope para 'on behalf of', app role para 'sin usuario' o para roles de usuario". Delata: "roles claim" y "users and security groups". Asignar grupos a app roles pide P1 o superior. Si muchos eligieron A, repetir: el scope lo pide el cliente a la API; el app role dice qué es el usuario.</aside>
+</section>

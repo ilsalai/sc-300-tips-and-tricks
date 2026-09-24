@@ -1,0 +1,34 @@
+<section id="t-external" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampas 4 y 5 · Externos y terms of use</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Externos: entrar y salir</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Último paquete perdido: bloqueado hoy, borrado en 30 días. La ToU es un PDF que no muerde hasta que Conditional Access la pone en el Grant."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:12px">
+      <div style="display:flex; gap:14px; align-items:center">
+        <x-icon name="Users" style="color:#0E7490; width:36px; height:36px"></x-icon>
+        <h3 style="font-size:30px; font-weight:700">Lifecycle of external users</h3>
+      </div>
+      <ul style="font-size:26px; line-height:1.45; color:#334155">
+        <li>Default: bloqueo de sign-in y borrado a los 30 días. Con 0 días, borrado ya.</li>
+        <li>Se cambia en Control Configurations.</li>
+        <li>Solo guests que entraron por entitlement management o convertidos a governed. Se borran <b>aunque tengan otros accesos</b>, como un sitio compartido.</li>
+      </ul>
+    </div>
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:12px">
+      <div style="display:flex; gap:14px; align-items:center">
+        <x-icon name="Book" style="color:#0E7490; width:36px; height:36px"></x-icon>
+        <h3 style="font-size:30px; font-weight:700">Terms of use</h3>
+      </div>
+      <ul style="font-size:26px; line-height:1.45; color:#334155">
+        <li>P1 y Conditional Access Administrator. Se hace cumplir <b>solo con una política de CA</b>.</li>
+        <li>Per-device pide device registrado y no soporta B2B.</li>
+        <li>Con re-aceptación, se acepta otra vez cuando expira la sesión. Si rechaza, queda bloqueado.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#manage-the-lifecycle-of-external-users"><span style="color:#0E7490">External users lifecycle</span></a> · <a href="https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#per-device-terms-of-use"><span style="color:#0E7490">Per-device ToU</span></a> · Delata: "last access package", "every device"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">8 / 27</p>
+  <aside>Objetivo: seguir a un guest desde que entra hasta que se borra, y dejar claro que la ToU sola no hace nada. Frase clave trampa 4: "Último paquete perdido: bloqueado hoy, borrado en 30 días. Con 0 días, borrado ya". Frase clave trampa 5: "La ToU es un PDF que no muerde hasta que Conditional Access la pone en el Grant". La ruta: Control Configurations, Lifecycle of external users. Re-aceptación: Expire consents o Duration before re-acceptance, y el usuario vuelve a aceptar solo cuando su sesión expira. El reporte de aceptación vive lo que vive la ToU; los audit logs, 30 días. Delata: "last access package assignment", "as soon as possible", "also has access to a SharePoint site", "every device", "guest users", "create Conditional Access policy later", "declined". Practican: Q8, Q12 (lifecycle) y Q9, Q10 (ToU). Tiempo: 2 minutos.</aside>
+</section>

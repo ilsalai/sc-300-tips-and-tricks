@@ -1,0 +1,38 @@
+<section id="lab13" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Lab 13 · M2 · Conditional Access: controls, What If y session</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Bloquear Sway y probarlo con What If</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> Entra ID &gt; Conditional Access &gt; Policies, y What If en la barra</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li><b>New policy</b> Block Sway for DebraB: DebraB, Sway</li>
+        <li>Grant: <b>Block access</b>, On. DebraB ya no entra</li>
+        <li>Pon la política en <b>Off</b> y guarda</li>
+        <li><b>What If</b>: DebraB, Sway, Windows, Browser</li>
+        <li>Lee Policies that will apply y will not apply</li>
+        <li>Sign in frequency: Grady, <b>30 Days</b>, Report-only</li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">What If solo evalúa políticas <b>On</b> o <b>Report-only</b>.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">La sesión abierta no se re-evalúa: sal y vuelve.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/c2f9a7b2c1e060b2459b7d441c5f5903" alt="Resultado de What If con Policies that will apply y su estado" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/c25dde7aad3ad7632171fde78dbce2aa" alt="Session control Sign-in frequency en una política de Conditional Access" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Lab oficial: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_13_ImplementAndTestAConditionalAccessPolicy.html"><span style="color:#0E7490">Lab 13 · Implement and test a Conditional Access policy</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">11 / 19</p>
+  <aside>Objetivo: construir, apagar y diagnosticar una política. Estado final: existe Block Sway for DebraB con Block access y al final queda en Off; existe Sign in frequency para Grady Archie en Office 365, 30 Days, en Report-only. Frase clave: "What If te dice qué políticas aplican y cuál condición falló; pide identity, target resource, device platform y client app". Trampa favorita: una política en Off no sale en What If. Report-only no aplica nada, solo registra, y Remember MFA on trusted devices choca con Sign-in frequency. Security defaults activos bloquean CA. Practican: M2 Q13, Q19, Q20, Q21. Tiempo: 2 minutos.</aside>
+</section>

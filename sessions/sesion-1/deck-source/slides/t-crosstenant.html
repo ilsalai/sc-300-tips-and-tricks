@@ -1,0 +1,41 @@
+<section id="t-crosstenant" data-transition="fade" style="background:#0F172A; color:#F6F8FB; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:22px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#22D3EE">Trampas 8 y 9 · Cross-tenant</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Cross-tenant: quién abre, quién empuja</h2>
+  <div style="background:#1E293B; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#A3E635">"Trust MFA siempre es inbound y se configura en el tenant de recursos. El source empuja; el target solo abre la puerta."</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:14px">
+    <div style="display:flex; gap:20px; align-items:stretch">
+      <div style="flex:1; background:#1E293B; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:6px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#94A3B8">Tenant home · Fabrikam</p>
+        <p style="font-size:25px; line-height:1.45; color:#E2E8F0">Sus usuarios ya hicieron MFA aquí.</p>
+      </div>
+      <div style="width:220px; display:flex; flex-direction:column; gap:8px; align-items:center; justify-content:center">
+        <p style="font-size:24px; line-height:1.3; color:#94A3B8; text-align:center">entran como guests</p>
+        <x-shape kind="arrow-right" style="width:112px; height:56px; background:#22D3EE"></x-shape>
+      </div>
+      <div style="flex:1; background:#1E293B; border:3px solid #22D3EE; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:6px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#22D3EE">Tenant de recursos · Contoso</p>
+        <p style="font-size:25px; line-height:1.45; color:#E2E8F0">Aquí va el <b style="color:#F6F8FB">inbound trust MFA</b>, en Organizational settings (ganan a los default). Requiere P1.</p>
+      </div>
+    </div>
+    <div style="display:flex; gap:20px; align-items:stretch">
+      <div style="flex:1; background:#1E293B; border:3px solid #A3E635; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:6px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#A3E635">Source tenant</p>
+        <p style="font-size:25px; line-height:1.45; color:#E2E8F0">Configuración, scope, mappings y la licencia P1. Outbound: <b style="color:#F6F8FB">automatic redemption</b>.</p>
+      </div>
+      <div style="width:220px; display:flex; flex-direction:column; gap:8px; align-items:center; justify-content:center">
+        <p style="font-size:24px; line-height:1.3; color:#94A3B8; text-align:center">push cada 40 min</p>
+        <x-shape kind="arrow-right" style="width:112px; height:56px; background:#A3E635"></x-shape>
+      </div>
+      <div style="flex:1; background:#1E293B; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:6px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#94A3B8">Target tenant</p>
+        <p style="font-size:25px; line-height:1.45; color:#E2E8F0">Solo abre: Allow user synchronization into this tenant y automatic redemption. Llegan como <b style="color:#F6F8FB">external members</b>.</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:24px; line-height:1.4; color:#94A3B8">Delata: "already completed MFA in their home tenant", "only for Fabrikam", "no invitation emails or consent prompts", "the source tenant has not enabled automatic user consent".</p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#94A3B8">Learn: <a href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview#organizational-settings"><span style="color:#22D3EE">Organizational settings</span></a> · <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#properties"><span style="color:#22D3EE">Cross-tenant sync properties</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#94A3B8">12 / 29</p>
+  <aside>Objetivo: que el concepto de dirección quede dibujado en la cabeza: dos flechas, dos reglas. Frase clave: "El trust vive donde está el recurso, y la sync vive donde está el usuario". El error de Test connection que nombra al source es outbound automatic redemption; el que nombra al target es inbound allow sync. Practican: Q25, Q26, Q27, Q29, Q30. Tiempo: 2 minutos.</aside>
+</section>

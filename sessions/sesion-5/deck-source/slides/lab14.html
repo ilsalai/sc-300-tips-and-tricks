@@ -1,0 +1,37 @@
+<section id="lab14" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Lab 14 · M2 · User risk y sign-in risk con Conditional Access</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Dos políticas de riesgo, nunca una</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#F6F8FB; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> Entra ID &gt; Conditional Access &gt; New policy &gt; Conditions</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li>User Risk Remediation: All users menos MOD Admin</li>
+        <li>Target: <b>All resources</b>. User risk: <b>High</b></li>
+        <li>Grant: <b>Require risk remediation</b>, On</li>
+        <li>Sign-in Risk Policy: mismo alcance, sign-in risk <b>High</b></li>
+        <li>Grant: <b>Require multifactor authentication</b>, On</li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Pide <b>P2</b>. User y sign-in risk van separados.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12"><b>1 oct 2026:</b> se retiran las legacy; todo va por CA.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/a635eb9a25ad64e0133af52df19ec30b" alt="Condición User risk en una política de Conditional Access" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/6b2596b6c22d4ef712d52268d1bc7412" alt="Política de Conditional Access con la condición Sign-in risk" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Lab oficial: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_14_EnableSignRiskPolicy.html"><span style="color:#0E7490">Lab 14 · User risk and sign-in risk policies</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">12 / 19</p>
+  <aside>Objetivo: las dos políticas de riesgo hechas en Conditional Access, cada una con su cura. Estado final: User Risk Remediation (All users menos MOD Administrator, All resources, user risk High, Require risk remediation, On) y Sign-in Risk Policy (sign-in risk High, Require multifactor authentication, On). Frase clave: "User risk se cura con Require risk remediation; sign-in risk se cura con MFA; nunca en la misma política". Trampa favorita: Require risk remediation agrega solo Require authentication strength y Sign-in frequency Every time, y el usuario necesita MFA registrado antes o queda bloqueado. Siempre excluir break-glass (en el lab, MOD Administrator). Las risk policies legacy de ID Protection se retiran el 1 de octubre de 2026. Practican: M2 Q29, Q30, Q31. Tiempo: 2 minutos.</aside>
+</section>

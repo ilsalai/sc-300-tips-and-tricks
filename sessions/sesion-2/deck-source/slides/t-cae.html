@@ -1,0 +1,38 @@
+<section id="t-cae" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 9 · CAE y revocar sesiones</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Cortar el acceso ya</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"CAE corta por eventos, no por cambios de grupo, y solo entiende IPs, no países."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#ECFDF5; border:2px solid #A7F3D0; border-radius:24px; padding:28px 34px; display:flex; flex-direction:column; gap:10px">
+      <h3 style="font-size:28px; font-weight:700; color:#047857">CAE sí corta, en minutos</h3>
+      <ul style="font-size:25px; line-height:1.45; color:#334155">
+        <li>Cuenta deshabilitada o borrada.</li>
+        <li>Password cambiado o reseteado.</li>
+        <li>MFA habilitado, refresh tokens revocados.</li>
+        <li>User risk High. Cambio de IP contra named locations por IP.</li>
+      </ul>
+    </div>
+    <div style="flex:1; background:#FFF1F2; border:2px solid #FECDD3; border-radius:24px; padding:28px 34px; display:flex; flex-direction:column; gap:10px">
+      <h3 style="font-size:28px; font-weight:700; color:#BE123C">CAE no corta</h3>
+      <ul style="font-size:25px; line-height:1.45; color:#334155">
+        <li>Cambios de grupo o de política: hasta un día.</li>
+        <li>Named locations por país.</li>
+        <li>Guests. Y sin CAE, el access token vive hasta expirar.</li>
+      </ul>
+    </div>
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:28px 34px; display:flex; flex-direction:column; gap:10px">
+      <h3 style="font-size:28px; font-weight:700; color:#0E7490">Baja en híbrido, en orden</h3>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li>Deshabilitar en AD DS.</li>
+        <li>Reset de password, dos veces.</li>
+        <li>Revoke-MgUserSignInSession.</li>
+        <li>Deshabilitar sus devices.</li>
+      </ol>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#critical-event-evaluation"><span style="color:#0E7490">CAE critical event evaluation</span></a> · Delata: "near real time", "terminated employee", "country location"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">12 / 28</p>
+  <aside>Objetivo: separar lo que CAE hace en minutos de lo que tarda hasta un día. Frase clave: "CAE corta por eventos, no por cambios de grupo, y solo entiende IPs, no países". El orden de baja en híbrido sale como drag and drop. Practican: Q10, Q22. Tiempo: 1.5 minutos.</aside>
+</section>

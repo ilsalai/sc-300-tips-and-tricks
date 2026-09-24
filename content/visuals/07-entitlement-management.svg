@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Entitlement management</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+<marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7DD3FC"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Entitlement management</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Catalog, access package, policy y ciclo de vida del acceso</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- Catalog container -->
+<rect x="48" y="124" width="564" height="272" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="72" y="164" font-size="24" font-weight="700" fill="#F8FAFC">Catalog</text>
+<rect x="428" y="140" width="164" height="34" rx="17" fill="#FBBF24" fill-opacity="0.12" stroke="#FBBF24" stroke-width="1.5"/>
+<text x="510" y="164" font-size="20" fill="#FBBF24" text-anchor="middle">Catalog owner</text>
+
+<rect x="72" y="192" width="228" height="184" rx="10" fill="#0B1F3A" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="92" y="228" font-size="22" font-weight="700" fill="#7DD3FC">Resources</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="92" y="266">• Groups / Teams</text>
+<text x="92" y="298">• Applications</text>
+<text x="92" y="330">• SharePoint sites</text>
+</g>
+
+<rect x="340" y="192" width="252" height="184" rx="10" fill="#0B1F3A" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="360" y="228" font-size="22" font-weight="700" fill="#7DD3FC">Access package</text>
+<text x="360" y="266" font-size="20" fill="#F8FAFC">Bundle de roles</text>
+<text x="360" y="298" font-size="20" fill="#F8FAFC">1 o más policies</text>
+<rect x="356" y="320" width="212" height="34" rx="17" fill="#FBBF24" fill-opacity="0.12" stroke="#FBBF24" stroke-width="1.5"/>
+<text x="462" y="344" font-size="20" fill="#FBBF24" text-anchor="middle">Package manager</text>
+
+<!-- Policy -->
+<rect x="640" y="124" width="356" height="272" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="664" y="164" font-size="24" font-weight="700" fill="#F8FAFC">Policy</text>
+<text x="664" y="198" font-size="20" font-weight="700" fill="#7DD3FC">Who can request</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="664" y="226">• Internal users</text>
+<text x="664" y="254">• Connected organizations</text>
+<text x="664" y="282">• Any external user</text>
+</g>
+<text x="664" y="316" font-size="20" font-weight="700" fill="#7DD3FC">Settings</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="664" y="344">• Approval stages (1 a 3)</text>
+<text x="664" y="372">• Expiration, requestor info</text>
+</g>
+
+<!-- Connected organization -->
+<rect x="1024" y="124" width="208" height="272" rx="12" fill="#7DD3FC" fill-opacity="0.06" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="1044" y="164" font-size="22" font-weight="700" fill="#7DD3FC">Connected</text>
+<text x="1044" y="190" font-size="22" font-weight="700" fill="#7DD3FC">organization</text>
+<g font-size="20">
+<text x="1044" y="234" fill="#F8FAFC">Otro tenant,</text>
+<text x="1044" y="262" fill="#F8FAFC">dominio o IdP</text>
+<text x="1044" y="300" fill="#94A3B8">Sus users pueden</text>
+<text x="1044" y="328" fill="#94A3B8">pedir acceso</text>
+</g>
+<rect x="1044" y="344" width="104" height="32" rx="16" fill="none" stroke="#94A3B8" stroke-width="1.5"/>
+<text x="1096" y="367" font-size="20" fill="#94A3B8" text-anchor="middle">Externo</text>
+
+<!-- top arrows -->
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M302 284H332"/>
+<path d="M594 284H632"/>
+<path d="M818 398V426H158V446"/>
+</g>
+<path d="M1022 248H1004" stroke="#7DD3FC" stroke-width="3" fill="none" stroke-dasharray="6 4" marker-end="url(#arr2)"/>
+
+<!-- lifecycle row -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5">
+<rect x="48" y="456" width="216" height="120" rx="12"/>
+<rect x="290" y="456" width="216" height="120" rx="12"/>
+<rect x="532" y="456" width="216" height="120" rx="12"/>
+<rect x="774" y="456" width="216" height="120" rx="12"/>
+</g>
+<rect x="1016" y="456" width="216" height="120" rx="12" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="2"/>
+<g font-size="22" font-weight="700" fill="#F8FAFC">
+<text x="68" y="494">Request</text>
+<text x="310" y="494">Approval</text>
+<text x="552" y="494">Assignment</text>
+<text x="794" y="494">Review / end</text>
+<text x="1036" y="494" fill="#F87171">External user</text>
+</g>
+<g font-size="20">
+<text x="68" y="528" fill="#F8FAFC">My Access portal</text>
+<text x="68" y="556" fill="#94A3B8">+ justificación</text>
+<text x="310" y="528" fill="#F8FAFC">Hasta 3 stages</text>
+<text x="310" y="556" fill="#94A3B8">o sin approval</text>
+<text x="552" y="528" fill="#F8FAFC">Acceso a todos</text>
+<text x="552" y="556" fill="#94A3B8">los resources</text>
+<text x="794" y="528" fill="#F8FAFC">Access review</text>
+<text x="794" y="556" fill="#94A3B8">o expiration</text>
+<text x="1036" y="528" fill="#F8FAFC">Block sign-in</text>
+<text x="1036" y="556" fill="#94A3B8">Delete tras N días</text>
+</g>
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M266 516H282"/>
+<path d="M508 516H524"/>
+<path d="M750 516H766"/>
+<path d="M992 516H1008"/>
+</g>
+
+<!-- note -->
+<rect x="48" y="596" width="1184" height="92" rx="12" fill="#F87171" fill-opacity="0.06" stroke="#F87171" stroke-opacity="0.7" stroke-width="2"/>
+<text x="72" y="632" font-size="22" font-weight="700" fill="#F8FAFC">Lifecycle de external users <tspan font-weight="400" fill="#94A3B8">(settings de entitlement management)</tspan></text>
+<text x="72" y="666" font-size="20" fill="#F8FAFC">Sin assignments activos: se bloquea el sign-in y se elimina tras N días (configurable)</text>
+</svg>

@@ -1,0 +1,35 @@
+<section id="k08" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 8 de 10 · Trampa 11 · Banco Q29</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">User risk para todos, con y sin password</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">P2 tenant, password and passwordless users. High user risk must self-remediate for both. Recommended before Oct 2026?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">A</p>
+        <p style="font-size:26px; color:#334155">Keep legacy user risk policy, add MFA</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">CA: User risk High, grant Require risk remediation</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">C</p>
+        <p style="font-size:26px; color:#334155">CA: User risk High, grant Require MFA</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">CA: User + sign-in risk High, Require password change</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4"><b>Require risk remediation</b> se adapta: con password pide secure password change; en passwordless revoca sesiones y pide sign-in. Las legacy se retiran el 1 de octubre de 2026.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>A.</b> La legacy se retira y no ofrece este control.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>C.</b> MFA remedia sign-in risk, no user risk.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> Nunca user risk y sign-in risk en la misma policy, y password change no sirve a passwordless.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies#require-risk-remediation-control"><span style="color:#0E7490">Require risk remediation control</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">24 / 28</p>
+  <aside>Debrief de 45 segundos. Frase clave: "User risk se cura con password o risk remediation; sign-in risk con MFA". Delata: "passwordless users" y "self-remediate".</aside>
+</section>

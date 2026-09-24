@@ -1,0 +1,38 @@
+<section id="lab03" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Lab 03 · M1 · Groups, dynamic groups y licenses</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">La licencia llega sola por el grupo</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#F6F8FB; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> Entra ID &gt; Groups &gt; All groups &gt; New group · M365 admin &gt; Billing &gt; Licenses</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li>New group <b>Security</b> sg-SC300-O365 con Delia Dennis</li>
+        <li>Billing &gt; Licenses &gt; Office 365 E3 &gt; <b>Assign</b> al grupo</li>
+        <li>Grupo &gt; <b>Licenses</b>: E3 aparece y Delia ya ve las apps</li>
+        <li>New group <b>Microsoft 365</b>: Northwest Sales</li>
+        <li><b>Dynamic User</b> &gt; Edit: <span style="font-family:'JetBrains Mono', monospace">user.objectId -ne null</span></li>
+        <li>Espera hasta 15 min y revisa Members: más de 30</li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Group-based licensing no llega a <b>nested groups</b>.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Group type no cambia después; dynamic pide P1.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/4d0a863a72241597da4b0116657ad974" alt="Asignar licencias a un grupo desde Entra admin center" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/4a3e19a603e601e839fe3316456eb263" alt="Rule builder de un dynamic group con la regla de membresía" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Lab oficial: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_03_AssignLicensesToUsersByGroupMembershipAAD.html"><span style="color:#0E7490">Lab 03 · Assign licenses by group membership</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">8 / 19</p>
+  <aside>Objetivo: ver que la licencia se hereda del grupo y que el dynamic group se llena solo. Estado final: sg-SC300-O365 tiene Office 365 E3 y Delia Dennis la recibe por herencia; existe el grupo Microsoft 365 Northwest Sales; existe SC300-myDynamicGroup con la regla user.objectId -ne null y más de 30 miembros. Frase clave: "Minimize administrative effort en licencias es group-based licensing con un dynamic group". Trampa favorita: nested groups no heredan licencia, solo miembros directos; y el conflicto de service plans deja la licencia en error (se revisa en Errors and issues). El rule builder solo soporta 5 expresiones; lo largo va en Edit. Practican: M1 Q12, Q13, Q15, Q17, Q18. Tiempo: 2 minutos.</aside>
+</section>

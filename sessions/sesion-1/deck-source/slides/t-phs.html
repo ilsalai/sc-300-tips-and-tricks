@@ -1,0 +1,20 @@
+<section id="t-phs" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:26px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 10 · Hybrid</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Si se cae on-prem</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"PHS es el paracaídas, pero no se abre solo."</p>
+  </div>
+  <table style="font-size:25px; color:#334155; border:2px solid #E2E8F0; border-radius:20px">
+    <tr style="background:#F1F5F9"><th style="width:31%; text-align:left"></th><th style="width:23%; text-align:left; color:#0E7490">PHS</th><th style="width:23%; text-align:left; color:#0E7490">PTA</th><th style="width:23%; text-align:left; color:#0E7490">Federación (AD FS)</th></tr>
+    <tr><td style="color:#64748B; font-weight:600">Dónde se valida el password</td><td>En la nube</td><td>Agente on-prem contra AD</td><td>AD FS on-prem</td></tr>
+    <tr style="background:#F8FAFC"><td style="color:#64748B; font-weight:600">Si se cae on-prem</td><td style="color:#047857; font-weight:700">Sigue funcionando</td><td style="color:#BE123C; font-weight:700">Falla</td><td style="color:#BE123C; font-weight:700">Falla</td></tr>
+    <tr><td style="color:#64748B; font-weight:600">Estado de cuenta y logon hours</td><td>No</td><td style="color:#047857; font-weight:700">Sí, en tiempo real</td><td style="color:#047857; font-weight:700">Sí</td></tr>
+    <tr style="background:#F8FAFC"><td style="color:#64748B; font-weight:600">Leaked credentials</td><td style="color:#047857; font-weight:700">Sí</td><td>Solo con PHS activo</td><td>Solo con PHS activo</td></tr>
+    <tr><td style="color:#64748B; font-weight:600">Seamless SSO</td><td style="color:#047857; font-weight:700">Sí</td><td style="color:#047857; font-weight:700">Sí</td><td>No, AD FS trae el suyo</td></tr>
+    <tr style="background:#F8FAFC"><td style="color:#64748B; font-weight:600">Infra extra</td><td>Ninguna</td><td>Mínimo 3 agentes</td><td>AD FS y WAP</td></tr>
+  </table>
+  <p style="font-size:26px; line-height:1.4; color:#334155"><b style="color:#0F172A">El cambio de sign-in method en Entra Connect es manual.</b> Habilita PHS siempre. <span style="color:#64748B">Delata: "on-premises outage", "ransomware", "enforce logon hours", "leaked credentials".</span></p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/choose-ad-authn#detailed-considerations"><span style="color:#0E7490">Choose the authentication method</span></a> · <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta-quick-start#step-4-ensure-high-availability"><span style="color:#0E7490">PTA high availability</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">13 / 29</p>
+  <aside>Objetivo: que la tabla se lea como árbol de decisión: si la pregunta menciona caída de on-prem, la única que sobrevive es PHS; si menciona logon hours o estado de cuenta en vivo, es PTA o federación. Frase clave: "PHS es el paracaídas pero no se abre solo: el cambio en Entra Connect es manual". Trampa favorita: creer que Entra hace failover automático a PHS. Practican: Q31, Q32, Q33, Q39. Tiempo: 1.5 minutos.</aside>
+</section>

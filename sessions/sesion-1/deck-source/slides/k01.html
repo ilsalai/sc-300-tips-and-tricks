@@ -1,0 +1,35 @@
+<section id="k01" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 1 de 10 · Trampa 1 · Banco Q4</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">Proteger al CEO y al CFO</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">Only ExecSupport may manage the CEO and CFO accounts. Even Global Admins must be blocked by default, and no tenant-level role can be removed. What do you create?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">A restricted management administrative unit</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">A regular administrative unit</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">C</p>
+        <p style="font-size:26px; color:#334155">A role-assignable group</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">PIM with approval for Helpdesk and User Admin</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4"><b>Restricted AU</b> bloquea a cualquier admin de tenant, incluido el GA, salvo que se asigne un rol en ese scope. Eso queda en audit logs.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> El AU normal recorta al admin con scope, pero no protege al objeto del Helpdesk de tenant.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>C.</b> Frena al Helpdesk, pero Privileged Auth Admins y GAs siguen pudiendo.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> PIM controla cuándo se activa un rol, no sobre qué cuentas actúa.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management#who-can-modify-objects"><span style="color:#0E7490">Restricted AU: who can modify objects</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">17 / 29</p>
+  <aside>Debrief de 45 segundos. Palabras que delatan: "even Global Admins" y "no role can be removed". Frase clave: "El AU recorta al admin; el restricted AU blinda al objeto". Si alguien eligió B, es la confusión más común: creer que el AU protege lo que tiene adentro.</aside>
+</section>

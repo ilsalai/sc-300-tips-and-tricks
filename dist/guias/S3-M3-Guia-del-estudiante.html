@@ -1,0 +1,1154 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>SC-300 Tips and Tricks · Guía M3 Workload identities</title><style>
+@page { size: A4; margin: 16mm 14mm; }
+* { box-sizing: border-box }
+body { font-family: "Segoe UI", Inter, Arial, sans-serif; color: #1E293B; line-height: 1.5; font-size: 10.5pt; margin: 0 }
+a { color: #0E7490; text-decoration: none; word-break: break-all }
+h1 { font-size: 30pt; color: #0B1F3A; margin: 0 0 6pt; line-height: 1.1 }
+h2 { font-size: 20pt; color: #0F172A; margin: 30pt 0 10pt; padding-bottom: 6pt; border-bottom: 3px solid #22D3EE; page-break-after: avoid; letter-spacing: -0.3px }
+h3.sub { font-size: 13.5pt; color: #0E7490; margin: 18pt 0 6pt; page-break-after: avoid }
+h4 { margin: 0 0 4pt; color: #0B1F3A }
+p { margin: 4pt 0 }
+ul, ol { margin: 4pt 0 4pt 18pt; padding: 0 }
+li { margin: 2pt 0 }
+code { font-family: Consolas, "JetBrains Mono", Menlo, monospace; font-size: 9pt; background: #F1F5F9; padding: 1px 4px; border-radius: 3px }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 9.5pt }
+th, td { border: 1px solid #CBD5E1; padding: 4pt 6pt; vertical-align: top; text-align: left }
+th { background: #0B1F3A; color: #fff }
+.cover { background: #0B1F3A; color: #F1F5F9; padding: 36pt 32pt; border-radius: 14pt; margin-bottom: 18pt; page-break-after: always; min-height: 240mm; display: flex; flex-direction: column; justify-content: space-between }
+.cover h1 { color: #fff; font-size: 40pt }
+.cover .eyebrow { color: #22D3EE; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; font-size: 10pt }
+.cover .big { font-size: 15pt; color: #BFD8F0 }
+.cover .meta { color: #94A3B8; font-size: 10pt }
+.pill { display: inline-block; background: #22D3EE; color: #0B1F3A; font-weight: 700; padding: 3pt 10pt; border-radius: 999px; font-size: 9pt; margin-right: 6pt }
+.box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 8pt 0; page-break-inside: avoid }
+.box.cyan { border-color: #22D3EE; background: #ECFEFF }
+.box.amber { border-color: #FBBF24; background: #FFFBEB }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt }
+.grid3 .box { margin: 0 }
+.mod { font-size: 9.5pt; color: #475569; margin-bottom: 8pt }
+.skill { border: 1px solid #E2E8F0; border-radius: 8pt; padding: 8pt 12pt; margin: 6pt 0; page-break-inside: avoid }
+.skill-h { font-weight: 700; color: #0B1F3A; margin-bottom: 3pt }
+.tag { display: inline-block; background: #0B1F3A; color: #22D3EE; font-size: 8pt; padding: 1pt 6pt; border-radius: 4px; margin-right: 6pt; letter-spacing: 1px }
+.punto { margin: 3pt 0 }
+.main { font-size: 9.5pt; color: #475569 }
+.deep { font-size: 9.5pt; margin-left: 16pt }
+.anchor { color: #94A3B8 }
+.trap { border: 1.5px solid #E2E8F0; border-radius: 12pt; padding: 12pt 16pt; margin: 10pt 0; page-break-inside: avoid; background: #fff }
+.trap-h { font-weight: 700; font-size: 12.5pt; color: #0B1F3A }
+.num { display: inline-block; width: 22pt; height: 22pt; line-height: 22pt; text-align: center; background: #0B1F3A; color: #22D3EE; border-radius: 50%; font-size: 10.5pt; margin-right: 6pt }
+.frase { font-size: 12.5pt; color: #9A3412; font-weight: 700; margin: 6pt 0; background: #FFF1E6; padding: 6pt 10pt; border-radius: 8pt }
+.delata { font-size: 9.5pt }
+.meta { font-size: 9pt; color: #64748B }
+.visual { margin: 10pt 0 14pt; page-break-inside: avoid }
+.visual svg { width: 100%; height: auto; border-radius: 10pt }
+.visual p { font-size: 9.5pt; color: #475569; margin-top: 4pt }
+.case { background: #FFFBEB; border: 1px solid #FBBF24; border-radius: 8pt; padding: 8pt 12pt; margin: 8pt 0; page-break-inside: avoid }
+.q, .a { border: 1.5px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 9pt 0; page-break-inside: avoid }
+.a { background: #F8FAFC }
+.q-h { display: flex; gap: 6pt; align-items: center; margin-bottom: 4pt; flex-wrap: wrap }
+.qid { font-weight: 800; color: #0B1F3A; font-size: 12pt }
+.fmt { background: #ECFEFF; color: #0E7490; font-size: 8.5pt; padding: 1pt 7pt; border-radius: 999px; font-weight: 600 }
+.skill-tag { color: #64748B; font-size: 8.5pt }
+.checklist li { list-style: none; margin: 4pt 0 }
+.checklist li:before { content: "\2610\00a0\00a0"; color: #0E7490 }
+.toc { columns: 2; font-size: 10pt }
+.toc li { margin: 2pt 0 }
+</style></head><body>
+
+<div class="cover">
+  <div>
+    <p class="eyebrow">SC-300 Tips and Tricks · SC-300 · Sesión 3 de 5</p>
+    <h1>Guía del estudiante<br>Módulo 3: Workload identities</h1>
+    <p class="big">Plan and implement workload identities. 20 a 25% del examen.</p>
+    <p class="big">Modelo invertido: <b>esta guía se estudia antes de la sesión</b>. En vivo cazamos trampas y jugamos Kahoot con el porqué de cada distractor.</p>
+  </div>
+  <div>
+    <p class="meta"><span class="pill">Sin dumps</span> Todo el contenido es original y está anclado a Microsoft Learn con links directos a los párrafos. Skills outline vigente: 27 de abril de 2026.</p>
+    <p class="meta">Contiene: mapa de skills con deep links · 12 trampas con frase clave · 3 visuales · 40 preguntas estilo examen con explicación por distractor · plan de la semana y ritual post-examen.</p>
+  </div>
+</div>
+
+
+<h2>0. Cómo usar esta guía (20 minutos de lectura, 90 de práctica)</h2>
+<div class="grid3">
+  <div class="box cyan"><b>1. Lee el mapa</b><p>Sección 1. Un punto clave por skill del outline. Si algo no te suena, abre el deep link: cae justo en el párrafo que el examen pregunta.</p></div>
+  <div class="box cyan"><b>2. Aprende las 12 trampas</b><p>Sección 2. Cada una trae la frase que la resume, la regla, y las palabras de la pregunta que la delatan.</p></div>
+  <div class="box cyan"><b>3. Contesta el banco sin ver respuestas</b><p>Sección 4. Anota tus respuestas. Luego revisa la sección 5 y lee el "por qué las otras no": ahí está el valor.</p></div>
+</div>
+<div class="box amber">
+  <b>Las preguntas que resuelven casi todo M3: Objeto, identidad, consentimiento y control.</b> Cuando no sepas la respuesta, pregúntate:
+  <ol><li><b>Objeto:</b> ¿es el application object (app registration) o el service principal (enterprise app)? Cada uno guarda cosas distintas.</li><li><b>Identidad:</b> ¿managed identity, service principal o cuenta? System-assigned muere con el recurso; user-assigned se comparte; fuera de Azure la managed identity no llega sin Arc.</li><li><b>Consentimiento:</b> ¿delegated o application? ¿user consent o admin consent? Quién puede consentir decide la respuesta.</li><li><b>Control:</b> ¿lo hace Entra (assignment, roles, App Proxy) o Defender for Cloud Apps (discovery, session policies)?</li></ol>
+  Con eso eliminas dos distractores en la mayoría de las preguntas del módulo.
+</div>
+<div class="box">
+  <b>Datos duros del examen.</b> 700 de 1000 para pasar (escala ajustada, no 70% de aciertos). Practice assessment oficial gratis:
+  <a href="https://learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment?assessment-type=practice&amp;assessmentId=60">learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment</a>.
+  Exam sandbox: <a href="https://aka.ms/examdemo">aka.ms/examdemo</a>. Study guide oficial:
+  <a href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300">learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300</a>.
+</div>
+
+<h2>1. Mapa del módulo: skills, punto clave y deep links</h2>
+<p class="meta">Cada fila corresponde a un bullet del skills outline oficial. El punto clave es lo que el examen realmente mide; los deep links caen en el párrafo exacto de Learn.</p>
+<h3 class="sub">Subdominio 1: Identities for applications and Azure workloads</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/implement-access-management-for-azure-resources/">implement-access-management-for-azure-resources</a> · <a href="https://learn.microsoft.com/training/modules/implement-managed-identities/">implement-managed-identities</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Select appropriate identities for applications and Azure workloads (managed identities, service principals, user accounts, managed service accounts)</div>
+  <p class="punto">Workload en Azure: <strong>managed identity</strong>. Workload fuera de Azure sin Arc: <strong>service principal</strong> con certificado o federated credential. Servicio Windows on-premises: <strong>gMSA</strong> (varios servers o load balancer) o sMSA (un server). User account como service account: no recomendado.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/architecture/govern-service-accounts">entra/architecture/govern-service-accounts</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities">overview <span class="anchor">#differences-between-system-assigned-and-user-assigned-managed-identities</span></a></li><li><a href="https://learn.microsoft.com/entra/architecture/service-accounts-on-premises#choose-the-right-type-of-service-account">service-accounts-on-premises <span class="anchor">#choose-the-right-type-of-service-account</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#service-principal-object">app-objects-and-service-principals <span class="anchor">#service-principal-object</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create managed identities</div>
+  <p class="punto">System-assigned se activa en el recurso y muere con él. User-assigned es un recurso aparte, se comparte entre recursos y hay que borrarlo a mano. Crear un user-assigned pide el rol de Azure <strong>Managed Identity Contributor</strong>.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities">entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#managed-identity-types">overview <span class="anchor">#managed-identity-types</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-cli#create-a-user-assigned-managed-identity">manage-user-assigned-managed-identities-azure-cli <span class="anchor">#create-a-user-assigned-managed-identity</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Assign a managed identity to an Azure resource</div>
+  <p class="punto">Asignar un user-assigned a una VM pide <strong>Virtual Machine Contributor + Managed Identity Operator</strong> (roles de Azure RBAC). No hace falta ningún rol de Microsoft Entra.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities">entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities#user-assigned-managed-identity">how-to-configure-managed-identities <span class="anchor">#user-assigned-managed-identity</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-on-an-existing-vm">how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm <span class="anchor">#enable-system-assigned-managed-identity-on-an-existing-vm</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Use a managed identity assigned to an Azure resource to access other Azure resources</div>
+  <p class="punto">Tres pasos: crear o asignar la identidad, <strong>autorizarla en el recurso destino</strong> (por ejemplo Storage Blob Data Reader) y pedir el token con Azure.Identity o MSAL. La managed identity no tiene application object: los permisos de Graph se asignan directo a su service principal. Fuera de Azure solo con <strong>Azure Arc</strong> (system-assigned).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview">entra/identity/managed-identities-azure-resources/overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#use-managed-identity-directly">overview <span class="anchor">#use-managed-identity-directly</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/managed-identities-faq#do-managed-identities-have-a-backing-app-object">managed-identities-faq <span class="anchor">#do-managed-identities-have-a-backing-app-object</span></a></li><li><a href="https://learn.microsoft.com/azure/azure-arc/servers/managed-identity-authentication">managed-identity-authentication</a></li></ul>
+</div>
+<h3 class="sub">Subdominio 2: Plan, implement, and monitor the integration of enterprise applications</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/plan-design-integration-of-enterprise-apps-for-sso/">plan-design-integration-of-enterprise-apps-for-sso</a> · <a href="https://learn.microsoft.com/training/modules/implement-monitor-integration-of-enterprise-apps-for-sso/">implement-monitor-integration-of-enterprise-apps-for-sso</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure and manage application-level and tenant-level settings</div>
+  <p class="punto">Nivel app: <strong>Enabled for users to sign in</strong> (No = no hay tokens para nadie), <strong>Assignment required</strong> (solo asignados obtienen token) y <strong>Visible to users</strong> (solo esconde en My Apps). Nivel tenant: Users can register applications, user consent settings y admin consent workflow.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/application-properties">entra/identity/enterprise-apps/application-properties</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/application-properties#enabled-for-users-to-sign-in">application-properties <span class="anchor">#enabled-for-users-to-sign-in</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/application-properties#assignment-required">application-properties <span class="anchor">#assignment-required</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#restrict-who-can-create-applications">delegate-app-roles <span class="anchor">#restrict-who-can-create-applications</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Assign appropriate Microsoft Entra roles to users to manage enterprise applications</div>
+  <p class="punto"><strong>Application Administrator</strong> = todo en apps más Application Proxy. <strong>Cloud Application Administrator</strong> = lo mismo <strong>sin Application Proxy</strong>. Ninguno administra Conditional Access ni consiente application permissions de Microsoft Graph (eso es Privileged Role Administrator).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles">entra/identity/role-based-access-control/delegate-app-roles</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#assign-built-in-application-administrator-roles">delegate-app-roles <span class="anchor">#assign-built-in-application-administrator-roles</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#cloud-application-administrator">permissions-reference <span class="anchor">#cloud-application-administrator</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-by-task#application-proxy-least-privileged-roles">delegate-by-task <span class="anchor">#application-proxy-least-privileged-roles</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Design and implement integration for on-premises apps by using Microsoft Entra Application Proxy</div>
+  <p class="punto">Pre-auth <strong>Microsoft Entra ID</strong> (default) da CA, MFA, SSO y monitoreo con Defender; <strong>Passthrough</strong> no. Connectors solo salen por 80 y 443, mínimo dos por connector group. SSO a apps IWA = <strong>KCD</strong> desde el computer account del connector al SPN. Custom domain = PFX con private key + CNAME a msappproxy.net. Licencia P1 o P2.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/app-proxy/overview-what-is-app-proxy">entra/identity/app-proxy/overview-what-is-app-proxy</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/app-proxy/application-proxy-add-on-premises-application#add-an-on-premises-app-to-microsoft-entra-id">application-proxy-add-on-premises-application <span class="anchor">#add-an-on-premises-app-to-microsoft-entra-id</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-sso-with-kcd#configure-single-sign-on">how-to-configure-sso-with-kcd <span class="anchor">#configure-single-sign-on</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-custom-domain#certificates-for-custom-domains">how-to-configure-custom-domain <span class="anchor">#certificates-for-custom-domains</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Design and implement integration for SaaS apps</div>
+  <p class="punto">SAML: <strong>Identifier (Entity ID)</strong> y <strong>Reply URL (ACS)</strong> son obligatorios; Sign on URL solo para SP-initiated. El certificado de firma dura 3 años por default, avisa a 60, 30 y 7 días (hasta 5 correos), y no se edita: se crea uno nuevo, se sube a la app y se activa.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/add-application-portal-setup-sso">entra/identity/enterprise-apps/add-application-portal-setup-sso</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/add-application-portal-setup-sso#configure-single-sign-on-in-the-tenant">add-application-portal-setup-sso <span class="anchor">#configure-single-sign-on-in-the-tenant</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/tutorial-manage-certificates-for-federated-single-sign-on#renew-a-certificate-that-is-set-to-expire-soon">tutorial-manage-certificates-for-federated-single-sign-on <span class="anchor">#renew-a-certificate-that-is-set-to-expire-soon</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/tutorial-manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration">tutorial-manage-certificates-for-federated-single-sign-on <span class="anchor">#add-email-notification-addresses-for-certificate-expiration</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Assign, classify, and manage users, groups, and app roles for enterprise applications</div>
+  <p class="punto">Asignar grupos pide <strong>P1 o P2</strong> y <strong>no soporta grupos anidados</strong>. Si la app expone app roles, eliges el rol al asignar. "Classify" = clasificar permisos delegados como low impact para el user consent.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/assign-user-or-group-access-portal">entra/identity/enterprise-apps/assign-user-or-group-access-portal</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/assign-user-or-group-access-portal#prerequisites">assign-user-or-group-access-portal <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/configure-permission-classifications">configure-permission-classifications</a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps#assign-users-and-groups-to-microsoft-entra-roles">howto-add-app-roles-in-apps <span class="anchor">#assign-users-and-groups-to-microsoft-entra-roles</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure and manage user and admin consent</div>
+  <p class="punto">User consent: no permitir, verified publishers con permisos low impact, permitir todo, o Microsoft managed. Si el usuario no puede consentir, el <strong>admin consent workflow</strong> manda la solicitud a reviewers (ser reviewer no da permisos; los reviewers nuevos no ven solicitudes viejas; hay días de expiración). Apps con Assignment required siempre piden admin consent.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/user-admin-consent-overview">entra/identity/enterprise-apps/user-admin-consent-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/configure-user-consent#configure-user-consent-settings">configure-user-consent <span class="anchor">#configure-user-consent-settings</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow#enable-the-admin-consent-workflow">configure-admin-consent-workflow <span class="anchor">#enable-the-admin-consent-workflow</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent#prerequisites">grant-admin-consent <span class="anchor">#prerequisites</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create and manage application collections</div>
+  <p class="punto">Collections agrupan apps en una pestaña de My Apps. Piden <strong>P1 o P2</strong>, se crean en Enterprise apps &gt; App launchers, y solo filtran apps que el usuario ya tiene asignadas.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/access-panel-collections">entra/identity/enterprise-apps/access-panel-collections</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/access-panel-collections#create-a-collection">access-panel-collections <span class="anchor">#create-a-collection</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/myapps-overview#create-collections">myapps-overview <span class="anchor">#create-collections</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 3: Plan and implement app registrations</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/implement-app-registration/">implement-app-registration</a> · <a href="https://learn.microsoft.com/training/modules/register-apps-use-microsoft-entra-id/">register-apps-use-microsoft-entra-id</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Plan for app registrations</div>
+  <p class="punto">App registration = <strong>application object</strong> (uno, en el home tenant). Enterprise app = <strong>service principal</strong> (uno por tenant que usa la app). Single tenant tiene un solo SP; multitenant crea un SP en cada tenant que consiente. Borrar el app object borra el SP del home tenant.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals">entra/identity-platform/app-objects-and-service-principals</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#relationship-between-application-objects-and-service-principals">app-objects-and-service-principals <span class="anchor">#relationship-between-application-objects-and-service-principals</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#consequences-of-modifying-and-deleting-applications">app-objects-and-service-principals <span class="anchor">#consequences-of-modifying-and-deleting-applications</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/single-and-multi-tenant-apps#who-can-sign-in-to-your-app">single-and-multi-tenant-apps <span class="anchor">#who-can-sign-in-to-your-app</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create app registrations</div>
+  <p class="punto">Por default cualquier usuario registra apps. Si pones <strong>Users can register applications = No</strong>, el rol de menor privilegio para registrar es <strong>Application Developer</strong> (queda como owner de lo que crea).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity-platform/quickstart-register-app">entra/identity-platform/quickstart-register-app</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#restrict-who-can-create-applications">delegate-app-roles <span class="anchor">#restrict-who-can-create-applications</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#application-registration">app-objects-and-service-principals <span class="anchor">#application-registration</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure app authentication</div>
+  <p class="punto">Redirect URI por plataforma: Web, <strong>Single-page application</strong>, iOS/macOS, Android, Mobile and desktop. Daemon no necesita redirect URI. Credenciales: <strong>certificate</strong> mejor que secret (secret máximo 24 meses), <strong>federated credential</strong> para GitHub Actions, Kubernetes u otro issuer.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity-platform/how-to-add-redirect-uri">entra/identity-platform/how-to-add-redirect-uri</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity-platform/how-to-add-redirect-uri#add-a-redirect-uri">how-to-add-redirect-uri <span class="anchor">#add-a-redirect-uri</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/how-to-add-credentials#add-a-credential-to-your-application">how-to-add-credentials <span class="anchor">#add-a-credential-to-your-application</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/msal-client-application-configuration#redirect-uri">msal-client-application-configuration <span class="anchor">#redirect-uri</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure API permissions</div>
+  <p class="punto"><strong>Delegated</strong> (scopes, con usuario, consienten usuarios o admin) contra <strong>Application</strong> (app roles, sin usuario, solo admin). Para exponer tu API: App ID URI <code>api://&lt;client-id&gt;</code> y scopes con "Who can consent" (Admins and users o Admins only).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity-platform/permissions-consent-overview">entra/identity-platform/permissions-consent-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity-platform/permissions-consent-overview#types-of-permissions">permissions-consent-overview <span class="anchor">#types-of-permissions</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-expose-web-apis#add-a-scope">quickstart-configure-app-expose-web-apis <span class="anchor">#add-a-scope</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent#grant-admin-consent-in-app-registrations-pane">grant-admin-consent <span class="anchor">#grant-admin-consent-in-app-registrations-pane</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create app roles</div>
+  <p class="punto">App role: Display name, <strong>Allowed member types</strong> (Users/Groups, Applications o ambos), Value (sin espacios) que sale en el claim <strong>roles</strong>. Con Applications, el rol aparece como application permission en My APIs. Groups claim tiene límite de 200 (JWT) y 150 (SAML).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps">entra/identity-platform/howto-add-app-roles-in-apps</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps#declare-roles-for-an-application">howto-add-app-roles-in-apps <span class="anchor">#declare-roles-for-an-application</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/optional-claims#configure-groups-optional-claims">optional-claims <span class="anchor">#configure-groups-optional-claims</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/custom-rbac-for-developers#rbac-options">custom-rbac-for-developers <span class="anchor">#rbac-options</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 4: Manage and monitor app access by using Microsoft Defender for Cloud Apps</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/implement-cloud-app-security-cloud-discovery/">implement-cloud-app-security-cloud-discovery</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Analyze Cloud Discovery results by using Defender for Cloud Apps</div>
+  <p class="punto"><strong>Snapshot</strong> = subes logs a mano, una vez. <strong>Continuous</strong> = Defender for Endpoint, log collector (Syslog o FTP), Secure Web Gateway o API. Marcar <strong>Unsanctioned</strong> no bloquea solo: bloquea si hay integración (MDE o SWG) o si exportas un block script.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/defender-cloud-apps/set-up-cloud-discovery">defender-cloud-apps/set-up-cloud-discovery</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/defender-cloud-apps/set-up-cloud-discovery#snapshot-and-continuous-risk-assessment-reports">set-up-cloud-discovery <span class="anchor">#snapshot-and-continuous-risk-assessment-reports</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/governance-discovery#sanctioningunsanctioning-an-app">governance-discovery <span class="anchor">#sanctioningunsanctioning-an-app</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/mde-govern#enable-cloud-app-blocking-with-defender-for-endpoint">mde-govern <span class="anchor">#enable-cloud-app-blocking-with-defender-for-endpoint</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure connected apps</div>
+  <p class="punto"><strong>App connector</strong> = API del proveedor: cuentas, audit trail, governance de cuentas, permisos de apps y scan de datos (cada 12 horas y casi en tiempo real). No es proxy y no controla la sesión en vivo.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps">defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps#how-app-connectors-scan-and-collect-data">enable-instant-visibility-protection-and-governance-actions-for-your-apps <span class="anchor">#how-app-connectors-scan-and-collect-data</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/protect-office-365#connect-microsoft-365-to-microsoft-defender-for-cloud-apps">protect-office-365 <span class="anchor">#connect-microsoft-365-to-microsoft-defender-for-cloud-apps</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement application-enforced restrictions</div>
+  <p class="punto">Session control de CA <strong>Use app enforced restrictions</strong>: solo <strong>Exchange Online y SharePoint Online</strong>. Entra pasa info del device y la app da experiencia completa o limitada (web-only). No necesita Defender for Cloud Apps.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-session#application-enforced-restrictions">entra/identity/conditional-access/concept-conditional-access-session#application-enforced-restrictions</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-app-enforced-restrictions#overview">policy-all-users-app-enforced-restrictions <span class="anchor">#overview</span></a></li><li><a href="https://learn.microsoft.com/sharepoint/control-access-from-unmanaged-devices#how-do-i-limit-access">control-access-from-unmanaged-devices <span class="anchor">#how-do-i-limit-access</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure Conditional Access app control</div>
+  <p class="punto">Primero una política de CA con <strong>Session &gt; Use Conditional Access App Control</strong> (Monitor only, Block downloads o Use custom policy). Las apps de Entra se onboardean solas; las de otro IdP, a mano. Pide Entra ID P1 y licencia de Defender for Cloud Apps.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/defender-cloud-apps/proxy-intro-aad">defender-cloud-apps/proxy-intro-aad</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/defender-cloud-apps/proxy-intro-aad#activities-in-conditional-access-app-control">proxy-intro-aad <span class="anchor">#activities-in-conditional-access-app-control</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-session#conditional-access-application-control">concept-conditional-access-session <span class="anchor">#conditional-access-application-control</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/conditional-access-app-control-how-to-overview#prerequisites">conditional-access-app-control-how-to-overview <span class="anchor">#prerequisites</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create access and session policies in Defender for Cloud Apps</div>
+  <p class="punto"><strong>Access policy</strong> = dejar entrar o bloquear (browser, o mobile and desktop si pones el filtro Client app). <strong>Session policy</strong> = controlar lo que pasa dentro de la sesión en el browser (download, copy, print, upload, label). Entre session policies gana la más restrictiva.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/defender-cloud-apps/session-policy-aad">defender-cloud-apps/session-policy-aad</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/defender-cloud-apps/session-policy-aad#prerequisites">session-policy-aad <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/session-policy-aad#access-controls-in-session-policies">session-policy-aad <span class="anchor">#access-controls-in-session-policies</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/access-policy-aad#create-a-defender-for-cloud-apps-access-policy">access-policy-aad <span class="anchor">#create-a-defender-for-cloud-apps-access-policy</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage policies for OAuth apps</div>
+  <p class="punto">OAuth app policy filtra por <strong>Permission level</strong> (High, Medium, Low), <strong>Community use</strong> (Common, Uncommon, Rare) y cuántos usuarios autorizaron. Acción en Microsoft 365: <strong>Revoke app</strong>. Pide el app connector de Microsoft 365, Google Workspace o Salesforce.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/defender-cloud-apps/app-permission-policy">defender-cloud-apps/app-permission-policy</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/defender-cloud-apps/app-permission-policy#create-a-new-oauth-app-policy">app-permission-policy <span class="anchor">#create-a-new-oauth-app-policy</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/policies-cloud-discovery#detect-risky-oauth-apps">policies-cloud-discovery <span class="anchor">#detect-risky-oauth-apps</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/manage-app-permissions#working-with-the-oauth-apps-page">manage-app-permissions <span class="anchor">#working-with-the-oauth-apps-page</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manage the Cloud app catalog</div>
+  <p class="punto">Más de 31,000 apps con más de 90 factores de riesgo en 4 categorías: General, Security, Compliance y Legal. <strong>Score metrics</strong> cambia pesos para todo el tenant; <strong>Override app score</strong> cambia una sola app; <strong>Request score update</strong> le pide a Microsoft revisar.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/defender-cloud-apps/risk-score">defender-cloud-apps/risk-score</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/defender-cloud-apps/risk-score#risk-scoring-process">risk-score <span class="anchor">#risk-scoring-process</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/risk-score#customize-the-risk-score">risk-score <span class="anchor">#customize-the-risk-score</span></a></li><li><a href="https://learn.microsoft.com/defender-cloud-apps/risk-score#override-the-risk-score">risk-score <span class="anchor">#override-the-risk-score</span></a></li></ul>
+</div>
+<h2>2. Las 12 trampas de M3</h2>
+<p class="meta">Memoriza la frase, entiende la regla, reconoce las palabras que delatan. Los números son para consultar, no para memorizar.</p>
+<div class="trap">
+  <div class="trap-h"><span class="num">1</span> App registration contra enterprise application</div>
+  <p class="frase">&quot;App registration es el molde, enterprise app es la galleta: un molde en casa, una galleta por tenant.&quot;</p>
+  <ul>
+<li>App registration = <strong>application object</strong>, uno solo, en el home tenant. Enterprise app = <strong>service principal</strong>, uno por cada tenant que usa la app (multitenant crea uno en cada tenant que consiente).</li>
+<li>Cambios al application object se reflejan en el SP del home tenant. Una managed identity tiene <strong>solo service principal</strong>, sin application object: sus permisos de Graph van directo al SP.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;home tenant&quot;, &quot;multitenant&quot;, &quot;partner tenant grants consent&quot;, &quot;which object is created&quot;, &quot;Managed application in local directory&quot;, &quot;App registrations vs Enterprise applications&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#relationship-between-application-objects-and-service-principals">app-objects-and-service-principals <span class="anchor">#relationship-between-application-objects-and-service-principals</span></a> · Practica con Q7, Q8, Q22</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">2</span> System-assigned contra user-assigned</div>
+  <p class="frase">&quot;System-assigned vive y muere con su recurso; user-assigned es roomie: la compartes y la borras tú.&quot;</p>
+  <ul>
+<li>System-assigned: una identidad, un recurso, se borra con él. User-assigned: recurso aparte, se asigna a muchos, se puede <strong>pre-autorizar</strong> antes de crear las VMs, y es la recomendada para servicios de Microsoft.</li>
+<li>Crear user-assigned: <strong>Managed Identity Contributor</strong>. Asignarla a una VM: <strong>Virtual Machine Contributor + Managed Identity Operator</strong>. Son roles de Azure RBAC, no de Entra. Después se autoriza en el destino (por ejemplo Storage Blob Data Reader).</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;same identity for all instances&quot;, &quot;recreated frequently&quot;, &quot;before the VMs are deployed&quot;, &quot;shared across&quot;, &quot;least privilege to assign&quot;, &quot;when the VM is deleted&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities">overview <span class="anchor">#differences-between-system-assigned-and-user-assigned-managed-identities</span></a> · Practica con Q1, Q2, Q4, Q5</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">3</span> Workload fuera de Azure: la managed identity no llega</div>
+  <p class="frase">&quot;Managed identity no sale de Azure (salvo con Arc). Afuera: service principal con cert o federated. On-prem Windows: gMSA.&quot;</p>
+  <ul>
+<li>Server on-premises solo tiene managed identity si es <strong>Azure Arc-enabled</strong> (system-assigned). Sin Arc: service principal con <strong>certificate</strong> (mejor que secret; el secret dura máximo 24 meses) o <strong>federated credential</strong> si hay un IdP externo (GitHub Actions, Kubernetes).</li>
+<li>Servicio Windows on-premises: <strong>gMSA</strong> para varios servers o load balancer, <strong>sMSA</strong> para uno solo. User account como service account es la última opción.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;on-premises datacenter&quot;, &quot;not onboarded to Azure Arc&quot;, &quot;GitHub Actions&quot;, &quot;no secrets stored&quot;, &quot;more secure than a client secret&quot;, &quot;behind a load balancer&quot;, &quot;password rotated automatically&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/architecture/service-accounts-on-premises#choose-the-right-type-of-service-account">service-accounts-on-premises <span class="anchor">#choose-the-right-type-of-service-account</span></a> · Practica con Q3, Q6, Q24</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">4</span> Delegated contra application, y quién consiente</div>
+  <p class="frase">&quot;Delegated = actúo como tú; application = actúo como yo. Y &#x27;como yo&#x27; siempre lo aprueba un admin.&quot;</p>
+  <ul>
+<li>Delegated (scopes) = hay usuario y la app no ve más que él; consienten usuarios o admin. Application (app roles) = sin usuario, ve todo lo del permiso; <strong>solo admin</strong>.</li>
+<li>Application permissions de <strong>Microsoft Graph</strong> las consiente <strong>Privileged Role Administrator</strong> (o Global Admin). Application Admin y Cloud Application Admin consienten todo lo demás. Un scope marcado "Admins only" también pide admin.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;without a signed-in user&quot;, &quot;daemon&quot;, &quot;background service&quot;, &quot;on behalf of the signed-in user&quot;, &quot;Microsoft Graph application permission&quot;, &quot;Grant admin consent is unavailable&quot;, &quot;Admins only&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/permissions-consent-overview#types-of-permissions">permissions-consent-overview <span class="anchor">#types-of-permissions</span></a> · Practica con Q7, Q18, Q27, Q30</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">5</span> User consent, step-up y admin consent workflow</div>
+  <p class="frase">&quot;Si el usuario no puede consentir, el workflow le da un botón para pedir; ser reviewer no te da superpoderes.&quot;</p>
+  <ul>
+<li>User consent: no permitir, <strong>verified publishers con permisos low impact</strong>, permitir todo, o dejar que Microsoft lo maneje (default en tenants nuevos). Risk-based step-up consent viene activo y solo actúa si hay user consent. Apps con Assignment required siempre piden admin consent.</li>
+<li>Admin consent workflow: reviewers por usuario, grupo o rol; para <strong>aprobar</strong> necesitan el rol adecuado; los reviewers nuevos no ven solicitudes viejas; las solicitudes expiran en los días que configuras.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;request approval from the consent prompt&quot;, &quot;unverified publisher&quot;, &quot;reviewers&quot;, &quot;expires after&quot;, &quot;added later as a reviewer&quot;, &quot;risky consent request&quot;, &quot;AADSTS90094&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow#enable-the-admin-consent-workflow">configure-admin-consent-workflow <span class="anchor">#enable-the-admin-consent-workflow</span></a> · Practica con Q16, Q17</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">6</span> Application Admin contra Cloud Application Admin</div>
+  <p class="frase">&quot;Cloud App Admin es App Admin sin el Proxy. Y ninguno de los dos toca CA ni Graph application permissions.&quot;</p>
+  <ul>
+<li><strong>Application Administrator</strong>: todo en enterprise apps y app registrations, más <strong>Application Proxy</strong> (apps y connector groups). <strong>Cloud Application Administrator</strong>: igual, sin App Proxy.</li>
+<li>Si "Users can register applications" está en No, el rol mínimo para registrar es <strong>Application Developer</strong>. Ninguno de estos roles administra Conditional Access.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;connector group&quot;, &quot;publish on-premises apps&quot;, &quot;least privilege&quot;, &quot;users can&#x27;t register applications&quot;, &quot;configure SAML SSO&quot;, &quot;create a Conditional Access policy for the app&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#assign-built-in-application-administrator-roles">delegate-app-roles <span class="anchor">#assign-built-in-application-administrator-roles</span></a> · Practica con Q9, Q18, Q21</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">7</span> Application Proxy: pre-auth, connectors, custom domain y KCD</div>
+  <p class="frase">&quot;Sin pre-auth de Entra no hay CA, ni MFA, ni SSO. El connector solo sale, nunca entra.&quot;</p>
+  <ul>
+<li>Pre-auth <strong>Microsoft Entra ID</strong> (default) da CA, MFA, SSO y monitoreo con Defender; <strong>Passthrough</strong> no. Connectors solo outbound (80 y 443), mínimo <strong>dos por connector group</strong>. Custom domain = <strong>PFX con private key + CNAME</strong> a msappproxy.net. Licencia P1 o P2.</li>
+<li>SSO a apps IWA = <strong>KCD</strong>: en AD, el computer account del connector delega al SPN de la app ("specified services only" + "any authentication protocol"); en Entra, SSO Integrated Windows authentication con el SPN. Dominios distintos: resource-based KCD.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;Integrated Windows Authentication&quot;, &quot;Kerberos&quot;, &quot;SPN&quot;, &quot;Passthrough&quot;, &quot;no inbound ports&quot;, &quot;custom domain&quot;, &quot;expenses.contoso.com&quot;, &quot;high availability&quot;, &quot;different domains&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-sso-with-kcd#configure-single-sign-on">how-to-configure-sso-with-kcd <span class="anchor">#configure-single-sign-on</span></a> · Practica con Q10, Q11, Q12</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">8</span> SAML: los campos y el rollover del certificado</div>
+  <p class="frase">&quot;Entity ID dice quién eres, Reply URL dice a dónde mando el token. El cert no se edita: se crea otro.&quot;</p>
+  <ul>
+<li><strong>Identifier (Entity ID)</strong> y <strong>Reply URL (ACS)</strong> son obligatorios; <strong>Sign on URL</strong> solo para SP-initiated. El Login URL y el Microsoft Entra Identifier de "Set up" van del lado del vendor.</li>
+<li>Certificado autogenerado: <strong>3 años</strong>, avisos a 60, 30 y 7 días (hasta 5 correos). Renovar sin downtime: nuevo cert con fecha traslapada, descargar, subir a la app, <strong>Make certificate active</strong>, probar.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;Assertion Consumer Service&quot;, &quot;Entity ID&quot;, &quot;SP-initiated&quot;, &quot;certificate expires in&quot;, &quot;no downtime&quot;, &quot;notification email&quot;, &quot;change the expiration date&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/tutorial-manage-certificates-for-federated-single-sign-on#renew-a-certificate-that-is-set-to-expire-soon">tutorial-manage-certificates-for-federated-single-sign-on <span class="anchor">#renew-a-certificate-that-is-set-to-expire-soon</span></a> · Practica con Q13, Q15</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">9</span> Visible, Assignment required, Enabled, grupos y collections</div>
+  <p class="frase">&quot;Visible esconde, Assignment required filtra, Enabled apaga. Y los grupos anidados no cuentan.&quot;</p>
+  <ul>
+<li><strong>Visible to users</strong> solo esconde en My Apps. <strong>Assignment required</strong> = solo asignados obtienen token. <strong>Enabled for users to sign in = No</strong> = no hay tokens para nadie, sin perder la configuración. Estos son settings de app; Users can register applications y consent son de tenant.</li>
+<li>Asignar grupos pide <strong>P1 o P2</strong> y <strong>no cascada a grupos anidados</strong>. <strong>Collections</strong> (App launchers, P1 o P2) agrupan apps en una pestaña de My Apps, pero solo muestran apps ya asignadas.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;nested group&quot;, &quot;not assigned to the app&quot;, &quot;separate tab in My Apps&quot;, &quot;hide the app&quot;, &quot;stop all sign-ins without deleting&quot;, &quot;only members of&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/application-properties#assignment-required">application-properties <span class="anchor">#assignment-required</span></a> · Practica con Q14, Q19, Q20</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">10</span> Configurar la app: plataforma, scope, app role o groups claim</div>
+  <p class="frase">&quot;Scope para &#x27;on behalf of&#x27;, app role para &#x27;sin usuario&#x27; o para roles de usuario; el groups claim topa en 200.&quot;</p>
+  <ul>
+<li>Redirect por <strong>plataforma</strong>: Single-page application para JavaScript con PKCE, Web para apps de servidor, daemon sin redirect. "On behalf of user" = <strong>scope</strong> en Expose an API (App ID URI primero); "sin usuario" = <strong>app role</strong> con Allowed member types Applications.</li>
+<li>Autorizar usuarios dentro de la app: app role <strong>Users/Groups</strong> (claim roles). Groups claim: límite <strong>200 en JWT y 150 en SAML</strong>; usa <strong>Groups assigned to the application</strong>. App role dado a un grupo con un service principal no emite roles.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;React&quot;, &quot;MSAL.js&quot;, &quot;PKCE&quot;, &quot;Expose an API&quot;, &quot;roles claim&quot;, &quot;group overage&quot;, &quot;more than 200 groups&quot;, &quot;Allowed member types&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps#declare-roles-for-an-application">howto-add-app-roles-in-apps <span class="anchor">#declare-roles-for-an-application</span></a> · Practica con Q23, Q25, Q26, Q28, Q29</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">11</span> Cloud Discovery, catalog y el mito del Unsanctioned</div>
+  <p class="frase">&quot;Unsanctioned es una etiqueta, no un firewall: el bloqueo lo hace MDE o tu appliance.&quot;</p>
+  <ul>
+<li><strong>Snapshot</strong> = subes logs a mano, una vez. <strong>Continuous</strong> = Defender for Endpoint (también fuera de la oficina), log collector (Syslog o FTP), SWG o API. Bloqueo con MDE: Cloud y Network Protection, Enforce app access, Custom network indicators y luego Unsanctioned (hasta 3 horas; scoped profiles por device group).</li>
+<li>Catalog: más de 31,000 apps, 4 categorías (General, Security, Compliance, Legal). <strong>Score metrics</strong> cambia pesos para todas las apps; <strong>Override</strong> cambia una; <strong>Request score update</strong> le pide a Microsoft.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;one-time assessment&quot;, &quot;exported logs&quot;, &quot;users working from home&quot;, &quot;continuous&quot;, &quot;block on devices&quot;, &quot;specific device groups&quot;, &quot;weight&quot;, &quot;all apps&quot;, &quot;only this app&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/defender-cloud-apps/set-up-cloud-discovery#snapshot-and-continuous-risk-assessment-reports">set-up-cloud-discovery <span class="anchor">#snapshot-and-continuous-risk-assessment-reports</span></a> · Practica con Q31, Q32, Q33, Q34, Q39</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">12</span> Session control: quién hace qué</div>
+  <p class="frase">&quot;Session policy sin el CA &#x27;Use Conditional Access App Control&#x27; es perro sin dientes. Y app enforced solo muerde en Exchange y SharePoint.&quot;</p>
+  <ul>
+<li>Access y session policies necesitan una política de CA con <strong>Session &gt; Use Conditional Access App Control</strong>. <strong>Access policy</strong> = entrar o no (con Client app = Mobile and desktop bloquea clientes nativos). <strong>Session policy</strong> = qué haces dentro, solo browser. <strong>Use app enforced restrictions</strong> = solo EXO y SPO, sin licencia de Defender for Cloud Apps.</li>
+<li><strong>App connector</strong> = API (actividad, cuentas, archivos), sin proxy. <strong>OAuth app policy</strong> = Permission level, Community use y usuarios que autorizaron; acción Revoke app; pide el connector.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;session policy has no effect&quot;, &quot;desktop sync client&quot;, &quot;native client&quot;, &quot;browser only&quot;, &quot;limited web-only access&quot;, &quot;no Defender for Cloud Apps licenses&quot;, &quot;through the vendor&#x27;s API&quot;, &quot;without a proxy&quot;, &quot;rare community use&quot;, &quot;high permission level&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/defender-cloud-apps/session-policy-aad#prerequisites">session-policy-aad <span class="anchor">#prerequisites</span></a> · Practica con Q35, Q36, Q37, Q38, Q40</p>
+</div>
+<h2>3. Visuales para no olvidar</h2><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>App registration vs enterprise application</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">App registration vs enterprise application</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Application object (definición global) vs service principal (instancia local)</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- App registration -->
+<rect x="48" y="124" width="480" height="286" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<text x="72" y="164" font-size="26" font-weight="700" fill="#F8FAFC">App registration</text>
+<text x="72" y="194" font-size="20" font-weight="600" fill="#7DD3FC">Application object</text>
+<text x="72" y="224" font-size="20" fill="#94A3B8">Vive en el home tenant</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="262">• Redirect URIs</text>
+<text x="72" y="292">• API permissions (requested)</text>
+<text x="72" y="322">• App roles</text>
+<text x="72" y="352">• Credentials: secret / certificate</text>
+<text x="72" y="382">• Expose an API (scopes)</text>
+</g>
+
+<!-- middle -->
+<text x="640" y="220" font-size="26" font-weight="700" fill="#22D3EE" text-anchor="middle">1 : N</text>
+<path d="M536 244H742" stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+<g font-size="20" fill="#F8FAFC" text-anchor="middle">
+<text x="640" y="284">Register once,</text>
+<text x="640" y="310">service principal</text>
+<text x="640" y="336">per tenant</text>
+</g>
+
+<!-- Enterprise application -->
+<rect x="752" y="124" width="480" height="286" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<text x="776" y="164" font-size="26" font-weight="700" fill="#F8FAFC">Enterprise application</text>
+<text x="776" y="194" font-size="20" font-weight="600" fill="#7DD3FC">Service principal</text>
+<text x="776" y="224" font-size="20" fill="#94A3B8">Uno por cada tenant donde se usa</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="776" y="262">• User / group assignments</text>
+<text x="776" y="292">• SSO config (SAML / OIDC)</text>
+<text x="776" y="322">• Consent granted</text>
+<text x="776" y="352">• Assignment required? (Yes / No)</text>
+<text x="776" y="382">• Visible to users? (Yes / No)</text>
+</g>
+
+<!-- permissions -->
+<text x="48" y="448" font-size="22" font-weight="700" fill="#7DD3FC">Permisos y consentimiento</text>
+<rect x="48" y="462" width="580" height="226" rx="12" fill="#132B4F" stroke="#4ADE80" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="72" y="500" font-size="24" font-weight="700" fill="#F8FAFC">Delegated permissions</text>
+<text x="72" y="536" font-size="20" fill="#F8FAFC">La app actúa en nombre del usuario</text>
+<text x="72" y="570" font-size="20" fill="#94A3B8">Consent: <tspan font-weight="700" fill="#4ADE80">user o admin</tspan></text>
+<text x="72" y="604" font-size="20" fill="#94A3B8">User consent según consent settings</text>
+<text x="72" y="638" font-size="20" fill="#94A3B8">Permisos de alto privilegio: admin</text>
+<text x="72" y="672" font-size="20" fill="#94A3B8">Token claim: <tspan fill="#7DD3FC">scp</tspan></text>
+
+<rect x="652" y="462" width="580" height="226" rx="12" fill="#132B4F" stroke="#FBBF24" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="676" y="500" font-size="24" font-weight="700" fill="#F8FAFC">Application permissions</text>
+<text x="676" y="536" font-size="20" fill="#F8FAFC">La app actúa como ella misma, sin usuario</text>
+<text x="676" y="570" font-size="20" fill="#94A3B8">Consent: <tspan font-weight="700" fill="#FBBF24">admin siempre</tspan></text>
+<text x="676" y="604" font-size="20" fill="#94A3B8">Daemons y servicios (client credentials)</text>
+<text x="676" y="638" font-size="20" fill="#94A3B8">Acceso a nivel de todo el tenant</text>
+<text x="676" y="672" font-size="20" fill="#94A3B8">Token claim: <tspan fill="#7DD3FC">roles</tspan></text>
+</svg>
+<p><b>App registration vs enterprise application.</b> El application object vive en el home tenant; el service principal existe en cada tenant donde se usa la app. Delegated permissions las consiente el usuario; application permissions solo un admin.</p></div>
+<h2>4. Banco de preguntas: 40 preguntas estilo examen</h2>
+<p class="meta">En inglés, como el examen. Contesta sin ver la sección 5. En las series Yes/No cada afirmación se evalúa sola; en drag/order solo cuentan las acciones que sí van, en orden. Los case studies aplican a las dos preguntas que los siguen.</p>
+<h3 class="sub">Subdominio 1: Identities for applications and Azure workloads</h3>
+<div class="q"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Multiple choice</span><span class="skill-tag">Select appropriate identities for applications and Azure workloads</span></div><p>Contoso runs an order-processing workload on a virtual machine scale set. Instances are deleted and re-created several times a day. The security team must grant the workload access to an Azure Key Vault <strong>before</strong> the new instances are deployed, and every instance must use <strong>the same identity</strong>. Developers must not manage any credentials.</p>
+<p>Which identity should you use?</p>
+<p>A. A system-assigned managed identity enabled on each instance<br />
+B. A user-assigned managed identity assigned to the scale set<br />
+C. An app registration with a client secret stored in the application settings<br />
+D. A synchronized Active Directory user account used as a service account</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Yes/No series</span><span class="skill-tag">Create managed identities</span></div><p>Fabrikam has the following resources:</p>
+<ul>
+<li>VM1, an Azure virtual machine with a system-assigned managed identity enabled.</li>
+<li>UAMI1, a user-assigned managed identity assigned to both VM1 and App1 (an Azure App Service web app).</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>If VM1 is deleted, the service principal for VM1's system-assigned managed identity is deleted automatically.</li>
+<li>If VM1 is deleted, UAMI1 is also deleted.</li>
+<li>You can assign VM1's system-assigned managed identity to App1 so both resources share it.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Multiple choice</span><span class="skill-tag">Select appropriate identities for applications and Azure workloads</span></div><p>Adatum runs a reporting application on three Windows servers in its on-premises datacenter. The application must read secrets from Azure Key Vault. Company policy forbids onboarding the servers to Azure Arc. The security team requires a credential that is more secure than a password-like string.</p>
+<p>What should you use for the application?</p>
+<p>A. A system-assigned managed identity for each server<br />
+B. A user-assigned managed identity shared by the three servers<br />
+C. An app registration (service principal) that authenticates with a certificate<br />
+D. An app registration (service principal) that authenticates with a client secret</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Select two</span><span class="skill-tag">Assign a managed identity to an Azure resource</span></div><p>You created a user-assigned managed identity named UAMI-Orders. An operator must assign UAMI-Orders to an existing Azure virtual machine named VM-Orders. You must follow the principle of least privilege.</p>
+<p>Which <strong>two</strong> roles should the operator have? Each correct answer presents part of the solution.</p>
+<p>A. Managed Identity Contributor<br />
+B. Managed Identity Operator<br />
+C. Virtual Machine Contributor<br />
+D. Application Administrator (Microsoft Entra role)<br />
+E. Owner on the subscription</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Drag/order</span><span class="skill-tag">Use a managed identity to access other Azure resources</span></div><p>A web app hosted in Azure App Service must read blobs from a storage account named stfinance. No secrets can be stored in the app. You decide to use a user-assigned managed identity named UAMI-Web.</p>
+<p>Which <strong>four</strong> actions should you perform, <strong>in sequence</strong>?</p>
+<p>A. Create the user-assigned managed identity UAMI-Web.<br />
+B. Add UAMI-Web to the App Service under Identity &gt; User assigned.<br />
+C. Assign the Storage Blob Data Reader role to UAMI-Web on stfinance.<br />
+D. In the app code, request a token with Azure.Identity (ManagedIdentityCredential) by using the client ID of UAMI-Web.<br />
+E. Create a client secret for UAMI-Web in App registrations.<br />
+F. Grant admin consent for UAMI-Web in Enterprise applications.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Multiple choice</span><span class="skill-tag">Select appropriate identities for applications and Azure workloads</span></div><p>Litware runs a Windows service on three on-premises servers behind a network load balancer. All servers run Windows Server 2022 and are joined to the same Active Directory domain. The service needs a domain identity whose password is rotated automatically. There's no Azure dependency.</p>
+<p>Which account type should you use?</p>
+<p>A. A standalone managed service account (sMSA)<br />
+B. A group managed service account (gMSA)<br />
+C. A system-assigned managed identity<br />
+D. A domain user account with Password never expires set</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Multiple choice</span><span class="skill-tag">Use a managed identity to access other Azure resources</span></div><p>An Azure Functions app named FuncHR uses a system-assigned managed identity. FuncHR must call Microsoft Graph to read all user profiles without a signed-in user (application permission User.Read.All).</p>
+<p>How should you grant the permission?</p>
+<p>A. In App registrations, open FuncHR, add the User.Read.All application permission, and select Grant admin consent.<br />
+B. Use Microsoft Graph PowerShell to create an app role assignment of User.Read.All from the Microsoft Graph service principal to FuncHR's managed identity service principal.<br />
+C. Assign the Reader Azure role to FuncHR's managed identity at the subscription scope.<br />
+D. In Enterprise applications, open FuncHR and add User.Read.All from the Permissions page.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Yes/No series</span><span class="skill-tag">Select appropriate identities for applications and Azure workloads</span></div><p>You review the service principals in the Contoso tenant.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>When you register an application in the Microsoft Entra admin center, an application object and a service principal are created in the home tenant.</li>
+<li>A service principal that represents a managed identity has an associated application object that you can manage in App registrations.</li>
+<li>A legacy service principal can be used in any tenant that consents to it.</li>
+</ol></div>
+<h3 class="sub">Subdominio 2: Enterprise applications</h3>
+<div class="q"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Multiple choice</span><span class="skill-tag">Assign appropriate Microsoft Entra roles to manage enterprise applications</span></div><p>An administrator named Marta must publish on-premises web apps by using Microsoft Entra Application Proxy, create connector groups, and configure SAML single sign-on for gallery apps. You must follow the principle of least privilege.</p>
+<p>Which role should you assign to Marta?</p>
+<p>A. Cloud Application Administrator<br />
+B. Application Administrator<br />
+C. Application Developer<br />
+D. Global Administrator</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Yes/No series</span><span class="skill-tag">Design and implement integration for on-premises apps by using Application Proxy</span></div><p>Contoso publishes an internal web app named App1 by using Microsoft Entra Application Proxy with these settings:</p>
+<ul>
+<li>Pre Authentication: <strong>Passthrough</strong></li>
+<li>Connector group: CG-Madrid, which contains <strong>one</strong> private network connector</li>
+<li>A Conditional Access policy targets App1 and requires multifactor authentication.</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Users who open App1's external URL are prompted for MFA by the Conditional Access policy.</li>
+<li>The perimeter firewall must allow inbound TCP 443 from the internet to the connector server.</li>
+<li>To follow Learn guidance for high availability, CG-Madrid should have at least two connectors.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Drag/order</span><span class="skill-tag">Design and implement integration for on-premises apps by using Application Proxy</span></div><p>Contoso has an on-premises intranet app that uses Integrated Windows Authentication (IWA). Remote users must reach it through Microsoft Entra Application Proxy and get single sign-on after they sign in to Microsoft Entra ID. The connector server and the app server are in the same domain.</p>
+<p>Which <strong>four</strong> actions should you perform, <strong>in sequence</strong>?</p>
+<p>A. Install and register a private network connector on a domain-joined Windows Server.<br />
+B. In Active Directory Users and Computers, on the connector server's computer account, select Trust this computer for delegation to specified services only, select Use any authentication protocol, and add the app's SPN.<br />
+C. Publish the app in Application Proxy with Pre Authentication set to Microsoft Entra ID.<br />
+D. On the app's Single sign-on page, select Integrated Windows authentication, enter the Internal Application SPN, and choose the Delegated Login Identity.<br />
+E. Change Pre Authentication to Passthrough.<br />
+F. Configure SAML-based single sign-on and use the app's SPN as the Identifier (Entity ID).</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Multiple choice</span><span class="skill-tag">Design and implement integration for on-premises apps by using Application Proxy</span></div><p>You publish an app through Application Proxy. Users must reach it at <code>https://expenses.contoso.com</code>. The domain contoso.com is already verified in Microsoft Entra ID.</p>
+<p>What else must you do?</p>
+<p>A. Upload a PFX certificate that includes the private key for expenses.contoso.com, and create a CNAME record that points expenses.contoso.com to the msappproxy.net address shown on the Application proxy page.<br />
+B. Upload a .cer certificate for expenses.contoso.com, and create an A record that points to the public IP address of the connector server.<br />
+C. Create a TXT record for expenses.contoso.com. No certificate is required because Microsoft provides one.<br />
+D. Install the certificate on the connector server and open inbound TCP 443 to it.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span><span class="skill-tag">Design and implement integration for SaaS apps</span></div><p>You add the non-gallery SaaS app Litware Portal to Microsoft Entra ID and select SAML single sign-on. The vendor sends these values:</p>
+<ul>
+<li>SP Entity ID: <code>https://portal.litware.com/sp</code></li>
+<li>Assertion Consumer Service URL: <code>https://portal.litware.com/sso/acs</code></li>
+<li>Login page: <code>https://portal.litware.com/login</code></li>
+</ul>
+<p>Which value should you enter in the <strong>Reply URL</strong> field of the Basic SAML Configuration?</p>
+<p>A. <code>https://portal.litware.com/sp</code><br />
+B. <code>https://portal.litware.com/sso/acs</code><br />
+C. <code>https://portal.litware.com/login</code><br />
+D. The Login URL shown in the Set up Litware Portal section of the Microsoft Entra admin center</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Yes/No series</span><span class="skill-tag">Configure and manage application-level and tenant-level settings</span></div><p>You manage an enterprise application named Payroll in the Contoso tenant. Several users are assigned to Payroll.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>If you set <strong>Visible to users</strong> to No on Payroll, assigned users can no longer sign in to Payroll.</li>
+<li>If you set <strong>Enabled for users to sign in?</strong> to No on Payroll, Microsoft Entra ID stops issuing tokens for Payroll, even to assigned users.</li>
+<li>The <strong>Users can register applications</strong> setting is configured on the Properties page of each enterprise application.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Drag/order</span><span class="skill-tag">Design and implement integration for SaaS apps</span></div><p>The SAML signing certificate of a gallery SaaS app expires in 25 days. The app can trust more than one signing certificate at a time, but it doesn't pick up new certificates automatically. You must renew with no downtime.</p>
+<p>Which <strong>five</strong> actions should you perform, <strong>in sequence</strong>?</p>
+<p>A. On the SAML Signing Certificate page, select New Certificate, choose an expiration date that overlaps the current certificate, and select Save.<br />
+B. Download the new certificate from its row on the SAML Signing Certificate page.<br />
+C. Upload the new certificate to the SaaS app's single sign-on settings.<br />
+D. In the new certificate's row, select Make certificate active.<br />
+E. Sign in to the app to confirm that SSO works.<br />
+F. Delete the current active certificate.<br />
+G. Edit the expiration date of the current active certificate.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure and manage user and admin consent</span></div><p>Contoso sets User consent for applications to <strong>Allow user consent for apps from verified publishers, for selected permissions</strong>. The admin consent workflow is off. A user tries to sign in to a third-party app from an <strong>unverified</strong> publisher that requests delegated Files.Read. The user sees a message that admin approval is needed, with no way to ask for it.</p>
+<p>You need users to be able to send a request for review directly from the consent prompt. Security settings must not be weakened.</p>
+<p>What should you do?</p>
+<p>A. Change User consent for applications to Allow user consent for apps.<br />
+B. Turn on Users can request admin consent to apps they are unable to consent to, and select reviewers.<br />
+C. Classify Files.Read as a low impact permission.<br />
+D. Disable risk-based step-up consent.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Yes/No series</span><span class="skill-tag">Configure and manage user and admin consent</span></div><p>Contoso enables the admin consent workflow with these settings:</p>
+<ul>
+<li>Who can review admin consent requests: a group named AppReviewers</li>
+<li>Consent request expires after (days): 14</li>
+</ul>
+<p>AppReviewers contains Ana, who holds no admin role, and Luis, who holds the Cloud Application Administrator role. A user creates request R1 for an app that requests the Microsoft Graph <strong>delegated</strong> permission Mail.Read. The next day, you add Pedro, a Cloud Application Administrator, to AppReviewers.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Ana can approve R1.</li>
+<li>Luis can approve R1.</li>
+<li>Pedro can act on R1.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Select two</span><span class="skill-tag">Assign appropriate Microsoft Entra roles to manage enterprise applications</span></div><p>A user is assigned <strong>only</strong> the Cloud Application Administrator role.</p>
+<p>Which <strong>two</strong> tasks can the user perform? Each correct answer presents a complete solution.</p>
+<p>A. Configure SAML single sign-on for a gallery app.<br />
+B. Create an Application Proxy connector group.<br />
+C. Grant tenant-wide admin consent for an app that requests the Microsoft Graph delegated permission User.Read.All.<br />
+D. Grant tenant-wide admin consent for an app that requests the Microsoft Graph application permission Mail.Read.<br />
+E. Create a Conditional Access policy that targets the app.</p></div>
+<div class="case"><h4>Case study 1: Fabrikam</h4>
+<p>Fabrikam has a Microsoft Entra ID P1 license. The finance team uses three SaaS apps integrated with Microsoft Entra SSO: Expensely, Budgeto, and Ledgerly.</p>
+<ul>
+<li>Expensely has <strong>Assignment required</strong> set to Yes. The security group <strong>Finance</strong> is assigned to Expensely.</li>
+<li>Finance contains a nested security group named <strong>Finance-Contractors</strong>.</li>
+<li>Management wants Finance users to find the three finance apps together, on a separate tab in the My Apps portal.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Case study 1 (multiple choice)</span><span class="skill-tag">Assign, classify, and manage users, groups, and app roles for enterprise applications</span></div><p>Refer to Case study 1. Users who are direct members of Finance can sign in to Expensely. Users who are members only of Finance-Contractors get an error that they aren't assigned to the app.</p>
+<p>What should you do so Finance-Contractors members can sign in, while keeping access limited to finance users?</p>
+<p>A. Set Assignment required to No on Expensely.<br />
+B. Assign the Finance-Contractors group directly to Expensely.<br />
+C. Set Visible to users to Yes on Expensely.<br />
+D. Add Finance-Contractors as an owner of Expensely.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Case study 1 (multiple choice)</span><span class="skill-tag">Create and manage application collections</span></div><p>Refer to Case study 1. You need to meet the management requirement for the My Apps portal.</p>
+<p>What should you do?</p>
+<p>A. In Enterprise apps &gt; App launchers, create a collection that contains Expensely, Budgeto, and Ledgerly, and assign it to Finance.<br />
+B. Create an app role named Finance in each of the three apps.<br />
+C. Create an administrative unit that contains the three apps.<br />
+D. Upload the same custom logo to the three apps.</p></div>
+<h3 class="sub">Subdominio 3: App registrations</h3>
+<div class="q"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create app registrations</span></div><p>Contoso set <strong>Users can register applications</strong> to No. A developer named Dev1 must be able to create app registrations. You must follow the principle of least privilege.</p>
+<p>What should you do?</p>
+<p>A. Assign Dev1 the Application Developer role.<br />
+B. Assign Dev1 the Cloud Application Administrator role.<br />
+C. Assign Dev1 the Application Administrator role.<br />
+D. Set Users can register applications back to Yes.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span><span class="skill-tag">Plan for app registrations</span></div><p>Contoso registers an app named HRPortal with the supported account type <strong>Accounts in any organizational directory</strong>. An administrator in the Fabrikam tenant grants tenant-wide admin consent to HRPortal.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>An application object for HRPortal is created in the Fabrikam tenant.</li>
+<li>A service principal for HRPortal is created in the Fabrikam tenant.</li>
+<li>When a Contoso developer changes a property of HRPortal's application object, the change is reflected in HRPortal's service principal in the Contoso tenant.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure app authentication</span></div><p>A developer builds a React single-page app that signs in users with MSAL.js by using the authorization code flow with PKCE. The app runs entirely in the browser at <code>https://app.contoso.com</code>.</p>
+<p>How should you configure the redirect URI in the app registration?</p>
+<p>A. Add a Web platform with the redirect URI <code>https://app.contoso.com</code>.<br />
+B. Add a Single-page application platform with the redirect URI <code>https://app.contoso.com</code>.<br />
+C. Add a Mobile and desktop applications platform and select a generated redirect URI.<br />
+D. Don't add a redirect URI. Only confidential clients need one.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure app authentication</span></div><p>A GitHub Actions workflow deploys resources to Azure by using an app registration named Deployer. The security team forbids storing any secret or certificate in GitHub.</p>
+<p>Which credential should you add to Deployer?</p>
+<p>A. A client secret with a 24-month expiration<br />
+B. A certificate, with its private key stored as a GitHub encrypted secret<br />
+C. A federated credential using the GitHub Actions deploying Azure resources scenario<br />
+D. A system-assigned managed identity for the GitHub-hosted runner</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Drag/order</span><span class="skill-tag">Configure API permissions</span></div><p>You register a web API named OrdersAPI and a client web app named OrdersWeb. OrdersWeb must call OrdersAPI <strong>on behalf of the signed-in user</strong> with a permission named Orders.Read. Users must not see a consent prompt.</p>
+<p>Which <strong>four</strong> actions should you perform, <strong>in sequence</strong>?</p>
+<p>A. In OrdersAPI, open Expose an API and add the Application ID URI (<code>api://&lt;client-id&gt;</code>).<br />
+B. In OrdersAPI, select Add a scope, name it Orders.Read, and set Who can consent to Admins and users.<br />
+C. In OrdersWeb, open API permissions &gt; Add a permission &gt; My APIs, select OrdersAPI, and add the delegated permission Orders.Read.<br />
+D. In OrdersWeb API permissions, select Grant admin consent for the tenant.<br />
+E. In OrdersAPI, create an app role with Allowed member types set to Applications.<br />
+F. Add the OrdersWeb redirect URI to the OrdersAPI app registration.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create app roles</span></div><p>A developer wants the tokens of a survey app to include a claim that the code can check with the value <strong>Survey.Create</strong>. Administrators will grant it to users and security groups. Contoso has Microsoft Entra ID P1.</p>
+<p>What should you do?</p>
+<p>A. In App registrations &gt; Expose an API, add a scope named Survey.Create.<br />
+B. In App registrations &gt; App roles, create an app role with Allowed member types Users/Groups and Value Survey.Create, and then assign users and groups in Enterprise apps &gt; Users and groups.<br />
+C. In App registrations &gt; Token configuration, add a groups claim.<br />
+D. Create a custom Microsoft Entra directory role named Survey.Create.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Select two</span><span class="skill-tag">Configure API permissions</span></div><p>A background service (daemon) with no signed-in user must read the profiles of all users through Microsoft Graph.</p>
+<p>Which <strong>two</strong> actions should you perform? Each correct answer presents part of the solution.</p>
+<p>A. Add the Microsoft Graph <strong>application</strong> permission User.Read.All.<br />
+B. Add the Microsoft Graph <strong>delegated</strong> permission User.Read.All.<br />
+C. Grant admin consent for the tenant.<br />
+D. Add a redirect URI of type Web.<br />
+E. Set Allow public client flows to Yes.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create app roles</span></div><p>A SAML app authorizes users based on the groups claim, which is set to <strong>All groups</strong>. Some users are members of more than 300 groups. For those users, the token contains no group list, and access fails. The app only cares about four groups that are assigned to it.</p>
+<p>What should you change in Token configuration?</p>
+<p>A. Set the groups claim to Groups assigned to the application.<br />
+B. Keep All groups and increase the maximum token size.<br />
+C. Add the Directory roles group type to the claim.<br />
+D. Convert the four groups to distribution lists.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Yes/No series</span><span class="skill-tag">Create app roles</span></div><p>You define app roles in the app registration of an API named InventoryAPI.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>An app role with Allowed member types set to Applications appears as an application permission when a client app selects InventoryAPI under API permissions &gt; My APIs.</li>
+<li>If you add a service principal to a security group and assign an app role to that group, the service principal's tokens include the roles claim.</li>
+<li>When you disable an app role, the existing assignments stop sending that role in tokens immediately.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure API permissions</span></div><p>Your API exposes a custom scope named Reports.ReadAll with <strong>Who can consent</strong> set to <strong>Admins only</strong>. The tenant's user consent setting is <strong>Allow user consent for apps</strong>. A user signs in to a client app that requests Reports.ReadAll for the first time. No consent has been granted yet.</p>
+<p>What happens?</p>
+<p>A. The user consents, because the tenant allows user consent for apps.<br />
+B. The user consents, because custom application scopes never require admin consent.<br />
+C. The user can't consent. An administrator must grant consent for the scope.<br />
+D. The token is issued without the scope, and the app works with reduced permissions.</p></div>
+<h3 class="sub">Subdominio 4: Defender for Cloud Apps</h3>
+<div class="q"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice</span><span class="skill-tag">Analyze Cloud Discovery results</span></div><p>The security team exported 30 days of traffic logs from a Palo Alto firewall. They want a <strong>one-time</strong> assessment of which cloud apps employees use, without deploying anything on the network.</p>
+<p>What should you do in Microsoft Defender for Cloud Apps?</p>
+<p>A. Create a snapshot report and upload the log files.<br />
+B. Deploy a log collector and forward the firewall logs over Syslog.<br />
+C. Turn on the Microsoft Defender for Endpoint integration.<br />
+D. Connect the firewall by using an app connector.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Select two</span><span class="skill-tag">Analyze Cloud Discovery results</span></div><p>Contoso needs <strong>continuous</strong> Cloud Discovery reports. Some employees work only from home on corporate Windows laptops, and the office firewall can send logs over Syslog.</p>
+<p>Which <strong>two</strong> methods produce continuous reports? Each correct answer presents a complete solution.</p>
+<p>A. Microsoft Defender for Endpoint integration<br />
+B. A log collector that receives the firewall logs over Syslog or FTP<br />
+C. A snapshot report uploaded every week<br />
+D. The Microsoft 365 app connector<br />
+E. A Conditional Access app control session policy</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Drag/order</span><span class="skill-tag">Analyze Cloud Discovery results</span></div><p>Contoso's Windows devices are onboarded to Microsoft Defender for Endpoint. You need to block access to a discovered app named FileDropX on those devices by using the Defender for Cloud Apps integration.</p>
+<p>Which <strong>four</strong> actions should you perform, <strong>in sequence</strong>?</p>
+<p>A. In Defender for Endpoint, make sure Cloud Protection and Network Protection are turned on for the devices.<br />
+B. In Settings &gt; Cloud Apps &gt; Cloud Discovery &gt; Microsoft Defender for Endpoint, select Enforce app access.<br />
+C. In Settings &gt; Endpoints &gt; Advanced features, turn on Custom network indicators.<br />
+D. In Cloud Discovery &gt; Discovered apps, tag FileDropX as Unsanctioned.<br />
+E. Create a session policy with the Block action for FileDropX.<br />
+F. Upload a snapshot report of the firewall logs.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Yes/No series</span><span class="skill-tag">Analyze Cloud Discovery results</span></div><p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Fabrikam doesn't use Defender for Endpoint or any integrated Secure Web Gateway. When an admin tags an app as Unsanctioned, access to the app is blocked for all users.</li>
+<li>With the Defender for Endpoint integration, it can take up to three hours from tagging an app as Unsanctioned until the app is blocked on devices.</li>
+<li>With the Defender for Endpoint integration, you can block an unsanctioned app only for specific device groups by using a scoped profile.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure Conditional Access app control</span></div><p>Salesforce is integrated with Microsoft Entra ID for SAML SSO. In Defender for Cloud Apps, you create a session policy that blocks downloads from unmanaged devices for Salesforce. Users on unmanaged devices can still download files. No Conditional Access policy targets Salesforce.</p>
+<p>What should you do?</p>
+<p>A. Connect Salesforce by using an app connector.<br />
+B. Create a Conditional Access policy that targets Salesforce with the session control Use Conditional Access App Control set to Use custom policy.<br />
+C. Create a Conditional Access policy that targets Salesforce with the session control Use app enforced restrictions.<br />
+D. Tag Salesforce as Sanctioned in the cloud app catalog.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create access and session policies in Defender for Cloud Apps</span></div><p>Contoso routes Dropbox sessions to Defender for Cloud Apps by using Conditional Access app control. Users must be able to use Dropbox in a browser, but the Dropbox <strong>desktop sync client</strong> must be blocked so it can't bypass the browser controls.</p>
+<p>What should you create?</p>
+<p>A. A session policy with the action Block for Dropbox<br />
+B. An access policy with the Client app filter set to Mobile and desktop and the action Block<br />
+C. An OAuth app policy that revokes Dropbox<br />
+D. An app discovery policy that tags Dropbox as Unsanctioned</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement application-enforced restrictions</span></div><p>Contoso has Microsoft Entra ID P1 and <strong>no</strong> Defender for Cloud Apps licenses. On unmanaged devices, users must get limited, web-only access to SharePoint Online with no downloads. On compliant devices, they must get full access.</p>
+<p>What should you configure?</p>
+<p>A. A Conditional Access policy for SharePoint Online with the session control Use app enforced restrictions, together with the SharePoint unmanaged devices setting Allow limited, web-only access<br />
+B. A Conditional Access policy for SharePoint Online with the session control Use Conditional Access App Control<br />
+C. A Conditional Access policy for SharePoint Online with the grant control Require device to be marked as compliant<br />
+D. A Defender for Cloud Apps session policy that blocks downloads</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage policies for OAuth apps</span></div><p>Microsoft 365 is connected to Defender for Cloud Apps by using the app connector. You need to be alerted and automatically revoke any OAuth app that has a <strong>high</strong> permission level, <strong>rare</strong> community use, and was authorized by more than 50 users.</p>
+<p>What should you create?</p>
+<p>A. An OAuth app policy with the filters Permission level equals High, Community use equals Rare, and Authorized by greater than 50 users, and the governance action Revoke app<br />
+B. An app discovery policy with the governance action Tag app as unsanctioned<br />
+C. A session policy that blocks the app for all users<br />
+D. A built-in OAuth anomaly detection policy with custom filters</p></div>
+<div class="case"><h4>Case study 2: Litware</h4>
+<p>Litware has licenses for Microsoft Defender for Cloud Apps and Microsoft Defender for Endpoint. All Windows devices are onboarded to Defender for Endpoint, and Cloud Discovery is running.</p>
+<ul>
+<li>The compliance team says that, for Litware, certifications such as SOC 2 and ISO 27001 matter more than general facts about the vendor (founding year, popularity). Risk scores for <strong>all</strong> apps must reflect this.</li>
+<li>An internal note says the approved app Litware Notes shows a score of 5, but management wants it shown as 9.</li>
+<li>The security team needs visibility into user and admin activities in <strong>ServiceNow</strong> through the vendor's API, without routing users through a proxy.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Case study 2 (multiple choice)</span><span class="skill-tag">Manage the Cloud app catalog</span></div><p>Refer to Case study 2. You need to meet the compliance team requirement.</p>
+<p>What should you do?</p>
+<p>A. In Settings &gt; Cloud Apps &gt; Cloud Discovery &gt; Score metrics, increase the importance of the Compliance category and lower the General category.<br />
+B. Use Override app score for each app in the catalog.<br />
+C. Select Request score update on each app.<br />
+D. Create a custom app for each vendor with the correct compliance data.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Case study 2 (multiple choice)</span><span class="skill-tag">Configure connected apps</span></div><p>Refer to Case study 2. You need to meet the security team requirement for ServiceNow.</p>
+<p>What should you do?</p>
+<p>A. Connect ServiceNow by using an app connector in Settings &gt; Cloud Apps &gt; Connected apps &gt; App Connectors.<br />
+B. Onboard ServiceNow to Conditional Access app control and create a session policy.<br />
+C. Rely on Cloud Discovery data from Defender for Endpoint.<br />
+D. Create an OAuth app policy for ServiceNow.</p></div>
+<h2>5. Respuestas y explicaciones</h2>
+<p class="meta">Lee siempre el "por qué las otras no". El SC-300 se pierde en los distractores, no en la teoría.</p>
+<h3 class="sub">Subdominio 1: Identities for applications and Azure workloads</h3>
+<div class="a"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> La user-assigned managed identity es un recurso aparte con <strong>ciclo de vida independiente</strong> y se puede asignar a muchos recursos. Learn la pone justo para "workloads needing preauthorization to a secure resource" y "resources recycled frequently, but permissions should stay consistent". Sin credenciales que manejar.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: la system-assigned nace y muere con cada instancia, no se comparte y no existe antes del deploy, así que no puedes pre-autorizarla.</li>
+<li>C: funciona, pero obliga a manejar y rotar un secreto. La pregunta dice "must not manage any credentials".</li>
+<li>D: user accounts como service accounts no se recomiendan, y una cuenta sincronizada no se convierte en service principal.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. La system-assigned comparte ciclo de vida con el recurso: cuando borras la VM, Azure borra su service principal.</li>
+<li>2 No. La user-assigned tiene <strong>ciclo de vida independiente</strong> y hay que borrarla a mano. Además sigue asignada a App1.</li>
+<li>3 No. La system-assigned <strong>solo se asocia a un recurso</strong>. Para compartir identidad usas una user-assigned.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que queda un service principal huérfano. Learn dice que Azure lo borra por ti.</li>
+<li>Trampa de la 2: confundir "asignada a" con "pertenece a". UAMI1 vive sola en su resource group.</li>
+<li>Trampa de la 3: "system-assigned" suena a "del sistema, para todos". Es lo contrario: una identidad, un recurso.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#managed-identity-types</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Una managed identity solo existe en recursos de Azure. Un server fuera de Azure puede tener managed identity <strong>solo si es Azure Arc-enabled</strong>, y aquí Arc está prohibido. Queda un service principal, y Learn dice que el <strong>certificate</strong> es el tipo de credencial recomendado porque es más seguro que el client secret.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: sin Arc, un server on-premises no tiene system-assigned managed identity. Trampa clásica: "managed identity para todo".</li>
+<li>B: igual que A. La user-assigned se asigna a recursos de Azure, no a servers sueltos en tu datacenter.</li>
+<li>D: funciona, pero el client secret es justo el "password-like string" que el equipo de seguridad no quiere.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/how-to-add-credentials#add-a-credential-to-your-application y https://learn.microsoft.com/azure/azure-arc/servers/managed-identity-authentication</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> B y C</p>
+<p><strong>Por qué es correcta:</strong> Learn lo repite en cada método (portal, CLI, PowerShell, REST): para asignar una user-assigned a una VM necesitas <strong>Virtual Machine Contributor</strong> y <strong>Managed Identity Operator</strong>, y "no other Microsoft Entra directory role assignments are required".</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Managed Identity Contributor es para <strong>crear</strong> (y borrar) user-assigned identities. Aquí la identidad ya existe; solo se asigna.</li>
+<li>D: es un rol de Microsoft Entra para apps. Asignar managed identities es Azure RBAC, no un rol de directorio.</li>
+<li>E: Owner alcanza, pero rompe least privilege.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities#user-assigned-managed-identity</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> Es la secuencia de Learn: 1) crear la managed identity, 1.1) asignarla al recurso "source" (la web app), 2) <strong>autorizarla en el recurso "target"</strong> (rol de datos en el storage) y 3) usarla desde el código con Azure.Identity o MSAL. Si hay varias user-assigned en el recurso, conviene pasar el client ID para no depender del default.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: una managed identity no tiene application object ni aparece en App registrations. Y crear un secreto rompe el requisito de "no secrets".</li>
+<li>F: el acceso a Storage es Azure RBAC en el recurso. No hay admin consent de por medio.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#use-managed-identity-directly</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> La <strong>gMSA</strong> es la identidad recomendada para servicios on-premises. Sirve para un server o para una <strong>granja de servers o detrás de un load balancer</strong>, y Windows cambia su password automáticamente (cada 30 días, 240 bytes aleatorios).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: la sMSA corre en <strong>un solo server</strong>. La tabla de Learn dice "App runs on multiple servers: No" y "App runs behind a load balancer: No".</li>
+<li>C: managed identity es para recursos de Azure. Aquí no hay Azure y el servicio necesita identidad de dominio.</li>
+<li>D: password manual que nunca cambia. Es lo que Learn pide usar solo si no hay MSA posible.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/architecture/service-accounts-on-premises#choose-the-right-type-of-service-account</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Una managed identity <strong>solo tiene service principal, no tiene application object</strong>. Por eso Learn dice que los permisos de Microsoft Graph "need to be granted directly to the service principal", con una app role assignment (por ejemplo New-MgServicePrincipalAppRoleAssignment). Para dar application permissions de Graph necesitas Privileged Role Administrator.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: la managed identity no aparece en App registrations. No hay pantalla de API permissions para ella.</li>
+<li>C: Azure RBAC da acceso a recursos de Azure, no a datos de Microsoft Graph. Confundir los dos planos es la trampa.</li>
+<li>D: la página Permissions de Enterprise applications muestra y revisa permisos; no es donde se agregan application permissions a una managed identity.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/managed-identities-faq#do-managed-identities-have-a-backing-app-object y https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/how-to-assign-app-role-managed-identity</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Registrar desde el portal crea <strong>los dos objetos</strong> en el home tenant. (Con Microsoft Graph API, crear el service principal es un paso aparte.)</li>
+<li>2 No. El service principal de una managed identity "doesn't have an associated app object". Se le dan permisos, pero no se edita directo.</li>
+<li>3 No. El service principal legacy no tiene app registration y "can only be used in the tenant where it was created".</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: creer que el service principal aparece solo cuando alguien consiente. Eso pasa en <strong>otros</strong> tenants (multitenant), no en el home tenant.</li>
+<li>Trampa de la 2: pensar que todo service principal tiene su app registration.</li>
+<li>Trampa de la 3: confundir legacy con multitenant.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#service-principal-object</p></div>
+<h3 class="sub">Subdominio 2: Enterprise applications</h3>
+<div class="a"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> <strong>Application Administrator</strong> administra todo en enterprise apps y app registrations <strong>más los settings de Application Proxy</strong>. Learn lo pone como least privileged para configurar apps de App Proxy y crear o borrar connector groups.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Cloud Application Administrator tiene lo mismo que Application Administrator <strong>excepto Application Proxy</strong>. Esa es toda la diferencia, y el examen la busca.</li>
+<li>C: Application Developer solo registra apps (y consiente por sí mismo). No toca App Proxy ni SSO de apps ajenas.</li>
+<li>D: puede todo, pero rompe least privilege.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#assign-built-in-application-administrator-roles y https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-by-task#application-proxy-least-privileged-roles</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. Con <strong>Passthrough</strong> no hay autenticación en Microsoft Entra, así que <strong>Conditional Access no se aplica</strong>. Para CA, MFA y SSO necesitas pre-auth <strong>Microsoft Entra ID</strong>.</li>
+<li>2 No. Los connectors <strong>solo abren conexiones de salida</strong> (80 y 443) hacia el servicio. No hay inbound ni DMZ.</li>
+<li>3 Yes. Learn pide <strong>al menos dos connectors por connector group</strong> (tres es lo óptimo).</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que CA "cubre todo lo que está en Enterprise apps". Si Entra no autentica, CA no evalúa.</li>
+<li>Trampa de la 2: pensar en App Proxy como un reverse proxy clásico con puerto abierto. Todo es outbound.</li>
+<li>Trampa de la 3: con un solo connector funciona, pero es un single point of failure.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/app-proxy/application-proxy-faq#passthrough-preauthentication y https://learn.microsoft.com/entra/identity/app-proxy/conceptual-deployment-plan#plan-your-implementation</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> SSO a una app IWA con App Proxy es <strong>Kerberos Constrained Delegation (KCD)</strong>. Primero existe el connector (necesitas su computer account), luego configuras la delegación en AD al SPN de la app (prerrequisito en Learn), después publicas con pre-auth Microsoft Entra ID y al final eliges SSO <strong>Integrated Windows authentication</strong> con el SPN. Si connector y app estuvieran en dominios distintos, se usaría resource-based KCD (PrincipalsAllowedToDelegateToAccount).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: sin pre-auth de Entra <strong>no hay opciones de SSO</strong>. Learn: "Without preauthentication, SSO options are unavailable."</li>
+<li>F: la app habla Kerberos, no SAML. El SPN no es un Entity ID.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-sso-with-kcd#configure-single-sign-on, https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-sso-with-kcd#prerequisites y https://learn.microsoft.com/entra/identity/app-proxy/conceptual-deployment-plan#implement-your-solution</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Para custom domains, Learn pide un certificado <strong>PFX con la private key</strong> (y la cadena intermedia), subido en la página Application proxy de la app, y un registro <strong>CNAME</strong> que apunte el external URL al dominio <code>msappproxy.net</code>. El certificado se sube una vez por dominio y se reusa en apps nuevas.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: un .cer no trae private key, y Learn dice que no apuntes a IPs ni a nombres de servers porque no son estáticos.</li>
+<li>C: el TXT es para <strong>verificar el dominio</strong>, paso que ya está hecho. Con custom domain el certificado lo pones tú.</li>
+<li>D: el connector no recibe tráfico de internet. Todo es outbound.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-custom-domain#certificates-for-custom-domains y https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-custom-domain#set-up-and-use-custom-domains</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> En Entra el campo se llama <strong>Reply URL (Assertion Consumer Service URL)</strong>: es a donde Entra manda la respuesta SAML. El <strong>Identifier (Entity ID)</strong> y el Reply URL son los obligatorios.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: es el <strong>Identifier (Entity ID)</strong>. Va en otro campo.</li>
+<li>C: es el <strong>Sign on URL</strong>, que solo se usa para SP-initiated SSO.</li>
+<li>D: el Login URL y el Microsoft Entra Identifier de la sección "Set up" son valores de Entra que <strong>tú le das al vendor</strong>, no al revés.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/add-application-portal-setup-sso#configure-single-sign-on-in-the-tenant</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. Visible to users solo esconde la app en My Apps y en el launcher de Microsoft 365. El acceso sigue igual.</li>
+<li>2 Yes. Con Enabled = No "no users are able to sign in... Tokens aren't issued", y también limita a service principals que usan application permissions.</li>
+<li>3 No. Es un setting <strong>de tenant</strong>: Entra ID &gt; Users &gt; User settings. No vive en cada app.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: confundir "no la veo" con "no puedo entrar".</li>
+<li>Trampa de la 2: pensar que Enabled = No es lo mismo que quitar asignaciones. Enabled apaga todo, asignados incluidos, sin perder la configuración.</li>
+<li>Trampa de la 3: mezclar settings de app con settings de tenant, que es justo lo que pide el outline.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/application-properties#enabled-for-users-to-sign-in y https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#restrict-who-can-create-applications</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D, E</p>
+<p><strong>Por qué es correcta:</strong> Es el flujo de Learn para renovar sin downtime: crear el certificado nuevo con fecha que se traslape (queda <strong>Inactive</strong>), descargarlo, subirlo a la app, <strong>activarlo</strong> en Entra y probar. Datos para memorizar: el certificado autogenerado dura <strong>3 años</strong>, y Entra avisa a los <strong>60, 30 y 7 días</strong> hasta a 5 correos.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>F: borrar el activo antes de tener el nuevo en la app corta el SSO.</li>
+<li>G: la fecha de un certificado guardado <strong>no se puede cambiar</strong>. Learn: hay que crear uno nuevo.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/tutorial-manage-certificates-for-federated-single-sign-on#renew-a-certificate-that-is-set-to-expire-soon</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> El <strong>admin consent workflow</strong> deja que el usuario pida aprobación desde el prompt cuando no puede consentir. La solicitud llega por correo a los reviewers. No cambia lo que el usuario puede consentir, así que no baja la seguridad.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: quita la protección de verified publishers y permisos low impact. Justo lo que se pidió no hacer.</li>
+<li>C: aunque Files.Read fuera low impact, el publisher sigue sin estar verificado, así que el usuario tampoco podría consentir.</li>
+<li>D: step-up consent no es la causa aquí (el bloqueo viene del setting de verified publisher), y apagarlo <strong>reduce</strong> la seguridad.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow#enable-the-admin-consent-workflow y https://learn.microsoft.com/entra/identity/enterprise-apps/configure-user-consent#configure-user-consent-settings</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. Ser reviewer <strong>no eleva privilegios</strong>. Para aprobar necesitas los permisos para dar admin consent. Ana puede ver, bloquear o negar, pero no aprobar.</li>
+<li>2 Yes. Cloud Application Administrator puede dar consent a cualquier permiso <strong>excepto application permissions (app roles) de Microsoft Graph</strong>. Mail.Read aquí es delegated.</li>
+<li>3 No. Learn: los reviewers nuevos "aren't able to act on existing or expired admin consent requests".</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que la lista de reviewers da permisos.</li>
+<li>Trampa de la 2: creer que ningún rol de apps puede consentir permisos de Graph. Solo están excluidas las <strong>application</strong> permissions de Graph.</li>
+<li>Trampa de la 3: asumir que los reviewers nuevos heredan la cola de solicitudes.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow#enable-the-admin-consent-workflow y https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent#prerequisites</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y C</p>
+<p><strong>Por qué es correcta:</strong> Cloud Application Administrator maneja todos los aspectos de enterprise apps y app registrations (SSO incluido) y puede dar consent a permisos <strong>delegated</strong> y a application permissions que <strong>no sean de Microsoft Graph</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: Application Proxy es lo único que Cloud Application Administrator no tiene. Para connector groups necesitas Application Administrator.</li>
+<li>D: application permissions de Microsoft Graph piden un rol más alto, como <strong>Privileged Role Administrator</strong>.</li>
+<li>E: ni Application Administrator ni Cloud Application Administrator administran Conditional Access.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#cloud-application-administrator</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Case study 1 (multiple choice)</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> En la asignación a apps, <strong>la membresía anidada no se soporta</strong>: "The assignment doesn't cascade to nested groups." Hay que asignar Finance-Contractors directo. Asignar grupos pide P1 o P2, y Fabrikam lo tiene.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: con Assignment required = No entra <strong>todo el tenant</strong>. Se rompe el "limited to finance users".</li>
+<li>C: la visibilidad solo afecta si se ve en My Apps. No da acceso.</li>
+<li>D: los owners administran la app, no reciben acceso por eso.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/assign-user-or-group-access-portal#prerequisites</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Case study 1 (multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Una <strong>collection</strong> agrupa apps relacionadas en su propia pestaña de My Apps. Se crea en Enterprise apps &gt; App launchers, pide <strong>P1 o P2</strong> y se asigna a usuarios o grupos. Ojo: la collection solo filtra apps que el usuario ya tiene; si no está asignado a la app, no la ve.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: app roles definen autorización dentro de la app (claim roles), no cómo se agrupan en My Apps.</li>
+<li>C: administrative units delegan administración de usuarios, grupos y devices. No organizan My Apps.</li>
+<li>D: el logo es cosmético. No crea pestañas.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/enterprise-apps/access-panel-collections#create-a-collection</p></div>
+<h3 class="sub">Subdominio 3: App registrations</h3>
+<div class="a"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn dice que cuando el switch global está en No, le devuelves la capacidad a personas específicas con el rol <strong>Application Developer</strong>. Además queda como owner de las apps que crea.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: puede registrar apps, pero también administra todas las apps del tenant. Más privilegio del necesario.</li>
+<li>C: igual que B, y encima Application Proxy.</li>
+<li>D: abre el registro para <strong>todos</strong> los usuarios, no solo para Dev1.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#restrict-who-can-create-applications</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. El application object es <strong>uno solo</strong> y vive en el home tenant (Contoso). Es la plantilla.</li>
+<li>2 Yes. Cuando Fabrikam consiente, se crea un <strong>service principal</strong> en Fabrikam: la instancia local de la app.</li>
+<li>3 Yes. Los cambios al application object se reflejan en el service principal <strong>del home tenant</strong>.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que cada tenant tiene su "copia" de la app registration. Fabrikam solo ve una enterprise app.</li>
+<li>Trampa de la 2: creer que el SP se crea solo en el tenant que registró.</li>
+<li>Trampa de la 3: la afirmación es solo sobre el home tenant; ahí sí aplica.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#relationship-between-application-objects-and-service-principals y https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#consequences-of-modifying-and-deleting-applications</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> En Authentication, cada redirect URI va con su <strong>plataforma</strong>. Para apps del lado del cliente (JavaScript, Angular, React, Blazor WebAssembly) la plataforma es <strong>Single-page application</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Web es para apps que corren en un servidor. Una SPA con PKCE registrada como Web es un error típico.</li>
+<li>C: Mobile and desktop es para apps nativas, con URIs generados.</li>
+<li>D: al revés. Quien no necesita redirect URI es el <strong>daemon</strong>; una app que inicia sesión de usuarios siempre lo necesita.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/how-to-add-redirect-uri#add-a-redirect-uri y https://learn.microsoft.com/entra/identity-platform/msal-client-application-configuration#redirect-uri</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> La <strong>federated credential</strong> (workload identity federation) deja que GitHub Actions cambie su token por uno de Microsoft Entra <strong>sin guardar secretos</strong>. Learn tiene el escenario "GitHub actions deploying Azure resources" en Certificates &amp; secrets &gt; Federated credentials.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: es un secreto, y además 24 meses es el máximo permitido (Learn recomienda menos de 12).</li>
+<li>B: el certificado es mejor que el secret, pero guardar su private key en GitHub rompe la regla.</li>
+<li>D: un runner hospedado por GitHub no es un recurso de Azure, así que no tiene managed identity.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/how-to-add-credentials#add-a-credential-to-your-application</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> "On behalf of the signed-in user" = permiso <strong>delegated</strong> = <strong>scope</strong>. El App ID URI es el prefijo de los scopes y va primero; después creas el scope, el cliente lo pide en My APIs, y el admin consent para el tenant evita el prompt a cada usuario.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: un app role con Applications crea una <strong>application permission</strong> (sin usuario). No es lo que pide el escenario.</li>
+<li>F: el redirect URI es del cliente y se configura en el cliente, no en la API.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-expose-web-apis#add-a-scope y https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent#grant-admin-consent-in-app-registrations-pane</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Un <strong>app role</strong> con Allowed member types <strong>Users/Groups</strong> sale en el claim <strong>roles</strong> con el Value que definiste. Luego lo asignas en Enterprise apps. Asignar grupos a roles pide P1 o superior, y Contoso lo tiene.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: un scope es un permiso <strong>delegated</strong> que el cliente pide a la API. Sale en el claim scp, no representa el rol del usuario.</li>
+<li>C: el groups claim manda object IDs de grupos; el código tendría que mapear IDs a permisos. Learn recomienda app roles para evitarlo.</li>
+<li>D: los roles de directorio administran Microsoft Entra, no la lógica de tu app.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps#declare-roles-for-an-application</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y C</p>
+<p><strong>Por qué es correcta:</strong> Sin usuario = <strong>application permission</strong> (app role). Las application permissions <strong>solo las consiente un admin</strong>, así que falta el admin consent.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: delegated necesita un usuario con sesión. El daemon no lo tiene.</li>
+<li>D: un daemon no necesita redirect URI.</li>
+<li>E: public client es para apps que no pueden guardar credenciales. Un daemon es confidential client.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/permissions-consent-overview#types-of-permissions</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El límite de grupos en el token es <strong>150 para SAML</strong> y <strong>200 para JWT</strong>. Si se pasa, Entra no manda el claim (overage). Learn recomienda <strong>Groups assigned to the application</strong> para organizaciones grandes: solo viajan los grupos asignados a la app.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: el tamaño del token no se configura. Ese límite existe a propósito.</li>
+<li>C: agrega más valores al claim, lo empeora.</li>
+<li>D: no reduce la cantidad de grupos del usuario y rompe la seguridad de la asignación.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/optional-claims#configure-groups-optional-claims</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Learn: con Applications, el app role aparece como application permission en My APIs.</li>
+<li>2 No. Learn: si metes un service principal en un grupo y le das el rol al grupo, Entra <strong>no agrega el claim roles</strong> a sus tokens.</li>
+<li>3 No. Al deshabilitar, el rol ya no se puede asignar, pero <strong>las asignaciones que existen se quedan y el rol sigue saliendo en los tokens</strong>. Hay que quitar la asignación.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que app role y application permission son cosas distintas. Son lo mismo visto desde dos lados.</li>
+<li>Trampa de la 2: asumir que la asignación por grupo funciona igual para usuarios y para service principals.</li>
+<li>Trampa de la 3: "disabled" suena a "desaparece", pero no borra asignaciones.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps#declare-roles-for-an-application</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> "Who can consent: Admins only" hace que el scope <strong>requiera admin consent</strong>. Learn lo recomienda para permisos de alto privilegio. El user consent setting del tenant no puede abrir algo que la API marcó como solo admin.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: el setting de tenant decide si el usuario puede consentir <strong>lo que es consentible por usuarios</strong>. Un scope Admins only no lo es.</li>
+<li>B: Learn dice que los scopes custom, por default, no se consideran high-privilege. Pero aquí el owner de la API los marcó como Admins only. La trampa es aplicar la regla general a un caso configurado.</li>
+<li>D: la app no sigue "con menos permisos" sin avisar. Learn: cuando un permiso delegated requiere admin consent, el usuario ve un error de "unauthorized to consent" y tiene que pedirle acceso a un admin.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-expose-web-apis#add-a-scope y https://learn.microsoft.com/entra/identity-platform/consent-types-developer#requesting-consent-for-an-entire-tenant-through-admin-consent</p></div>
+<h3 class="sub">Subdominio 4: Defender for Cloud Apps</h3>
+<div class="a"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El <strong>snapshot report</strong> da visibilidad "ad-hoc" sobre logs que <strong>subes a mano</strong> desde firewalls y proxies. Palo Alto está en la lista de fuentes soportadas.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: el log collector es para reportes <strong>continuos</strong> y hay que desplegarlo en la red.</li>
+<li>C: la integración con Defender for Endpoint también es continua y mira endpoints, no los logs que ya exportaste.</li>
+<li>D: los app connectors se conectan por API a apps SaaS (Microsoft 365, ServiceNow...), no a firewalls.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/set-up-cloud-discovery#snapshot-and-continuous-risk-assessment-reports</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Learn lista para <strong>continuous reports</strong>: integración con <strong>Defender for Endpoint</strong> (extiende discovery fuera de la red corporativa, perfecto para home office), <strong>log collector</strong> (Syslog o FTP), integraciones con Secure Web Gateways y la API de discovery.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C: subir snapshots cada semana sigue siendo snapshot. Manual, no continuo.</li>
+<li>D: el app connector da visibilidad dentro de Microsoft 365 por API. No descubre shadow IT del tráfico.</li>
+<li>E: session policies controlan sesiones de apps ya conectadas por CA. No son discovery.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/set-up-cloud-discovery#snapshot-and-continuous-risk-assessment-reports</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> Learn pone como prerrequisitos <strong>Cloud Protection y Network Protection</strong> en Defender for Endpoint (y el add-on Microsoft Defender Browser Protection en navegadores que no son de Microsoft). Luego activas <strong>Enforce app access</strong> (tarda hasta 30 minutos), habilitas <strong>Custom network indicators</strong> y al final marcas la app como <strong>Unsanctioned</strong>, que sincroniza los dominios al endpoint.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: una session policy controla sesiones de apps que pasan por CA app control. No bloquea a nivel de red una app descubierta.</li>
+<li>F: el snapshot sirve para descubrir, no para bloquear.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/mde-govern#enable-cloud-app-blocking-with-defender-for-endpoint y https://learn.microsoft.com/defender-cloud-apps/governance-discovery</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. "Unsanctioning an app doesn't block use." Sin integración, puedes <strong>generar un block script</strong> para tu appliance o exportar los dominios.</li>
+<li>2 Yes. Hasta una hora de sync con Defender for Endpoint más hasta dos horas para empujar la política: <strong>hasta tres horas</strong>.</li>
+<li>3 Yes. Con <strong>scoped profiles</strong> (Include o Exclude) eliges los device groups de Defender for Endpoint.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: creer que la etiqueta bloquea sola. La etiqueta marca; el bloqueo lo hace otro componente.</li>
+<li>Trampa de la 2: esperar bloqueo instantáneo.</li>
+<li>Trampa de la 3: pensar que el bloqueo es todo o nada. Con MDE se puede acotar; con Zscaler, iboss y otros SWG no.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/governance-discovery#sanctioningunsanctioning-an-app y https://learn.microsoft.com/defender-cloud-apps/mde-govern#block-apps-for-specific-device-groups</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Access y session policies necesitan que <strong>una política de Conditional Access mande la sesión a Defender for Cloud Apps</strong>: Session &gt; <strong>Use Conditional Access App Control</strong>. Con <strong>Use custom policy</strong> se aplican las políticas avanzadas que creaste en Defender for Cloud Apps.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: el app connector trabaja por API (actividad, archivos, cuentas). No controla la sesión del navegador en tiempo real.</li>
+<li>C: app enforced restrictions solo funciona con <strong>Exchange Online y SharePoint Online</strong>.</li>
+<li>D: sanctioned es una etiqueta de discovery. No enruta sesiones.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/session-policy-aad#prerequisites y https://learn.microsoft.com/defender-cloud-apps/troubleshooting-proxy#issues-when-onboarding-an-app</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Las <strong>access policies</strong> sirven para browser, mobile y desktop. Learn: bloquea los clientes nativos con una access policy y el filtro <strong>Client app = Mobile and desktop</strong>. Sin ese filtro, la access policy solo aplica a sesiones de browser.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: las session policies trabajan <strong>en el browser</strong>. No ven al cliente de escritorio.</li>
+<li>C: las OAuth app policies revisan permisos que usuarios dieron a apps OAuth. No bloquean un cliente de sync.</li>
+<li>D: Unsanctioned bloquearía Dropbox completo, incluido el browser, y el requisito dice que el browser sigue.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/session-policy-aad#access-controls-in-session-policies y https://learn.microsoft.com/defender-cloud-apps/access-policy-aad#create-a-defender-for-cloud-apps-access-policy</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> <strong>Use app enforced restrictions</strong> hace que Entra le pase a la app la info del device, y la app decide: experiencia <strong>limitada</strong> si no está administrado, <strong>completa</strong> si es compliant. Solo funciona con Exchange Online y SharePoint Online, y no necesita Defender for Cloud Apps. El setting de SharePoint "Allow limited, web-only access" crea esa política.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: CA App Control es Defender for Cloud Apps, y Contoso no tiene esas licencias.</li>
+<li>C: Require compliant <strong>bloquea</strong> a los no administrados. El requisito pide acceso limitado, no bloqueo.</li>
+<li>D: igual que B, requiere Defender for Cloud Apps.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-session#application-enforced-restrictions y https://learn.microsoft.com/sharepoint/control-access-from-unmanaged-devices#how-do-i-limit-access</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Las <strong>OAuth app policies</strong> filtran por <strong>Permission level</strong> (High, Medium, Low), <strong>Community use</strong> (Common, Uncommon, Rare) y cuántos usuarios autorizaron la app. Para Microsoft 365 la acción es <strong>Revoke app</strong>. Si tu tenant tiene app governance activo, la política se crea desde App governance.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: las app discovery policies trabajan sobre apps descubiertas en el tráfico, no sobre consentimientos OAuth en Microsoft 365.</li>
+<li>C: una session policy no revoca permisos que el usuario ya dio.</li>
+<li>D: las anomaly detection policies son out of the box: no les pones filtros y su severidad no se cambia.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/app-permission-policy#create-a-new-oauth-app-policy y https://learn.microsoft.com/defender-cloud-apps/policies-cloud-discovery#detect-risky-oauth-apps</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Case study 2 (multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El score de cada app es un promedio ponderado de 4 categorías: General, Security, Compliance y Legal. En <strong>Score metrics</strong> cambias la <strong>importancia</strong> (Ignored a Very High) de campos o categorías, y eso aplica al cálculo de <strong>todas</strong> las apps del tenant.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: Override cambia el score de <strong>una app</strong> sin tocar los pesos. Sirve para Litware Notes, no para "all apps".</li>
+<li>C: Request score update le pide al equipo de Microsoft revisar datos de una app. No cambia tus pesos.</li>
+<li>D: custom apps son para apps que no están en el catálogo.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/risk-score#customize-the-risk-score</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Case study 2 (multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Los <strong>app connectors</strong> usan la <strong>API del proveedor</strong> para dar visibilidad de cuentas, audit trail (actividad de usuarios y admins), governance de cuentas y datos. No pasan por proxy. ServiceNow tiene connector (recomendado con OAuth app tokens).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: CA app control es <strong>reverse proxy</strong> en tiempo real. El requisito dice "without routing users through a proxy".</li>
+<li>C: Cloud Discovery ve <strong>tráfico</strong> (qué apps se usan y cuánto), no las actividades dentro de ServiceNow.</li>
+<li>D: las OAuth app policies aplican a Microsoft 365, Google Workspace y Salesforce, y miran permisos de apps OAuth, no actividad de usuarios.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps#how-app-connectors-scan-and-collect-data</p></div>
+
+<h2>6. Plan de la semana y ritual post-examen</h2>
+<div class="box cyan">
+  <b>Checklist antes de la sesión 4 (Identity governance, 20 a 25% del examen)</b>
+  <ul class="checklist">
+    <li>Leí el mapa y las 12 trampas de M3.</li>
+    <li>Contesté las 40 preguntas de M3 sin ver respuestas y revisé el "por qué las otras no".</li>
+    <li>Anoté las preguntas que fallé para el Kahoot.</li>
+    <li>Hice una vez el practice assessment oficial de Learn, sin estudiar antes.</li>
+    <li>Recibí la guía de M4 y empecé su banco de 40 preguntas.</li>
+  </ul>
+</div>
+<div class="box amber">
+  <b>Si presentas el examen esta semana: llena el debrief el mismo día.</b> Temas sí, preguntas no. Así el cohort acumula señal legítima y nadie arriesga su certificación.
+  <table>
+    <tr><th style="width:30%">Campo</th><th>Qué anotar</th></tr>
+    <tr><td>Resultado</td><td>Pass o no pass y el score por dominio que trae el reporte</td></tr>
+    <tr><td>Dominios que pesaron</td><td>Por sensación: cuál dominó y cuál casi no salió</td></tr>
+    <tr><td>Escenarios que costaron</td><td>Por tema, por ejemplo "AU vs restricted AU", "cross-tenant sync con error de consent"</td></tr>
+    <tr><td>Labs que salieron</td><td>Por tarea, por ejemplo "crear un AU y asignar un rol con scope", nunca pasos exactos</td></tr>
+    <tr><td>Qué hubiera estudiado más</td><td>Libre, en dos líneas</td></tr>
+  </table>
+</div>
+<div class="box"><b>Objetivo de la sesión en vivo, para que sepas qué esperar.</b> <p>El presenter no tiene que recitar menús ni números. Tiene que entender que casi todas las preguntas de M3 se resuelven con cuatro preguntas: <strong>¿quién es la identidad?</strong> (application object o service principal, system o user-assigned, y si vive dentro o fuera de Azure), <strong>¿quién actúa y quién aprueba?</strong> (delegated o application, qué rol puede consentir y qué hace el workflow cuando el usuario no puede), <strong>¿por dónde entra el usuario a la app?</strong> (SAML directo, App Proxy con pre-auth y KCD, y qué settings de la app filtran, esconden o apagan) y <strong>¿qué ve y qué controla Defender for Cloud Apps?</strong> (discovery por tráfico, connectors por API, proxy por Conditional Access). Si el presenter puede tomar cualquier pregunta del banco, señalar las dos o tres palabras que la delatan y explicar con sus palabras por qué cada distractor falla, la sesión cumplió. Los datos finos (3 años del certificado, 200 y 150 grupos, 24 meses del secret, 3 horas del bloqueo con MDE) se quedan en la guía para consulta.</p></div>
+
+</body></html>

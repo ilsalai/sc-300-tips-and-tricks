@@ -1,0 +1,22 @@
+name: Error en el contenido o link roto
+description: Algo cambió en Learn, un link no abre o un dato está mal.
+title: "Error: [archivo] [tema]"
+labels: [contenido]
+body:
+  - type: input
+    id: archivo
+    attributes:
+      label: Archivo y sección
+      placeholder: "content/banco/M2-banco.md, Q29"
+    validations:
+      required: true
+  - type: textarea
+    id: que
+    attributes:
+      label: Qué dice y qué debería decir
+    validations:
+      required: true
+  - type: input
+    id: fuente
+    attributes:
+      label: Link a Learn que lo prueba

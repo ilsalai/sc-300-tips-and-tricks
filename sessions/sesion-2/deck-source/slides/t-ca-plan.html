@@ -1,0 +1,28 @@
+<section id="t-ca-plan" data-transition="fade" style="background:#0F172A; color:#F6F8FB; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:32px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#22D3EE">Trampa 7 · Conditional Access</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Construir CA sin lockout</h2>
+  <div style="background:#1E293B; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#A3E635">"Si nadie dice que no, Entra dice que sí. Para 'solo Finance' necesitas un block, y antes de todo, apaga security defaults."</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px">
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Warning" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <p style="font-size:26px; line-height:1.45; color:#E2E8F0"><b>Security defaults y CA no conviven.</b> Apágalos primero (Conditional Access Administrator basta).</p>
+    </div>
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Lock" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <p style="font-size:26px; line-height:1.45; color:#E2E8F0"><b>Una política de MFA para Finance no bloquea a nadie más.</b> "Solo Finance" necesita una segunda política de block que excluya a Finance y a break-glass.</p>
+    </div>
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Search" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <p style="font-size:26px; line-height:1.45; color:#E2E8F0"><b>What If</b> solo evalúa políticas On o report-only y no ve service dependencies. <b>Report-only</b> no sirve para User Actions.</p>
+    </div>
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Users" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <p style="font-size:26px; line-height:1.45; color:#E2E8F0"><b>Los templates nacen en report-only</b> y solo excluyen a quien los crea. Agrega tus break-glass antes de encender.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#94A3B8">Learn: <a href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#combining-policies"><span style="color:#22D3EE">Combining policies</span></a> · <a href="https://learn.microsoft.com/entra/fundamentals/security-defaults#disabling-security-defaults"><span style="color:#22D3EE">Disabling security defaults</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#94A3B8">10 / 28</p>
+  <aside>Objetivo: la regla de oro de CA como reflejo. Frase clave: "Si nadie dice que no, Entra dice que sí". Contar el escenario de Payroll: CA01 pone MFA a Finance y todos los demás entran sin prompt; la respuesta es una segunda política de block. Delata: "only members of Finance", "users outside the group can access", "security defaults are enabled", "from a template". Practican: Q13, Q14, Q19, Q20, Q26, Q28. Tiempo: 2 minutos.</aside>
+</section>

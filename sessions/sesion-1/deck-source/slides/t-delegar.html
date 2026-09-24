@@ -1,0 +1,23 @@
+<section id="t-delegar" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampas 1 y 2 · Tenant</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Delegar sin regalar el tenant</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"El AU normal recorta al admin; el restricted AU blinda al objeto. El custom role es menú cerrado."</p>
+  </div>
+  <table style="font-size:25px; color:#334155; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px">
+    <tr style="background:#F1F5F9"><th style="width:14%; text-align:left"></th><th style="width:28%; text-align:left; color:#0E7490">Administrative unit</th><th style="width:29%; text-align:left; color:#0E7490">Restricted management AU</th><th style="width:29%; text-align:left; color:#0E7490">Custom role</th></tr>
+    <tr><td style="color:#64748B; font-weight:600">Qué hace</td><td>Limita el scope del admin que recibe el rol</td><td><b style="color:#0F172A">Protege a los objetos</b> que están adentro</td><td>Lista cerrada de permisos: apps, users, groups, devices</td></tr>
+    <tr style="background:#F8FAFC"><td style="color:#64748B; font-weight:600">Quién manda</td><td>Los admins de tenant siguen mandando</td><td>Ni el Global Admin, sin asignación en ese scope</td><td>Se asigna a tenant, a una app registration o a un AU</td></tr>
+    <tr><td style="color:#64748B; font-weight:600">Ojo</td><td>Un grupo no mete a sus miembros. Los AUs no se anidan</td><td>Se elige solo al crear el AU. No acepta M365 groups</td><td><b style="color:#0F172A">P1 por usuario asignado.</b> No se clona un built-in</td></tr>
+  </table>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center">
+    <p style="font-size:24px; color:#64748B">Delata:</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">even Global Administrators</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">only the ExecSupport team</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">only for one app registration</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">clone</p>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management#who-can-modify-objects"><span style="color:#0E7490">Restricted AU: who can modify objects</span></a> · <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/custom-create#create-a-custom-role"><span style="color:#0E7490">Create a custom role</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">7 / 29</p>
+  <aside>Objetivo: que distingan las tres herramientas por lo que protegen, no por su nombre. Frases clave: "El AU recorta al admin, el restricted AU blinda al objeto" y "custom role = menú cerrado, P1 por usuario y cero clonar built-ins". Trampa favorita del examen: meter un grupo al AU y creer que sus miembros entran. Otra: pensar que los AUs se anidan como OUs. Practican: Q2, Q3, Q4, Q6. Tiempo: 1.5 minutos.</aside>
+</section>

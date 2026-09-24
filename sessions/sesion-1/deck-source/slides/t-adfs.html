@@ -1,0 +1,48 @@
+<section id="t-adfs" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:26px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 11 · Hybrid</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">De AD FS a la nube, en orden</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Seamless SSO solo baila con PHS o PTA; con AD FS ni entra a la pista."</p>
+  </div>
+  <div style="display:flex; gap:12px">
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:18px 20px; display:flex; flex-direction:column; gap:6px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:44px; font-weight:800; color:#0E7490; line-height:1.0">1</p>
+      <p style="font-size:25px; line-height:1.35; color:#334155">Habilita <b style="color:#0F172A">PHS</b> en Entra Connect sin cambiar el sign-in method.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:18px 20px; display:flex; flex-direction:column; gap:6px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:44px; font-weight:800; color:#0E7490; line-height:1.0">2</p>
+      <p style="font-size:25px; line-height:1.35; color:#334155"><b style="color:#0F172A">Grupo cloud piloto.</b> Sin dinámicos ni anidados, máximo 10 por feature.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:18px 20px; display:flex; flex-direction:column; gap:6px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:44px; font-weight:800; color:#0E7490; line-height:1.0">3</p>
+      <p style="font-size:25px; line-height:1.35; color:#334155"><b style="color:#0F172A">Staged rollout</b> de PHS o PTA con ese grupo. Prueba, no convierte.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:18px 20px; display:flex; flex-direction:column; gap:6px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:44px; font-weight:800; color:#0E7490; line-height:1.0">4</p>
+      <p style="font-size:25px; line-height:1.35; color:#334155"><b style="color:#0F172A">Cutover</b> del dominio: Update-MgDomain con AuthenticationType Managed.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:18px 20px; display:flex; flex-direction:column; gap:6px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:44px; font-weight:800; color:#0E7490; line-height:1.0">5</p>
+      <p style="font-size:25px; line-height:1.35; color:#334155">Connect Health sin tráfico en AD FS: <b style="color:#0F172A">quita el relying party trust</b>.</p>
+    </div>
+  </div>
+  <div style="background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:22px 32px; display:flex; flex-direction:column; gap:8px">
+    <div style="display:flex; gap:14px; align-items:center">
+      <x-icon name="Key" style="color:#9A3412; width:36px; height:36px"></x-icon>
+      <h3 style="font-size:28px; font-weight:700">Seamless SSO, lo que falla en el examen</h3>
+    </div>
+    <div style="display:flex; gap:36px">
+      <ul style="flex:1; font-size:25px; line-height:1.45; color:#334155">
+        <li>Device domain-joined en la red corporativa.</li>
+        <li>URL <span style="font-family:'JetBrains Mono', 'Courier New', monospace">autologon.microsoftazuread-sso.com</span> en la Intranet zone por GPO (valor 1).</li>
+      </ul>
+      <ul style="flex:1; font-size:25px; line-height:1.45; color:#334155">
+        <li>Key de AZUREADSSOACC con rollover cada 30 días.</li>
+        <li>En Windows 10 o posterior el SSO va por PRT: Seamless SSO es para Windows viejo y navegadores.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication#convert-domains-from-federated-to-managed"><span style="color:#0E7490">Convert domains to managed</span></a> · <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-staged-rollout#unsupported-scenarios"><span style="color:#0E7490">Staged rollout</span></a> · <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sso-quick-start#roll-out-the-feature"><span style="color:#0E7490">Seamless SSO quick start</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">14 / 29</p>
+  <aside>Objetivo: que el orden de la migración quede como secuencia, porque el examen la pregunta en drag and drop. Frase clave: "Staged rollout prueba, no convierte; el cutover es Update-MgDomain". Segunda: "Seamless SSO solo baila con PHS o PTA". Detalle que sí sale: la URL de autologon en Intranet zone por GPO. Practican: Q34, Q38. Tiempo: 1.5 minutos.</aside>
+</section>

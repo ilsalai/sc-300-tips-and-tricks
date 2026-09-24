@@ -1,0 +1,24 @@
+<section id="t-tokens" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:32px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 4 · Tokens y sesiones</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">OAuth no es OATH</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"OAuth es el token, OATH es el código de 6 dígitos. ¿Quieres forzar reauth? Sign-in frequency, no token lifetime."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:10px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:56px; font-weight:800; color:#0E7490; line-height:1.0">2021</p>
+      <p style="font-size:26px; line-height:1.45; color:#334155">Desde el 30 de enero de 2021 el refresh token y el session token lifetime <b>ya no se configuran</b>. MaxAgeMultiFactor se ignora.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:10px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:56px; font-weight:800; color:#0E7490; line-height:1.0">10 min a 24 h</p>
+      <p style="font-size:26px; line-height:1.45; color:#334155">AccessTokenLifetime solo mueve access, ID y SAML tokens. Al vencer, el refresh token renueva <b>en silencio</b>: el usuario no vuelve a escribir nada.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:10px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:56px; font-weight:800; color:#0E7490; line-height:1.0">Sesión</p>
+      <p style="font-size:26px; line-height:1.45; color:#334155">Sign-in frequency fuerza reauth. Persistent browser session exige <b>All resources</b> y le gana al "Stay signed in?". Apaga Remember MFA antes.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/configurable-token-lifetimes#token-lifetime-policies-for-refresh-tokens-and-session-tokens-retired"><span style="color:#0E7490">Token lifetime policies retired</span></a> · <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-session-lifetime#user-sign-in-frequency"><span style="color:#0E7490">Sign-in frequency</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">7 / 28</p>
+  <aside>Objetivo: matar el reflejo de "token lifetime policy" para forzar reautenticación. Frase clave: "OAuth es el token, OATH es el código de 6 dígitos". El outline dice "OAuth 2.0 tokens" pero el método de MFA se llama OATH tokens; cubrimos los dos. Practican: Q5, Q21. Tiempo: 1.5 minutos.</aside>
+</section>

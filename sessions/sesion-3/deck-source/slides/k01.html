@@ -1,0 +1,35 @@
+<section id="k01" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 1 de 10 · Trampa 1 · Banco Q7</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">Graph para una managed identity</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">FuncHR's system-assigned managed identity needs the Graph application permission User.Read.All. How do you grant it?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">A</p>
+        <p style="font-size:26px; color:#334155">App registrations: add it and select Grant admin consent</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">App role assignment from the Graph SP to the identity's SP</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">C</p>
+        <p style="font-size:26px; color:#334155">Reader Azure role on the subscription</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">Enterprise applications: add it on the Permissions page</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">Una managed identity <b>solo tiene service principal</b>, sin application object. Los permisos de Graph se dan <b>directo a su SP</b> con una app role assignment.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>A.</b> La managed identity no aparece en App registrations: no hay API permissions.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>C.</b> Azure RBAC da acceso a recursos de Azure, no a datos de Graph.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> La página Permissions muestra y revisa permisos; no los agrega.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/managed-identities-faq#do-managed-identities-have-a-backing-app-object"><span style="color:#0E7490">Do managed identities have a backing app object?</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">16 / 27</p>
+  <aside>Debrief de 45 segundos. Frase clave: "Una galleta sin molde: la managed identity solo tiene service principal". Delata: "managed identity" y "Microsoft Graph application permission" en la misma pregunta. De paso toca la trampa 4: para dar application permissions de Graph se necesita Privileged Role Administrator. Si muchos eligieron C, es la confusión entre Azure RBAC y permisos de Graph.</aside>
+</section>

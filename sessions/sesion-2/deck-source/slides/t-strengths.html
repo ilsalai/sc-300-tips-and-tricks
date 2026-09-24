@@ -1,0 +1,34 @@
+<section id="t-strengths" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 3 · Authentication strengths y CBA</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">La escalera de métodos</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Phone sign-in es passwordless pero no phishing-resistant, y la TAP solo llega a MFA."</p>
+  </div>
+  <div style="display:flex; gap:28px; align-items:stretch">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <div style="background:#0F172A; color:#F6F8FB; border-radius:18px; padding:22px 30px; display:flex; gap:24px; align-items:center">
+        <p style="font-family:'Manrope', Arial, sans-serif; font-size:30px; font-weight:800; color:#22D3EE; width:330px">Phishing-resistant MFA</p>
+        <p style="font-size:26px; line-height:1.35">Passkeys FIDO2, Windows Hello for Business, platform credential, CBA multifactor.</p>
+      </div>
+      <div style="background:#0E7490; color:#F6F8FB; border-radius:18px; padding:22px 30px; display:flex; gap:24px; align-items:center">
+        <p style="font-family:'Manrope', Arial, sans-serif; font-size:30px; font-weight:800; width:330px">Passwordless MFA</p>
+        <p style="font-size:26px; line-height:1.35">Todo lo anterior más Authenticator phone sign-in.</p>
+      </div>
+      <div style="background:#E2E8F0; color:#0F172A; border-radius:18px; padding:22px 30px; display:flex; gap:24px; align-items:center">
+        <p style="font-family:'Manrope', Arial, sans-serif; font-size:30px; font-weight:800; width:330px">MFA</p>
+        <p style="font-size:26px; line-height:1.35">Todo lo anterior más Authenticator push, SMS, voz, OATH tokens y TAP.</p>
+      </div>
+    </div>
+    <div style="width:520px; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#0E7490">CBA en tres líneas</h3>
+      <ul style="font-size:25px; line-height:1.45; color:#334155">
+        <li>La CA va al trust store con CRL por HTTP. Sin CRL no hay revocación.</li>
+        <li>Policy OID le gana al issuer. Default: single-factor.</li>
+        <li>No mezcles Require MFA con Require authentication strength en la misma política.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths#built-in-authentication-strengths"><span style="color:#0E7490">Built-in authentication strengths</span></a> · Delata: "phishing-resistant", "policy OID", "revoked certificate"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">6 / 28</p>
+  <aside>Objetivo: que vean las strengths como escalera incluyente: cada escalón contiene al de arriba. Frase clave: "Phone sign-in es passwordless pero no phishing-resistant, y la TAP solo llega a MFA". CBA: policy OID le gana al issuer, y sin CRL no hay revocación. Practican: Q2, Q16, Q27. Tiempo: 1.5 minutos.</aside>
+</section>

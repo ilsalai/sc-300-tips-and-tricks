@@ -1,0 +1,35 @@
+<section id="k03" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 3 de 10 · Trampa 3 · Banco Q24</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">GitHub sin secretos</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">GitHub Actions deploys to Azure via app registration Deployer. No secrets or certs stored in GitHub. Which credential?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">A</p>
+        <p style="font-size:26px; color:#334155">A client secret with a 24-month expiration</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">A certificate, private key kept as a GitHub encrypted secret</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">A federated credential for GitHub Actions deploying Azure resources</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">A system-assigned managed identity on the GitHub-hosted runner</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">La <b>federated credential</b> deja que GitHub Actions cambie su token por uno de Microsoft Entra <b>sin guardar secretos</b>.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>A.</b> Es un secreto, y 24 meses es el máximo permitido.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> El cert es mejor, pero su private key en GitHub rompe la regla.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> Un runner de GitHub no es recurso de Azure: no tiene managed identity.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/how-to-add-credentials#add-a-credential-to-your-application"><span style="color:#0E7490">Add a credential to your application</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">18 / 27</p>
+  <aside>Debrief de 45 segundos. Frase clave: "Managed identity no sale de Azure (salvo con Arc). Afuera: service principal con cert o federated". Delata: "GitHub Actions" y "no secrets stored". Si muchos eligieron D, repetir que el runner de GitHub no es un recurso de Azure.</aside>
+</section>

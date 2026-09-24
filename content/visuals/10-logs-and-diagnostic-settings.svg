@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Entra logs and diagnostic settings</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Entra logs y diagnostic settings</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Qué logs existen y cómo enviarlos fuera de Entra para retener y analizar</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- Entra logs -->
+<rect x="48" y="124" width="372" height="564" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="72" y="164" font-size="24" font-weight="700" fill="#F8FAFC">Entra logs</text>
+<text x="72" y="208" font-size="22" font-weight="700" fill="#7DD3FC">Sign-in logs</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="88" y="240">• Interactive</text>
+<text x="88" y="270">• Non-interactive</text>
+<text x="88" y="300">• Service principal</text>
+<text x="88" y="330">• Managed identity</text>
+</g>
+<text x="72" y="376" font-size="22" font-weight="700" fill="#7DD3FC">Audit logs</text>
+<text x="88" y="406" font-size="20" fill="#94A3B8">Cambios en el directorio</text>
+<text x="72" y="450" font-size="22" font-weight="700" fill="#7DD3FC">Provisioning logs</text>
+<text x="88" y="480" font-size="20" fill="#94A3B8">Apps (SCIM), HR, Cloud Sync</text>
+<text x="72" y="524" font-size="22" font-weight="700" fill="#7DD3FC">Risky users</text>
+<text x="88" y="554" font-size="20" fill="#94A3B8">+ risk detections</text>
+<rect x="64" y="584" width="340" height="88" rx="10" fill="#FBBF24" fill-opacity="0.12" stroke="#FBBF24" stroke-width="1.5"/>
+<text x="84" y="618" font-size="20" font-weight="700" fill="#FBBF24">Retención por defecto</text>
+<text x="84" y="650" font-size="20" fill="#F8FAFC">7 días Free, 30 días P1/P2</text>
+
+<!-- Diagnostic settings -->
+<rect x="468" y="266" width="232" height="150" rx="12" fill="#22D3EE" fill-opacity="0.16" stroke="#22D3EE" stroke-width="2.5"/>
+<g text-anchor="middle">
+<text x="584" y="314" font-size="24" font-weight="700" fill="#F8FAFC">Diagnostic</text>
+<text x="584" y="342" font-size="24" font-weight="700" fill="#F8FAFC">settings</text>
+<text x="584" y="380" font-size="20" fill="#7DD3FC">Categorías + destino</text>
+</g>
+<rect x="468" y="440" width="232" height="108" rx="12" fill="#132B4F" stroke="#94A3B8" stroke-opacity="0.5" stroke-width="1.5"/>
+<g font-size="20" fill="#94A3B8">
+<text x="488" y="474">Export de sign-in</text>
+<text x="488" y="502">logs requiere</text>
+<text x="488" y="530" fill="#F8FAFC">Entra ID P1 o P2</text>
+</g>
+
+<!-- arrows -->
+<g stroke="#22D3EE" stroke-width="3" fill="none">
+<path d="M422 341H460" marker-end="url(#arr)"/>
+<path d="M702 341H728"/>
+<path d="M728 341V191H748" marker-end="url(#arr)"/>
+<path d="M728 341H748" marker-end="url(#arr)"/>
+<path d="M728 341V491H748" marker-end="url(#arr)"/>
+</g>
+
+<!-- destinations -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5">
+<rect x="756" y="124" width="476" height="134" rx="12"/>
+<rect x="756" y="274" width="476" height="134" rx="12"/>
+<rect x="756" y="424" width="476" height="134" rx="12"/>
+</g>
+<g fill="none" stroke="#7DD3FC" stroke-width="1.5">
+<rect x="1112" y="140" width="96" height="32" rx="16"/>
+<rect x="1112" y="290" width="96" height="32" rx="16"/>
+<rect x="1112" y="440" width="96" height="32" rx="16"/>
+</g>
+<g font-size="20" fill="#7DD3FC" text-anchor="middle">
+<text x="1160" y="163">Query</text>
+<text x="1160" y="313">Archive</text>
+<text x="1160" y="463">Stream</text>
+</g>
+<g font-size="22" font-weight="700" fill="#F8FAFC">
+<text x="780" y="164">Log Analytics workspace</text>
+<text x="780" y="314">Storage account</text>
+<text x="780" y="464">Event Hub</text>
+</g>
+<g font-size="20" fill="#F8FAFC">
+<text x="780" y="200">KQL, workbooks y alerts</text>
+<text x="780" y="350">Retención larga y archivo</text>
+<text x="780" y="500">Streaming a SIEM y herramientas externas</text>
+</g>
+<g font-size="20" fill="#94A3B8">
+<text x="780" y="232">Base de Microsoft Sentinel</text>
+<text x="780" y="382">Bajo costo, compliance</text>
+<text x="780" y="532">Ej.: Splunk, QRadar, otros</text>
+</g>
+
+<!-- KQL -->
+<rect x="468" y="576" width="764" height="112" rx="12" fill="#07162B" stroke="#22D3EE" stroke-opacity="0.45" stroke-width="1.5"/>
+<g font-family="Consolas, Menlo, monospace" font-size="20">
+<text x="492" y="614" fill="#22D3EE">SigninLogs</text>
+<text x="492" y="644" fill="#F8FAFC"><tspan fill="#7DD3FC">| where</tspan> ResultType != 0</text>
+<text x="492" y="674" fill="#F8FAFC"><tspan fill="#7DD3FC">| summarize</tspan> count() by UserPrincipalName</text>
+</g>
+<rect x="1140" y="592" width="68" height="32" rx="16" fill="#22D3EE"/>
+<text x="1174" y="615" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">KQL</text>
+<text x="1208" y="652" font-size="20" fill="#94A3B8" text-anchor="end">Fallos de sign-in</text>
+<text x="1208" y="678" font-size="20" fill="#94A3B8" text-anchor="end">por usuario</text>
+</svg>

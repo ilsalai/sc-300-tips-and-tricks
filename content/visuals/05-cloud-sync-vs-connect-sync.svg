@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Connect Sync vs Cloud Sync</title>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Connect Sync vs Cloud Sync</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Microsoft Entra Connect Sync vs Microsoft Entra Cloud Sync: diferencias clave</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- header -->
+<rect x="48" y="124" width="1184" height="52" rx="12" fill="#22D3EE" fill-opacity="0.12"/>
+<text x="68" y="158" font-size="20" font-weight="700" fill="#94A3B8">Feature</text>
+<text x="348" y="159" font-size="24" font-weight="700" fill="#22D3EE">Entra Connect Sync</text>
+<text x="800" y="159" font-size="24" font-weight="700" fill="#7DD3FC">Entra Cloud Sync</text>
+
+<!-- rows -->
+<g fill="#132B4F">
+<rect x="48" y="184" width="1184" height="54" rx="10"/>
+<rect x="48" y="242" width="1184" height="54" rx="10"/>
+<rect x="48" y="300" width="1184" height="54" rx="10"/>
+<rect x="48" y="358" width="1184" height="54" rx="10"/>
+<rect x="48" y="416" width="1184" height="54" rx="10"/>
+<rect x="48" y="474" width="1184" height="54" rx="10"/>
+<rect x="48" y="532" width="1184" height="54" rx="10"/>
+</g>
+<g stroke="#0B1F3A" stroke-width="3">
+<line x1="328" y1="124" x2="328" y2="586"/>
+<line x1="780" y1="124" x2="780" y2="586"/>
+</g>
+
+<g font-size="20" font-weight="600" fill="#94A3B8">
+<text x="68" y="218">Arquitectura</text>
+<text x="68" y="276">Alta disponibilidad</text>
+<text x="68" y="334">Multi-forest</text>
+<text x="68" y="392">Sync rules</text>
+<text x="68" y="450">Devices</text>
+<text x="68" y="508">PTA / AD FS</text>
+<text x="68" y="566">Escala</text>
+</g>
+
+<g font-size="20" fill="#F8FAFC">
+<text x="348" y="218">Server-based: Windows Server + SQL</text>
+<text x="348" y="276">Staging mode server (pasivo)</text>
+<text x="348" y="334">Connected forests (line of sight)</text>
+<text x="348" y="392">Advanced sync rules (Rules Editor)</text>
+<text x="348" y="450">Device writeback, hybrid join sync</text>
+<text x="348" y="508">Configura PTA y federación</text>
+<text x="348" y="566">Directorios y objetos grandes</text>
+</g>
+
+<g font-size="20" fill="#F8FAFC">
+<text x="800" y="218">Lightweight provisioning agents</text>
+<text x="800" y="276">Multiple agents activos (HA)</text>
+<text x="800" y="334">Disconnected forests soportados</text>
+<text x="800" y="392">Scoping y mappings más simples</text>
+<text x="800" y="450" fill="#FBBF24">Limitado: consulta la tabla oficial</text>
+<text x="800" y="508">No configura PTA ni AD FS</text>
+<text x="800" y="566" fill="#FBBF24">Límites: consulta la tabla oficial</text>
+</g>
+
+<!-- footer -->
+<rect x="48" y="604" width="1184" height="84" rx="12" fill="#22D3EE" fill-opacity="0.08" stroke="#22D3EE" stroke-opacity="0.6" stroke-width="2"/>
+<text x="72" y="638" font-size="20" fill="#F8FAFC">Pueden coexistir en el mismo tenant. Features y límites exactos: consulta la tabla oficial</text>
+<text x="72" y="670" font-size="20" font-weight="600" fill="#22D3EE" text-decoration="underline">learn.microsoft.com/entra/identity/hybrid/cloud-sync/what-is-cloud-sync</text>
+</svg>

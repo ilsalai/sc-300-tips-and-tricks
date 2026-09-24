@@ -1,0 +1,25 @@
+<section id="t-gsa" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 12 · Global Secure Access</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">GSA en un dibujo</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Microsoft primero, luego Private, luego Internet. Private Access mata la VPN, compliant network mata el token robado."</p>
+  </div>
+  <div style="display:flex; gap:20px">
+    <div style="flex:1; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 32px; display:flex; flex-direction:column; gap:10px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#22D3EE">1 · Microsoft traffic</p>
+      <p style="font-size:26px; line-height:1.45; color:#E2E8F0">Con P1. Compliant network check, universal tenant restrictions (TRv2) y source IP restoration.</p>
+    </div>
+    <div style="flex:1; background:#0E7490; color:#F6F8FB; border-radius:24px; padding:30px 32px; display:flex; flex-direction:column; gap:10px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#A3E635">2 · Private Access</p>
+      <p style="font-size:26px; line-height:1.45; color:#ECFEFF">Reemplaza la VPN. Connector, Quick Access, asignar sin nested groups. Per-app access cuando una app necesita otra CA.</p>
+    </div>
+    <div style="flex:1; background:#22D3EE; color:#0F172A; border-radius:24px; padding:30px 32px; display:flex; flex-direction:column; gap:10px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0F172A">3 · Internet Access</p>
+      <p style="font-size:26px; line-height:1.45; color:#0F172A">Web filtering policy, security profile y CA con "All internet resources with Global Secure Access".</p>
+    </div>
+  </div>
+  <p style="font-size:25px; line-height:1.45; color:#475569">Cliente Windows: joined, hybrid o registered (registered solo Private Access). Sin AVD multi-session. Apagar QUIC y DNS over HTTPS.</p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/global-secure-access/concept-traffic-forwarding#traffic-forwarding"><span style="color:#0E7490">Traffic forwarding profiles</span></a> · <a href="https://learn.microsoft.com/entra/global-secure-access/concept-private-access#global-secure-access-app"><span style="color:#0E7490">Per-app access</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">15 / 28</p>
+  <aside>Objetivo: que vean los tres perfiles como capas en orden y sepan qué agrega cada uno. Frase clave: "Microsoft primero, luego Private, luego Internet". Delata: "replace the VPN", "different Conditional Access for one app", "stolen tokens replayed", "sign in to other tenants". Practican: Q39 a Q44. Después de este slide, abrir Kahoot. Tiempo: 2 minutos.</aside>
+</section>

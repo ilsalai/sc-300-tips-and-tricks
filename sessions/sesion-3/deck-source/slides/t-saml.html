@@ -1,0 +1,38 @@
+<section id="t-saml" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 8 · SaaS apps con SAML</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">SAML sin sustos</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Entity ID dice quién eres, Reply URL dice a dónde mando el token. El cert no se edita: se crea otro."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="width:760px; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:30px; font-weight:700; color:#0E7490">Basic SAML Configuration</h3>
+      <ul style="font-size:26px; line-height:1.45; color:#334155">
+        <li><b>Identifier (Entity ID)</b>: obligatorio.</li>
+        <li><b>Reply URL (ACS)</b>: obligatorio, ahí llega el token.</li>
+        <li><b>Sign on URL</b>: solo para SP-initiated.</li>
+        <li>Login URL y Microsoft Entra Identifier de "Set up" van al vendor.</li>
+      </ul>
+    </div>
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:30px; font-weight:700; color:#0E7490">Rollover sin downtime</h3>
+      <ol style="font-size:26px; line-height:1.45; color:#334155">
+        <li>Nuevo cert con fecha traslapada.</li>
+        <li>Descargarlo y subirlo a la app.</li>
+        <li><b>Make certificate active.</b></li>
+        <li>Probar el sign-in.</li>
+      </ol>
+      <p style="font-size:25px; line-height:1.45; color:#475569">Autogenerado: 3 años. Avisos a 60, 30 y 7 días.</p>
+    </div>
+  </div>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center">
+    <p style="font-size:24px; color:#64748B">Delata:</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">Assertion Consumer Service</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">SP-initiated</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">no downtime</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">change the expiration date</p>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/add-application-portal-setup-sso#configure-single-sign-on-in-the-tenant"><span style="color:#0E7490">Configure SAML SSO</span></a> · <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/tutorial-manage-certificates-for-federated-single-sign-on#renew-a-certificate-that-is-set-to-expire-soon"><span style="color:#0E7490">Renew a certificate</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">10 / 27</p>
+  <aside>Objetivo: tres URLs y una línea de tiempo. Frase clave: "Entity ID dice quién eres, Reply URL dice a dónde mando el token. El cert no se edita: se crea otro". Trampa favorita: poner en la app los valores de la sección "Set up"; esos son de Entra y van del lado del vendor. El certificado autogenerado dura 3 años y Entra avisa a los 60, 30 y 7 días, hasta 5 correos. La fecha de un certificado guardado no se cambia, y borrar el activo antes de tener el nuevo en la app corta el SSO. Delata: "Assertion Consumer Service", "Entity ID", "SP-initiated", "certificate expires in", "no downtime", "notification email", "change the expiration date". Practican: Q13, Q15. Tiempo: 1.5 minutos.</aside>
+</section>

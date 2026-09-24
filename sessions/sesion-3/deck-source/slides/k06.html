@@ -1,0 +1,35 @@
+<section id="k06" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 6 de 10 · Trampa 7 · Banco Q12</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">expenses.contoso.com con App Proxy</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">An App Proxy app must use https://expenses.contoso.com. The domain is already verified. What else do you need?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">A</p>
+        <p style="font-size:26px; color:#334155">.cer certificate and an A record to the connector's public IP</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">Only a TXT record; Microsoft provides the certificate</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">PFX with the private key and a CNAME to the msappproxy.net address</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">Certificate on the connector server and inbound TCP 443 open</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">Custom domain = certificado <b>PFX con private key</b>, subido en la página Application proxy de la app, más un <b>CNAME</b> al dominio msappproxy.net.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>A.</b> Un .cer no trae private key, y no se apunta a IPs de servers.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> El TXT es para verificar el dominio, paso que ya está hecho.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> El connector no recibe tráfico de internet: todo es outbound.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-custom-domain#certificates-for-custom-domains"><span style="color:#0E7490">Certificates for custom domains</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">21 / 27</p>
+  <aside>Debrief de 30 segundos. Frase clave: "Custom domain es PFX con private key más CNAME; el connector solo sale, nunca entra". Delata: "custom domain" y "expenses.contoso.com". El certificado se sube una vez por dominio y se reusa en apps nuevas.</aside>
+</section>

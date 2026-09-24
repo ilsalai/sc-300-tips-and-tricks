@@ -1,0 +1,38 @@
+<section id="lab19-21" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Labs 19 + 21 · M3 · App registrations y admin consent</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Registrar, exponer una API, consentir</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> Entra ID &gt; App registrations · Enterprise apps &gt; Security &gt; Permissions</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li><b>New registration</b>: Demo app, Web https://localhost</li>
+        <li>Certificates &amp; secrets: copia el <b>Value</b> ya</li>
+        <li>Expose an API: <b>api://DemoAppAPI</b> y dos scopes</li>
+        <li>Write.All: Who can consent <b>Admins only</b></li>
+        <li>Custom role con permisos de credentials (pide P1)</li>
+        <li>Enterprise apps &gt; Permissions &gt; <b>Grant admin consent</b></li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">El <b>Value</b> del secret se ve una sola vez.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Grant desde App registrations puede <b>revocar</b> lo previo.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/f0cdb3e9e08892dd60acb0edbcb87bf3" alt="Pane Expose an API con Application ID URI y Add a scope" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/0a745b99f6abeb114939a0287024a33a" alt="Enterprise app, Permissions, con el botón Grant admin consent" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Labs oficiales: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_19_RegisterAnApplication.html"><span style="color:#0E7490">Lab 19 · Register an application</span></a> · <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_21_GrantTenantWideAdminConsentToAnApplication.html"><span style="color:#0E7490">Lab 21 · Admin consent</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">13 / 19</p>
+  <aside>Objetivo: el ciclo de una app, de registrarla a darle consent a nivel tenant. Estado final: Demo app con redirect URI Web https://localhost, client secret SC300 lab secret, Application ID URI api://DemoAppAPI con Employees.Read.All (Admins and users) y Employees.Write.All (Admins only), el custom role My custom app role, y admin consent otorgado. Frase clave: "Un permiso que solo un admin puede aprobar es Who can consent: Admins only". Trampa favorita: el Value del secret solo se ve una vez; y Grant admin consent desde App registrations puede revocar permisos dados antes a nivel tenant. Quién consiente: Privileged Role Administrator para todo; Cloud Application Administrator y Application Administrator para todo menos app roles de Microsoft Graph. Custom roles piden P1. Practican: M3 Q16, Q17, Q21, Q23, Q25, Q27, Q30. Tiempo: 2 minutos.</aside>
+</section>

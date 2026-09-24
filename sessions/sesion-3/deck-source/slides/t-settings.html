@@ -1,0 +1,28 @@
+<section id="t-settings" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 9 · Settings de la app, grupos y collections</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Esconder, filtrar o apagar</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Visible esconde, Assignment required filtra, Enabled apaga. Y los grupos anidados no cuentan."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 32px; display:flex; flex-direction:column; gap:10px">
+      <x-icon name="Search" style="color:#0E7490; width:36px; height:36px"></x-icon>
+      <h3 style="font-size:28px; font-weight:700">Visible to users: No</h3>
+      <p style="font-size:26px; line-height:1.45; color:#334155"><b>Esconde</b> la app en My Apps. El acceso sigue igual.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 32px; display:flex; flex-direction:column; gap:10px">
+      <x-icon name="Users" style="color:#0E7490; width:36px; height:36px"></x-icon>
+      <h3 style="font-size:28px; font-weight:700">Assignment required: Yes</h3>
+      <p style="font-size:26px; line-height:1.45; color:#334155"><b>Filtra</b>: solo los asignados obtienen token.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 32px; display:flex; flex-direction:column; gap:10px">
+      <x-icon name="Lock" style="color:#0E7490; width:36px; height:36px"></x-icon>
+      <h3 style="font-size:28px; font-weight:700">Enabled for users to sign in: No</h3>
+      <p style="font-size:26px; line-height:1.45; color:#334155"><b>Apaga</b>: no hay tokens para nadie, sin perder la configuración.</p>
+    </div>
+  </div>
+  <p style="font-size:25px; line-height:1.45; color:#475569"><b>Grupos:</b> asignar pide P1 o P2 y no cascada a grupos anidados. <b>Collections</b> (App launchers, P1 o P2): una pestaña en My Apps, solo con apps ya asignadas.</p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/application-properties#assignment-required"><span style="color:#0E7490">Assignment required</span></a> · Delata: "nested group", "separate tab in My Apps"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">11 / 27</p>
+  <aside>Objetivo: tres switches de la app que el examen mezcla a propósito. Frase clave: "Visible esconde, Assignment required filtra, Enabled apaga. Y los grupos anidados no cuentan". Estos son settings de app; Users can register applications y consent son de tenant. Caso Fabrikam (Q19 y Q20): Finance-Contractors, anidado en Finance, no entra a Expensely hasta que lo asignas directo; y la pestaña de finanzas en My Apps es una collection que solo muestra apps ya asignadas. Delata: "nested group", "not assigned to the app", "separate tab in My Apps", "hide the app", "stop all sign-ins without deleting", "only members of". Practican: Q14, Q19, Q20. Tiempo: 1.5 minutos.</aside>
+</section>

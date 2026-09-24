@@ -1,0 +1,23 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-24T21:00:00Z"},
+  "title": "SC-300 Tips and Tricks · Sesión 4 · Identity governance",
+  "order": [
+    "cover", "agenda", "m4-overview", "three",
+    "t-roles", "t-policy", "t-approval", "t-external", "t-reviews", "t-autoapply", "t-pim", "t-pim-azure", "t-breakglass", "t-logs",
+    "kahoot-intro", "k01", "k02", "k03", "k04", "k05", "k06", "k07", "k08", "k09", "k10",
+    "week", "resources"
+  ],
+  "sections": {
+    "intro": {"description": "Agenda de 45 minutos, el mapa del módulo 4 y las tres preguntas", "start": "cover"},
+    "m4": {"description": "Módulo 4, Identity governance: las 12 trampas en 10 slides", "start": "t-roles"},
+    "kahoot": {"description": "Kahoot de 10 preguntas y el debrief con el porqué de cada distractor", "start": "kahoot-intro"},
+    "cierre": {"description": "Tarea para la sesión 5 y recursos con links", "start": "week"}
+  },
+  "faces": {
+    "manrope": {"family": "Manrope", "href": "https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap"},
+    "inter": {"family": "Inter", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

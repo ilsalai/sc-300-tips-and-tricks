@@ -1,0 +1,1687 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>SC-300 Tips and Tricks · Guía M4 Identity governance</title><style>
+@page { size: A4; margin: 16mm 14mm; }
+* { box-sizing: border-box }
+body { font-family: "Segoe UI", Inter, Arial, sans-serif; color: #1E293B; line-height: 1.5; font-size: 10.5pt; margin: 0 }
+a { color: #0E7490; text-decoration: none; word-break: break-all }
+h1 { font-size: 30pt; color: #0B1F3A; margin: 0 0 6pt; line-height: 1.1 }
+h2 { font-size: 20pt; color: #0F172A; margin: 30pt 0 10pt; padding-bottom: 6pt; border-bottom: 3px solid #22D3EE; page-break-after: avoid; letter-spacing: -0.3px }
+h3.sub { font-size: 13.5pt; color: #0E7490; margin: 18pt 0 6pt; page-break-after: avoid }
+h4 { margin: 0 0 4pt; color: #0B1F3A }
+p { margin: 4pt 0 }
+ul, ol { margin: 4pt 0 4pt 18pt; padding: 0 }
+li { margin: 2pt 0 }
+code { font-family: Consolas, "JetBrains Mono", Menlo, monospace; font-size: 9pt; background: #F1F5F9; padding: 1px 4px; border-radius: 3px }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 9.5pt }
+th, td { border: 1px solid #CBD5E1; padding: 4pt 6pt; vertical-align: top; text-align: left }
+th { background: #0B1F3A; color: #fff }
+.cover { background: #0B1F3A; color: #F1F5F9; padding: 36pt 32pt; border-radius: 14pt; margin-bottom: 18pt; page-break-after: always; min-height: 240mm; display: flex; flex-direction: column; justify-content: space-between }
+.cover h1 { color: #fff; font-size: 40pt }
+.cover .eyebrow { color: #22D3EE; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; font-size: 10pt }
+.cover .big { font-size: 15pt; color: #BFD8F0 }
+.cover .meta { color: #94A3B8; font-size: 10pt }
+.pill { display: inline-block; background: #22D3EE; color: #0B1F3A; font-weight: 700; padding: 3pt 10pt; border-radius: 999px; font-size: 9pt; margin-right: 6pt }
+.box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 8pt 0; page-break-inside: avoid }
+.box.cyan { border-color: #22D3EE; background: #ECFEFF }
+.box.amber { border-color: #FBBF24; background: #FFFBEB }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt }
+.grid3 .box { margin: 0 }
+.mod { font-size: 9.5pt; color: #475569; margin-bottom: 8pt }
+.skill { border: 1px solid #E2E8F0; border-radius: 8pt; padding: 8pt 12pt; margin: 6pt 0; page-break-inside: avoid }
+.skill-h { font-weight: 700; color: #0B1F3A; margin-bottom: 3pt }
+.tag { display: inline-block; background: #0B1F3A; color: #22D3EE; font-size: 8pt; padding: 1pt 6pt; border-radius: 4px; margin-right: 6pt; letter-spacing: 1px }
+.punto { margin: 3pt 0 }
+.main { font-size: 9.5pt; color: #475569 }
+.deep { font-size: 9.5pt; margin-left: 16pt }
+.anchor { color: #94A3B8 }
+.trap { border: 1.5px solid #E2E8F0; border-radius: 12pt; padding: 12pt 16pt; margin: 10pt 0; page-break-inside: avoid; background: #fff }
+.trap-h { font-weight: 700; font-size: 12.5pt; color: #0B1F3A }
+.num { display: inline-block; width: 22pt; height: 22pt; line-height: 22pt; text-align: center; background: #0B1F3A; color: #22D3EE; border-radius: 50%; font-size: 10.5pt; margin-right: 6pt }
+.frase { font-size: 12.5pt; color: #9A3412; font-weight: 700; margin: 6pt 0; background: #FFF1E6; padding: 6pt 10pt; border-radius: 8pt }
+.delata { font-size: 9.5pt }
+.meta { font-size: 9pt; color: #64748B }
+.visual { margin: 10pt 0 14pt; page-break-inside: avoid }
+.visual svg { width: 100%; height: auto; border-radius: 10pt }
+.visual p { font-size: 9.5pt; color: #475569; margin-top: 4pt }
+.case { background: #FFFBEB; border: 1px solid #FBBF24; border-radius: 8pt; padding: 8pt 12pt; margin: 8pt 0; page-break-inside: avoid }
+.q, .a { border: 1.5px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 9pt 0; page-break-inside: avoid }
+.a { background: #F8FAFC }
+.q-h { display: flex; gap: 6pt; align-items: center; margin-bottom: 4pt; flex-wrap: wrap }
+.qid { font-weight: 800; color: #0B1F3A; font-size: 12pt }
+.fmt { background: #ECFEFF; color: #0E7490; font-size: 8.5pt; padding: 1pt 7pt; border-radius: 999px; font-weight: 600 }
+.skill-tag { color: #64748B; font-size: 8.5pt }
+.checklist li { list-style: none; margin: 4pt 0 }
+.checklist li:before { content: "\2610\00a0\00a0"; color: #0E7490 }
+.toc { columns: 2; font-size: 10pt }
+.toc li { margin: 2pt 0 }
+</style></head><body>
+
+<div class="cover">
+  <div>
+    <p class="eyebrow">SC-300 Tips and Tricks · SC-300 · Sesión 4 de 5</p>
+    <h1>Guía del estudiante<br>Módulo 4: Identity governance</h1>
+    <p class="big">Plan and automate identity governance. 20 a 25% del examen.</p>
+    <p class="big">Modelo invertido: <b>esta guía se estudia antes de la sesión</b>. En vivo cazamos trampas y jugamos Kahoot con el porqué de cada distractor.</p>
+  </div>
+  <div>
+    <p class="meta"><span class="pill">Sin dumps</span> Todo el contenido es original y está anclado a Microsoft Learn con links directos a los párrafos. Skills outline vigente: 27 de abril de 2026.</p>
+    <p class="meta">Contiene: mapa de skills con deep links · 12 trampas con frase clave · 3 visuales · 40 preguntas estilo examen con explicación por distractor · plan de la semana y ritual post-examen.</p>
+  </div>
+</div>
+
+
+<h2>0. Cómo usar esta guía (20 minutos de lectura, 90 de práctica)</h2>
+<div class="grid3">
+  <div class="box cyan"><b>1. Lee el mapa</b><p>Sección 1. Un punto clave por skill del outline. Si algo no te suena, abre el deep link: cae justo en el párrafo que el examen pregunta.</p></div>
+  <div class="box cyan"><b>2. Aprende las 12 trampas</b><p>Sección 2. Cada una trae la frase que la resume, la regla, y las palabras de la pregunta que la delatan.</p></div>
+  <div class="box cyan"><b>3. Contesta el banco sin ver respuestas</b><p>Sección 4. Anota tus respuestas. Luego revisa la sección 5 y lee el "por qué las otras no": ahí está el valor.</p></div>
+</div>
+<div class="box amber">
+  <b>Las preguntas que resuelven casi todo M4: Quién decide, cuándo pasa y dónde queda el dato.</b> Cuando no sepas la respuesta, pregúntate:
+  <ol><li><b>¿Quién decide?</b> Catalog owner, access package manager, approver, reviewer, PIM approver: cada rol decide una cosa y ninguna otra.</li><li><b>¿Cuándo pasa?</b> Al pedir, al aprobar, al expirar, al activar, cuando nadie responde: el examen pregunta por el momento exacto.</li><li><b>¿Dónde queda el dato?</b> Sign-in, audit o provisioning logs; 7 o 30 días; Log Analytics, storage o Event Hub; SigninLogs o AuditLogs.</li></ol>
+  Con eso eliminas dos distractores en la mayoría de las preguntas del módulo.
+</div>
+<div class="box">
+  <b>Datos duros del examen.</b> 700 de 1000 para pasar (escala ajustada, no 70% de aciertos). Practice assessment oficial gratis:
+  <a href="https://learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment?assessment-type=practice&amp;assessmentId=60">learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment</a>.
+  Exam sandbox: <a href="https://aka.ms/examdemo">aka.ms/examdemo</a>. Study guide oficial:
+  <a href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300">learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300</a>.
+</div>
+
+<h2>1. Mapa del módulo: skills, punto clave y deep links</h2>
+<p class="meta">Cada fila corresponde a un bullet del skills outline oficial. El punto clave es lo que el examen realmente mide; los deep links caen en el párrafo exacto de Learn.</p>
+<h3 class="sub">Subdominio 1: Plan and implement entitlement management</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/plan-implement-entitlement-management/">plan-implement-entitlement-management</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Plan entitlements</div>
+  <p class="punto">Access packages sirven para acceso <strong>con tiempo límite, con aprobación, delegado al negocio o para externos</strong> (B2B). No reemplazan a los grupos dinámicos ni a group-based licensing para el acceso base. Licencia: ID Governance o Entra Suite.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-overview">entra/id-governance/entitlement-management-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-overview#when-should-i-use-access-packages">entitlement-management-overview <span class="anchor">#when-should-i-use-access-packages</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-overview#how-do-i-delegate-access">entitlement-management-overview <span class="anchor">#how-do-i-delegate-access</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-overview#license-requirements">entitlement-management-overview <span class="anchor">#license-requirements</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create and configure catalogs</div>
+  <p class="punto">El catalog contiene recursos y access packages. Catalog creator crea y queda como primer catalog owner. Para agregar un recurso hay que ser <strong>catalog owner y además tener permiso sobre el recurso</strong> (por ejemplo, ser owner del grupo). Identity Governance Administrator solo agrega apps. "Enabled for external users" controla el self-service de externos.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-catalog-create">entra/id-governance/entitlement-management-catalog-create</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-delegate#entitlement-management-roles">entitlement-management-delegate <span class="anchor">#entitlement-management-roles</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-delegate#required-roles-to-add-resources-to-a-catalog">entitlement-management-delegate <span class="anchor">#required-roles-to-add-resources-to-a-catalog</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-catalog-create#add-resources-to-a-catalog">entitlement-management-catalog-create <span class="anchor">#add-resources-to-a-catalog</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create and configure access packages</div>
+  <p class="punto">Un access package tiene resource roles y al menos una policy. <strong>Una sola policy no mezcla internos y externos</strong>: se necesitan dos. Lifecycle: expira en fecha, en días (0 a 3660), en horas o nunca. Con extensión, el usuario recibe correo 14 días y 1 día antes. La access review se configura dentro de la policy.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-create">entra/id-governance/entitlement-management-access-package-create</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-request-policy#choose-between-one-or-multiple-policies">entitlement-management-access-package-request-policy <span class="anchor">#choose-between-one-or-multiple-policies</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-request-policy#for-users-not-in-your-directory">entitlement-management-access-package-request-policy <span class="anchor">#for-users-not-in-your-directory</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-lifecycle-policy#specify-a-lifecycle">entitlement-management-access-package-lifecycle-policy <span class="anchor">#specify-a-lifecycle</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manage access requests</div>
+  <p class="punto">Aprobación de 1 a 3 stages. En cada stage basta <strong>un</strong> approver. Si nadie decide a tiempo, la solicitud expira (se deniega) y hay que pedir de nuevo. Alternate approvers: forward después de N días, con timeout de al menos 4 días. Fallback solo cuando no se encuentra el manager. Nadie aprueba su propia solicitud.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-approval-policy">entra/id-governance/entitlement-management-access-package-approval-policy</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-approval-policy#multi-stage-approval">entitlement-management-access-package-approval-policy <span class="anchor">#multi-stage-approval</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-approval-policy#alternate-approvers">entitlement-management-access-package-approval-policy <span class="anchor">#alternate-approvers</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-process#request-process">entitlement-management-process <span class="anchor">#request-process</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage terms of use (ToU)</div>
+  <p class="punto">Pide P1 y Conditional Access Administrator. PDF, máximo 40 terms por tenant. <strong>Solo se hace cumplir con una política de Conditional Access</strong>. Per-device pide device registrado y no soporta B2B. Con Expire consents o Duration before re-acceptance, el usuario vuelve a aceptar <strong>solo cuando su sesión expira</strong>. Si rechaza, queda bloqueado.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use">entra/identity/conditional-access/terms-of-use</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#add-terms-of-use">terms-of-use <span class="anchor">#add-terms-of-use</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#per-device-terms-of-use">terms-of-use <span class="anchor">#per-device-terms-of-use</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#frequently-asked-questions">terms-of-use <span class="anchor">#frequently-asked-questions</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manage the lifecycle of external users</div>
+  <p class="punto">Default: cuando el guest pierde su <strong>último</strong> access package, queda bloqueado para sign-in y <strong>se borra a los 30 días</strong>. Se cambia en Control Configurations. Con 0 días se borra de inmediato. Solo aplica a guests que entraron por entitlement management (o convertidos a governed).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users">entra/id-governance/entitlement-management-external-users</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#manage-the-lifecycle-of-external-users">entitlement-management-external-users <span class="anchor">#manage-the-lifecycle-of-external-users</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#how-access-works-for-external-users">entitlement-management-external-users <span class="anchor">#how-access-works-for-external-users</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#settings-for-external-users">entitlement-management-external-users <span class="anchor">#settings-for-external-users</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure and manage connected organizations</div>
+  <p class="punto">Se define por tenant de Entra (cualquier nube), por dominio (one-time passcode), SAML/WS-Fed o Microsoft Account. <strong>Configured vs proposed</strong>: las proposed (creadas solas por "All users") no entran en "All configured connected organizations". Sponsors internos o externos pueden ser approvers. La B2B allow/block list gana siempre.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-organization">entra/id-governance/entitlement-management-organization</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-organization#add-a-connected-organization">entitlement-management-organization <span class="anchor">#add-a-connected-organization</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-organization#state-property-of-connected-organizations">entitlement-management-organization <span class="anchor">#state-property-of-connected-organizations</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-organization#what-is-a-connected-organization">entitlement-management-organization <span class="anchor">#what-is-a-connected-organization</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 2: Plan, implement, and manage access reviews</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/plan-implement-manage-access-review/">plan-implement-manage-access-review</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Plan for access reviews</div>
+  <p class="punto">Dónde se crea cada review: grupos y apps en Access reviews, <strong>roles de Entra y de Azure en PIM</strong>, access packages en entitlement management. Group owners solo crean reviews si activas el setting (default No).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/access-reviews-overview">entra/id-governance/access-reviews-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/access-reviews-overview#where-do-you-create-reviews">access-reviews-overview <span class="anchor">#where-do-you-create-reviews</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/access-reviews-overview#license-requirements">access-reviews-overview <span class="anchor">#license-requirements</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/create-access-review#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups">create-access-review <span class="anchor">#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create and configure access reviews</div>
+  <p class="punto">Scope: Guest users only o Everyone, y inactive users hasta 730 días. Reviewers: group owners, selected users or groups, self review, managers. <strong>Fallback solo con managers u owners.</strong> Multi-stage hasta 3 stages. Settings: auto apply, <strong>If reviewers don't respond</strong> (No change, Remove access, Approve access, Take recommendations). La acción para guests denegados solo existe si el scope es solo guests. Reminders a la mitad.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/create-access-review">entra/id-governance/create-access-review</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/create-access-review#next-reviews">create-access-review <span class="anchor">#next-reviews</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/create-access-review#next-settings">create-access-review <span class="anchor">#next-settings</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/create-access-review#create-a-multi-stage-access-review">create-access-review <span class="anchor">#create-a-multi-stage-access-review</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Monitor access review activity</div>
+  <p class="punto">Overview y Results muestran la instancia Current. Review history guarda las instancias pasadas. El reporte <strong>Review History</strong> da un CSV por decisión (disponible 30 días). Las actividades salen en audit logs (Create access review, Approve decision, Apply decision).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/complete-access-review">entra/id-governance/complete-access-review</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/complete-access-review#view-the-status-of-an-access-review">complete-access-review <span class="anchor">#view-the-status-of-an-access-review</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/access-reviews-downloadable-review-history#how-to-create-a-review-history-report">access-reviews-downloadable-review-history <span class="anchor">#how-to-create-a-review-history-report</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/deploy-access-reviews#monitor-access-reviews">deploy-access-reviews <span class="anchor">#monitor-access-reviews</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manually respond to access review activity</div>
+  <p class="punto">En My Access: Approve, Deny, Don't know (mantiene el acceso) o Accept recommendations. Con varios reviewers <strong>gana la última decisión</strong>. En multi-stage, la etapa posterior sobrescribe. El denegado sale al final o al Stop, no al instante. Sin auto apply, el admin hace <strong>Apply</strong> desde Review history.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/perform-access-review">entra/id-governance/perform-access-review</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/perform-access-review#manually-review-access-for-one-or-more-users">perform-access-review <span class="anchor">#manually-review-access-for-one-or-more-users</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/perform-access-review#review-access-based-on-recommendations">perform-access-review <span class="anchor">#review-access-based-on-recommendations</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/complete-access-review#apply-the-changes">complete-access-review <span class="anchor">#apply-the-changes</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 3: Plan and implement privileged access</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/plan-implement-privileged-access/">plan-implement-privileged-access</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> PIM for Microsoft Entra roles (settings and assignments)</div>
+  <p class="punto">Settings por rol (Privileged Role Administrator). <strong>Activation maximum duration de 1 a 24 horas.</strong> MFA, authentication context, justification, ticket (solo informativo), approval. En roles de Entra, <strong>sin approvers configurados, aprueban los PRA y GA activos</strong>. Assignments eligible o active, permanent o time-bound.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings">entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#activation-maximum-duration">pim-how-to-change-default-settings <span class="anchor">#activation-maximum-duration</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#require-approval-to-activate">pim-how-to-change-default-settings <span class="anchor">#require-approval-to-activate</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-add-role-to-user#assign-a-role">pim-how-to-add-role-to-user <span class="anchor">#assign-a-role</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> PIM for Azure resources (settings and assignments)</div>
+  <p class="punto">Settings con Owner o User Access Administrator. Son por rol y por recurso, y <strong>no se heredan</strong> de subscription a resource group. En Azure resources no hay approvers por default. No hay eligible para service principals ni managed identities. Discovery (legacy) asigna MS-PIM como User Access Administrator y no se puede deshacer.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-configure-role-settings">entra/id-governance/privileged-identity-management/pim-resource-roles-configure-role-settings</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-configure-role-settings#overview">pim-resource-roles-configure-role-settings <span class="anchor">#overview</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-discover-resources#discover-resources">pim-resource-roles-discover-resources <span class="anchor">#discover-resources</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-assign-roles#assign-a-role">pim-resource-roles-assign-roles <span class="anchor">#assign-a-role</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> PIM for Groups</div>
+  <p class="punto">JIT de <strong>membership u ownership</strong> en security groups o Microsoft 365 groups. Cada grupo tiene dos policies (member y owner). <strong>No necesita ser role-assignable.</strong> No aplica a grupos dinámicos ni sincronizados de on-premises. Role-assignable (máximo 500) protege las credenciales de sus miembros.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups">entra/id-governance/privileged-identity-management/concept-pim-for-groups</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups#relationship-between-role-assignable-groups-and-pim-for-groups">concept-pim-for-groups <span class="anchor">#relationship-between-role-assignable-groups-and-pim-for-groups</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups#what-are-microsoft-entra-role-assignable-groups">concept-pim-for-groups <span class="anchor">#what-are-microsoft-entra-role-assignable-groups</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-role-settings#role-settings">groups-role-settings <span class="anchor">#role-settings</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> PIM request and approval process</div>
+  <p class="punto">El approver no necesita rol. Nadie aprueba su propia activación y un service principal no aprueba. <strong>La primera decisión resuelve.</strong> En roles de Entra el approver tiene 24 horas y eso no se configura. Todos los approvers reciben aviso cuando uno responde.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow">entra/id-governance/privileged-identity-management/pim-approval-workflow</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow#overview">pim-approval-workflow <span class="anchor">#overview</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow#approve-requests">pim-approval-workflow <span class="anchor">#approve-requests</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow#workflow-notifications">pim-approval-workflow <span class="anchor">#workflow-notifications</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> PIM audit history and reports</div>
+  <p class="punto">Resource audit y My audit guardan <strong>30 días</strong>. Para más, diagnostic settings. Para seguir una activación completa se usa <strong>roleAssignmentRequestId</strong>, no solo CorrelationId. En AuditLogs la activación es "Add member to role completed (PIM activation)".</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-use-audit-log">entra/id-governance/privileged-identity-management/pim-how-to-use-audit-log</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-use-audit-log#view-resource-audit-history">pim-how-to-use-audit-log <span class="anchor">#view-resource-audit-history</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-use-audit-log#correlating-events-related-to-the-same-activation-cycle">pim-how-to-use-audit-log <span class="anchor">#correlating-events-related-to-the-same-activation-cycle</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/reference-audit-activities#privileged-identity-management-pim">reference-audit-activities <span class="anchor">#privileged-identity-management-pim</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create and manage break-glass accounts</div>
+  <p class="punto">Dos o más cuentas cloud-only en .onmicrosoft.com. <strong>GA active permanent</strong>, no eligible. Passkey FIDO2 o CBA, distinto al de los admins normales. Excluidas de Conditional Access que bloquea o restringe. <strong>Alerta en Azure Monitor</strong> con Custom log search sobre SigninLogs y umbral mayor que 0. Validar cada 90 días.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access">entra/identity/role-based-access-control/security-emergency-access</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access#configuration-requirements">security-emergency-access <span class="anchor">#configuration-requirements</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access#conditional-access-considerations">security-emergency-access <span class="anchor">#conditional-access-considerations</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access#create-an-alert-rule">security-emergency-access <span class="anchor">#create-an-alert-rule</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 4: Monitor identity activity by using logs, workbooks, and reports</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/monitor-maintain-azure-active-directory/">monitor-maintain-azure-active-directory</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Review and analyze sign-in, audit, and provisioning logs in the Microsoft Entra admin center</div>
+  <p class="punto">Retención: <strong>Free 7 días, P1/P2 30 días</strong>, y el upgrade no es retroactivo. Sign-in logs: interactive, non-interactive, service principal y managed identity. Provisioning logs: Action (Create, Update, Delete, Disable, StagedDelete, Other) y Status (Success, Failure, Skipped, Warning).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins">entra/identity/monitoring-health/concept-sign-ins</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins#what-are-the-types-of-sign-in-logs">concept-sign-ins <span class="anchor">#what-are-the-types-of-sign-in-logs</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/reference-reports-data-retention#activity-reports">reference-reports-data-retention <span class="anchor">#activity-reports</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-provisioning-logs#what-do-the-logs-show">concept-provisioning-logs <span class="anchor">#what-do-the-logs-show</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure diagnostic settings (Log Analytics, storage accounts, Event Hubs)</div>
+  <p class="punto">Lo configura un <strong>Security Administrator</strong> y el destino debe existir antes. Log Analytics para queries, workbooks y alertas. Storage account para guardar mucho tiempo y barato. Event hub para un SIEM de terceros. Se eligen categorías (AuditLogs, SignInLogs, NonInteractiveUserSignInLogs, ServicePrincipalSignInLogs, ManagedIdentitySignInLogs, ProvisioningLogs, RiskyUsers, UserRiskEvents y otras).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-configure-diagnostic-settings">entra/identity/monitoring-health/howto-configure-diagnostic-settings</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-configure-diagnostic-settings#select-the-logs-and-destination">howto-configure-diagnostic-settings <span class="anchor">#select-the-logs-and-destination</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-diagnostic-settings-logs-options#activity-log-options">concept-diagnostic-settings-logs-options <span class="anchor">#activity-log-options</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-log-monitoring-integration-options-considerations#integration-options">concept-log-monitoring-integration-options-considerations <span class="anchor">#integration-options</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Monitor Microsoft Entra ID by using KQL queries in Log Analytics</div>
+  <p class="punto">Tabla por categoría: SigninLogs, <strong>AADNonInteractiveUserSignInLogs</strong>, AADServicePrincipalSignInLogs, AADManagedIdentitySignInLogs, AuditLogs, <strong>AADProvisioningLogs</strong>, AADRiskyUsers, AADUserRiskEvents. En SigninLogs, ResultType "0" es éxito. En AADProvisioningLogs, ResultType es Success, Failure o Skipped. Un sign-in puede salir en varias filas con el mismo CorrelationId.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-analyze-activity-logs-log-analytics">entra/identity/monitoring-health/howto-analyze-activity-logs-log-analytics</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-analyze-activity-logs-log-analytics#query-activity-logs">howto-analyze-activity-logs-log-analytics <span class="anchor">#query-activity-logs</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-analyze-activity-logs-log-analytics#multiple-sign-in-records-in-log-analytics">howto-analyze-activity-logs-log-analytics <span class="anchor">#multiple-sign-in-records-in-log-analytics</span></a></li><li><a href="https://learn.microsoft.com/azure/azure-monitor/reference/tables/aadprovisioninglogs#columns">aadprovisioninglogs <span class="anchor">#columns</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Analyze Microsoft Entra ID by using workbooks and reporting</div>
+  <p class="punto">Los workbooks piden <strong>P1, un Log Analytics workspace con los logs ya enviados</strong> y roles de Azure Monitor y de Entra. Para leer: Reports Reader, Security Reader o Global Reader. Hay templates públicos y privados.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-use-workbooks">entra/identity/monitoring-health/howto-use-workbooks</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-use-workbooks#prerequisites">howto-use-workbooks <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-use-workbooks#create-a-new-workbook">howto-use-workbooks <span class="anchor">#create-a-new-workbook</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Monitor and improve the security posture by using Identity Secure Score</div>
+  <p class="punto">Disponible en Free y en licencias pagadas. Se recalcula <strong>cada 24 horas</strong>. Hay puntaje parcial. <strong>Risk accepted no da puntos</strong>; Resolved through third party o alternate mitigation sí dan puntos. Es la parte de identidad del Microsoft Secure Score.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-identity-secure-score">entra/identity/monitoring-health/concept-identity-secure-score</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-identity-secure-score#how-does-it-work">concept-identity-secure-score <span class="anchor">#how-does-it-work</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-identity-secure-score#how-do-i-use-the-identity-secure-score">concept-identity-secure-score <span class="anchor">#how-do-i-use-the-identity-secure-score</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-identity-secure-score#how-are-the-recommendations-scored">concept-identity-secure-score <span class="anchor">#how-are-the-recommendations-scored</span></a></li></ul>
+</div>
+<h2>2. Las 12 trampas de M4</h2>
+<p class="meta">Memoriza la frase, entiende la regla, reconoce las palabras que delatan. Los números son para consultar, no para memorizar.</p>
+<div class="trap">
+  <div class="trap-h"><span class="num">1</span> Roles de entitlement management: quién crea, quién asigna</div>
+  <p class="frase">&quot;Catalog owner trae los recursos, access package manager arma los paquetes, assignment manager solo mete y saca gente.&quot;</p>
+  <ul>
+<li>Catalog owner agrega recursos y delega. Access package manager crea y edita paquetes y policies con lo que ya está en el catalog. Access package assignment manager asigna, quita, ve requests y reprocesa, pero no crea paquetes.</li>
+<li>Para agregar un recurso al catalog hay que ser catalog owner y además tener permiso sobre el recurso. Identity Governance Administrator agrega apps, no grupos. User Administrator ya no crea catalogs.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;least privilege&quot;, &quot;create access packages but not add resources&quot;, &quot;only assign users&quot;, &quot;resource picker is empty&quot;, &quot;catalog creator&quot;, &quot;delegate to the department&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-delegate#entitlement-management-roles">entitlement-management-delegate <span class="anchor">#entitlement-management-roles</span></a> · Practica con Q2, Q3</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">2</span> Quién puede pedir: una policy, un público</div>
+  <p class="frase">&quot;Internos y externos no caben en la misma policy: son dos.&quot;</p>
+  <ul>
+<li>Una policy es "in your directory" (members, all users with guests, specific groups) o "not in your directory" (specific connected orgs, all configured connected orgs, all users). No mezcla las dos.</li>
+<li>"All users" crea connected orgs en estado <strong>proposed</strong>, y esas no entran en "All configured connected organizations". Pide email OTP. La B2B allow/block list siempre gana.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;employees and partners&quot;, &quot;minimum number of policies&quot;, &quot;any user on the internet&quot;, &quot;connected organization&quot;, &quot;allowlist&quot;, &quot;no guest account is created&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-request-policy#choose-between-one-or-multiple-policies">entitlement-management-access-package-request-policy <span class="anchor">#choose-between-one-or-multiple-policies</span></a> · Practica con Q4, Q11</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">3</span> Aprobación: un approver por stage, y el reloj corre</div>
+  <p class="frase">&quot;En cada stage basta uno; si nadie decide a tiempo, la request se muere y se pide otra vez.&quot;</p>
+  <ul>
+<li>Hasta 3 stages. En cada stage decide el primero que responde. Si nadie decide en los días configurados, la request expira (se deniega).</li>
+<li>Alternate approvers: forward después de N días, con timeout de al menos 4 días. Fallback es otra cosa: se usa cuando no se encuentra el manager. Manager as approver solo existe para usuarios de tu directorio; para externos usas sponsors.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;doesn&#x27;t respond&quot;, &quot;backup approver&quot;, &quot;forward&quot;, &quot;manager can&#x27;t be found&quot;, &quot;external sponsor&quot;, &quot;second stage&quot;, &quot;extension requires approval&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-approval-policy#alternate-approvers">entitlement-management-access-package-approval-policy <span class="anchor">#alternate-approvers</span></a> · Practica con Q5, Q6, Q7, Q12</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">4</span> El guest que pierde su último paquete</div>
+  <p class="frase">&quot;Último paquete perdido: bloqueado hoy, borrado en 30 días. Con 0 días, borrado ya.&quot;</p>
+  <ul>
+<li>Default: bloqueo de sign-in y borrado a los 30 días. Se cambia en Control Configurations &gt; Lifecycle of external users.</li>
+<li>Solo aplica a guests que entraron por entitlement management (o convertidos a governed), y se borran aunque tengan otros accesos como un sitio de SharePoint compartido después.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;last access package assignment&quot;, &quot;as soon as possible&quot;, &quot;guest account is removed&quot;, &quot;also has access to a SharePoint site&quot;, &quot;blocked from signing in&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#manage-the-lifecycle-of-external-users">entitlement-management-external-users <span class="anchor">#manage-the-lifecycle-of-external-users</span></a> · Practica con Q8, Q12</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">5</span> Terms of use: sin Conditional Access no pasa nada</div>
+  <p class="frase">&quot;La ToU es un PDF que no muerde hasta que Conditional Access la pone en el Grant.&quot;</p>
+  <ul>
+<li>P1 y Conditional Access Administrator. Se hace cumplir con una política de CA. Per-device pide device registrado y no soporta B2B.</li>
+<li>Expire consents o Duration before re-acceptance: se vuelve a aceptar solo cuando la sesión expira. Si el usuario rechaza, queda bloqueado. El reporte de aceptación vive lo que vive la ToU; los audit logs, 30 días.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;must accept before accessing&quot;, &quot;every device&quot;, &quot;guest users&quot;, &quot;re-accept every 90 days&quot;, &quot;create Conditional Access policy later&quot;, &quot;declined&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#per-device-terms-of-use">terms-of-use <span class="anchor">#per-device-terms-of-use</span></a> · Practica con Q9, Q10</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">6</span> Access reviews: dónde se crean y quién revisa</div>
+  <p class="frase">&quot;Grupos y apps en Access reviews, roles en PIM, paquetes en entitlement management. Fallback solo si hay managers u owners.&quot;</p>
+  <ul>
+<li>Reviewers: group owners, selected users or groups, self review, managers. Fallback solo con managers u owners. Cuentan los owners que existían al inicio de la review.</li>
+<li>Scope Guest users only o Everyone, con inactive users hasta 730 días. "All Microsoft 365 groups with guest users" solo revisa guests y no deja elegir la acción para guests denegados.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;review Global Administrator assignments&quot;, &quot;group has no owner&quot;, &quot;guest users only&quot;, &quot;all Microsoft 365 groups&quot;, &quot;group owners create reviews&quot;, &quot;quarterly&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/access-reviews-overview#where-do-you-create-reviews">access-reviews-overview <span class="anchor">#where-do-you-create-reviews</span></a> · Practica con Q13, Q14, Q17</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">7</span> Nadie respondió y auto apply está prendido</div>
+  <p class="frase">&quot;If reviewers don&#x27;t respond más auto apply es un botón de borrar: elige con cuidado.&quot;</p>
+  <ul>
+<li>Opciones: No change, Remove access, Approve access, Take recommendations. Take recommendations usa el helper "No sign-in within 30 days": quita a los inactivos y deja a los activos.</li>
+<li>Remove access o Take recommendations con auto apply pueden quitar todo el acceso. La acción "block 30 days, then remove" para guests aplica también a los que se niegan por no respuesta.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;if the reviewer doesn&#x27;t respond&quot;, &quot;inactive users lose access&quot;, &quot;active users keep access&quot;, &quot;automatically&quot;, &quot;guest is blocked&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/create-access-review#next-settings">create-access-review <span class="anchor">#next-settings</span></a> · Practica con Q14, Q15</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">8</span> Decisiones: gana la última y nada pasa hasta el final</div>
+  <p class="frase">&quot;En access reviews no gana la mayoría, gana el último. Y el deny se cobra al final.&quot;</p>
+  <ul>
+<li>Con varios reviewers se guarda la última respuesta. En multi-stage, la etapa posterior sobrescribe. Don't know deja el acceso. El denegado sale al final o al Stop, y una review detenida no se reinicia.</li>
+<li>Sin auto apply: Review history &gt; instancia &gt; Apply. Apply no cambia grupos de on-premises ni grupos dinámicos. Para auditoría de muchas reviews, el reporte Review History (CSV 30 días).</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;two reviewers disagree&quot;, &quot;removed immediately&quot;, &quot;only approved users go to the next stage&quot;, &quot;auto apply was disabled&quot;, &quot;synced from on-premises&quot;, &quot;single CSV for auditors&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/perform-access-review#manually-review-access-for-one-or-more-users">perform-access-review <span class="anchor">#manually-review-access-for-one-or-more-users</span></a> · Practica con Q16, Q18, Q19, Q20</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">9</span> PIM: eligible, active, permanent y las perillas del rol</div>
+  <p class="frase">&quot;Eligible es JIT, time-bound es con fecha de muerte. El ticket es de adorno y el approver no necesita rol.&quot;</p>
+  <ul>
+<li>Activation maximum duration de 1 a 24 horas. Ticket solo informativo. En roles de Entra, sin approvers configurados aprueban los PRA y GA activos. En Azure resources y Groups no hay approvers por default.</li>
+<li>El approver no necesita rol, nadie aprueba lo suyo, la primera decisión resuelve, 24 horas para aprobar (roles de Entra). Para forzar un método fuerte en la activación: authentication context más authentication strength, con la política de CA para todos o los eligible, no para el rol.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;only when needed&quot;, &quot;for six months&quot;, &quot;no approvers selected&quot;, &quot;ticket number&quot;, &quot;approver doesn&#x27;t respond&quot;, &quot;even if they already completed MFA&quot;, &quot;phishing-resistant at activation&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#require-approval-to-activate">pim-how-to-change-default-settings <span class="anchor">#require-approval-to-activate</span></a> · Practica con Q21, Q22, Q23, Q30, Q31</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">10</span> PIM for Azure resources y PIM for Groups</div>
+  <p class="frase">&quot;En Azure, los settings no bajan de la suscripción al resource group. En Groups, el grupo no tiene que ser role-assignable.&quot;</p>
+  <ul>
+<li>Azure resources: settings con Owner o User Access Administrator, por rol y por recurso, sin herencia. No hay eligible para service principals ni managed identities. Discovery legacy pone a MS-PIM como User Access Administrator y no se deshace.</li>
+<li>PIM for Groups: JIT de member u owner, dos policies por grupo, no aplica a grupos dinámicos ni synced. Role-assignable protege credenciales y no acepta grupos anidados activos. Para Exchange o SharePoint conviene PIM for Entra roles.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;configured on the subscription&quot;, &quot;resource group&quot;, &quot;managed identity&quot;, &quot;discover resources&quot;, &quot;not role-assignable&quot;, &quot;dynamic group&quot;, &quot;reset the password of an eligible member&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-configure-role-settings#overview">pim-resource-roles-configure-role-settings <span class="anchor">#overview</span></a> · Practica con Q24, Q25, Q26, Q27</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">11</span> Break-glass: permanente, fuerte y vigilada</div>
+  <p class="frase">&quot;La break-glass no espera aprobación: GA active permanent, FIDO2 en la caja fuerte y una alerta que grita en cada sign-in.&quot;</p>
+  <ul>
+<li>Dos o más cuentas cloud-only en .onmicrosoft.com, GA active permanent, passkey FIDO2 o CBA distinto al de los admins, excluidas de CA que bloquea o restringe (Report-only no necesita exclusión).</li>
+<li>Monitoreo: SigninLogs en Log Analytics, alert rule con Custom log search sobre los object IDs, umbral mayor que 0, sin filtrar por éxito. Validar cada 90 días.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;emergency access&quot;, &quot;all admins are eligible&quot;, &quot;approval required and no approvers&quot;, &quot;federation outage&quot;, &quot;alert whenever the account signs in&quot;, &quot;report-only&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access#create-an-alert-rule">security-emergency-access <span class="anchor">#create-an-alert-rule</span></a> · Practica con Q28, Q29</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">12</span> Logs: cuánto duran, a dónde van y en qué tabla caen</div>
+  <p class="frase">&quot;Free 7, P1/P2 30, y el upgrade no revive datos. Cada categoría llena su tabla, y el workbook come de Log Analytics.&quot;</p>
+  <ul>
+<li>Storage account para archivo barato y largo, event hub para SIEM de terceros, Log Analytics para KQL, workbooks y alertas. La diagnostic setting la crea un Security Administrator y el destino existe antes. PIM audit guarda 30 días; para más, diagnostic settings.</li>
+<li>Tablas: SigninLogs, AADNonInteractiveUserSignInLogs, AADServicePrincipalSignInLogs, AADManagedIdentitySignInLogs, AuditLogs, AADProvisioningLogs. En provisioning, ResultType Failure con ResultSignature. Secure Score: cada 24 horas, Risk accepted no suma, Resolved through third party sí.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;upgraded today&quot;, &quot;20 days ago&quot;, &quot;two years at low cost&quot;, &quot;third-party SIEM&quot;, &quot;query returns no results&quot;, &quot;workbook is empty&quot;, &quot;non-Microsoft MFA&quot;, &quot;score doesn&#x27;t change&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-log-monitoring-integration-options-considerations#integration-options">concept-log-monitoring-integration-options-considerations <span class="anchor">#integration-options</span></a> · Practica con Q32, Q33, Q34, Q35, Q36, Q37, Q38, Q39, Q40</p>
+</div>
+<h2>3. Visuales para no olvidar</h2><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Entitlement management</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+<marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7DD3FC"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Entitlement management</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Catalog, access package, policy y ciclo de vida del acceso</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- Catalog container -->
+<rect x="48" y="124" width="564" height="272" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="72" y="164" font-size="24" font-weight="700" fill="#F8FAFC">Catalog</text>
+<rect x="428" y="140" width="164" height="34" rx="17" fill="#FBBF24" fill-opacity="0.12" stroke="#FBBF24" stroke-width="1.5"/>
+<text x="510" y="164" font-size="20" fill="#FBBF24" text-anchor="middle">Catalog owner</text>
+
+<rect x="72" y="192" width="228" height="184" rx="10" fill="#0B1F3A" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="92" y="228" font-size="22" font-weight="700" fill="#7DD3FC">Resources</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="92" y="266">• Groups / Teams</text>
+<text x="92" y="298">• Applications</text>
+<text x="92" y="330">• SharePoint sites</text>
+</g>
+
+<rect x="340" y="192" width="252" height="184" rx="10" fill="#0B1F3A" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="360" y="228" font-size="22" font-weight="700" fill="#7DD3FC">Access package</text>
+<text x="360" y="266" font-size="20" fill="#F8FAFC">Bundle de roles</text>
+<text x="360" y="298" font-size="20" fill="#F8FAFC">1 o más policies</text>
+<rect x="356" y="320" width="212" height="34" rx="17" fill="#FBBF24" fill-opacity="0.12" stroke="#FBBF24" stroke-width="1.5"/>
+<text x="462" y="344" font-size="20" fill="#FBBF24" text-anchor="middle">Package manager</text>
+
+<!-- Policy -->
+<rect x="640" y="124" width="356" height="272" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="664" y="164" font-size="24" font-weight="700" fill="#F8FAFC">Policy</text>
+<text x="664" y="198" font-size="20" font-weight="700" fill="#7DD3FC">Who can request</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="664" y="226">• Internal users</text>
+<text x="664" y="254">• Connected organizations</text>
+<text x="664" y="282">• Any external user</text>
+</g>
+<text x="664" y="316" font-size="20" font-weight="700" fill="#7DD3FC">Settings</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="664" y="344">• Approval stages (1 a 3)</text>
+<text x="664" y="372">• Expiration, requestor info</text>
+</g>
+
+<!-- Connected organization -->
+<rect x="1024" y="124" width="208" height="272" rx="12" fill="#7DD3FC" fill-opacity="0.06" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="1044" y="164" font-size="22" font-weight="700" fill="#7DD3FC">Connected</text>
+<text x="1044" y="190" font-size="22" font-weight="700" fill="#7DD3FC">organization</text>
+<g font-size="20">
+<text x="1044" y="234" fill="#F8FAFC">Otro tenant,</text>
+<text x="1044" y="262" fill="#F8FAFC">dominio o IdP</text>
+<text x="1044" y="300" fill="#94A3B8">Sus users pueden</text>
+<text x="1044" y="328" fill="#94A3B8">pedir acceso</text>
+</g>
+<rect x="1044" y="344" width="104" height="32" rx="16" fill="none" stroke="#94A3B8" stroke-width="1.5"/>
+<text x="1096" y="367" font-size="20" fill="#94A3B8" text-anchor="middle">Externo</text>
+
+<!-- top arrows -->
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M302 284H332"/>
+<path d="M594 284H632"/>
+<path d="M818 398V426H158V446"/>
+</g>
+<path d="M1022 248H1004" stroke="#7DD3FC" stroke-width="3" fill="none" stroke-dasharray="6 4" marker-end="url(#arr2)"/>
+
+<!-- lifecycle row -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5">
+<rect x="48" y="456" width="216" height="120" rx="12"/>
+<rect x="290" y="456" width="216" height="120" rx="12"/>
+<rect x="532" y="456" width="216" height="120" rx="12"/>
+<rect x="774" y="456" width="216" height="120" rx="12"/>
+</g>
+<rect x="1016" y="456" width="216" height="120" rx="12" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="2"/>
+<g font-size="22" font-weight="700" fill="#F8FAFC">
+<text x="68" y="494">Request</text>
+<text x="310" y="494">Approval</text>
+<text x="552" y="494">Assignment</text>
+<text x="794" y="494">Review / end</text>
+<text x="1036" y="494" fill="#F87171">External user</text>
+</g>
+<g font-size="20">
+<text x="68" y="528" fill="#F8FAFC">My Access portal</text>
+<text x="68" y="556" fill="#94A3B8">+ justificación</text>
+<text x="310" y="528" fill="#F8FAFC">Hasta 3 stages</text>
+<text x="310" y="556" fill="#94A3B8">o sin approval</text>
+<text x="552" y="528" fill="#F8FAFC">Acceso a todos</text>
+<text x="552" y="556" fill="#94A3B8">los resources</text>
+<text x="794" y="528" fill="#F8FAFC">Access review</text>
+<text x="794" y="556" fill="#94A3B8">o expiration</text>
+<text x="1036" y="528" fill="#F8FAFC">Block sign-in</text>
+<text x="1036" y="556" fill="#94A3B8">Delete tras N días</text>
+</g>
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M266 516H282"/>
+<path d="M508 516H524"/>
+<path d="M750 516H766"/>
+<path d="M992 516H1008"/>
+</g>
+
+<!-- note -->
+<rect x="48" y="596" width="1184" height="92" rx="12" fill="#F87171" fill-opacity="0.06" stroke="#F87171" stroke-opacity="0.7" stroke-width="2"/>
+<text x="72" y="632" font-size="22" font-weight="700" fill="#F8FAFC">Lifecycle de external users <tspan font-weight="400" fill="#94A3B8">(settings de entitlement management)</tspan></text>
+<text x="72" y="666" font-size="20" fill="#F8FAFC">Sin assignments activos: se bloquea el sign-in y se elimina tras N días (configurable)</text>
+</svg>
+<p><b>Entitlement management.</b> Catalog, access package, policy y el ciclo de vida del acceso, incluido el bloqueo y borrado del externo que pierde su último paquete.</p></div><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Access reviews: decisions and results</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Access reviews: de scope a resultados</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Quién revisa, qué decide y qué pasa cuando nadie responde</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- top boxes -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5">
+<rect x="48" y="124" width="272" height="280" rx="12"/>
+<rect x="352" y="124" width="272" height="280" rx="12"/>
+<rect x="656" y="124" width="272" height="280" rx="12"/>
+<rect x="960" y="124" width="272" height="280" rx="12"/>
+</g>
+<g fill="#22D3EE">
+<circle cx="80" cy="162" r="16"/>
+<circle cx="384" cy="162" r="16"/>
+<circle cx="688" cy="162" r="16"/>
+<circle cx="992" cy="162" r="16"/>
+</g>
+<g font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">
+<text x="80" y="169">1</text>
+<text x="384" y="169">2</text>
+<text x="688" y="169">3</text>
+<text x="992" y="169">4</text>
+</g>
+<g font-size="22" font-weight="700" fill="#F8FAFC">
+<text x="106" y="170">Scope</text>
+<text x="410" y="170">Reviewers</text>
+<text x="712" y="170">Recommendations</text>
+<text x="1018" y="170">Decisions</text>
+</g>
+
+<!-- 1 Scope -->
+<g font-size="20" fill="#F8FAFC">
+<text x="68" y="212">• Group members</text>
+<text x="68" y="244">• App users</text>
+<text x="68" y="276">• Guests only</text>
+<text x="68" y="308">• Roles (via PIM)</text>
+<text x="68" y="340">• Access packages</text>
+</g>
+<text x="68" y="382" font-size="20" fill="#94A3B8">Qué acceso se revisa</text>
+
+<!-- 2 Reviewers -->
+<g font-size="20" fill="#F8FAFC">
+<text x="372" y="212">• Self-review</text>
+<text x="372" y="244">• Managers</text>
+<text x="372" y="276">• Group owners</text>
+<text x="372" y="308">• Selected users</text>
+<text x="372" y="340">• Multi-stage (hasta 3)</text>
+</g>
+<text x="372" y="382" font-size="20" fill="#94A3B8">+ fallback reviewers</text>
+
+<!-- 3 Recommendations -->
+<text x="676" y="212" font-size="20" fill="#94A3B8">Basadas en:</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="676" y="246">• Inactividad</text>
+<text x="696" y="274" fill="#94A3B8">(30 días por defecto)</text>
+<text x="676" y="308">• User-to-group</text>
+<text x="696" y="336">affiliation</text>
+</g>
+<text x="676" y="382" font-size="20" fill="#94A3B8">Sugieren, no deciden</text>
+
+<!-- 4 Decisions -->
+<rect x="984" y="192" width="224" height="40" rx="20" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-width="2"/>
+<rect x="984" y="244" width="224" height="40" rx="20" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-width="2"/>
+<rect x="984" y="296" width="224" height="40" rx="20" fill="#FBBF24" fill-opacity="0.15" stroke="#FBBF24" stroke-width="2"/>
+<g font-size="20" font-weight="700" text-anchor="middle">
+<text x="1096" y="219" fill="#4ADE80">Approve</text>
+<text x="1096" y="271" fill="#F87171">Deny</text>
+<text x="1096" y="323" fill="#FBBF24">Don't know</text>
+</g>
+<text x="984" y="382" font-size="20" fill="#94A3B8">+ justification</text>
+
+<!-- arrows top -->
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M322 264H344"/>
+<path d="M626 264H648"/>
+<path d="M930 264H952"/>
+<path d="M1096 406V444"/>
+<path d="M690 570H712"/>
+</g>
+
+<!-- 5 If reviewers don't respond -->
+<rect x="48" y="452" width="640" height="236" rx="12" fill="#132B4F" stroke="#FBBF24" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="80" cy="490" r="16" fill="#FBBF24"/>
+<text x="80" y="497" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">5</text>
+<text x="106" y="498" font-size="22" font-weight="700" fill="#F8FAFC">If reviewers don't respond</text>
+<text x="72" y="532" font-size="20" fill="#94A3B8">Qué pasa con los usuarios no revisados</text>
+<rect x="72" y="550" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#94A3B8" stroke-width="1.5"/>
+<rect x="376" y="550" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#F87171" stroke-width="1.5"/>
+<rect x="72" y="608" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#4ADE80" stroke-width="1.5"/>
+<rect x="376" y="608" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#22D3EE" stroke-width="1.5"/>
+<g font-size="20" font-weight="600" text-anchor="middle">
+<text x="216" y="579" fill="#F8FAFC">No change</text>
+<text x="520" y="579" fill="#F87171">Remove access</text>
+<text x="216" y="637" fill="#4ADE80">Approve access</text>
+<text x="520" y="637" fill="#22D3EE">Take recommendations</text>
+</g>
+
+<!-- 6 Apply results -->
+<rect x="720" y="452" width="512" height="236" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="752" cy="490" r="16" fill="#22D3EE"/>
+<text x="752" y="497" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">6</text>
+<text x="778" y="498" font-size="22" font-weight="700" fill="#F8FAFC">Apply results</text>
+<rect x="744" y="534" width="64" height="34" rx="17" fill="#4ADE80"/>
+<circle cx="791" cy="551" r="13" fill="#F8FAFC"/>
+<text x="828" y="558" font-size="20" font-weight="700" fill="#F8FAFC">Auto apply ON</text>
+<text x="828" y="586" font-size="20" fill="#94A3B8">Denied se remueve automáticamente</text>
+<rect x="744" y="614" width="64" height="34" rx="17" fill="#0B1F3A" stroke="#94A3B8" stroke-width="2"/>
+<circle cx="761" cy="631" r="13" fill="#94A3B8"/>
+<text x="828" y="638" font-size="20" font-weight="700" fill="#F8FAFC">Auto apply OFF</text>
+<text x="828" y="666" font-size="20" fill="#94A3B8">Aplicar manualmente al terminar</text>
+</svg>
+<p><b>Access reviews.</b> Quién revisa, qué recomienda el sistema, y qué pasa cuando nadie responde con auto apply prendido.</p></div><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>PIM lifecycle</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">PIM: lifecycle de un rol privilegiado</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Privileged Identity Management: just-in-time, con aprobación y auditoría</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- Row 1 boxes -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5">
+<rect x="48" y="124" width="272" height="240" rx="12"/>
+<rect x="348" y="124" width="272" height="240" rx="12"/>
+<rect x="648" y="124" width="272" height="240" rx="12"/>
+<rect x="648" y="408" width="272" height="180" rx="12"/>
+<rect x="348" y="408" width="272" height="180" rx="12"/>
+<rect x="48" y="408" width="272" height="180" rx="12"/>
+</g>
+
+<!-- badges -->
+<g fill="#22D3EE">
+<circle cx="84" cy="162" r="16"/>
+<circle cx="384" cy="162" r="16"/>
+<circle cx="684" cy="162" r="16"/>
+<circle cx="684" cy="446" r="16"/>
+<circle cx="384" cy="446" r="16"/>
+<circle cx="84" cy="446" r="16"/>
+</g>
+<g font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">
+<text x="84" y="169">1</text>
+<text x="384" y="169">2</text>
+<text x="684" y="169">3</text>
+<text x="684" y="453">4</text>
+<text x="384" y="453">5</text>
+<text x="84" y="453">6</text>
+</g>
+<g font-size="24" font-weight="700" fill="#F8FAFC">
+<text x="112" y="171">Assignment</text>
+<text x="412" y="171">Activation</text>
+<text x="712" y="171">Approval</text>
+<text x="712" y="455">Active</text>
+<text x="412" y="455">Expires</text>
+<text x="112" y="455">Audit</text>
+</g>
+
+<!-- 1 Assignment chips -->
+<rect x="58" y="186" width="124" height="34" rx="17" fill="#22D3EE" fill-opacity="0.2" stroke="#22D3EE" stroke-width="2"/>
+<rect x="188" y="186" width="124" height="34" rx="17" fill="none" stroke="#7DD3FC" stroke-width="2"/>
+<rect x="58" y="230" width="124" height="34" rx="17" fill="none" stroke="#94A3B8" stroke-width="2"/>
+<rect x="188" y="230" width="124" height="34" rx="17" fill="none" stroke="#94A3B8" stroke-width="2"/>
+<g font-size="20" text-anchor="middle">
+<text x="120" y="210" fill="#22D3EE" font-weight="600">Eligible</text>
+<text x="250" y="210" fill="#7DD3FC" font-weight="600">Active</text>
+<text x="120" y="254" fill="#F8FAFC">Time-bound</text>
+<text x="250" y="254" fill="#F8FAFC">Permanent</text>
+</g>
+<text x="64" y="304" font-size="20" fill="#94A3B8">Eligible: debe activar</text>
+<text x="64" y="334" font-size="20" fill="#94A3B8">Active: rol ya asignado</text>
+
+<!-- 2 Activation -->
+<g font-size="20" fill="#F8FAFC">
+<text x="368" y="212">• Justification</text>
+<text x="368" y="242">• MFA o auth strength</text>
+<text x="368" y="272">• Ticket number</text>
+<text x="368" y="302">• Duration (hasta max)</text>
+<text x="368" y="332">• Approval si aplica</text>
+</g>
+
+<!-- 3 Approval -->
+<g font-size="20" fill="#F8FAFC">
+<text x="668" y="212">• Approve o Deny</text>
+<text x="668" y="242">• Approvers: users</text>
+<text x="688" y="270">o groups</text>
+</g>
+<text x="668" y="310" font-size="20" fill="#94A3B8">Sin approval:</text>
+<text x="668" y="338" font-size="20" fill="#94A3B8">activación inmediata</text>
+
+<!-- 4 Active -->
+<text x="668" y="496" font-size="20" fill="#F8FAFC">• Hasta max duration</text>
+<text x="688" y="524" font-size="20" fill="#94A3B8">configurable por rol</text>
+<text x="668" y="560" font-size="20" fill="#F8FAFC">• Extend o deactivate</text>
+
+<!-- 5 Expires -->
+<text x="368" y="496" font-size="20" fill="#F8FAFC">• Vuelve a Eligible</text>
+<text x="388" y="524" font-size="20" fill="#94A3B8">al vencer la activación</text>
+<text x="368" y="560" font-size="20" fill="#F8FAFC">• Renew assignment</text>
+
+<!-- 6 Audit -->
+<g font-size="20" fill="#F8FAFC">
+<text x="68" y="496">• Audit history</text>
+<text x="68" y="528">• Alerts de PIM</text>
+<text x="68" y="560">• Access reviews</text>
+</g>
+
+<!-- arrows -->
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M322 244H340"/>
+<path d="M622 244H640"/>
+<path d="M784 366V400"/>
+<path d="M646 498H628"/>
+<path d="M346 498H328"/>
+</g>
+
+<!-- side panel -->
+<rect x="948" y="124" width="284" height="464" rx="12" fill="#132B4F" stroke="#7DD3FC" stroke-opacity="0.5" stroke-width="1.5"/>
+<text x="972" y="164" font-size="24" font-weight="700" fill="#F8FAFC">PIM cubre</text>
+<g fill="#0B1F3A" stroke="#22D3EE" stroke-opacity="0.5" stroke-width="1.5">
+<rect x="964" y="186" width="252" height="84" rx="10"/>
+<rect x="964" y="282" width="252" height="110" rx="10"/>
+<rect x="964" y="404" width="252" height="84" rx="10"/>
+</g>
+<g font-size="20">
+<text x="984" y="220" font-weight="700" fill="#22D3EE">PIM for Entra roles</text>
+<text x="984" y="250" fill="#94A3B8">Directory roles</text>
+<text x="984" y="314" font-weight="700" fill="#22D3EE">PIM for Azure</text>
+<text x="984" y="340" font-weight="700" fill="#22D3EE">resources</text>
+<text x="984" y="372" fill="#94A3B8">Discover resources</text>
+<text x="984" y="438" font-weight="700" fill="#22D3EE">PIM for Groups</text>
+<text x="984" y="468" fill="#94A3B8">Member u owner</text>
+<text x="972" y="530" fill="#94A3B8">Licencia: Entra ID P2</text>
+<text x="972" y="558" fill="#94A3B8">o ID Governance</text>
+</g>
+
+<!-- note -->
+<rect x="48" y="608" width="1184" height="80" rx="12" fill="#F87171" fill-opacity="0.1" stroke="#F87171" stroke-width="2"/>
+<circle cx="88" cy="648" r="18" fill="#F87171"/>
+<text x="88" y="656" font-size="22" font-weight="700" fill="#0B1F3A" text-anchor="middle">!</text>
+<text x="124" y="656" font-size="24" font-weight="700" fill="#F8FAFC"><tspan fill="#F87171">Break-glass:</tspan> permanente, sin PIM, sin CA, monitoreado</text>
+</svg>
+<p><b>PIM.</b> Eligible, active y permanent; las perillas del rol (MFA, justificación, aprobación, duración) y el break-glass que vive fuera de PIM.</p></div><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Entra logs and diagnostic settings</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Entra logs y diagnostic settings</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Qué logs existen y cómo enviarlos fuera de Entra para retener y analizar</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- Entra logs -->
+<rect x="48" y="124" width="372" height="564" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="72" y="164" font-size="24" font-weight="700" fill="#F8FAFC">Entra logs</text>
+<text x="72" y="208" font-size="22" font-weight="700" fill="#7DD3FC">Sign-in logs</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="88" y="240">• Interactive</text>
+<text x="88" y="270">• Non-interactive</text>
+<text x="88" y="300">• Service principal</text>
+<text x="88" y="330">• Managed identity</text>
+</g>
+<text x="72" y="376" font-size="22" font-weight="700" fill="#7DD3FC">Audit logs</text>
+<text x="88" y="406" font-size="20" fill="#94A3B8">Cambios en el directorio</text>
+<text x="72" y="450" font-size="22" font-weight="700" fill="#7DD3FC">Provisioning logs</text>
+<text x="88" y="480" font-size="20" fill="#94A3B8">Apps (SCIM), HR, Cloud Sync</text>
+<text x="72" y="524" font-size="22" font-weight="700" fill="#7DD3FC">Risky users</text>
+<text x="88" y="554" font-size="20" fill="#94A3B8">+ risk detections</text>
+<rect x="64" y="584" width="340" height="88" rx="10" fill="#FBBF24" fill-opacity="0.12" stroke="#FBBF24" stroke-width="1.5"/>
+<text x="84" y="618" font-size="20" font-weight="700" fill="#FBBF24">Retención por defecto</text>
+<text x="84" y="650" font-size="20" fill="#F8FAFC">7 días Free, 30 días P1/P2</text>
+
+<!-- Diagnostic settings -->
+<rect x="468" y="266" width="232" height="150" rx="12" fill="#22D3EE" fill-opacity="0.16" stroke="#22D3EE" stroke-width="2.5"/>
+<g text-anchor="middle">
+<text x="584" y="314" font-size="24" font-weight="700" fill="#F8FAFC">Diagnostic</text>
+<text x="584" y="342" font-size="24" font-weight="700" fill="#F8FAFC">settings</text>
+<text x="584" y="380" font-size="20" fill="#7DD3FC">Categorías + destino</text>
+</g>
+<rect x="468" y="440" width="232" height="108" rx="12" fill="#132B4F" stroke="#94A3B8" stroke-opacity="0.5" stroke-width="1.5"/>
+<g font-size="20" fill="#94A3B8">
+<text x="488" y="474">Export de sign-in</text>
+<text x="488" y="502">logs requiere</text>
+<text x="488" y="530" fill="#F8FAFC">Entra ID P1 o P2</text>
+</g>
+
+<!-- arrows -->
+<g stroke="#22D3EE" stroke-width="3" fill="none">
+<path d="M422 341H460" marker-end="url(#arr)"/>
+<path d="M702 341H728"/>
+<path d="M728 341V191H748" marker-end="url(#arr)"/>
+<path d="M728 341H748" marker-end="url(#arr)"/>
+<path d="M728 341V491H748" marker-end="url(#arr)"/>
+</g>
+
+<!-- destinations -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5">
+<rect x="756" y="124" width="476" height="134" rx="12"/>
+<rect x="756" y="274" width="476" height="134" rx="12"/>
+<rect x="756" y="424" width="476" height="134" rx="12"/>
+</g>
+<g fill="none" stroke="#7DD3FC" stroke-width="1.5">
+<rect x="1112" y="140" width="96" height="32" rx="16"/>
+<rect x="1112" y="290" width="96" height="32" rx="16"/>
+<rect x="1112" y="440" width="96" height="32" rx="16"/>
+</g>
+<g font-size="20" fill="#7DD3FC" text-anchor="middle">
+<text x="1160" y="163">Query</text>
+<text x="1160" y="313">Archive</text>
+<text x="1160" y="463">Stream</text>
+</g>
+<g font-size="22" font-weight="700" fill="#F8FAFC">
+<text x="780" y="164">Log Analytics workspace</text>
+<text x="780" y="314">Storage account</text>
+<text x="780" y="464">Event Hub</text>
+</g>
+<g font-size="20" fill="#F8FAFC">
+<text x="780" y="200">KQL, workbooks y alerts</text>
+<text x="780" y="350">Retención larga y archivo</text>
+<text x="780" y="500">Streaming a SIEM y herramientas externas</text>
+</g>
+<g font-size="20" fill="#94A3B8">
+<text x="780" y="232">Base de Microsoft Sentinel</text>
+<text x="780" y="382">Bajo costo, compliance</text>
+<text x="780" y="532">Ej.: Splunk, QRadar, otros</text>
+</g>
+
+<!-- KQL -->
+<rect x="468" y="576" width="764" height="112" rx="12" fill="#07162B" stroke="#22D3EE" stroke-opacity="0.45" stroke-width="1.5"/>
+<g font-family="Consolas, Menlo, monospace" font-size="20">
+<text x="492" y="614" fill="#22D3EE">SigninLogs</text>
+<text x="492" y="644" fill="#F8FAFC"><tspan fill="#7DD3FC">| where</tspan> ResultType != 0</text>
+<text x="492" y="674" fill="#F8FAFC"><tspan fill="#7DD3FC">| summarize</tspan> count() by UserPrincipalName</text>
+</g>
+<rect x="1140" y="592" width="68" height="32" rx="16" fill="#22D3EE"/>
+<text x="1174" y="615" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">KQL</text>
+<text x="1208" y="652" font-size="20" fill="#94A3B8" text-anchor="end">Fallos de sign-in</text>
+<text x="1208" y="678" font-size="20" fill="#94A3B8" text-anchor="end">por usuario</text>
+</svg>
+<p><b>Logs.</b> Cuánto duran según licencia, a dónde van con diagnostic settings y en qué tabla de Log Analytics caen.</p></div>
+<h2>4. Banco de preguntas: 40 preguntas estilo examen</h2>
+<p class="meta">En inglés, como el examen. Contesta sin ver la sección 5. En las series Yes/No cada afirmación se evalúa sola; en drag/order solo cuentan las acciones que sí van, en orden. Los case studies aplican a las dos preguntas que los siguen.</p>
+<h3 class="sub">Subdominio 1: Plan and implement entitlement management</h3>
+<div class="q"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Multiple choice</span><span class="skill-tag">Plan entitlements</span></div><p>Contoso already uses a dynamic membership group and group-based licensing so that every employee gets a Microsoft 365 license on day one. A new requirement arrives: employees from Finance sometimes need access to the Legal SharePoint Online site and the Legal contracts app for 30 days. The Legal manager must approve each request, and users from a partner organization must also be able to ask for the same access.</p>
+<p>What should you use?</p>
+<p>A. A second dynamic membership group with a rule based on the department attribute<br />
+B. An access package in Microsoft Entra entitlement management<br />
+C. PIM for Groups on the Legal security group<br />
+D. Self-service group management with owner approval on the Legal group</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Yes/No series</span><span class="skill-tag">Create and configure catalogs (delegation roles)</span></div><p>In the Marketing catalog of Contoso:</p>
+<ul>
+<li>Mamta is a catalog owner.</li>
+<li>Jessica is an access package manager.</li>
+<li>Nuno is an access package assignment manager.</li>
+</ul>
+<p>None of them hold a Microsoft Entra directory role.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Jessica can create a new access package that uses resources already in the Marketing catalog.</li>
+<li>Jessica can add a new SharePoint Online site to the Marketing catalog.</li>
+<li>Nuno can directly assign a user to an existing access package in the catalog and reprocess a request that failed.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create and configure catalogs (adding resources)</span></div><p>Pat is a user with no Microsoft Entra directory role. Pat is the catalog owner of the Research catalog. Pat needs to add the security group SG-Lab to the catalog, but SG-Lab doesn't appear in the resource picker.</p>
+<p>You need to let Pat add SG-Lab by granting the least privilege.</p>
+<p>What should you do?</p>
+<p>A. Assign Pat the Identity Governance Administrator role.<br />
+B. Assign Pat the Groups Administrator role.<br />
+C. Add Pat as an owner of SG-Lab.<br />
+D. Add Pat as an access package manager of the Research catalog.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create and configure access packages (policy audience)</span></div><p>You are creating the Project Falcon access package. Requirements:</p>
+<ul>
+<li>Member users of Contoso (not guests) can request it, with approval from their manager.</li>
+<li>Users from Fabrikam, an existing connected organization, can request it, with approval from the Fabrikam external sponsor.</li>
+</ul>
+<p>What is the minimum number of policies the access package needs?</p>
+<p>A. One<br />
+B. Two<br />
+C. Three<br />
+D. Four</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Yes/No series</span><span class="skill-tag">Create and configure access packages (lifecycle and extension)</span></div><p>An access package policy has these Lifecycle settings:</p>
+<ul>
+<li>Access package assignments expire: Number of days, 90</li>
+<li>Allow users to extend access: Yes</li>
+<li>Require approval to grant extension: Yes</li>
+</ul>
+<p>On the Requests tab, the policy requires approval from the requestor's manager.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Users receive an email 14 days before and again one day before their assignment expires, asking them to extend it.</li>
+<li>An extension request is approved by using the same approval settings defined on the Requests tab.</li>
+<li>A user who is no longer in the scope of the policy can still request an extension.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Multiple choice</span><span class="skill-tag">Manage access requests (multi-stage approval)</span></div><p>An access package policy uses two-stage approval:</p>
+<ul>
+<li>Stage 1 approvers: Alice and Bob. Decision must be made in 5 days.</li>
+<li>Stage 2 approver: Carol. Decision must be made in 5 days.</li>
+</ul>
+<p>A user submits a request. Alice approves it on day 1. Carol doesn't act during her stage.</p>
+<p>What happens to the request?</p>
+<p>A. It's approved, because stage 1 already approved it.<br />
+B. It expires (it's automatically denied), and the user must submit a new request.<br />
+C. It's forwarded to Global Administrators for a decision.<br />
+D. It returns to Bob, because he didn't respond in stage 1.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Select two</span><span class="skill-tag">Manage access requests (alternate approvers)</span></div><p>An access package uses single-stage approval with a specific approver. When that approver doesn't act, pending requests must go to the IT-Backup group before they time out.</p>
+<p>Which two settings should you configure? Each correct answer presents part of the solution.</p>
+<p>A. Set "If no action taken, forward to alternate approvers?" to Yes and add IT-Backup as alternate approvers.<br />
+B. Set "Forward to alternate approver(s) after how many days", and keep the request decision time-out at four days or more.<br />
+C. Add IT-Backup as a fallback approver.<br />
+D. Set "Require approver justification" to Yes.<br />
+E. Set "Users can request specific timeline" to Yes.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Multiple choice</span><span class="skill-tag">Manage the lifecycle of external users</span></div><p>The entitlement management setting "Lifecycle of external users" is configured as follows:</p>
+<ul>
+<li>Block external user from signing in to this directory: Yes</li>
+<li>Remove external user: Yes</li>
+<li>Number of days before removing external user from this directory: 30</li>
+</ul>
+<p>Ana, a partner user, was invited to Contoso when her access package request was approved. Later, a site owner also shared a SharePoint Online site directly with Ana. Today, Ana's only access package assignment expires.</p>
+<p>What happens to Ana's guest account?</p>
+<p>A. Nothing, because she still has access to a SharePoint Online site.<br />
+B. It's deleted immediately.<br />
+C. It's blocked from signing in now and removed after 30 days.<br />
+D. It stays active until the next access review of the SharePoint site.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage terms of use (ToU)</span></div><p>A Conditional Access Administrator creates a terms of use named Contractor ToU with these settings:</p>
+<ul>
+<li>Require users to consent on every device: On</li>
+<li>Expire consents: Off</li>
+<li>Duration before re-acceptance required (days): 90</li>
+<li>Enforce with Conditional Access policy template: Create Conditional Access policy later</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Users aren't prompted to accept Contractor ToU until a Conditional Access policy selects it as a grant control.</li>
+<li>B2B guest users in scope must accept Contractor ToU on every device they use.</li>
+<li>When a user's 90-day consent expires, the user is prompted to accept again only after their session expires.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Drag/order</span><span class="skill-tag">Implement and manage terms of use (ToU)</span></div><p>All members of the Contractors group must accept a new terms of use before they can open the Contoso Projects app.</p>
+<p>Which four actions should you perform in sequence?</p>
+<p>Actions:</p>
+<ul>
+<li>A. Create the terms of use document in PDF format.</li>
+<li>B. In Conditional Access &gt; Terms of use, add new terms, upload the PDF, and choose "Create Conditional Access policy later".</li>
+<li>C. Create a Conditional Access policy that targets the Contractors group and the Contoso Projects app, and select the new terms under Grant.</li>
+<li>D. Set Enable policy to On and tell users in scope to sign out and sign back in.</li>
+<li>E. Enable email one-time passcode for the tenant.</li>
+<li>F. Add the terms of use to the Contractors access package policy.</li>
+</ul></div>
+<div class="case"><h4>Case study 1: Woodgrove Bank (Q11 y Q12)</h4>
+<p>Woodgrove Bank has Microsoft Entra ID Governance licenses. It plans to share the Partner Portal access package with two partners:</p>
+<ul>
+<li>Tailspin Toys uses Microsoft Entra ID (tenant tailspintoys.com).</li>
+<li>Northwind Traders doesn't use Microsoft Entra ID. Its users have email addresses that end in @northwindtraders.com.</li>
+</ul>
+<p>Current configuration:</p>
+<ul>
+<li>Two connected organizations exist: one for the Tailspin Toys tenant and one for the northwindtraders.com domain (one-time passcode).</li>
+<li>The catalog that contains Partner Portal has Enabled for external users set to Yes.</li>
+<li>Email one-time passcode is enabled.</li>
+<li>The B2B external collaboration settings use an allowlist that contains only tailspintoys.com.</li>
+</ul>
+<p>Requirements:</p>
+<ul>
+<li>Only users from the two partners can request Partner Portal.</li>
+<li>Each request must be approved first by a contact person from the partner, who is already a guest in Woodgrove, and then by Woodgrove's partner manager, Omar.</li>
+<li>Assignments expire after 180 days.</li>
+<li>When a partner user loses their last access package assignment, their guest account must be removed as soon as possible.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Multiple choice (case study 1)</span><span class="skill-tag">Configure and manage connected organizations</span></div><p>Requests from Northwind Traders users are approved, but those users never get access, and no guest account is created for them.</p>
+<p>What should you do?</p>
+<p>A. Add northwindtraders.com to the B2B allowlist, or remove the allowlist.<br />
+B. Change the policy to All users (All connected organizations + any new external users).<br />
+C. Recreate the Northwind Traders connected organization with the Microsoft Entra ID authentication type.<br />
+D. Set Enabled for external users to Yes on the catalog.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Select two (case study 1)</span><span class="skill-tag">Create and configure access packages and lifecycle of external users</span></div><p>Which two configurations meet the approval and lifecycle requirements of Woodgrove Bank? Each correct answer presents part of the solution.</p>
+<p>A. In the policy for users not in your directory, configure two-stage approval: first approver External sponsor, second approver Omar as a specific approver.<br />
+B. In Control Configurations &gt; Lifecycle of external users, set Remove external user to Yes and Number of days before removing external user from this directory to 0.<br />
+C. In the policy, set Manager as the first approver and add Omar as the fallback approver.<br />
+D. Create an access review of the access package with "Block user from signing in for 30 days, then remove user from the tenant".<br />
+E. Keep Number of days before removing external user from this directory at 30.</p></div>
+<h3 class="sub">Subdominio 2: Plan, implement, and manage access reviews</h3>
+<div class="q"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span><span class="skill-tag">Plan for access reviews</span></div><p>Auditors ask Contoso to review, every quarter, who holds eligible or active assignments to the Global Administrator role.</p>
+<p>Where should you create this access review?</p>
+<p>A. ID Governance &gt; Access Reviews &gt; Teams + Groups<br />
+B. Microsoft Entra Privileged Identity Management<br />
+C. Entitlement management, in the policy of an access package<br />
+D. Enterprise applications, in the properties of the Microsoft Graph app</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Yes/No series</span><span class="skill-tag">Create and configure access reviews</span></div><p>You create an access review with these settings:</p>
+<ul>
+<li>Review: Teams + Groups, Select Teams + groups: Project-X</li>
+<li>Scope: Guest users only</li>
+<li>Reviewers: Group owner(s), fallback reviewer: Lee</li>
+<li>Auto apply results to resource: Enabled</li>
+<li>If reviewers don't respond: Remove access</li>
+<li>Action to apply on denied guest users: Block user from signing-in for 30 days, then remove user from the tenant</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>If Project-X has no owner when the review starts, Lee is asked to review.</li>
+<li>A guest that no reviewer reviews is blocked from signing in to the tenant after the review ends.</li>
+<li>An owner added to Project-X during the review becomes a reviewer of the current review instance.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create and configure access reviews (if reviewers don&#x27;t respond)</span></div><p>You create a recurring review of the Sales-Apps group with the decision helper "No sign-in within 30 days" enabled and Auto apply results to resource enabled. Reviewers are the users' managers.</p>
+<p>When a manager doesn't respond, users who haven't signed in during the last 30 days must lose access, and active users must keep access.</p>
+<p>Which "If reviewers don't respond" option should you select?</p>
+<p>A. No change<br />
+B. Remove access<br />
+C. Approve access<br />
+D. Take recommendations</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create and configure access reviews (multi-stage)</span></div><p>You create a multi-stage access review of the Finance-DB app:</p>
+<ul>
+<li>Stage 1: Managers of users</li>
+<li>Stage 2: The Security team (selected users)</li>
+</ul>
+<p>The Security team must double-check only the users that managers decided to keep.</p>
+<p>Which option should you select in "Specify reviewees to go to next stage"?</p>
+<p>A. Approved reviewees<br />
+B. Denied reviewees<br />
+C. Not reviewed reviewees<br />
+D. All</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Drag/order</span><span class="skill-tag">Create and configure access reviews</span></div><p>You need a recurring quarterly review of guest users in all Microsoft 365 groups. Group owners must review, Lee must review groups that have no owner, and denied guests must be removed automatically.</p>
+<p>Which five actions should you perform in sequence?</p>
+<p>Actions:</p>
+<ul>
+<li>A. Browse to ID Governance &gt; Access Reviews and select New access review.</li>
+<li>B. Select Teams + Groups, then All Microsoft 365 groups with guest users.</li>
+<li>C. On the Reviews tab, select Group owner(s), add Lee as fallback reviewer, and set the recurrence to Quarterly.</li>
+<li>D. On the Settings tab, enable Auto apply results to resource and choose an "If reviewers don't respond" option.</li>
+<li>E. On Review + Create, name the review and select Create.</li>
+<li>F. On the Settings tab, set Action to apply on denied guest users to "Block user from signing-in for 30 days, then remove user from the tenant".</li>
+<li>G. In Access Reviews &gt; Settings, set "Group owners can create and manage access reviews for groups they own" to Yes.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Multiple choice</span><span class="skill-tag">Monitor access review activity</span></div><p>Auditors need a single CSV file with every decision taken in the last quarter across reviews of groups, applications, Microsoft Entra roles, and access packages. For each user, the file must show the reviewer, the system recommendation, and who applied the result.</p>
+<p>What should you use?</p>
+<p>A. ID Governance &gt; Access Reviews &gt; Review History &gt; New report<br />
+B. The Download button on the Results page of each access review<br />
+C. The Microsoft Entra sign-in logs filtered by application<br />
+D. The Identity Secure Score history tab</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Multiple choice</span><span class="skill-tag">Manually respond to access review activity</span></div><p>A single-stage access review of the HR-Files group has two selected reviewers, Alice and Bob. Auto apply results to resource is enabled.</p>
+<p>On day 2, Alice approves Dan. On day 5, before the review ends, Bob denies Dan.</p>
+<p>What happens to Dan's membership?</p>
+<p>A. Dan keeps his membership, because one approval is enough.<br />
+B. Dan is removed as soon as Bob submits his decision.<br />
+C. Dan is removed when the review period ends or when an administrator stops the review.<br />
+D. The review is flagged as a conflict and an administrator must decide.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Select two</span><span class="skill-tag">Manually respond to access review activity (apply results)</span></div><p>An access review of several groups finished. Auto apply results to resource was disabled. Some denied users still have access.</p>
+<p>Which two statements are true? Each correct answer presents a complete solution.</p>
+<p>A. An administrator must open Review history, select the completed instance, and select Apply.<br />
+B. When you select Apply, denied members of a group synced from on-premises Active Directory are removed from the on-premises group.<br />
+C. Denied members of a dynamic membership group stay in the group, because the group rule controls membership.<br />
+D. Users marked as "Don't know" lose their access when the results are applied.<br />
+E. You can restart a stopped review to collect more decisions.</p></div>
+<h3 class="sub">Subdominio 3: Plan and implement privileged access</h3>
+<div class="q"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Multiple choice</span><span class="skill-tag">PIM for Microsoft Entra roles (assignments)</span></div><p>Three helpdesk leads need the User Administrator role only when they run a bulk task during a six-month migration project. After the project ends, they must lose the ability to use the role without any manual cleanup.</p>
+<p>Which assignment should you create in PIM?</p>
+<p>A. Active, permanent<br />
+B. Eligible, permanent<br />
+C. Eligible, time-bound with an end date at the end of the project<br />
+D. Active, time-bound with an end date at the end of the project</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span><span class="skill-tag">PIM for Microsoft Entra roles (settings)</span></div><p>The PIM role settings of the Exchange Administrator role are:</p>
+<ul>
+<li>Activation maximum duration (hours): 4</li>
+<li>On activation, require: Azure MFA</li>
+<li>Require justification on activation: Yes</li>
+<li>Require ticket information on activation: Yes</li>
+<li>Require approval to activate: Yes, no approvers selected</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>An eligible user can activate the role for six hours.</li>
+<li>Active Privileged Role Administrators and Global Administrators can approve the activation requests.</li>
+<li>PIM checks that the ticket number exists in the company's ticketing system before it activates the role.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Multiple choice</span><span class="skill-tag">PIM request and approval process</span></div><p>A user requests activation of the SharePoint Administrator role, which requires approval. The designated approvers don't respond.</p>
+<p>How long do they have before the user must submit a new request?</p>
+<p>A. 8 hours<br />
+B. The same time as the role's activation maximum duration<br />
+C. 24 hours, and this window isn't configurable<br />
+D. 7 days, configurable in the role settings</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Drag/order</span><span class="skill-tag">PIM for Azure resources (settings and assignments)</span></div><p>The Prod subscription is already visible in PIM &gt; Azure resources. Members of the DevOps group must get the Contributor role on Prod only when needed, and each activation must be approved by the Platform leads.</p>
+<p>Which four actions should you perform in sequence?</p>
+<p>Actions:</p>
+<ul>
+<li>A. Sign in as an Owner or User Access Administrator of the Prod subscription and open Prod in PIM &gt; Azure resources.</li>
+<li>B. Open Settings, edit the Contributor role, set Require approval to activate, and select the Platform leads as approvers.</li>
+<li>C. Open Roles, select Add assignments, choose Contributor and the DevOps group, and set the assignment type to Eligible.</li>
+<li>D. A DevOps member activates Contributor from My roles &gt; Azure resources, and a Platform lead approves the request.</li>
+<li>E. Configure the Contributor role settings on the root management group so that every subscription and resource group inherits them.</li>
+<li>F. Make the DevOps pipeline managed identity eligible for Contributor.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Multiple choice</span><span class="skill-tag">PIM for Azure resources (settings)</span></div><p>In PIM, you configure the Owner role settings on the subscription Sub1 to require approval. Kim is eligible for the Owner role on the resource group RG1, which is inside Sub1. Kim activates Owner on RG1 without any approval.</p>
+<p>Why?</p>
+<p>A. Approval is supported only for Microsoft Entra roles.<br />
+B. Role settings configured on the subscription aren't inherited by the resource group.<br />
+C. The Owner role can't require approval in PIM.<br />
+D. RG1 wasn't discovered, so PIM ignores its settings.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Multiple choice</span><span class="skill-tag">PIM for Groups</span></div><p>SQL-Admins is a cloud security group that isn't role-assignable. Membership gives access to Azure SQL. You want members to activate their membership just-in-time with approval.</p>
+<p>Which statement is true?</p>
+<p>A. You must first convert SQL-Admins into a role-assignable group.<br />
+B. You can enable SQL-Admins in PIM for Groups, because the group doesn't have to be role-assignable.<br />
+C. PIM for Groups supports only Microsoft 365 groups.<br />
+D. You can enable PIM for Groups only if the group uses dynamic membership.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Select two</span><span class="skill-tag">PIM for Groups and role-assignable groups</span></div><p>The group Tier1-Admins has an active assignment to a Microsoft Entra administrator role. Helpdesk engineers get eligible membership of Tier1-Admins through PIM for Groups.</p>
+<p>Which two recommendations from Microsoft Learn should you follow? Each correct answer presents part of the solution.</p>
+<p>A. Create Tier1-Admins as a role-assignable group, so that roles like Helpdesk Administrator can't reset the credentials of its members.<br />
+B. Require approval for activation of eligible member assignments.<br />
+C. Add the group Tier2-Admins as an active member of Tier1-Admins.<br />
+D. Use PIM for Groups instead of PIM for Microsoft Entra roles for Exchange Administrator, to avoid activation delays.<br />
+E. Configure a single policy that covers both membership and ownership of Tier1-Admins.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Yes/No series</span><span class="skill-tag">Create and manage break-glass accounts</span></div><p>Contoso configures two emergency access accounts, bg1@contoso.onmicrosoft.com and bg2@contoso.onmicrosoft.com:</p>
+<ul>
+<li>Both are cloud-only.</li>
+<li>Each one has a FIDO2 security key stored in a separate safe. Regular admins use Microsoft Authenticator.</li>
+<li>In PIM, both accounts are eligible for Global Administrator, and activation requires approval.</li>
+<li>Both accounts are excluded from every Conditional Access policy that blocks or restricts sign-in.</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>The Global Administrator assignment of the two accounts follows Microsoft recommendations.</li>
+<li>The two accounts must also be excluded from Conditional Access policies in Report-only mode.</li>
+<li>Using FIDO2 security keys for these accounts, while regular admins use Microsoft Authenticator, follows Microsoft recommendations.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Multiple choice (KQL)</span><span class="skill-tag">Create and manage break-glass accounts (monitoring)</span></div><p>Contoso sends Microsoft Entra sign-in logs to a Log Analytics workspace. You create an Azure Monitor alert rule with the signal Custom log search and the alert logic "Greater than 0". The alert must fire on <strong>any</strong> sign-in attempt, successful or failed, by the two emergency access accounts. Their object IDs are 00aa00aa-bb11-cc22-dd33-44ee44ee44ee and 11bb11bb-cc22-dd33-ee44-55ff55ff55ff.</p>
+<p>Which query should you use in the alert rule?</p>
+<p>A.</p>
+<pre><code class="language-kusto">SigninLogs
+| where UserId == &quot;00aa00aa-bb11-cc22-dd33-44ee44ee44ee&quot; or UserId == &quot;11bb11bb-cc22-dd33-ee44-55ff55ff55ff&quot;
+| project TimeGenerated, UserPrincipalName, UserId, IPAddress, ResultType, ResultDescription
+</code></pre>
+<p>B.</p>
+<pre><code class="language-kusto">SigninLogs
+| where UserId in (&quot;00aa00aa-bb11-cc22-dd33-44ee44ee44ee&quot;, &quot;11bb11bb-cc22-dd33-ee44-55ff55ff55ff&quot;)
+| where ResultType == &quot;0&quot;
+| project TimeGenerated, UserPrincipalName, UserId, IPAddress
+</code></pre>
+<p>C.</p>
+<pre><code class="language-kusto">AuditLogs
+| where OperationName has &quot;Add member to role&quot;
+| where tostring(TargetResources) has &quot;00aa00aa-bb11-cc22-dd33-44ee44ee44ee&quot;
+</code></pre>
+<p>D.</p>
+<pre><code class="language-kusto">AADServicePrincipalSignInLogs
+| where ServicePrincipalId in (&quot;00aa00aa-bb11-cc22-dd33-44ee44ee44ee&quot;, &quot;11bb11bb-cc22-dd33-ee44-55ff55ff55ff&quot;)
+</code></pre></div>
+<div class="q"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Select two</span><span class="skill-tag">PIM request and approval process</span></div><p>Which two statements about approvals for Microsoft Entra roles in PIM are true? Each correct answer presents a complete solution.</p>
+<p>A. An approver must hold a Microsoft Entra administrator role.<br />
+B. A request is resolved by the first approver who approves or denies it.<br />
+C. A user who is also an approver can approve their own activation request.<br />
+D. A service principal can approve activation requests through Microsoft Graph.<br />
+E. All approvers are notified when one approver responds to the request.</p></div>
+<div class="case"><h4>Case study 2: Litware (Q31 y Q32)</h4>
+<p>Litware Inc. has 40 administrators with eligible assignments to Microsoft Entra roles in PIM. Microsoft Entra sign-in and audit logs are sent to a Log Analytics workspace by using diagnostic settings.</p>
+<p>Security requirements:</p>
+<ul>
+<li>R1: Activating the Security Administrator role must require a phishing-resistant authentication method at the moment of activation, even if the admin already completed MFA earlier in the same session.</li>
+<li>R2: For a single activation, auditors need every related audit event: request, approval, activation, and later deactivation. Some activations use approval and a scheduled start time.</li>
+<li>R3: PIM audit data must be kept for one year.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice (case study 2)</span><span class="skill-tag">PIM for Microsoft Entra roles (settings)</span></div><p>Which configuration meets R1?</p>
+<p>A. In the Security Administrator role settings, select On activation, require Azure MFA.<br />
+B. Create a Conditional Access authentication context, create a Conditional Access policy for that context with a phishing-resistant authentication strength that targets all users, and select that authentication context in the Security Administrator role settings.<br />
+C. In the Security Administrator role settings, select Require multifactor authentication on active assignment.<br />
+D. Create a Conditional Access policy that targets the Security Administrator directory role and requires a phishing-resistant authentication strength.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Multiple choice (KQL, case study 2)</span><span class="skill-tag">PIM audit history and reports</span></div><p>You have the roleAssignmentRequestId of one activation. Which query returns all audit events for its full activation and deactivation cycle, as required by R2?</p>
+<p>A.</p>
+<pre><code class="language-kusto">let requestCorrelation = &quot;c0ffee00-1111-2222-3333-444455556666&quot;;
+AuditLogs
+| where CorrelationId == requestCorrelation
+</code></pre>
+<p>B.</p>
+<pre><code class="language-kusto">let roleAssignmentRequestId = &quot;a1b2c3d4-0000-1111-2222-333344445555&quot;;
+let relatedCorrelationIds = AuditLogs
+    | where AdditionalDetails has roleAssignmentRequestId
+    | summarize make_set(CorrelationId);
+AuditLogs
+| where AdditionalDetails has roleAssignmentRequestId
+    or CorrelationId in (relatedCorrelationIds)
+</code></pre>
+<p>C.</p>
+<pre><code class="language-kusto">SigninLogs
+| where CorrelationId == &quot;a1b2c3d4-0000-1111-2222-333344445555&quot;
+</code></pre>
+<p>D.</p>
+<pre><code class="language-kusto">AuditLogs
+| where OperationName has &quot;Add member to role&quot;
+| take 1
+</code></pre></div>
+<h3 class="sub">Subdominio 4: Monitor identity activity by using logs, workbooks, and reports</h3>
+<div class="q"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Multiple choice</span><span class="skill-tag">Review and analyze sign-in, audit, and provisioning logs (retention)</span></div><p>Fabrikam used Microsoft Entra ID Free and never exported its logs. Today, Fabrikam buys Microsoft Entra ID P1. An investigator needs the sign-in logs from 20 days ago.</p>
+<p>What can you tell the investigator?</p>
+<p>A. The data isn't available. Only up to seven days of data from the Free period can be seen.<br />
+B. 30 days of data are available right away, because P1 keeps 30 days.<br />
+C. The data will appear within three days of the upgrade.<br />
+D. The data can be restored by opening a support request.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Yes/No series</span><span class="skill-tag">Review and analyze sign-in, audit, and provisioning logs</span></div><p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>A client app that uses an OAuth 2.0 refresh token to get a new access token for a user is recorded in the non-interactive user sign-in logs.</li>
+<li>A virtual machine that uses a managed identity to get a token for Azure Key Vault is recorded in the service principal sign-in logs.</li>
+<li>The provisioning logs can show the status Skipped for a user that doesn't match a scoping filter.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Select two</span><span class="skill-tag">Configure diagnostic settings</span></div><p>Contoso has two requirements for Microsoft Entra audit and sign-in logs:</p>
+<ul>
+<li>Keep them for two years, at low cost, for compliance. They will rarely be queried.</li>
+<li>Stream them in near real time to a third-party SIEM.</li>
+</ul>
+<p>Which two destinations should you configure in diagnostic settings? Each correct answer presents part of the solution.</p>
+<p>A. An Azure storage account<br />
+B. An event hub<br />
+C. A Log Analytics workspace<br />
+D. A Microsoft Entra workbook<br />
+E. The Identity Secure Score dashboard</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Drag/order</span><span class="skill-tag">Configure diagnostic settings (Log Analytics)</span></div><p>You need to run KQL queries on Microsoft Entra sign-in and audit logs in the Microsoft Entra admin center.</p>
+<p>Which four actions should you perform in sequence?</p>
+<p>Actions:</p>
+<ul>
+<li>A. Create a Log Analytics workspace in an Azure subscription.</li>
+<li>B. Sign in to the Microsoft Entra admin center as a Security Administrator and browse to Entra ID &gt; Monitoring &amp; health &gt; Diagnostic settings.</li>
+<li>C. Add a diagnostic setting, select the AuditLogs and SignInLogs categories, select Send to Log Analytics workspace, and save.</li>
+<li>D. Browse to Entra ID &gt; Monitoring &amp; health &gt; Log Analytics and run the queries.</li>
+<li>E. Create a Microsoft Entra workbook so that data starts flowing to the workspace.</li>
+<li>F. Assign the Reports Reader role to the Log Analytics workspace.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice (KQL)</span><span class="skill-tag">Monitor Microsoft Entra ID by using KQL queries in Log Analytics</span></div><p>Provisioning logs are sent to Log Analytics. You need a list of error codes from failed provisioning operations in the last 24 hours, with how many times each one happened and when it was last seen.</p>
+<p>Which query should you run?</p>
+<p>A.</p>
+<pre><code class="language-kusto">AADProvisioningLogs
+| where TimeGenerated &gt; ago(1d)
+| where ResultType == &quot;Failure&quot;
+| summarize Occurrences = count(), LastSeen = max(TimeGenerated) by ResultSignature
+| order by Occurrences desc
+</code></pre>
+<p>B.</p>
+<pre><code class="language-kusto">AADProvisioningLogs
+| where TimeGenerated &gt; ago(1d)
+| where ResultType == &quot;Skipped&quot;
+| summarize Occurrences = count(), LastSeen = max(TimeGenerated) by ResultSignature
+| order by Occurrences desc
+</code></pre>
+<p>C.</p>
+<pre><code class="language-kusto">SigninLogs
+| where TimeGenerated &gt; ago(1d)
+| where ResultType != &quot;0&quot;
+| summarize Occurrences = count(), LastSeen = max(TimeGenerated) by ResultType
+</code></pre>
+<p>D.</p>
+<pre><code class="language-kusto">AuditLogs
+| where TimeGenerated &gt; ago(1d)
+| where Result == &quot;failure&quot;
+| summarize Occurrences = count() by OperationName
+</code></pre></div>
+<div class="q"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Multiple choice (KQL)</span><span class="skill-tag">Monitor Microsoft Entra ID by using KQL queries in Log Analytics</span></div><p>Contoso has one diagnostic setting that sends the AuditLogs and SignInLogs categories to a Log Analytics workspace. It has been working for two months. An analyst runs this query and gets no results:</p>
+<pre><code class="language-kusto">AADNonInteractiveUserSignInLogs
+| where TimeGenerated &gt; ago(1d)
+| summarize CountPerIPAddress = count() by IPAddress
+| order by CountPerIPAddress desc
+| take 100
+</code></pre>
+<p>What should you do so the query returns data?</p>
+<p>A. Edit the diagnostic setting and add the NonInteractiveUserSignInLogs category.<br />
+B. Upgrade the tenant from Microsoft Entra ID P1 to P2.<br />
+C. Add the ServicePrincipalSignInLogs category.<br />
+D. Change ago(1d) to ago(30d), because non-interactive sign-ins are written once a month.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Multiple choice</span><span class="skill-tag">Analyze Microsoft Entra ID by using workbooks and reporting</span></div><p>Contoso has Microsoft Entra ID P1. A Security Reader opens the Sign-ins workbook template in Entra ID &gt; Monitoring &amp; health &gt; Workbooks, but every chart is empty. No diagnostic settings exist in the tenant.</p>
+<p>What should you do first?</p>
+<p>A. Configure a diagnostic setting that sends the sign-in logs to a Log Analytics workspace, and use that workspace in the workbook.<br />
+B. Assign Microsoft Entra ID P2 licenses to all users.<br />
+C. Archive the sign-in logs to a storage account.<br />
+D. Wait 24 hours for the Identity Secure Score to recalculate.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Multiple choice</span><span class="skill-tag">Monitor and improve the security posture by using Identity Secure Score</span></div><p>Contoso protects every user with a non-Microsoft MFA solution. The Identity Secure Score improvement action "Ensure all users can complete MFA" still shows as not done. You want the score to reflect that the risk is covered.</p>
+<p>Which status should you set on the improvement action?</p>
+<p>A. Planned<br />
+B. Risk accepted<br />
+C. Resolved through third party<br />
+D. To address</p></div>
+<h2>5. Respuestas y explicaciones</h2>
+<p class="meta">Lee siempre el "por qué las otras no". El SC-300 se pierde en los distractores, no en la teoría.</p>
+<h3 class="sub">Subdominio 1: Plan and implement entitlement management</h3>
+<div class="a"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Learn dice que los access packages son lo indicado cuando el acceso es <strong>por tiempo limitado, necesita aprobación y también lo piden personas de una organización socia</strong>. Un access package junta el sitio y la app en un solo paquete, con expiración de 30 días y aprobador.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: un grupo dinámico es para acceso "de nacimiento" por atributo. No tiene aprobación, no expira a los 30 días y no trae externos.</li>
+<li>C: PIM for Groups es JIT para accesos privilegiados. No invita externos ni junta un sitio y una app en un paquete.</li>
+<li>D: self-service de grupos solo cubre un grupo, sin expiración y sin flujo para partners.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-overview#when-should-i-use-access-packages</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. El access package manager <strong>crea access packages con recursos que ya están en el catalog</strong> y maneja sus policies.</li>
+<li>2 No. Agregar recursos al catalog es trabajo del catalog owner (o de un admin), y además hace falta permiso sobre el recurso. Para un sitio de SharePoint, ser SharePoint Administrator o admin del sitio.</li>
+<li>3 Yes. El access package assignment manager puede asignar y quitar usuarios, ver requests y hacer reprocess. <strong>No crea ni edita access packages.</strong></li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: creer que solo el catalog owner crea paquetes. El access package manager también.</li>
+<li>Trampa de la 2: confundir "crear paquetes" con "agregar recursos al catalog".</li>
+<li>Trampa de la 3: pensar que el assignment manager solo ve. Sí asigna, quita y reprocesa.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-delegate#entitlement-management-roles</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Para agregar un recurso al catalog hacen falta <strong>dos cosas: ser catalog owner y tener permiso sobre el recurso</strong>. La tabla de Learn dice que un usuario normal que es catalog owner puede agregar un grupo "only if group owner". Ser owner de ese único grupo es lo más acotado.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: trampa clásica. En la tabla de Learn, Identity Governance Administrator puede agregar <strong>apps</strong>, pero no security groups ni Microsoft 365 groups.</li>
+<li>B: Groups Administrator más catalog owner sí funciona, pero es un rol de todo el tenant. No es least privilege.</li>
+<li>D: el access package manager usa recursos que ya están en el catalog. No agrega recursos.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-delegate#required-roles-to-add-resources-to-a-catalog</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Learn lo dice claro: <strong>una sola policy no puede asignar identidades internas y externas</strong> al mismo access package. Necesitas una policy "For users, service principals, and agent identities in your directory" (All members excluding guests, manager como approver) y otra "For users not in your directory" (Specific connected organizations, external sponsor como approver).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: una policy tiene un solo público. No mezcla "in your directory" con "not in your directory".</li>
+<li>C: tres sería si además quisieras asignación automática o solo directa por admin. No se pide.</li>
+<li>D: no hay cuatro públicos distintos en el escenario.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-request-policy#choose-between-one-or-multiple-policies</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Con extensión permitida, el correo llega <strong>14 días antes y un día antes</strong> de que expire.</li>
+<li>2 Yes. "Require approval to grant extension" usa <strong>las mismas reglas de aprobación</strong> de la pestaña Requests.</li>
+<li>3 No. Learn pide que el usuario <strong>siga dentro del scope de la policy</strong> al pedir la extensión.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: inventar otros números (7 días, 30 días).</li>
+<li>Trampa de la 2: creer que la extensión tiene su propio approver aparte.</li>
+<li>Trampa de la 3: pensar que la extensión es automática para quien ya tuvo acceso.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-lifecycle-policy#specify-a-lifecycle</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> En multi-stage, <strong>basta un approver por stage</strong> para pasar al siguiente, y cada stage tiene su plazo. Si nadie decide a tiempo, la solicitud <strong>se deniega sola</strong> (estado Expired) y el usuario tiene que pedir otra vez.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: un stage aprobado no aprueba los siguientes. Todos los stages deben aprobar.</li>
+<li>C: no existe un forward automático a Global Administrators. Solo hay alternate approvers si los configuras.</li>
+<li>D: Alice ya resolvió el stage 1. Bob no vuelve a entrar.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-approval-policy#multi-stage-approval</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Los <strong>alternate approvers</strong> reciben la solicitud cuando el approver principal no actúa, según el número de días que definas. Learn agrega dos reglas: el forward solo pasa un día después de creada la solicitud, y el <strong>time-out debe ser de al menos cuatro días</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C: fallback approver es para cuando <strong>no se encuentra el manager</strong> del usuario. No es para cuando el approver no responde.</li>
+<li>D: la justificación del approver no mueve la solicitud a nadie.</li>
+<li>E: esto deja al usuario pedir fechas de inicio y fin. No tiene que ver con aprobación.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-approval-policy#alternate-approvers</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Al perder su <strong>último</strong> access package, el guest queda bloqueado y se borra a los 30 días. Learn aclara que el usuario <strong>se borra aunque tenga otros accesos</strong> que no vienen de access packages, como un sitio de SharePoint compartido después.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: trampa directa. El acceso directo al sitio no la salva, porque Ana entró por entitlement management.</li>
+<li>B: el borrado inmediato solo pasa si pones 0 días.</li>
+<li>D: una access review no controla este ciclo de vida.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#manage-the-lifecycle-of-external-users</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Con "Create Conditional Access policy later", la ToU solo aparece en la lista de grant controls. <strong>Sin una política de CA, nadie la ve.</strong></li>
+<li>2 No. La ToU por device <strong>no soporta usuarios B2B</strong>. Además pide que el device esté registrado en Entra ID.</li>
+<li>3 Yes. Learn marca como importante que, con Expire consents o con Duration before re-acceptance, el usuario vuelve a aceptar <strong>solo cuando su sesión expira</strong>.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: creer que crear la ToU ya la hace cumplir.</li>
+<li>Trampa de la 2: olvidar las limitaciones de per-device (B2B y la app Intune Enrollment).</li>
+<li>Trampa de la 3: pensar que la re-aceptación corta la sesión en ese mismo momento.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#per-device-terms-of-use y https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#add-terms-of-use</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> La ToU es un <strong>PDF</strong> que subes en Terms of use. Si eliges "Create Conditional Access policy later", la ToU queda disponible como grant control. Luego creas la <strong>política de CA</strong> con el grupo y la app, y la activas. Learn avisa que los usuarios en scope deben cerrar sesión y volver a entrar para cumplir la nueva política.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: email one-time passcode es para externos sin cuenta de Entra. No tiene nada que ver con aceptar una ToU.</li>
+<li>F: las policies de access package no tienen un campo de ToU. La ToU se hace cumplir con Conditional Access.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use#add-terms-of-use</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Multiple choice (case study 1)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Cuando se aprueba la solicitud, entitlement management invita al usuario con B2B. <strong>La B2B allow/block list tiene prioridad</strong>: si el dominio no está permitido, el usuario no se invita y no recibe acceso hasta que actualices la lista.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: cambiar a "All users" no arregla nada, porque la allowlist sigue ganando. Además rompe el requisito de "solo los dos partners".</li>
+<li>C: Northwind no tiene tenant de Entra. Su tipo de autenticación correcto es one-time passcode por dominio.</li>
+<li>D: el catalog ya está en Yes, según el caso.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#settings-for-external-users</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Select two (case study 1)</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>A: para usuarios que no están en tu directorio puedes elegir <strong>External sponsor</strong> en el primer stage y un approver específico en el segundo. Los sponsors externos se definen en la connected organization.</li>
+<li>B: con <strong>0 días</strong>, la cuenta guest se borra en cuanto el usuario pierde su último access package. Eso es "lo antes posible".</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C: "Manager as approver" solo existe en policies para usuarios de tu directorio. Los externos no tienen manager en Woodgrove.</li>
+<li>D: una access review decide sobre el acceso. No es el mecanismo para borrar al guest cuando pierde su último paquete.</li>
+<li>E: 30 días es el default. No cumple "lo antes posible".</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-approval-policy#single-stage-approval y https://learn.microsoft.com/entra/id-governance/entitlement-management-external-users#manage-the-lifecycle-of-external-users</p></div>
+<h3 class="sub">Subdominio 2: Plan, implement, and manage access reviews</h3>
+<div class="a"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> La tabla de Learn "Where do you create reviews?" dice que los <strong>roles de Microsoft Entra y los roles de Azure se revisan desde PIM</strong>. Para roles de Entra necesitas al menos Privileged Role Administrator.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Teams + Groups revisa membresía de grupos, no asignaciones de roles.</li>
+<li>C: en entitlement management se revisan asignaciones de access packages.</li>
+<li>D: en Enterprise applications se revisa quién tiene asignada una app.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/access-reviews-overview#where-do-you-create-reviews</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. El <strong>fallback reviewer</strong> entra cuando el usuario no tiene manager o el grupo no tiene owner.</li>
+<li>2 Yes. "Remove access" cuenta como denegar, y la acción para guests aplica cuando se niegan <strong>por un reviewer o por el setting If reviewers don't respond</strong>. Con auto apply, el guest queda bloqueado y se borra a los 30 días.</li>
+<li>3 No. Solo cuentan los owners <strong>que existían cuando empezó la review</strong>. Los cambios entran en la siguiente instancia.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: creer que sin owner la review se queda sin reviewer.</li>
+<li>Trampa de la 2: pensar que la acción de guests solo aplica a denegaciones manuales.</li>
+<li>Trampa de la 3: olvidar que la review toma una foto al inicio.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/create-access-review#next-reviews y https://learn.microsoft.com/entra/id-governance/create-access-review#next-settings</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> D</p>
+<p><strong>Por qué es correcta:</strong> <strong>Take recommendations</strong> aplica lo que recomienda el sistema. Con el helper "No sign-in within 30 days", el sistema recomienda aprobar a quien entró en los últimos 30 días y <strong>denegar a quien no entró</strong>. Justo lo que se pide.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: deja a todos igual, incluidos los inactivos.</li>
+<li>B: quita el acceso a todos los no revisados, incluidos los activos. Learn avisa que con auto apply esto puede quitar todo el acceso al recurso.</li>
+<li>C: aprueba a todos, incluidos los inactivos.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/create-access-review#next-settings</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Con <strong>Approved reviewees</strong>, solo los usuarios aprobados en el stage 1 pasan al stage 2. La decisión del stage 2 <strong>sobrescribe</strong> la del stage 1.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: mandaría a los usuarios que el manager quiso quitar.</li>
+<li>C: mandaría solo a los que nadie revisó.</li>
+<li>D: mandaría a todos, y el equipo de seguridad tendría más trabajo del que se pide.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/create-access-review#create-a-multi-stage-access-review</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D, E</p>
+<p><strong>Por qué es correcta:</strong> Es el orden del asistente: Select what to review, Reviews, Settings y Review + Create. Con "All Microsoft 365 groups with guest users" el scope queda en <strong>Guest users only</strong> sin más opciones.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>F: trampa fuerte. Learn dice que "Action to apply on denied guest users" <strong>no se puede configurar</strong> en reviews de "All Microsoft 365 groups with guest users". Se usa el default: quitar la membresía.</li>
+<li>G: ese setting sirve para que los owners <strong>creen</strong> reviews. Aquí la crea un admin y los owners solo revisan.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/create-access-review#scope y https://learn.microsoft.com/entra/id-governance/create-access-review#next-settings</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El reporte de <strong>Review History</strong> junta varias reviews en un rango de fechas y filtra por tipo y resultado. Trae columnas como ReviewerName, AccessRecommendation y AppliedByName. El CSV queda disponible <strong>30 días</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: Download en Results da el CSV de <strong>una</strong> review. No junta todas en un archivo.</li>
+<li>C: los sign-in logs muestran inicios de sesión, no decisiones de reviews.</li>
+<li>D: Secure Score no guarda decisiones de reviews.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/access-reviews-downloadable-review-history#how-to-create-a-review-history-report</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Con varios reviewers <strong>se guarda la última respuesta enviada</strong>, aquí la de Bob. Y un usuario denegado <strong>no se quita al instante</strong>: sale cuando termina la review o cuando un admin la detiene.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: en access reviews no hay regla de "basta una aprobación". Gana la última decisión.</li>
+<li>B: el deny no se aplica en el momento. Se aplica al final.</li>
+<li>D: no existe un estado de conflicto entre reviewers.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/perform-access-review#manually-review-access-for-one-or-more-users</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y C</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>A: sin auto apply, el admin va a <strong>Review history</strong> bajo Series, elige la instancia y hace <strong>Apply</strong>.</li>
+<li>C: las decisiones de una review <strong>no cambian grupos dinámicos</strong>. Mientras el usuario cumpla la regla, sigue siendo miembro.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: Apply no toca grupos que vienen de on-premises. Hay que descargar los resultados y hacer el cambio en AD.</li>
+<li>D: "Don't know" deja al usuario con su acceso.</li>
+<li>E: una review detenida con Stop no se puede reiniciar.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/complete-access-review#apply-the-changes</p></div>
+<h3 class="sub">Subdominio 3: Plan and implement privileged access</h3>
+<div class="a"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> <strong>Eligible</strong> significa que activan el rol solo cuando lo necesitan (JIT). <strong>Time-bound</strong> con fecha de fin hace que la elegibilidad termine sola al acabar el proyecto.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: tendrían el rol siempre activo y para siempre.</li>
+<li>B: nunca vence. Alguien tendría que quitarla a mano.</li>
+<li>D: tendrían el rol activo los seis meses completos, sin JIT.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-add-role-to-user#assign-a-role</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. El usuario elige una duración <strong>dentro del máximo</strong> configurado, aquí 4 horas. El slider va de 1 a 24.</li>
+<li>2 Yes. En roles de Entra, <strong>si no eliges approvers, los Privileged Role Administrators y Global Administrators activos son los approvers por default</strong>.</li>
+<li>3 No. El ticket es <strong>solo informativo</strong>. PIM no lo valida contra ningún sistema.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: confundir el máximo que pone el admin con lo que pide el usuario.</li>
+<li>Trampa de la 2: aplicar la regla de Azure resources y PIM for Groups, donde <strong>no hay approvers por default</strong>.</li>
+<li>Trampa de la 3: creer que PIM se integra con ServiceNow para validar tickets.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#require-approval-to-activate y https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#activation-maximum-duration</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Learn dice que los approvers delegados tienen <strong>24 horas</strong> para aprobar. Si no, el usuario debe mandar una nueva solicitud. <strong>Esa ventana no se configura.</strong></p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: 8 horas no es la ventana de aprobación.</li>
+<li>B: la duración máxima de activación es cuánto dura el rol activo, no cuánto espera la aprobación.</li>
+<li>D: no hay un setting de días para la aprobación de roles de Entra.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow#overview</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> Los settings de roles de Azure resources los cambia un <strong>Owner o User Access Administrator</strong> del recurso. Primero ajustas el setting del rol (aprobación y approvers), luego creas la asignación <strong>Eligible</strong> y, al final, el usuario activa y el approver aprueba.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: los role settings <strong>no se heredan</strong> de un nivel alto a uno bajo. Cada recurso y cada rol tiene los suyos.</li>
+<li>F: no se crean asignaciones eligible para aplicaciones, service principals ni managed identities, porque no pueden hacer los pasos de activación.</li>
+</ul>
+<p>Nota: en la experiencia legacy primero hacías <strong>Discover resources &gt; Manage resource</strong>, y eso asigna el service principal MS-PIM como User Access Administrator. La experiencia nueva maneja Azure resources sin onboarding.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-configure-role-settings#overview y https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-assign-roles#assign-a-role</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Learn: las role settings son <strong>por rol y por recurso</strong>, y lo que configuras en un nivel alto como Subscription <strong>no se hereda</strong> en un nivel más bajo como Resource Group. RG1 tiene su propia policy del rol Owner, sin aprobación.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: la aprobación existe en roles de Entra, Azure resources y PIM for Groups.</li>
+<li>C: Owner sí puede pedir aprobación. De hecho, Learn lo usa como ejemplo en el plan de PIM.</li>
+<li>D: los hijos de un recurso ya manejado entran en PIM. El problema no es el discovery.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-configure-role-settings#overview</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Desde enero de 2023, <strong>cualquier security group o Microsoft 365 group</strong> puede entrar a PIM for Groups, sea role-assignable o no. Las excepciones son los grupos <strong>dinámicos</strong> y los <strong>sincronizados desde on-premises</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: ser role-assignable ya no es requisito. Además, un grupo existente no se convierte en role-assignable.</li>
+<li>C: funciona con security groups y con Microsoft 365 groups.</li>
+<li>D: al revés. Los grupos dinámicos <strong>no</strong> se pueden usar en PIM for Groups.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups#relationship-between-role-assignable-groups-and-pim-for-groups</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>A: en un grupo <strong>role-assignable</strong> nadie más cambia las credenciales de sus miembros y owners, <strong>incluso los eligible que aún no activan</strong>. Así un admin de menor nivel no resetea una contraseña para activar en nombre de otro.</li>
+<li>B: Learn recomienda <strong>pedir aprobación</strong> en las asignaciones eligible de grupos que elevan a roles de Entra.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C: un grupo role-assignable <strong>no puede tener grupos anidados como miembros activos</strong>. Solo se permite como eligible.</li>
+<li>D: es al revés. Para SharePoint, Exchange o Purview, Learn recomienda <strong>PIM for Microsoft Entra roles</strong> para evitar demoras.</li>
+<li>E: cada grupo tiene <strong>dos policies</strong>, una para membership y otra para ownership.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups#what-are-microsoft-entra-role-assignable-groups</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. Learn pide que el rol Global Administrator de las cuentas de emergencia sea <strong>active permanent</strong>, no eligible. Si la emergencia es justo que nadie puede aprobar, la cuenta no sirve.</li>
+<li>2 No. Las políticas en <strong>Report-only</strong> no bloquean nada, así que no necesitan exclusión.</li>
+<li>3 Yes. Learn pide un método fuerte (passkey FIDO2 o CBA) y <strong>distinto</strong> al que usan los admins normales.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que "todo admin va eligible". Las break-glass son la excepción.</li>
+<li>Trampa de la 2: excluir de más. La regla es excluir de las políticas que bloquean o restringen.</li>
+<li>Trampa de la 3: el mito viejo de "break-glass sin MFA". Hoy se recomienda un método phishing-resistant que cumpla la MFA obligatoria.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access#configuration-requirements y https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access#conditional-access-considerations</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Multiple choice (KQL)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Es la query que Learn usa para las cuentas de emergencia: filtra <strong>SigninLogs</strong> por el object ID (UserId) de cada cuenta y no filtra por resultado. Así cuenta los intentos buenos y los fallidos, y con umbral mayor que 0 la alerta salta en cualquier uso.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: ResultType "0" es solo éxito. Se pierden los intentos fallidos, que también hay que investigar.</li>
+<li>C: AuditLogs registra cambios, como agregar a un rol. No registra inicios de sesión.</li>
+<li>D: las cuentas break-glass son usuarios, no service principals. Esa tabla no tendrá nada de ellas.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/security-emergency-access#create-an-alert-rule</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> B y E</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>B: en PIM <strong>la primera decisión resuelve</strong> la solicitud, sea approve o deny.</li>
+<li>E: cuando un approver responde, <strong>todos los approvers reciben aviso</strong>.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Learn dice que el approver <strong>no necesita tener ningún rol</strong>.</li>
+<li>C: nadie aprueba su propia activación.</li>
+<li>D: los service principals <strong>no pueden</strong> aprobar solicitudes.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow#workflow-notifications y https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow#approve-requests</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice (case study 2)</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> "On activation, require Microsoft Entra Conditional Access <strong>authentication context</strong>" junto con <strong>authentication strengths</strong> obliga a autenticar en la activación con el método que pides. La política de CA del contexto debe incluir a todos los usuarios o a los eligible.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Learn avisa que con "require MFA" el usuario <strong>puede no recibir el prompt</strong> si ya hizo MFA antes en la sesión. No cumple "aunque ya haya hecho MFA".</li>
+<li>C: ese setting aplica al admin que <strong>crea</strong> una asignación active, no a la activación.</li>
+<li>D: durante la activación el usuario <strong>todavía no tiene el rol</strong>, así que una política dirigida al rol no aplica en ese momento.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#on-activation-require-multifactor-authentication</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Multiple choice (KQL, case study 2)</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> En PIM, una activación con aprobación o con inicio programado se procesa en pasos asíncronos, y <strong>el CorrelationId puede cambiar</strong>. El que no cambia es <strong>roleAssignmentRequestId</strong>, que queda en AdditionalDetails, incluso en la desactivación. La query B junta ese ID con todos los CorrelationId relacionados.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: con un solo CorrelationId se pierden los pasos que tienen otro.</li>
+<li>C: SigninLogs no guarda eventos de PIM.</li>
+<li>D: trae un evento cualquiera de activación, no el ciclo completo de esa solicitud.</li>
+</ul>
+<p>Para R3: el Resource audit de PIM guarda <strong>30 días</strong>. Para un año, se envían los AuditLogs con diagnostic settings a una storage account o a Log Analytics con la retención adecuada.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-use-audit-log#correlating-events-related-to-the-same-activation-cycle</p></div>
+<h3 class="sub">Subdominio 4: Monitor identity activity by using logs, workbooks, and reports</h3>
+<div class="a"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Free guarda <strong>7 días</strong> de sign-ins y audit. Learn dice que el cambio de retención <strong>no es retroactivo</strong>: al pasar a P1 solo ves lo que seguía dentro de los 7 días. Lo que ya venció no vuelve, salvo que lo hubieras exportado.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: los 30 días de P1 cuentan hacia adelante, no hacia atrás.</li>
+<li>C: los "hasta tres días" aplican cuando <strong>no había datos</strong> y empiezan a aparecer después del upgrade. No recuperan datos vencidos.</li>
+<li>D: soporte no restaura logs que ya se borraron.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/reference-reports-data-retention#activity-reports</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Los <strong>non-interactive</strong> son sign-ins hechos a nombre del usuario, como renovar un token con un refresh token, sin que el usuario dé un factor.</li>
+<li>2 No. Eso va en <strong>managed identity sign-ins</strong>, un log separado del de service principals.</li>
+<li>3 Yes. Status puede ser Success, Failure, Skipped o Warning. <strong>Skipped</strong> sale, por ejemplo, cuando un scoping filter deja fuera al usuario.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: creer que todo sign-in de usuario es interactive.</li>
+<li>Trampa de la 2: juntar service principal y managed identity en un solo log.</li>
+<li>Trampa de la 3: pensar que Skipped significa error.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins#what-are-the-types-of-sign-in-logs y https://learn.microsoft.com/entra/identity/monitoring-health/concept-provisioning-logs#what-do-the-logs-show</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Learn: para guardar más de 30 días y consultar poco, <strong>storage account</strong>. Para un SIEM que no es de Microsoft, <strong>event hub</strong>. Puedes tener varias diagnostic settings con destinos distintos.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C: Log Analytics es para consultar seguido con KQL, workbooks y alertas. Sirve, pero no es la opción barata para archivo ni el canal hacia un SIEM de terceros.</li>
+<li>D: un workbook lee de Log Analytics. No es un destino de diagnostic settings.</li>
+<li>E: Secure Score no recibe logs.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/concept-log-monitoring-integration-options-considerations#integration-options</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D</p>
+<p><strong>Por qué es correcta:</strong> El destino <strong>tiene que existir antes</strong> de crear la diagnostic setting. La setting la crea un <strong>Security Administrator</strong>: eliges las categorías y el workspace. Luego consultas en Log Analytics. Learn avisa que los datos pueden tardar en aparecer.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E: el workbook lee datos que ya están en el workspace. No los envía.</li>
+<li>F: Reports Reader es un rol de Entra para personas. No se asigna a un workspace.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs#send-logs-to-azure-monitor</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice (KQL)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Los eventos de provisioning viven en <strong>AADProvisioningLogs</strong>. Ahí ResultType puede ser Success, Failure o Skipped, y <strong>ResultSignature</strong> trae el código de error. La query A cuenta cada código y saca la fecha más reciente.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: Skipped no es un fallo. Suele ser un usuario fuera de scope.</li>
+<li>C: SigninLogs son inicios de sesión, no operaciones de provisioning.</li>
+<li>D: AuditLogs muestra cambios del directorio. Los detalles del provisioning a apps van en su propia tabla.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/azure/azure-monitor/reference/tables/aadprovisioninglogs#columns y https://learn.microsoft.com/entra/identity/monitoring-health/howto-analyze-activity-logs-log-analytics#query-activity-logs</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Multiple choice (KQL)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Cada categoría de la diagnostic setting llena <strong>su propia tabla</strong>. SignInLogs llena la tabla SigninLogs (interactive). La tabla <strong>AADNonInteractiveUserSignInLogs</strong> solo recibe datos si activas la categoría <strong>NonInteractiveUserSignInLogs</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: P1 ya alcanza para enviar logs a Log Analytics. La licencia no es el problema.</li>
+<li>C: ServicePrincipalSignInLogs llena otra tabla, la de apps y service principals.</li>
+<li>D: los sign-ins non-interactive se registran todo el tiempo. El rango de fechas no es el problema.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/concept-diagnostic-settings-logs-options#activity-log-options</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Los workbooks de Entra piden <strong>P1, un Log Analytics workspace y los logs enviados ahí</strong>. Sin diagnostic setting, el workspace no tiene datos y los gráficos salen vacíos.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B: P1 ya cumple el requisito de licencia de los workbooks.</li>
+<li>C: los workbooks no leen de una storage account.</li>
+<li>D: Secure Score no tiene nada que ver con los datos de un workbook.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/howto-use-workbooks#prerequisites</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Con <strong>Resolved through third party</strong> (o Resolved through alternate mitigation) <strong>recibes los puntos</strong> de la acción, porque ya la cubre otra herramienta. Learn aclara que Microsoft no puede ver si esa herramienta está completa.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A: Planned solo dice que hay un plan. No da puntos.</li>
+<li>B: Risk accepted <strong>no da puntos</strong> y quita la acción de la lista.</li>
+<li>D: To address dice que la vas a atender en el futuro. No da puntos.</li>
+</ul>
+<p>Dato extra: el score se recalcula <strong>cada 24 horas</strong>, así que el cambio no se ve en el momento.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/monitoring-health/concept-identity-secure-score#how-do-i-use-the-identity-secure-score</p></div>
+
+<h2>6. Plan de la semana y ritual post-examen</h2>
+<div class="box cyan">
+  <b>Checklist antes de la sesión 5 (labs en imágenes, estrategia de examen y simulacro de 30 preguntas)</b>
+  <ul class="checklist">
+    <li>Leí el mapa y las 12 trampas de M4.</li>
+    <li>Contesté las 40 preguntas de M4 sin ver respuestas y revisé el "por qué las otras no".</li>
+    <li>Anoté las preguntas que fallé para el Kahoot.</li>
+    <li>Hice una vez el practice assessment oficial de Learn, sin estudiar antes.</li>
+    <li>Recibí la guía de la sesión 5: repasé los 10 labs en imágenes e hice el simulacro.</li>
+  </ul>
+</div>
+<div class="box amber">
+  <b>Si presentas el examen esta semana: llena el debrief el mismo día.</b> Temas sí, preguntas no. Así el cohort acumula señal legítima y nadie arriesga su certificación.
+  <table>
+    <tr><th style="width:30%">Campo</th><th>Qué anotar</th></tr>
+    <tr><td>Resultado</td><td>Pass o no pass y el score por dominio que trae el reporte</td></tr>
+    <tr><td>Dominios que pesaron</td><td>Por sensación: cuál dominó y cuál casi no salió</td></tr>
+    <tr><td>Escenarios que costaron</td><td>Por tema, por ejemplo "AU vs restricted AU", "cross-tenant sync con error de consent"</td></tr>
+    <tr><td>Labs que salieron</td><td>Por tarea, por ejemplo "crear un AU y asignar un rol con scope", nunca pasos exactos</td></tr>
+    <tr><td>Qué hubiera estudiado más</td><td>Libre, en dos líneas</td></tr>
+  </table>
+</div>
+<div class="box"><b>Objetivo de la sesión en vivo, para que sepas qué esperar.</b> <p>El presenter no tiene que recitar settings. Tiene que entender <strong>una idea por área</strong> y explicarla con sus palabras. En entitlement management, el access package es un contrato: un catalog pone los recursos, la policy dice quién pide, quién aprueba y cuándo vence, y el ciclo de vida del guest limpia al final. En access reviews, la review toma una foto al inicio, gana la última decisión y nada cambia hasta el final o hasta Apply, así que el setting de "no respuesta" con auto apply es lo que más daño o más limpieza hace. En PIM, eligible es acceso JIT y las reglas viven en el rol (y en Azure, en cada recurso, sin herencia), mientras que la break-glass es la única excepción: active permanent y muy vigilada. En monitoreo, la licencia define cuánto guardas, la diagnostic setting define a dónde va cada categoría y cada categoría cae en su propia tabla de Log Analytics. Si el presenter puede contestar "¿quién decide?, ¿cuándo pasa?, ¿dónde queda el dato?" en cada área, ya domina el dominio.</p></div>
+
+</body></html>

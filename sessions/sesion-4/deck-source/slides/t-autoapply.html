@@ -1,0 +1,38 @@
+<section id="t-autoapply" data-transition="fade" style="background:#0F172A; color:#F6F8FB; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#22D3EE">Trampas 7 y 8 · Resultados de la review</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">La review que borra todo</h2>
+  <div style="background:#1E293B; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#A3E635">"If reviewers don't respond más auto apply es un botón de borrar: elige con cuidado."</p>
+  </div>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <div style="background:#1E293B; border-radius:18px; padding:18px 26px; display:flex; gap:24px; align-items:center">
+        <p style="font-family:'Manrope', Arial, sans-serif; font-size:28px; font-weight:800; color:#22D3EE; width:300px">No change</p>
+        <p style="font-size:26px; line-height:1.35; color:#E2E8F0">Deja a todos, también a los inactivos.</p>
+      </div>
+      <div style="background:#1E293B; border-radius:18px; padding:18px 26px; display:flex; gap:24px; align-items:center">
+        <p style="font-family:'Manrope', Arial, sans-serif; font-size:28px; font-weight:800; color:#22D3EE; width:300px">Approve access</p>
+        <p style="font-size:26px; line-height:1.35; color:#E2E8F0">Aprueba a todos, incluidos los inactivos.</p>
+      </div>
+      <div style="background:#1E293B; border-radius:18px; padding:18px 26px; display:flex; gap:24px; align-items:center">
+        <p style="font-family:'Manrope', Arial, sans-serif; font-size:28px; font-weight:800; color:#22D3EE; width:300px">Remove access</p>
+        <p style="font-size:26px; line-height:1.35; color:#E2E8F0">Quita a todos los no revisados. Con auto apply puede <b>quitar todo el acceso</b>.</p>
+      </div>
+      <div style="background:#0E7490; border-radius:18px; padding:18px 26px; display:flex; gap:24px; align-items:center">
+        <p style="font-family:'Manrope', Arial, sans-serif; font-size:28px; font-weight:800; color:#A3E635; width:300px">Take recommendations</p>
+        <p style="font-size:26px; line-height:1.35; color:#F6F8FB">Helper "No sign-in within 30 days": quita inactivos, deja activos.</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#1E293B; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#A3E635">Trampa 8 · Gana el último</h3>
+      <ul style="font-size:25px; line-height:1.45; color:#E2E8F0">
+        <li>Varios reviewers: vale la última respuesta. En multi-stage, la etapa posterior sobrescribe.</li>
+        <li>Don't know deja el acceso. El deny sale al final o al Stop, y una review detenida no se reinicia.</li>
+        <li>Sin auto apply: Review history &gt; Apply. No cambia grupos on-premises ni dinámicos.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#94A3B8">Learn: <a href="https://learn.microsoft.com/entra/id-governance/create-access-review#next-settings"><span style="color:#22D3EE">Review settings</span></a> · <a href="https://learn.microsoft.com/entra/id-governance/perform-access-review#manually-review-access-for-one-or-more-users"><span style="color:#22D3EE">Manually review access</span></a> · Delata: "two reviewers disagree"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#94A3B8">10 / 27</p>
+  <aside>Objetivo: que elijan la opción de no respuesta pensando en el daño que hace con auto apply, y que sepan cuándo se cobra el deny. Frase clave trampa 7: "If reviewers don't respond más auto apply es un botón de borrar: elige con cuidado". Frase clave trampa 8: "En access reviews no gana la mayoría, gana el último. Y el deny se cobra al final". Ojo: Remove access y Take recommendations con auto apply pueden quitar todo el acceso. La acción "block 30 days, then remove" para guests aplica también a los que se niegan por no respuesta. Para auditoría de muchas reviews, el reporte Review History (CSV disponible 30 días). Delata: "if the reviewer doesn't respond", "inactive users lose access", "active users keep access", "two reviewers disagree", "removed immediately", "auto apply was disabled", "synced from on-premises", "single CSV for auditors". Practican: Q14, Q15, Q16, Q18, Q19, Q20. Tiempo: 2 minutos.</aside>
+</section>

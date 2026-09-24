@@ -1,0 +1,40 @@
+<section id="t-licensing" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 5 · Licencias</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Licencias por grupo sin sustos</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Primero agrega al grupo nuevo, confirma, y luego quita del viejo."</p>
+  </div>
+  <div style="display:flex; gap:20px; align-items:center">
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:26px 30px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:52px; font-weight:800; color:#0E7490; line-height:1.0">1</p>
+      <p style="font-size:26px; line-height:1.4; color:#334155"><b style="color:#0F172A">Agrega</b> al usuario al grupo de la licencia nueva.</p>
+    </div>
+    <x-shape kind="arrow-right" style="width:64px; height:32px; background:#0E7490"></x-shape>
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:26px 30px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:52px; font-weight:800; color:#0E7490; line-height:1.0">2</p>
+      <p style="font-size:26px; line-height:1.4; color:#334155"><b style="color:#0F172A">Confirma</b> en Licenses que la nueva ya se aplicó.</p>
+    </div>
+    <x-shape kind="arrow-right" style="width:64px; height:32px; background:#0E7490"></x-shape>
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:26px 30px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:52px; font-weight:800; color:#0E7490; line-height:1.0">3</p>
+      <p style="font-size:26px; line-height:1.4; color:#334155"><b style="color:#0F172A">Quita</b> al usuario del grupo viejo. Cero huecos.</p>
+    </div>
+  </div>
+  <div style="display:flex; gap:20px">
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:24px 28px; display:flex; flex-direction:column; gap:8px">
+      <h3 style="font-size:27px; font-weight:700; color:#0E7490">Usage location</h3>
+      <p style="font-size:25px; line-height:1.4; color:#334155">Sin él no hay licencia directa (Set-MgUserLicense falla). Por grupo, hereda la del tenant.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:24px 28px; display:flex; flex-direction:column; gap:8px">
+      <h3 style="font-size:27px; font-weight:700; color:#0E7490">E1 + E3 = conflicto</h3>
+      <p style="font-size:25px; line-height:1.4; color:#334155">Exchange Online Plan 1 y Plan 2 se excluyen. El error es <b style="color:#0F172A">"conflicting service plans"</b>, no faltan licencias.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:24px 28px; display:flex; flex-direction:column; gap:8px">
+      <h3 style="font-size:27px; font-weight:700; color:#0E7490">Grupos anidados</h3>
+      <p style="font-size:25px; line-height:1.4; color:#334155">El segundo nivel no recibe licencia. Si la pregunta dice "nested", ya sabes por qué falla.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses#move-users-between-licensed-groups"><span style="color:#0E7490">Move users between licensed groups</span></a> · <a href="https://learn.microsoft.com/entra/identity/users/licensing-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time"><span style="color:#0E7490">Service plans that can't be assigned together</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">10 / 29</p>
+  <aside>Objetivo: que el orden de mover usuarios entre grupos con licencia quede como reflejo. Frase clave: "Agregar, confirmar, quitar; si quitas primero, el usuario se queda sin correo hasta el siguiente ciclo". Los otros dos errores que salen: usage location vacío y conflicto E1 con E3. Practican: Q12, Q17, Q18. Tiempo: 1 minuto.</aside>
+</section>

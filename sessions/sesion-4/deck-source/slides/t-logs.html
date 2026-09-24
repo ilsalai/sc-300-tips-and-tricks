@@ -1,0 +1,54 @@
+<section id="t-logs" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 12 · Monitoring</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Del log a la respuesta</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Free 7, P1/P2 30, y el upgrade no revive datos. Cada categoría llena su tabla, y el workbook come de Log Analytics."</p>
+  </div>
+  <div style="display:flex; gap:20px">
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:24px 30px; display:flex; gap:18px; align-items:center">
+      <x-icon name="Database" style="color:#0E7490; width:40px; height:40px"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:4px">
+        <h3 style="font-size:28px; font-weight:700">Storage account</h3>
+        <p style="font-size:25px; line-height:1.4; color:#475569">Archivo barato y largo.</p>
+      </div>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:24px 30px; display:flex; gap:18px; align-items:center">
+      <x-icon name="PaperPlane" style="color:#0E7490; width:40px; height:40px"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:4px">
+        <h3 style="font-size:28px; font-weight:700">Event hub</h3>
+        <p style="font-size:25px; line-height:1.4; color:#475569">SIEM de terceros.</p>
+      </div>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:20px; padding:24px 30px; display:flex; gap:18px; align-items:center">
+      <x-icon name="Search" style="color:#0E7490; width:40px; height:40px"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:4px">
+        <h3 style="font-size:28px; font-weight:700">Log Analytics</h3>
+        <p style="font-size:25px; line-height:1.4; color:#475569">KQL, workbooks y alertas.</p>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex; gap:20px">
+    <div style="width:1000px; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:26px 32px; display:flex; flex-direction:column; gap:10px">
+      <h3 style="font-size:28px; font-weight:700; color:#0E7490">Cada categoría cae en su tabla</h3>
+      <div style="display:grid; grid-template-columns:340px 1fr; gap:4px 24px">
+        <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.45">SigninLogs</p>
+        <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.45">AADNonInteractiveUserSignInLogs</p>
+        <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.45">AuditLogs</p>
+        <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.45">AADServicePrincipalSignInLogs</p>
+        <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.45">AADProvisioningLogs</p>
+        <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.45">AADManagedIdentitySignInLogs</p>
+      </div>
+      <p style="font-size:25px; line-height:1.4; color:#475569">La diagnostic setting la crea un <b>Security Administrator</b> y el destino existe antes.</p>
+    </div>
+    <div style="flex:1; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:26px 32px; display:flex; flex-direction:column; gap:10px">
+      <h3 style="font-size:28px; font-weight:700; color:#0E7490">Identity Secure Score</h3>
+      <ul style="font-size:25px; line-height:1.45; color:#334155">
+        <li>Se recalcula cada 24 horas.</li>
+        <li><b>Risk accepted no suma.</b> Resolved through third party sí.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-log-monitoring-integration-options-considerations#integration-options"><span style="color:#0E7490">Integration options</span></a> · Delata: "upgraded today", "third-party SIEM", "workbook is empty"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">14 / 27</p>
+  <aside>Objetivo: retención, destinos y tablas en un solo slide, porque es la trampa con más preguntas del banco. Frase clave: "Free 7, P1/P2 30, y el upgrade no revive datos. Cada categoría llena su tabla, y el workbook come de Log Analytics". Trampa favorita: el tenant que pasa de Free a P1 hoy y pide sign-ins de hace 20 días; ya no existen. Segunda: la query a AADNonInteractiveUserSignInLogs que no devuelve nada porque falta esa categoría en la diagnostic setting. Datos extra: el audit de PIM guarda 30 días, para más se usa diagnostic settings; en AADProvisioningLogs, ResultType Failure con ResultSignature da el código de error. Delata: "upgraded today", "20 days ago", "two years at low cost", "third-party SIEM", "query returns no results", "workbook is empty", "non-Microsoft MFA", "score doesn't change". Practican: Q32 a Q40. Después de este slide, abrir Kahoot. Tiempo: 2 minutos.</aside>
+</section>

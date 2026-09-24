@@ -1,0 +1,35 @@
+<section id="k04" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 4 de 10 · Trampa 5 · Banco Q16</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">Pedir aprobación desde el prompt</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">Users can't consent to an unverified app and have no way to ask for it. Enable requests without weakening security?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">A</p>
+        <p style="font-size:26px; color:#334155">Change user consent to Allow user consent for apps</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">Classify the requested permission as low impact</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">C</p>
+        <p style="font-size:26px; color:#334155">Disable risk-based step-up consent</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">Turn on the admin consent workflow and select reviewers</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">El <b>admin consent workflow</b> deja que el usuario pida aprobación desde el prompt. La solicitud llega a los reviewers y <b>no cambia</b> lo que el usuario puede consentir.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>A.</b> Quita la protección de verified publishers: baja la seguridad.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> Aunque fuera low impact, el publisher sigue sin estar verificado.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>C.</b> No es la causa del bloqueo, y apagarlo reduce la seguridad.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow#enable-the-admin-consent-workflow"><span style="color:#0E7490">Enable the admin consent workflow</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">19 / 27</p>
+  <aside>Debrief de 45 segundos. Contexto del banco: el tenant solo permite user consent para verified publishers con permisos seleccionados, y la app pide Files.Read delegated. Frase clave: "Si el usuario no puede consentir, el workflow le da un botón para pedir". Delata: "request approval from the consent prompt" y "unverified publisher".</aside>
+</section>

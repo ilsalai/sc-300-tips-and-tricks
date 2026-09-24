@@ -1,0 +1,35 @@
+<section id="k01" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 1 de 10 · Trampa 1 · Banco Q3</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">El grupo no sale en el picker</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">Pat, a catalog owner with no directory role, can't find group SG-Lab in the resource picker. Least privilege fix?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">A</p>
+        <p style="font-size:26px; color:#334155">Assign Pat the Identity Governance Administrator role</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">Assign Pat the Groups Administrator role</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">Add Pat as an owner of SG-Lab</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">Add Pat as an access package manager of the catalog</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">Agregar un recurso pide <b>dos cosas</b>: ser catalog owner y tener permiso sobre el recurso. Un catalog owner sin rol agrega un grupo solo si es su owner.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>A.</b> Identity Governance Administrator agrega apps, no security groups ni Microsoft 365 groups.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> Funciona, pero es un rol de todo el tenant. No es least privilege.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> El access package manager usa recursos que ya están en el catalog. No agrega recursos.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-delegate#required-roles-to-add-resources-to-a-catalog"><span style="color:#0E7490">Required roles to add resources to a catalog</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">16 / 27</p>
+  <aside>Debrief de 45 segundos. Delata: "least privilege" y "resource picker". Frase clave: "Catalog owner trae los recursos, pero además necesita permiso sobre el recurso". Si muchos eligieron A, es la trampa clásica: en la tabla de Learn, Identity Governance Administrator agrega apps pero no grupos.</aside>
+</section>

@@ -1,0 +1,51 @@
+name: Debrief post-examen
+description: Presentaste el SC-300. Cuéntanos por temas qué pesó, nunca preguntas literales.
+title: "Debrief: [mes año]"
+labels: [debrief]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por compartir. **Temas sí, preguntas no.** Reproducir preguntas del examen viola el NDA de Microsoft y pone en riesgo tu certificación. Los issues con preguntas literales se borran.
+  - type: dropdown
+    id: resultado
+    attributes:
+      label: Resultado
+      options: [Pass, No pass]
+    validations:
+      required: true
+  - type: input
+    id: score
+    attributes:
+      label: Score por dominio (aproximado, del reporte)
+      placeholder: "Identities alto, Auth medio, Workload bajo, Governance alto"
+  - type: textarea
+    id: dominios
+    attributes:
+      label: Dominios que más pesaron
+      description: Por sensación, cuál dominó y cuál casi no salió.
+    validations:
+      required: true
+  - type: textarea
+    id: escenarios
+    attributes:
+      label: Tipos de escenario que costaron
+      description: Por tema, por ejemplo "cross-tenant sync con error de consent", "AU vs restricted AU", "PIM for Groups".
+    validations:
+      required: true
+  - type: textarea
+    id: labs
+    attributes:
+      label: Labs que salieron
+      description: Por tarea, por ejemplo "crear un access package con aprobación". Nunca pasos exactos.
+  - type: textarea
+    id: estudiar
+    attributes:
+      label: Qué hubieras estudiado más
+  - type: checkboxes
+    id: nda
+    attributes:
+      label: Confirmación
+      options:
+        - label: No incluí preguntas literales ni contenido del examen.
+          required: true

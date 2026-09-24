@@ -1,0 +1,44 @@
+name: Regenerar guías y decks
+
+on:
+  push:
+    branches: [main]
+    paths: ['content/**', 'sessions/**', 'tools/**']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Dependencias
+        run: |
+          pip install markdown openpyxl playwright
+          playwright install --with-deps chromium
+      - name: Guías y simulacro
+        run: |
+          for m in M1 M2 M3 M4; do python3 tools/build_guia.py $m; done
+          python3 tools/build_simulacro.py
+          python3 tools/render_pdf.py
+      - name: Decks
+        run: |
+          python3 tools/render_deck.py sessions/sesion-1/deck-source dist/decks/S1-Identities.pdf
+          python3 tools/render_deck.py sessions/sesion-2/deck-source dist/decks/S2-Authentication-and-access.pdf
+          python3 tools/render_deck.py sessions/sesion-3/deck-source dist/decks/S3-Workload-identities.pdf
+          python3 tools/render_deck.py sessions/sesion-4/deck-source dist/decks/S4-Identity-governance.pdf
+          python3 tools/render_deck.py sessions/sesion-5/deck-source dist/decks/S5-Labs-estrategia-simulacro.pdf
+      - name: Commit de dist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist
+          git diff --cached --quiet || git commit -m "build: regenerar dist"
+          git push

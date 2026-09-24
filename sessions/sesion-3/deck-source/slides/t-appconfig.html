@@ -1,0 +1,19 @@
+<section id="t-appconfig" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 10 · Configurar la app registration</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Scope, app role o groups claim</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Scope para 'on behalf of', app role para 'sin usuario' o para roles de usuario; el groups claim topa en 200."</p>
+  </div>
+  <table style="font-size:25px; color:#0F172A">
+    <tr style="background:#F1F5F9"><th style="width:520px; text-align:left; padding:10px 16px">Si la pregunta dice</th><th style="width:1080px; text-align:left; padding:10px 16px">Configura</th></tr>
+    <tr><td style="padding:10px 16px">"React", "MSAL.js", "PKCE"</td><td style="padding:10px 16px">Redirect URI en la plataforma <b>Single-page application</b></td></tr>
+    <tr style="background:#F8FAFC"><td style="padding:10px 16px">"daemon", sin usuario</td><td style="padding:10px 16px">Sin redirect URI; <b>app role</b> con Allowed member types Applications</td></tr>
+    <tr><td style="padding:10px 16px">"on behalf of the signed-in user"</td><td style="padding:10px 16px"><b>Scope</b> en Expose an API, con el App ID URI primero</td></tr>
+    <tr style="background:#F8FAFC"><td style="padding:10px 16px">"roles claim"</td><td style="padding:10px 16px"><b>App role Users/Groups</b>, asignado en Enterprise apps</td></tr>
+    <tr><td style="padding:10px 16px">"more than 200 groups"</td><td style="padding:10px 16px"><b>Groups assigned to the application</b> (límite 200 JWT, 150 SAML)</td></tr>
+  </table>
+  <p style="font-size:25px; line-height:1.45; color:#475569">Ojo: un app role dado a un grupo que contiene un service principal <b>no emite</b> el claim roles.</p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/howto-add-app-roles-in-apps#declare-roles-for-an-application"><span style="color:#0E7490">Declare roles for an application</span></a> · <a href="https://learn.microsoft.com/entra/identity-platform/optional-claims#configure-groups-optional-claims"><span style="color:#0E7490">Groups optional claims</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">12 / 27</p>
+  <aside>Objetivo: traducir las palabras de la pregunta al setting correcto. Frase clave: "Scope para 'on behalf of', app role para 'sin usuario' o para roles de usuario; el groups claim topa en 200". Plataforma: Single-page application para JavaScript con PKCE, Web para apps de servidor, y el daemon no lleva redirect URI. Para autorizar usuarios dentro de la app, app role Users/Groups, que sale en el claim roles. El groups claim topa en 200 grupos en JWT y 150 en SAML; la salida es Groups assigned to the application. Delata: "React", "MSAL.js", "PKCE", "Expose an API", "roles claim", "group overage", "more than 200 groups", "Allowed member types". Practican: Q23, Q25, Q26, Q28, Q29. Tiempo: 1.5 minutos.</aside>
+</section>

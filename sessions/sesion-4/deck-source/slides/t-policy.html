@@ -1,0 +1,29 @@
+<section id="t-policy" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 2 · Quién puede pedir</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Una policy, un público</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Internos y externos no caben en la misma policy: son dos."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:34px 38px; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#22D3EE">Policy 1 · In your directory</p>
+      <h3 style="font-family:'Manrope', Arial, sans-serif; font-size:32px; font-weight:800; line-height:1.2">For users, service principals, and agent identities in your directory</h3>
+      <ul style="font-size:26px; line-height:1.45; color:#CBD5E1">
+        <li>Members, all users (con guests) o specific groups.</li>
+        <li>Manager as approver solo existe aquí.</li>
+      </ul>
+    </div>
+    <div style="flex:1; background:#0E7490; color:#F6F8FB; border-radius:24px; padding:34px 38px; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#A3E635">Policy 2 · Not in your directory</p>
+      <h3 style="font-family:'Manrope', Arial, sans-serif; font-size:32px; font-weight:800; line-height:1.2">For users not in your directory</h3>
+      <ul style="font-size:26px; line-height:1.45; color:#ECFEFF">
+        <li>Specific connected orgs, all configured connected orgs o all users.</li>
+        <li>All users crea connected orgs <b>proposed</b>: no entran en "All configured". Pide email OTP.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:26px; line-height:1.45; color:#475569"><b>La B2B allow/block list siempre gana:</b> si el dominio no está permitido, no hay invitación ni acceso.</p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-request-policy#choose-between-one-or-multiple-policies"><span style="color:#0E7490">One or multiple policies</span></a> · Delata: "employees and partners", "no guest account is created"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">6 / 27</p>
+  <aside>Objetivo: que cuenten policies por público, no por approver. Frase clave: "Internos y externos no caben en la misma policy: son dos". Trampa favorita: el paquete para empleados y partners; el mínimo son dos policies. Segunda: la request se aprueba pero el partner nunca recibe acceso ni cuenta guest, porque la allowlist de B2B gana siempre. Delata: "employees and partners", "minimum number of policies", "any user on the internet", "connected organization", "allowlist", "no guest account is created". Practican: Q4, Q11. Tiempo: 1.5 minutos.</aside>
+</section>

@@ -1,0 +1,38 @@
+<section id="lab01" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Lab 01 · M1 · Built-in roles, users y bulk operations</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Roles, bulk create y usuarios borrados</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> Entra ID &gt; Users &gt; All users · Entra ID &gt; Roles &amp; admins</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li><b>+ New user</b> &gt; Create new user: Chris Green</li>
+        <li>Add assignments &gt; <b>Application administrator</b>, Active</li>
+        <li>InPrivate: ya ve <b>Create your own application</b></li>
+        <li>Roles &amp; admins &gt; el rol &gt; Chris &gt; <b>Remove</b></li>
+        <li><b>Bulk create</b>: baja el CSV, llénalo y súbelo</li>
+        <li><b>Delete</b> y luego Deleted users &gt; <b>Restore user</b></li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Prueba en InPrivate: la sesión de admin engaña.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Sin <b>Usage location</b> no hay licencia. Borrado: 30 días.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/8debfe5fb73f56e05b07d161ce2a3cd2" alt="Panel Add assignments para asignar un rol a un usuario" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/a8474d300155a719ab43716940077d77" alt="Página Bulk create user con el botón para subir el CSV" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Lab oficial: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_01_ManageUserRoles.html"><span style="color:#0E7490">Lab 01 · Manage user roles</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">7 / 19</p>
+  <aside>Objetivo: reconocer Add assignments y Bulk create. Estado final: Chris Green existe (creado, borrado y restaurado) y ya no tiene Application administrator; hay usuarios de bulk create y de PowerShell (New-MgUser); Raul Razo tiene Windows 10/11 Enterprise E3. Frase clave: "Application Administrator deja crear enterprise apps propias sin ser Global Admin: el rol más chico que alcance". Trampa favorita: Usage location vacío bloquea la licencia; un usuario borrado vive 30 días en Deleted users con sus licencias y grupos. Bulk create: no tocar la fila version:v1.0 ni los encabezados. Practican: M1 Q1, Q2, Q11, Q12. Tiempo: 2 minutos.</aside>
+</section>

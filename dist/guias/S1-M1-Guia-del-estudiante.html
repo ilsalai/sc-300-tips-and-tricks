@@ -1,0 +1,1367 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>SC-300 Tips and Tricks · Guía M1 Identities</title><style>
+@page { size: A4; margin: 16mm 14mm; }
+* { box-sizing: border-box }
+body { font-family: "Segoe UI", Inter, Arial, sans-serif; color: #1E293B; line-height: 1.5; font-size: 10.5pt; margin: 0 }
+a { color: #0E7490; text-decoration: none; word-break: break-all }
+h1 { font-size: 30pt; color: #0B1F3A; margin: 0 0 6pt; line-height: 1.1 }
+h2 { font-size: 20pt; color: #0F172A; margin: 30pt 0 10pt; padding-bottom: 6pt; border-bottom: 3px solid #22D3EE; page-break-after: avoid; letter-spacing: -0.3px }
+h3.sub { font-size: 13.5pt; color: #0E7490; margin: 18pt 0 6pt; page-break-after: avoid }
+h4 { margin: 0 0 4pt; color: #0B1F3A }
+p { margin: 4pt 0 }
+ul, ol { margin: 4pt 0 4pt 18pt; padding: 0 }
+li { margin: 2pt 0 }
+code { font-family: Consolas, "JetBrains Mono", Menlo, monospace; font-size: 9pt; background: #F1F5F9; padding: 1px 4px; border-radius: 3px }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 9.5pt }
+th, td { border: 1px solid #CBD5E1; padding: 4pt 6pt; vertical-align: top; text-align: left }
+th { background: #0B1F3A; color: #fff }
+.cover { background: #0B1F3A; color: #F1F5F9; padding: 36pt 32pt; border-radius: 14pt; margin-bottom: 18pt; page-break-after: always; min-height: 240mm; display: flex; flex-direction: column; justify-content: space-between }
+.cover h1 { color: #fff; font-size: 40pt }
+.cover .eyebrow { color: #22D3EE; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; font-size: 10pt }
+.cover .big { font-size: 15pt; color: #BFD8F0 }
+.cover .meta { color: #94A3B8; font-size: 10pt }
+.pill { display: inline-block; background: #22D3EE; color: #0B1F3A; font-weight: 700; padding: 3pt 10pt; border-radius: 999px; font-size: 9pt; margin-right: 6pt }
+.box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 8pt 0; page-break-inside: avoid }
+.box.cyan { border-color: #22D3EE; background: #ECFEFF }
+.box.amber { border-color: #FBBF24; background: #FFFBEB }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt }
+.grid3 .box { margin: 0 }
+.mod { font-size: 9.5pt; color: #475569; margin-bottom: 8pt }
+.skill { border: 1px solid #E2E8F0; border-radius: 8pt; padding: 8pt 12pt; margin: 6pt 0; page-break-inside: avoid }
+.skill-h { font-weight: 700; color: #0B1F3A; margin-bottom: 3pt }
+.tag { display: inline-block; background: #0B1F3A; color: #22D3EE; font-size: 8pt; padding: 1pt 6pt; border-radius: 4px; margin-right: 6pt; letter-spacing: 1px }
+.punto { margin: 3pt 0 }
+.main { font-size: 9.5pt; color: #475569 }
+.deep { font-size: 9.5pt; margin-left: 16pt }
+.anchor { color: #94A3B8 }
+.trap { border: 1.5px solid #E2E8F0; border-radius: 12pt; padding: 12pt 16pt; margin: 10pt 0; page-break-inside: avoid; background: #fff }
+.trap-h { font-weight: 700; font-size: 12.5pt; color: #0B1F3A }
+.num { display: inline-block; width: 22pt; height: 22pt; line-height: 22pt; text-align: center; background: #0B1F3A; color: #22D3EE; border-radius: 50%; font-size: 10.5pt; margin-right: 6pt }
+.frase { font-size: 12.5pt; color: #9A3412; font-weight: 700; margin: 6pt 0; background: #FFF1E6; padding: 6pt 10pt; border-radius: 8pt }
+.delata { font-size: 9.5pt }
+.meta { font-size: 9pt; color: #64748B }
+.visual { margin: 10pt 0 14pt; page-break-inside: avoid }
+.visual svg { width: 100%; height: auto; border-radius: 10pt }
+.visual p { font-size: 9.5pt; color: #475569; margin-top: 4pt }
+.case { background: #FFFBEB; border: 1px solid #FBBF24; border-radius: 8pt; padding: 8pt 12pt; margin: 8pt 0; page-break-inside: avoid }
+.q, .a { border: 1.5px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 9pt 0; page-break-inside: avoid }
+.a { background: #F8FAFC }
+.q-h { display: flex; gap: 6pt; align-items: center; margin-bottom: 4pt; flex-wrap: wrap }
+.qid { font-weight: 800; color: #0B1F3A; font-size: 12pt }
+.fmt { background: #ECFEFF; color: #0E7490; font-size: 8.5pt; padding: 1pt 7pt; border-radius: 999px; font-weight: 600 }
+.skill-tag { color: #64748B; font-size: 8.5pt }
+.checklist li { list-style: none; margin: 4pt 0 }
+.checklist li:before { content: "\2610\00a0\00a0"; color: #0E7490 }
+.toc { columns: 2; font-size: 10pt }
+.toc li { margin: 2pt 0 }
+</style></head><body>
+
+<div class="cover">
+  <div>
+    <p class="eyebrow">SC-300 Tips and Tricks · SC-300 · Sesión 1 de 5</p>
+    <h1>Guía del estudiante<br>Módulo 1: Identities</h1>
+    <p class="big">Implement and manage user identities. 20 a 25% del examen.</p>
+    <p class="big">Modelo invertido: <b>esta guía se estudia antes de la sesión</b>. En vivo cazamos trampas y jugamos Kahoot con el porqué de cada distractor.</p>
+  </div>
+  <div>
+    <p class="meta"><span class="pill">Sin dumps</span> Todo el contenido es original y está anclado a Microsoft Learn con links directos a los párrafos. Skills outline vigente: 27 de abril de 2026.</p>
+    <p class="meta">Contiene: mapa de skills con deep links · 12 trampas con frase clave · 3 visuales · 40 preguntas estilo examen con explicación por distractor · plan de la semana y ritual post-examen.</p>
+  </div>
+</div>
+
+
+<h2>0. Cómo usar esta guía (20 minutos de lectura, 90 de práctica)</h2>
+<div class="grid3">
+  <div class="box cyan"><b>1. Lee el mapa</b><p>Sección 1. Un punto clave por skill del outline. Si algo no te suena, abre el deep link: cae justo en el párrafo que el examen pregunta.</p></div>
+  <div class="box cyan"><b>2. Aprende las 12 trampas</b><p>Sección 2. Cada una trae la frase que la resume, la regla, y las palabras de la pregunta que la delatan.</p></div>
+  <div class="box cyan"><b>3. Contesta el banco sin ver respuestas</b><p>Sección 4. Anota tus respuestas. Luego revisa la sección 5 y lee el "por qué las otras no": ahí está el valor.</p></div>
+</div>
+<div class="box amber">
+  <b>Las preguntas que resuelven casi todo M1: Alcance, dirección y dependencia de on-prem.</b> Cuando no sepas la respuesta, pregúntate:
+  <ol><li><b>Alcance:</b> ¿quién puede hacer qué, y sobre quién? (AU, restricted AU, custom role, matriz de reset)</li><li><b>Dirección:</b> ¿en qué tenant y de qué lado se configura? (inbound vs outbound, source vs target, member vs guest)</li><li><b>Dependencia de on-prem:</b> ¿qué deja de funcionar si se cae AD? (PTA y federación sí, PHS no)</li></ol>
+  Con eso eliminas dos distractores en la mayoría de las preguntas del módulo.
+</div>
+<div class="box">
+  <b>Datos duros del examen.</b> 700 de 1000 para pasar (escala ajustada, no 70% de aciertos). Practice assessment oficial gratis:
+  <a href="https://learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment?assessment-type=practice&amp;assessmentId=60">learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment</a>.
+  Exam sandbox: <a href="https://aka.ms/examdemo">aka.ms/examdemo</a>. Study guide oficial:
+  <a href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300">learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300</a>.
+</div>
+
+<h2>1. Mapa del módulo: skills, punto clave y deep links</h2>
+<p class="meta">Cada fila corresponde a un bullet del skills outline oficial. El punto clave es lo que el examen realmente mide; los deep links caen en el párrafo exacto de Learn.</p>
+<h3 class="sub">Subdominio 1: Configure and manage a Microsoft Entra tenant</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/implement-initial-configuration-of-azure-active-directory/">implement-initial-configuration-of-azure-active-directory</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure and manage built-in and custom Microsoft Entra roles</div>
+  <p class="punto">Elegir el rol más chico que alcance. Custom roles solo usan permisos habilitados (apps, enterprise apps, consent, devices, users, groups), requieren P1 y no puedes clonar un built-in.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/custom-overview">entra/identity/role-based-access-control/custom-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/custom-overview#scope">custom-overview <span class="anchor">#scope</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/custom-create#create-a-custom-role">custom-create <span class="anchor">#create-a-custom-role</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/custom-overview#license-requirements">custom-overview <span class="anchor">#license-requirements</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Recommend when to use administrative units</div>
+  <p class="punto">AU cuando hay divisiones que se administran solas (región, escuela, filial). Meter un grupo al AU no mete a sus miembros y los AUs no se anidan.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units">entra/identity/role-based-access-control/administrative-units</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units#deployment-scenario">administrative-units <span class="anchor">#deployment-scenario</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units#groups">administrative-units <span class="anchor">#groups</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units#constraints">administrative-units <span class="anchor">#constraints</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure and manage administrative units</div>
+  <p class="punto">Qué roles aceptan scope de AU, AU dinámico (users o devices, nunca groups) y restricted management AU, que bloquea hasta al Global Admin y solo se activa al crear.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management">entra/identity/role-based-access-control/admin-units-restricted-management</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal#roles-that-can-be-assigned-with-administrative-unit-scope">manage-roles-portal <span class="anchor">#roles-that-can-be-assigned-with-administrative-unit-scope</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management#who-can-modify-objects">admin-units-restricted-management <span class="anchor">#who-can-modify-objects</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management#limitations">admin-units-restricted-management <span class="anchor">#limitations</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Evaluate effective permissions for Microsoft Entra roles</div>
+  <p class="punto">Los permisos se suman (directos, por grupo, por scope) pero cada rol tiene límites sobre a quién puede resetear. Los Entra roles no dan acceso a Azure RBAC sin elevar.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/view-assignments">entra/identity/role-based-access-control/view-assignments</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/privileged-roles-permissions#who-can-reset-passwords">privileged-roles-permissions <span class="anchor">#who-can-reset-passwords</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/view-assignments#list-direct-and-transitive-role-assignments-for-a-principal">view-assignments <span class="anchor">#list-direct-and-transitive-role-assignments-for-a-principal</span></a></li><li><a href="https://learn.microsoft.com/azure/role-based-access-control/elevate-access-global-admin#how-does-elevated-access-work">elevate-access-global-admin <span class="anchor">#how-does-elevated-access-work</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure and manage domains in Microsoft Entra ID and Microsoft 365</div>
+  <p class="punto">Verificar con TXT o MX, el onmicrosoft.com inicial no se cambia ni se borra, un dominio federado no puede ser primary y no puedes borrar un dominio que aún se usa.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/fundamentals/add-custom-domain">entra/fundamentals/add-custom-domain</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/fundamentals/add-custom-domain#add-your-dns-information-to-the-domain-registrar">add-custom-domain <span class="anchor">#add-your-dns-information-to-the-domain-registrar</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/domains-manage#set-the-primary-domain-name-for-your-microsoft-entra-organization">domains-manage <span class="anchor">#set-the-primary-domain-name-for-your-microsoft-entra-organization</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/domains-manage#delete-a-custom-domain-name">domains-manage <span class="anchor">#delete-a-custom-domain-name</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure Company branding settings</div>
+  <p class="punto">Rol mínimo Organizational Branding Administrator, branding por idioma del navegador, en apps multitenant el branding sale después de escribir el correo y los guests B2B ven el branding de su home tenant.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/fundamentals/how-to-customize-branding">entra/fundamentals/how-to-customize-branding</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/fundamentals/how-to-customize-branding#customize-the-sign-in-experience-by-browser-language">how-to-customize-branding <span class="anchor">#customize-the-sign-in-experience-by-browser-language</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/how-to-customize-branding#software-as-a-service-saas-and-multitenant-applications">how-to-customize-branding <span class="anchor">#software-as-a-service-saas-and-multitenant-applications</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/how-to-customize-branding#b2b-scenarios">how-to-customize-branding <span class="anchor">#b2b-scenarios</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure tenant properties (parte 1 del bullet)</div>
+  <p class="punto">Properties guarda technical contact, global privacy contact y privacy statement URL. Sin privacy info, los guests ven un aviso y no puedes configurar external user leave settings.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/fundamentals/properties-area">entra/fundamentals/properties-area</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/fundamentals/properties-area#add-your-privacy-information">properties-area <span class="anchor">#add-your-privacy-information</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure#to-configure-external-user-leave-settings">external-collaboration-settings-configure <span class="anchor">#to-configure-external-user-leave-settings</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure user settings (parte 2 del bullet)</div>
+  <p class="punto">"Users can register applications" en No y devuelves el permiso con Application Developer. "Restrict access to admin portal" no es control de seguridad.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/fundamentals/users-default-permissions">entra/fundamentals/users-default-permissions</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/fundamentals/users-default-permissions#restrict-member-users-default-permissions">users-default-permissions <span class="anchor">#restrict-member-users-default-permissions</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/users-default-permissions#compare-member-and-guest-default-permissions">users-default-permissions <span class="anchor">#compare-member-and-guest-default-permissions</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure group settings (parte 3 del bullet)</div>
+  <p class="punto">Quién crea security y M365 groups, self-service en My Groups (pedir unirse y aprobar requiere P1) y expiration policy solo para M365 groups.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/users/groups-self-service-management">entra/identity/users/groups-self-service-management</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/users/groups-self-service-management#group-settings">groups-self-service-management <span class="anchor">#group-settings</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/groups-self-service-management#make-a-group-available-for-user-self-service">groups-self-service-management <span class="anchor">#make-a-group-available-for-user-self-service</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/groups-lifecycle#set-group-expiration">groups-lifecycle <span class="anchor">#set-group-expiration</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure device settings (parte 4 del bullet)</div>
+  <p class="punto">"Users may join devices" y el límite de 50 devices no aplican a hybrid join. Para MFA al registrar se recomienda la user action de Conditional Access.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/devices/manage-device-identities">entra/identity/devices/manage-device-identities</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/devices/manage-device-identities#configure-device-settings">manage-device-identities <span class="anchor">#configure-device-settings</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/devices/manage-device-identities#enable-or-disable-a-microsoft-entra-device">manage-device-identities <span class="anchor">#enable-or-disable-a-microsoft-entra-device</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 2: Create, configure, and manage Microsoft Entra identities</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/">create-configure-manage-identities</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create, configure, and manage users</div>
+  <p class="punto">Tipos de usuario (internal/external, member/guest), rol mínimo para cada tarea (User Admin crea, Guest Inviter invita), restore en 30 días y usuarios sincronizados se editan en AD.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users">entra/fundamentals/how-to-create-delete-users</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users#users-in-workforce-tenants">how-to-create-delete-users <span class="anchor">#users-in-workforce-tenants</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users#prerequisites">how-to-create-delete-users <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/users-restore#restore-a-recently-deleted-user">users-restore <span class="anchor">#restore-a-recently-deleted-user</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create, configure, and manage groups</div>
+  <p class="punto">Sintaxis de reglas dinámicas (precedencia, -in, null), user vs device, M365 groups solo usuarios, rule builder solo para users, role-assignable groups nunca dinámicos.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership">entra/identity/users/groups-dynamic-membership</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership#operator-precedence">groups-dynamic-membership <span class="anchor">#operator-precedence</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership#rules-for-devices">groups-dynamic-membership <span class="anchor">#rules-for-devices</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/groups-concept#how-are-role-assignable-groups-protected">groups-concept <span class="anchor">#how-are-role-assignable-groups-protected</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manage custom security attributes</div>
+  <p class="punto">Global Admin no tiene acceso por default. Attribute Definition Admin define, Attribute Assignment Admin asigna, ambos con scope de tenant o de attribute set. Solo users y service principals, no se borran, se desactivan.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/fundamentals/custom-security-attributes-overview">entra/fundamentals/custom-security-attributes-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/fundamentals/custom-security-attributes-overview#custom-security-attribute-roles">custom-security-attributes-overview <span class="anchor">#custom-security-attribute-roles</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/custom-security-attributes-overview#objects-that-support-custom-security-attributes">custom-security-attributes-overview <span class="anchor">#objects-that-support-custom-security-attributes</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/custom-security-attributes-add#deactivate-a-custom-security-attribute-definition">custom-security-attributes-add <span class="anchor">#deactivate-a-custom-security-attribute-definition</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Automate bulk operations by using the Microsoft Entra admin center and PowerShell</div>
+  <p class="punto">Plantilla CSV (4 columnas obligatorias en bulk create, sin correos de invitación), límite de 1 hora por operación y alternativa con Microsoft Graph PowerShell (Import-Csv + New-MgUser).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/users/users-bulk-add">entra/identity/users/users-bulk-add</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/users/users-bulk-add#csv-template-structure">users-bulk-add <span class="anchor">#csv-template-structure</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/bulk-operations-service-limitations#bulk-operations-workaround">bulk-operations-service-limitations <span class="anchor">#bulk-operations-workaround</span></a></li><li><a href="https://learn.microsoft.com/microsoft-365/enterprise/create-user-accounts-with-microsoft-365-powershell#create-multiple-user-accounts">create-user-accounts-with-microsoft-365-powershell <span class="anchor">#create-multiple-user-accounts</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manage device join and device registration in Microsoft Entra ID</div>
+  <p class="punto">Joined (corporativo, solo Entra), hybrid joined (AD + Entra, necesita DC periódicamente) y registered (BYOD). En reglas dinámicas: AzureAD, ServerAD y Workplace.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/devices/overview">entra/identity/devices/overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/devices/concept-directory-join#scenarios">concept-directory-join <span class="anchor">#scenarios</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/devices/concept-hybrid-join#scenarios">concept-hybrid-join <span class="anchor">#scenarios</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/devices/concept-device-registration#scenarios">concept-device-registration <span class="anchor">#scenarios</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Assign, modify, and report on licenses</div>
+  <p class="punto">Group-based licensing sin grupos anidados, usage location obligatorio (en grupo hereda el del tenant), conflictos de service plans y el orden correcto para mover usuarios entre grupos.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses">microsoft-365/admin/manage/manage-group-licenses</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses#move-users-between-licensed-groups">manage-group-licenses <span class="anchor">#move-users-between-licensed-groups</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/licensing-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time">licensing-service-plan-reference <span class="anchor">#service-plans-that-cannot-be-assigned-at-the-same-time</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/licensing-powershell-graph-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group">licensing-powershell-graph-examples <span class="anchor">#check-if-user-license-is-assigned-directly-or-inherited-from-a-group</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 3: Implement and manage identities for external users and tenants</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/implement-manage-external-identities/">implement-manage-external-identities</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manage External collaboration settings in Microsoft Entra ID</div>
+  <p class="punto">Los 4 niveles de guest invite settings, Guest Inviter como excepción, 3 niveles de guest access y allow list o block list (nunca ambas, no afecta a guests ya redimidos).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure">entra/external-id/external-collaboration-settings-configure</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure#to-configure-guest-invite-settings">external-collaboration-settings-configure <span class="anchor">#to-configure-guest-invite-settings</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure#to-configure-guest-user-access">external-collaboration-settings-configure <span class="anchor">#to-configure-guest-user-access</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/allow-deny-list#important-considerations">allow-deny-list <span class="anchor">#important-considerations</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Invite external users, individually or in bulk</div>
+  <p class="punto">Bulk invite pide Email address to invite y Redirection url. Bulk create NO invita. New-MgInvitation no manda correo si no pones -SendInvitationMessage.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/external-id/tutorial-bulk-invite">entra/external-id/tutorial-bulk-invite</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/external-id/tutorial-bulk-invite#invite-guest-users-in-bulk">tutorial-bulk-invite <span class="anchor">#invite-guest-users-in-bulk</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/b2b-quickstart-invite-powershell#send-an-invitation">b2b-quickstart-invite-powershell <span class="anchor">#send-an-invitation</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users#invite-an-external-user">how-to-create-delete-users <span class="anchor">#invite-an-external-user</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Manage external user accounts in Microsoft Entra ID</div>
+  <p class="punto">UserType (Member o Guest) indica relación, no dónde se autentica. Reset redemption conserva object ID, grupos y apps. Convert to internal cambia la autenticación.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/external-id/user-properties">entra/external-id/user-properties</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/external-id/user-properties#user-type">user-properties <span class="anchor">#user-type</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/reset-redemption-status#required-microsoft-entra-roles">reset-redemption-status <span class="anchor">#required-microsoft-entra-roles</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/convert-external-users-internal#convert-external-users">convert-external-users-internal <span class="anchor">#convert-external-users</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement Cross-tenant access settings</div>
+  <p class="punto">Inbound, outbound y trust settings (siempre inbound). Organizational settings ganan sobre default, B2B direct connect viene bloqueado y trust o scoping requieren P1.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview">entra/external-id/cross-tenant-access-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview#default-settings">cross-tenant-access-overview <span class="anchor">#default-settings</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview#organizational-settings">cross-tenant-access-overview <span class="anchor">#organizational-settings</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview#important-considerations">cross-tenant-access-overview <span class="anchor">#important-considerations</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage cross-tenant synchronization</div>
+  <p class="punto">Push desde el source (scope y mappings ahí), el target solo permite inbound sync. Automatic redemption en ambos lados, userType Member por default y P1 solo en el source.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview">entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#properties">cross-tenant-synchronization-overview <span class="anchor">#properties</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#license-requirements">cross-tenant-synchronization-overview <span class="anchor">#license-requirements</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure#step-9-review-attribute-mappings">cross-tenant-synchronization-configure <span class="anchor">#step-9-review-attribute-mappings</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure external identity providers, including protocols such as SAML and WS-Fed</div>
+  <p class="punto">SAML/WS-Fed para partners con IdP propio (no Entra). DNS TXT si el endpoint no coincide con el dominio, NameID persistent, metadata URL para renovar el cert. Facebook solo sirve para self-service sign-up.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/external-id/direct-federation-overview">entra/external-id/direct-federation-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/external-id/direct-federation#step-1-determine-if-the-partner-needs-to-update-their-dns-text-records">direct-federation <span class="anchor">#step-1-determine-if-the-partner-needs-to-update-their-dns-text-records</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/direct-federation#to-configure-a-saml-20-identity-provider">direct-federation <span class="anchor">#to-configure-a-saml-20-identity-provider</span></a></li><li><a href="https://learn.microsoft.com/entra/external-id/direct-federation-overview#how-federation-affects-current-external-users">direct-federation-overview <span class="anchor">#how-federation-affects-current-external-users</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 4: Implement and manage hybrid identity</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/implement-manage-hybrid-identity/">implement-manage-hybrid-identity</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage Microsoft Entra Connect Sync</div>
+  <p class="punto">Scheduler cada 30 min, staging mode (importa y sincroniza pero no exporta ni hace PHS), solo Active-Passive y umbral de 500 deletes.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-whatis">entra/identity/hybrid/connect/how-to-connect-sync-whatis</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-staging-server#staging-mode">how-to-connect-sync-staging-server <span class="anchor">#staging-mode</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-feature-scheduler#start-the-scheduler">how-to-connect-sync-feature-scheduler <span class="anchor">#start-the-scheduler</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-feature-prevent-accidental-deletes#determine-which-objects-are-pending-deletion">how-to-connect-sync-feature-prevent-accidental-deletes <span class="anchor">#determine-which-objects-are-pending-deletion</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage Microsoft Entra Cloud Sync</div>
+  <p class="punto">Agente ligero con gMSA, 3 agentes activos para HA, forests desconectados, sync cada 2 min. No hace device sync para hybrid join ni configura PTA o AD FS.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/what-is-cloud-sync">entra/identity/hybrid/cloud-sync/what-is-cloud-sync</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/connect-to-cloud-sync-decision-guide#comparison-between-microsoft-entra-connect-and-cloud-sync">connect-to-cloud-sync-decision-guide <span class="anchor">#comparison-between-microsoft-entra-connect-and-cloud-sync</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/how-to-prerequisites#cloud-provisioning-agent-requirements">how-to-prerequisites <span class="anchor">#cloud-provisioning-agent-requirements</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/common-scenarios#supported-sync-scenarios">common-scenarios <span class="anchor">#supported-sync-scenarios</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage password hash synchronization</div>
+  <p class="punto">Corre cada 2 min y no se cambia, el password de la nube no expira por default, accountExpires no se sincroniza y es requisito para leaked credentials y como backup de PTA o federación.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-password-hash-synchronization">entra/identity/hybrid/connect/how-to-connect-password-hash-synchronization</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-password-hash-synchronization#how-password-hash-synchronization-works">how-to-connect-password-hash-synchronization <span class="anchor">#how-password-hash-synchronization-works</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-password-hash-synchronization#password-expiration-policy">how-to-connect-password-hash-synchronization <span class="anchor">#password-expiration-policy</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/choose-ad-authn#recommendations">choose-ad-authn <span class="anchor">#recommendations</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage pass-through authentication</div>
+  <p class="punto">Valida contra AD en el momento del sign-in (lockout, disabled, logon hours). Mínimo 3 agentes en producción, uno por servidor, solo salida 443/80, sin load balancing y el failover a PHS es manual.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta">entra/identity/hybrid/connect/how-to-connect-pta</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta-quick-start#step-4-ensure-high-availability">how-to-connect-pta-quick-start <span class="anchor">#step-4-ensure-high-availability</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta-faq#how-many-pass-through-authentication-agents-do-i-need-to-install">how-to-connect-pta-faq <span class="anchor">#how-many-pass-through-authentication-agents-do-i-need-to-install</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/choose-ad-authn#detailed-considerations">choose-ad-authn <span class="anchor">#detailed-considerations</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage seamless single sign-on (SSO)</div>
+  <p class="punto">Solo con PHS o PTA, nunca con AD FS. Requiere device domain-joined en la red, URL autologon en Intranet zone y rollover de la key de AZUREADSSOACC cada 30 días. Para Windows 10 o posterior, PRT.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sso">entra/identity/hybrid/connect/how-to-connect-sso</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sso#sso-via-primary-refresh-token-vs-seamless-sso">how-to-connect-sso <span class="anchor">#sso-via-primary-refresh-token-vs-seamless-sso</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sso-quick-start#roll-out-the-feature">how-to-connect-sso-quick-start <span class="anchor">#roll-out-the-feature</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sso-how-it-works#how-does-seamless-sso-work">how-to-connect-sso-how-it-works <span class="anchor">#how-does-seamless-sso-work</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Migrate from AD FS to other authentication and authorization mechanisms</div>
+  <p class="punto">Staged rollout para pilotear (grupos cloud, sin nested ni dinámicos, máx 10 por feature), luego convertir el dominio a Managed. Las apps se evalúan con AD FS application migration (necesita Connect Health).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication">entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-staged-rollout#unsupported-scenarios">how-to-connect-staged-rollout <span class="anchor">#unsupported-scenarios</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication#convert-domains-from-federated-to-managed">migrate-from-federation-to-cloud-authentication <span class="anchor">#convert-domains-from-federated-to-managed</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/enterprise-apps/migrate-ad-fs-application-howto#view-ad-fs-application-migration-dashboard-in-microsoft-entra-id">migrate-ad-fs-application-howto <span class="anchor">#view-ad-fs-application-migration-dashboard-in-microsoft-entra-id</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage Microsoft Entra Connect Health</div>
+  <p class="punto">Requiere P1 (1 licencia para el primer agente y 25 por cada agente extra). El agente de sync se instala solo con Connect y el de AD FS necesita auditing para usage analytics.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-health-agent-install">entra/identity/hybrid/connect/how-to-connect-health-agent-install</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/reference-connect-health-faq#how-many-licenses-do-i-need-to-monitor-my-infrastructure">reference-connect-health-faq <span class="anchor">#how-many-licenses-do-i-need-to-monitor-my-infrastructure</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-health-adfs#install-the-agent-for-ad-fs">how-to-connect-health-adfs <span class="anchor">#install-the-agent-for-ad-fs</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-health-operations#enable-email-notifications">how-to-connect-health-operations <span class="anchor">#enable-email-notifications</span></a></li></ul>
+</div>
+<h2>2. Las 12 trampas de M1</h2>
+<p class="meta">Memoriza la frase, entiende la regla, reconoce las palabras que delatan. Los números son para consultar, no para memorizar.</p>
+<div class="trap">
+  <div class="trap-h"><span class="num">1</span> AU normal vs restricted management AU</div>
+  <p class="frase">&quot;El AU normal recorta al admin; el restricted AU blinda al objeto.&quot;</p>
+  <ul>
+<li>AU normal: limita lo que hace quien recibe el rol con scope, pero los admins de tenant siguen mandando. Meter un grupo al AU no mete a sus miembros y los AUs no se anidan.</li>
+<li>Restricted AU: ni el Global Admin modifica esos objetos sin una asignación en ese scope. Se elige solo al crear el AU y no acepta Microsoft 365 groups.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;even Global Administrators&quot;, &quot;only the ExecSupport team&quot;, &quot;protect executive accounts&quot;, &quot;without removing tenant-level role assignments&quot;, &quot;members of the group&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management#who-can-modify-objects">admin-units-restricted-management <span class="anchor">#who-can-modify-objects</span></a> · Practica con Q3, Q4, Q6</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">2</span> Custom roles</div>
+  <p class="frase">&quot;Custom role: menú cerrado, P1 por usuario y cero clonar built-ins.&quot;</p>
+  <ul>
+<li>Solo lleva permisos habilitados para custom (app registrations, enterprise apps, consent, devices, users, groups) y cada usuario asignado necesita Microsoft Entra ID P1.</li>
+<li>Se asigna a tenant, a una app registration, o a un AU si trae permisos de users, groups o devices. Solo puedes clonar desde otro custom role.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;only for the Payroll-API app registration&quot;, &quot;update credentials of a specific app&quot;, &quot;least privilege&quot;, &quot;clone&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/custom-create#create-a-custom-role">custom-create <span class="anchor">#create-a-custom-role</span></a> · Practica con Q2</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">3</span> Effective permissions: quién resetea a quién</div>
+  <p class="frase">&quot;Helpdesk no resetea a los de arriba, y el Global Admin no ve Azure hasta que se eleva.&quot;</p>
+  <ul>
+<li>La matriz manda: Password Admin resetea poco, Helpdesk un poco más, User Admin más, y a los miembros de un role-assignable group solo los tocan Privileged Authentication Admin y Global Admin.</li>
+<li>Entra roles y Azure RBAC son sistemas separados. El GA se eleva con "Access management for Azure resources" y recibe User Access Administrator en el root scope.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;must not be able to reset passwords for User Administrators&quot;, &quot;member of a role-assignable group&quot;, &quot;can&#x27;t see any subscriptions&quot;, &quot;assign Azure roles in every subscription&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/privileged-roles-permissions#who-can-reset-passwords">privileged-roles-permissions <span class="anchor">#who-can-reset-passwords</span></a> · Practica con Q1, Q7, Q8</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">4</span> Dynamic groups y device identity</div>
+  <p class="frase">&quot;-and pega más fuerte que -or. Y en devices: AzureAD es joined, ServerAD es hybrid, Workplace es registered.&quot;</p>
+  <ul>
+<li>Una regla es de users o de devices, nunca ambos. M365 groups solo aceptan users, el rule builder solo sirve para users, y <code>user.objectId -ne null</code> incluye guests.</li>
+<li>"Users may join devices" y el límite de 50 devices no aplican a hybrid join. Deshabilitar un device revoca su PRT.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;only member users&quot;, &quot;exclude guests&quot;, &quot;Sales or Marketing&quot;, &quot;hybrid joined Windows devices&quot;, &quot;personal devices&quot;, &quot;Group Policy and imaging&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership#operator-precedence">groups-dynamic-membership <span class="anchor">#operator-precedence</span></a> · Practica con Q15, Q16, Q19</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">5</span> Group-based licensing</div>
+  <p class="frase">&quot;Primero agrega al grupo nuevo, confirma, y luego quita del viejo.&quot;</p>
+  <ul>
+<li>Sin UsageLocation no hay licencia directa. En licencias por grupo, el usuario sin ubicación hereda la del tenant. Los grupos anidados no reparten licencia al segundo nivel.</li>
+<li>E1 y E3 juntos chocan por Exchange Online Plan 1 y Plan 2. El error es conflicting service plans, no falta de licencias.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;must not lose access&quot;, &quot;error although licenses are available&quot;, &quot;nested group&quot;, &quot;Set-MgUserLicense fails&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses#move-users-between-licensed-groups">manage-group-licenses <span class="anchor">#move-users-between-licensed-groups</span></a> · Practica con Q12, Q17, Q18</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">6</span> UserType no es dónde se autentica</div>
+  <p class="frase">&quot;UserType es el nivel de permiso; Identities dice dónde se autentica.&quot;</p>
+  <ul>
+<li>Member o Guest solo define la relación con la organización. Cambiar a Member no vuelve interna la cuenta; para eso existe Convert to internal user.</li>
+<li>Si el guest cambió de empresa o de correo, usa reset redemption status: conserva object ID, grupos y apps. Helpdesk Administrator basta.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;keep group memberships and app assignments&quot;, &quot;moved to another company&quot;, &quot;sign in with a new email&quot;, &quot;external member&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/external-id/user-properties#user-type">user-properties <span class="anchor">#user-type</span></a> · Practica con Q24</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">7</span> Invitar guests: settings, listas y bulk</div>
+  <p class="frase">&quot;Guest Inviter brinca el candado de &#x27;solo admins&#x27;, pero no el de &#x27;nadie&#x27;.&quot;</p>
+  <ul>
+<li>Es allow list o block list, nunca las dos, y no saca a los guests que ya redimieron (una invitación pendiente sí falla).</li>
+<li>Bulk create no invita. Bulk invite pide Email address to invite y Redirection url. <code>New-MgInvitation</code> sin <code>-SendInvitationMessage</code> no manda correo.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;only users assigned to specific admin roles&quot;, &quot;one non-admin must invite&quot;, &quot;block gmail.com&quot;, &quot;existing guests&quot;, &quot;land on My Apps&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/external-id/allow-deny-list#important-considerations">allow-deny-list <span class="anchor">#important-considerations</span></a> · Practica con Q11, Q21, Q22, Q23</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">8</span> Cross-tenant access settings</div>
+  <p class="frase">&quot;Trust MFA siempre es inbound y se configura en el tenant de recursos.&quot;</p>
+  <ul>
+<li>Organizational settings le ganan a default settings. Trust settings y scoping por usuario o app requieren P1 en el tenant que configuras.</li>
+<li>B2B collaboration viene permitido por default y B2B direct connect viene bloqueado. Direct connect es para Teams shared channels.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;already completed MFA in their home tenant&quot;, &quot;only for Fabrikam&quot;, &quot;all other partners must keep&quot;, &quot;shared channels&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview#organizational-settings">cross-tenant-access-overview <span class="anchor">#organizational-settings</span></a> · Practica con Q25</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">9</span> Cross-tenant synchronization</div>
+  <p class="frase">&quot;El source empuja; el target solo abre la puerta.&quot;</p>
+  <ul>
+<li>Configuración, scope y mappings viven en el source (P1 solo ahí). El target activa "Allow user synchronization into this tenant", y ambos marcan automatic redemption.</li>
+<li>Crea external members por default, sincroniza solo internal members, corre cada 40 minutos y no sirve para migrar usuarios entre tenants.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;multitenant organization&quot;, &quot;no invitation emails or consent prompts&quot;, &quot;removed automatically when they leave&quot;, &quot;member-level access&quot;, &quot;source tenant has not enabled automatic user consent&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#properties">cross-tenant-synchronization-overview <span class="anchor">#properties</span></a> · Practica con Q26, Q27, Q29, Q30</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">10</span> PHS es el paracaídas</div>
+  <p class="frase">&quot;PHS es el paracaídas, pero no se abre solo.&quot;</p>
+  <ul>
+<li>PTA valida contra AD en el momento del sign-in (disabled, lockout, logon hours) y pide mínimo 3 agentes en producción. Federación depende de AD FS.</li>
+<li>Habilita PHS siempre: da leaked credentials y es el respaldo, pero cambiar el método de sign-in en Entra Connect es manual.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;on-premises outage&quot;, &quot;ransomware&quot;, &quot;enforce logon hours at sign-in&quot;, &quot;leaked credentials&quot;, &quot;without deploying new infrastructure&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/choose-ad-authn#detailed-considerations">choose-ad-authn <span class="anchor">#detailed-considerations</span></a> · Practica con Q31, Q32, Q33, Q39</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">11</span> Seamless SSO y staged rollout</div>
+  <p class="frase">&quot;Seamless SSO solo baila con PHS o PTA; con AD FS ni entra a la pista.&quot;</p>
+  <ul>
+<li>Necesita device domain-joined en la red, la URL autologon en la Intranet zone por GPO y rollover de la key de AZUREADSSOACC cada 30 días. En Windows 10 o posterior, el SSO va por PRT.</li>
+<li>Staged rollout prueba PHS o PTA antes del cutover con grupos cloud (sin nested ni dinámicos, máximo 10 por feature). No convierte el dominio: eso es <code>Update-MgDomain -AuthenticationType "Managed"</code>.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;domain-joined Windows 8.1&quot;, &quot;still prompted for a password&quot;, &quot;pilot group before converting the domain&quot;, &quot;federated with AD FS&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-staged-rollout#unsupported-scenarios">how-to-connect-staged-rollout <span class="anchor">#unsupported-scenarios</span></a> · Practica con Q34, Q38</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">12</span> Connect Sync vs Cloud Sync</div>
+  <p class="frase">&quot;Forest desconectado o varios agentes activos: Cloud Sync. Hybrid join, PTA o reglas complejas: Connect Sync.&quot;</p>
+  <ul>
+<li>Connect Sync es Active-Passive: staging mode importa y sincroniza, pero no exporta ni hace PHS. Trae el agente de Connect Health, que pide P1 (1 licencia para el primer agente y 25 por cada agente extra).</li>
+<li>Cloud Sync sincroniza cada 2 minutos, recomienda 3 agentes activos y llega a 150K objetos por dominio. Ojo: la tabla actual de Learn marca Exchange hybrid como soportado en los dos.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;merger or acquisition&quot;, &quot;no network connectivity between forests&quot;, &quot;Microsoft Entra hybrid join&quot;, &quot;more than 150,000 objects&quot;, &quot;standby server&quot;, &quot;health alerts&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/connect-to-cloud-sync-decision-guide#comparison-between-microsoft-entra-connect-and-cloud-sync">connect-to-cloud-sync-decision-guide <span class="anchor">#comparison-between-microsoft-entra-connect-and-cloud-sync</span></a> · Practica con Q35, Q36, Q37, Q40</p>
+</div>
+<h2>3. Visuales para no olvidar</h2><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>PHS vs PTA vs Federation</title>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">PHS vs PTA vs Federation</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Autenticación híbrida: dónde se valida la contraseña y qué implica</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- header row -->
+<rect x="48" y="124" width="1184" height="80" rx="12" fill="#22D3EE" fill-opacity="0.12"/>
+<g font-size="20" font-weight="600" fill="#7DD3FC" text-anchor="middle">
+<text x="160" y="171" fill="#94A3B8">Method</text>
+<text x="368" y="158">Password</text>
+<text x="368" y="184">validated in</text>
+<text x="560" y="158">Works if</text>
+<text x="560" y="184">on-prem down</text>
+<text x="752" y="171">Seamless SSO</text>
+<text x="944" y="171">Extra servers</text>
+<text x="1136" y="158">Leaked</text>
+<text x="1136" y="184">credentials</text>
+</g>
+
+<!-- rows -->
+<rect x="48" y="212" width="1184" height="112" rx="12" fill="#132B4F"/>
+<rect x="48" y="336" width="1184" height="112" rx="12" fill="#132B4F"/>
+<rect x="48" y="460" width="1184" height="112" rx="12" fill="#132B4F"/>
+<rect x="48" y="212" width="6" height="112" rx="3" fill="#22D3EE"/>
+<rect x="48" y="336" width="6" height="112" rx="3" fill="#7DD3FC"/>
+<rect x="48" y="460" width="6" height="112" rx="3" fill="#94A3B8"/>
+<g stroke="#0B1F3A" stroke-width="3">
+<line x1="272" y1="124" x2="272" y2="572"/>
+<line x1="464" y1="124" x2="464" y2="572"/>
+<line x1="656" y1="124" x2="656" y2="572"/>
+<line x1="848" y1="124" x2="848" y2="572"/>
+<line x1="1040" y1="124" x2="1040" y2="572"/>
+</g>
+
+<!-- PHS -->
+<text x="68" y="260" font-size="26" font-weight="700" fill="#22D3EE">PHS</text>
+<text x="68" y="292" font-size="20" fill="#94A3B8">Password hash sync</text>
+<g font-size="20" text-anchor="middle">
+<text x="368" y="260" font-weight="600" fill="#F8FAFC">Cloud</text>
+<text x="368" y="288" fill="#94A3B8">(Entra ID)</text>
+<text x="560" y="276" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+<text x="752" y="276" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+<text x="944" y="276" font-size="22" font-weight="700" fill="#4ADE80">No</text>
+<text x="1136" y="276" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+</g>
+
+<!-- PTA -->
+<text x="68" y="384" font-size="26" font-weight="700" fill="#7DD3FC">PTA</text>
+<text x="68" y="416" font-size="20" fill="#94A3B8">Pass-through auth</text>
+<g font-size="20" text-anchor="middle">
+<text x="368" y="384" font-weight="600" fill="#F8FAFC">On-prem agent</text>
+<text x="368" y="412" fill="#94A3B8">(valida en AD)</text>
+<text x="560" y="400" font-size="22" font-weight="700" fill="#F87171">No</text>
+<text x="752" y="400" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+<text x="944" y="384" font-weight="600" fill="#FBBF24">Agents</text>
+<text x="944" y="412" fill="#94A3B8">3 recomendados</text>
+<text x="1136" y="384" font-weight="600" fill="#FBBF24">Only if PHS</text>
+<text x="1136" y="412" fill="#94A3B8">also enabled</text>
+</g>
+
+<!-- Federation -->
+<text x="68" y="508" font-size="26" font-weight="700" fill="#F8FAFC">Federation</text>
+<text x="68" y="540" font-size="20" fill="#94A3B8">AD FS</text>
+<g font-size="20" text-anchor="middle">
+<text x="368" y="508" font-weight="600" fill="#F8FAFC">On-prem</text>
+<text x="368" y="536" fill="#94A3B8">federation server</text>
+<text x="560" y="524" font-size="22" font-weight="700" fill="#F87171">No</text>
+<text x="752" y="508" font-weight="600" fill="#94A3B8">N/A</text>
+<text x="752" y="536" fill="#94A3B8">(own SSO)</text>
+<text x="944" y="524" font-weight="600" fill="#F87171">AD FS + WAP</text>
+<text x="1136" y="508" font-weight="600" fill="#FBBF24">Only if PHS</text>
+<text x="1136" y="536" fill="#94A3B8">also enabled</text>
+</g>
+
+<!-- note -->
+<rect x="48" y="592" width="1184" height="96" rx="12" fill="#FBBF24" fill-opacity="0.08" stroke="#FBBF24" stroke-width="2"/>
+<circle cx="88" cy="640" r="18" fill="#FBBF24"/>
+<text x="88" y="647" font-size="22" font-weight="700" fill="#0B1F3A" text-anchor="middle">i</text>
+<text x="124" y="630" font-size="22" font-weight="700" fill="#FBBF24">Cloud Sync no configura PTA ni federación</text>
+<text x="124" y="664" font-size="20" fill="#F8FAFC">Tip: habilita PHS como respaldo también con PTA o AD FS</text>
+</svg>
+<p><b>Si se cae on-prem.</b> PHS sigue funcionando; PTA y federación no. El cambio de sign-in method en Entra Connect es manual.</p></div><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>External identities map</title>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">External identities: mapa</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">B2B collaboration, B2B direct connect, cross-tenant sync e identity providers</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- connectors -->
+<g stroke="#22D3EE" stroke-opacity="0.7" stroke-width="2.5" fill="none">
+<path d="M640 312V274"/>
+<path d="M520 340L448 300"/>
+<path d="M760 340L832 300"/>
+<path d="M520 396L448 500"/>
+<path d="M760 396L832 500"/>
+<path d="M640 420V476"/>
+</g>
+<g fill="#22D3EE">
+<circle cx="640" cy="274" r="5"/>
+<circle cx="448" cy="300" r="5"/>
+<circle cx="832" cy="300" r="5"/>
+<circle cx="448" cy="500" r="5"/>
+<circle cx="832" cy="500" r="5"/>
+<circle cx="640" cy="476" r="5"/>
+</g>
+
+<!-- center -->
+<rect x="520" y="312" width="240" height="108" rx="12" fill="#22D3EE" fill-opacity="0.18" stroke="#22D3EE" stroke-width="3"/>
+<text x="640" y="362" font-size="30" font-weight="700" fill="#F8FAFC" text-anchor="middle">Your tenant</text>
+<text x="640" y="394" font-size="20" fill="#7DD3FC" text-anchor="middle">Workforce tenant</text>
+
+<!-- B2B collaboration -->
+<rect x="48" y="124" width="400" height="236" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="72" y="164" font-size="24" font-weight="700" fill="#22D3EE">B2B collaboration</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="202">• Guest user (UserType Guest)</text>
+<text x="72" y="234">• Invitation y redemption</text>
+<text x="72" y="266">• External collaboration settings</text>
+</g>
+<text x="72" y="304" font-size="20" fill="#94A3B8">Quién invita, dominios allow/deny</text>
+<text x="72" y="336" font-size="20" fill="#94A3B8">Email, Teams, apps compartidas</text>
+
+<!-- B2B direct connect -->
+<rect x="476" y="124" width="328" height="150" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="500" y="164" font-size="24" font-weight="700" fill="#22D3EE">B2B direct connect</text>
+<text x="500" y="202" font-size="20" fill="#F8FAFC">Teams shared channels</text>
+<text x="500" y="236" font-size="20" fill="#94A3B8">Requiere mutual trust</text>
+
+<!-- Cross-tenant access settings -->
+<rect x="832" y="124" width="400" height="236" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="856" y="164" font-size="22" font-weight="700" fill="#22D3EE">Cross-tenant access settings</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="856" y="202">• Inbound: externos hacia ti</text>
+<text x="856" y="234">• Outbound: tus users afuera</text>
+<text x="856" y="266">• Trust MFA / compliant device</text>
+</g>
+<text x="856" y="304" font-size="20" fill="#94A3B8">Default + por organización</text>
+<text x="856" y="336" font-size="20" fill="#94A3B8">Para B2B collab y direct connect</text>
+
+<!-- External identity providers -->
+<rect x="48" y="452" width="400" height="236" rx="12" fill="#132B4F" stroke="#7DD3FC" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="72" y="492" font-size="22" font-weight="700" fill="#7DD3FC">External identity providers</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="530">• SAML / WS-Fed federation</text>
+<text x="72" y="562">• Google</text>
+<text x="72" y="594">• Facebook: <tspan fill="#F87171">no para B2B invites</tspan></text>
+</g>
+<text x="72" y="634" font-size="20" fill="#94A3B8">Default: Entra ID, MSA,</text>
+<text x="72" y="662" font-size="20" fill="#94A3B8">email one-time passcode</text>
+
+<!-- Cross-tenant synchronization -->
+<rect x="832" y="452" width="400" height="236" rx="12" fill="#132B4F" stroke="#7DD3FC" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="856" y="492" font-size="22" font-weight="700" fill="#7DD3FC">Cross-tenant synchronization</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="856" y="530">• Source tenant: outbound</text>
+<text x="856" y="562">• Target tenant: inbound (allow)</text>
+<text x="856" y="594">• Users: external members</text>
+</g>
+<text x="856" y="634" font-size="20" fill="#94A3B8">Automatic redemption en ambos</text>
+<text x="856" y="662" font-size="20" fill="#94A3B8">Misma organización multi-tenant</text>
+
+<!-- what gets created -->
+<rect x="476" y="476" width="328" height="212" rx="12" fill="#0B1F3A" stroke="#FBBF24" stroke-opacity="0.8" stroke-width="2"/>
+<text x="500" y="516" font-size="22" font-weight="700" fill="#FBBF24">Qué objeto se crea</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="500" y="556"><tspan fill="#7DD3FC">B2B collab:</tspan> external Guest</text>
+<text x="500" y="594"><tspan fill="#7DD3FC">CT sync:</tspan> external Member</text>
+<text x="500" y="632"><tspan fill="#7DD3FC">Direct connect:</tspan> sin objeto</text>
+</g>
+<text x="500" y="668" font-size="20" fill="#94A3B8">en tu directorio</text>
+</svg>
+<p><b>Dirección.</b> El trust MFA es inbound y vive en el tenant de recursos. En cross-tenant sync el source empuja y el target solo abre la puerta.</p></div><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Connect Sync vs Cloud Sync</title>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Connect Sync vs Cloud Sync</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Microsoft Entra Connect Sync vs Microsoft Entra Cloud Sync: diferencias clave</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- header -->
+<rect x="48" y="124" width="1184" height="52" rx="12" fill="#22D3EE" fill-opacity="0.12"/>
+<text x="68" y="158" font-size="20" font-weight="700" fill="#94A3B8">Feature</text>
+<text x="348" y="159" font-size="24" font-weight="700" fill="#22D3EE">Entra Connect Sync</text>
+<text x="800" y="159" font-size="24" font-weight="700" fill="#7DD3FC">Entra Cloud Sync</text>
+
+<!-- rows -->
+<g fill="#132B4F">
+<rect x="48" y="184" width="1184" height="54" rx="10"/>
+<rect x="48" y="242" width="1184" height="54" rx="10"/>
+<rect x="48" y="300" width="1184" height="54" rx="10"/>
+<rect x="48" y="358" width="1184" height="54" rx="10"/>
+<rect x="48" y="416" width="1184" height="54" rx="10"/>
+<rect x="48" y="474" width="1184" height="54" rx="10"/>
+<rect x="48" y="532" width="1184" height="54" rx="10"/>
+</g>
+<g stroke="#0B1F3A" stroke-width="3">
+<line x1="328" y1="124" x2="328" y2="586"/>
+<line x1="780" y1="124" x2="780" y2="586"/>
+</g>
+
+<g font-size="20" font-weight="600" fill="#94A3B8">
+<text x="68" y="218">Arquitectura</text>
+<text x="68" y="276">Alta disponibilidad</text>
+<text x="68" y="334">Multi-forest</text>
+<text x="68" y="392">Sync rules</text>
+<text x="68" y="450">Devices</text>
+<text x="68" y="508">PTA / AD FS</text>
+<text x="68" y="566">Escala</text>
+</g>
+
+<g font-size="20" fill="#F8FAFC">
+<text x="348" y="218">Server-based: Windows Server + SQL</text>
+<text x="348" y="276">Staging mode server (pasivo)</text>
+<text x="348" y="334">Connected forests (line of sight)</text>
+<text x="348" y="392">Advanced sync rules (Rules Editor)</text>
+<text x="348" y="450">Device writeback, hybrid join sync</text>
+<text x="348" y="508">Configura PTA y federación</text>
+<text x="348" y="566">Directorios y objetos grandes</text>
+</g>
+
+<g font-size="20" fill="#F8FAFC">
+<text x="800" y="218">Lightweight provisioning agents</text>
+<text x="800" y="276">Multiple agents activos (HA)</text>
+<text x="800" y="334">Disconnected forests soportados</text>
+<text x="800" y="392">Scoping y mappings más simples</text>
+<text x="800" y="450" fill="#FBBF24">Limitado: consulta la tabla oficial</text>
+<text x="800" y="508">No configura PTA ni AD FS</text>
+<text x="800" y="566" fill="#FBBF24">Límites: consulta la tabla oficial</text>
+</g>
+
+<!-- footer -->
+<rect x="48" y="604" width="1184" height="84" rx="12" fill="#22D3EE" fill-opacity="0.08" stroke="#22D3EE" stroke-opacity="0.6" stroke-width="2"/>
+<text x="72" y="638" font-size="20" fill="#F8FAFC">Pueden coexistir en el mismo tenant. Features y límites exactos: consulta la tabla oficial</text>
+<text x="72" y="670" font-size="20" font-weight="600" fill="#22D3EE" text-decoration="underline">learn.microsoft.com/entra/identity/hybrid/cloud-sync/what-is-cloud-sync</text>
+</svg>
+<p><b>Connect Sync vs Cloud Sync.</b> Forest desconectado o varios agentes activos: Cloud Sync. Hybrid join, PTA o reglas complejas: Connect Sync.</p></div>
+<h2>4. Banco de preguntas: 40 preguntas estilo examen</h2>
+<p class="meta">En inglés, como el examen. Contesta sin ver la sección 5. En las series Yes/No cada afirmación se evalúa sola; en drag/order solo cuentan las acciones que sí van, en orden. Los case studies aplican a las dos preguntas que los siguen.</p>
+<h3 class="sub">Subdominio 1: Configure and manage a Microsoft Entra tenant</h3>
+<div class="q"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure and manage built-in and custom Microsoft Entra roles</span></div><p>Contoso has 20,000 users. The service desk team must be able to reset passwords for users who have no administrative role and for other service desk members who hold the Helpdesk Administrator role. The team must NOT be able to reset passwords for users who hold the User Administrator role.</p>
+<p>You need to assign a Microsoft Entra built-in role to the team. The solution must follow the principle of least privilege.</p>
+<p>Which role should you assign?</p>
+<p>A. Password Administrator<br />
+B. Helpdesk Administrator<br />
+C. User Administrator<br />
+D. Authentication Administrator</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure and manage built-in and custom Microsoft Entra roles</span></div><p>Contoso has an app registration named Payroll-API. Five developers must be able to update only the credentials (secrets and certificates) and the basic properties of Payroll-API. They must not be able to modify any other app registration. You must use Microsoft Entra role-based access control, and the solution must follow the principle of least privilege.</p>
+<p>What should you do?</p>
+<p>A. Assign the Application Administrator built-in role at tenant scope.<br />
+B. Create a custom role that contains <code>microsoft.directory/applications/credentials/update</code> and <code>microsoft.directory/applications/basic/update</code>, and assign it at the scope of the Payroll-API app registration.<br />
+C. Clone the Cloud Application Administrator built-in role, remove the permissions you don't need, and assign the clone at tenant scope.<br />
+D. Assign the Application Developer built-in role at tenant scope.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Yes/No series</span><span class="skill-tag">Recommend when to use administrative units</span></div><p>Contoso creates an administrative unit named Seattle-AU. An administrator adds the security group SEA-Sales to Seattle-AU. The 40 members of SEA-Sales are NOT added individually to the administrative unit. Anna is assigned the User Administrator role scoped to Seattle-AU.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Anna can change the name of the SEA-Sales group.</li>
+<li>Anna can reset the password of a member of SEA-Sales.</li>
+<li>Anna can create an administrative unit named Seattle-Downtown inside Seattle-AU to delegate a smaller area.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure and manage administrative units</span></div><p>Contoso must protect the CEO and CFO user accounts. The requirements are:</p>
+<ul>
+<li>Tenant-level Helpdesk Administrators and User Administrators must not be able to reset their passwords or change their properties.</li>
+<li>Only the ExecSupport team can manage the two accounts.</li>
+<li>Global Administrators must not be able to modify the accounts unless they explicitly assign themselves a role for that purpose, and that action must be auditable.</li>
+<li>You must not remove any existing tenant-level role assignments.</li>
+</ul>
+<p>What should you do?</p>
+<p>A. Create an administrative unit, add the two accounts, and assign ExecSupport the Helpdesk Administrator role scoped to the administrative unit.<br />
+B. Create a restricted management administrative unit, add the two accounts, and assign ExecSupport the required roles scoped to that administrative unit.<br />
+C. Add the two accounts to a role-assignable group so that only Privileged Authentication Administrators can reset their passwords.<br />
+D. Enable Privileged Identity Management for the Helpdesk Administrator and User Administrator roles and require approval for activation.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure tenant properties, user settings, group settings, and device settings</span></div><p>Contoso wants to stop all standard users from creating app registrations. Five developers must still be able to register new applications. The solution must follow the principle of least privilege.</p>
+<p>What should you do?</p>
+<p>A. Set "Users can register applications" to No, and assign the five developers the Application Developer role.<br />
+B. Set "Restrict access to Microsoft Entra admin center" to Yes, and assign the five developers the Global Reader role.<br />
+C. Set "Users can register applications" to No, and assign the five developers the Cloud Application Administrator role.<br />
+D. Keep the default user settings and create a Conditional Access policy that blocks the Windows Azure Service Management API for users who aren't developers.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Drag/order</span><span class="skill-tag">Configure and manage administrative units</span></div><p>Contoso has a regional office in Lima. The role-assignable group LIM-Helpdesk must be able to reset passwords only for users who work in Lima. The users aren't in any administrative unit yet. When the role assignment is created, the scope must already contain the Lima users. You sign in as a Privileged Role Administrator.</p>
+<p>Which four actions should you perform in sequence? (Two actions aren't used.)</p>
+<p>A. Select Add assignments and select the LIM-Helpdesk group.<br />
+B. Create an administrative unit named Lima-AU.<br />
+C. From Roles &amp; admins, assign the Helpdesk Administrator role to LIM-Helpdesk with Directory scope.<br />
+D. Inside Lima-AU, open Roles and administrators and select Helpdesk Administrator.<br />
+E. Add the Lima users to Lima-AU (manually, by CSV, or with a dynamic membership rule based on a user attribute).<br />
+F. Create a custom role by cloning Helpdesk Administrator and restrict it to Lima.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Multiple choice</span><span class="skill-tag">Evaluate effective permissions for Microsoft Entra roles</span></div><p>Megan is a Global Administrator in Contoso's Microsoft Entra tenant. She signs in to the Azure portal and can't see any of the company's Azure subscriptions or virtual machines. For an audit, Megan must be able to assign Azure roles in every subscription and management group linked to the tenant, and then remove that access when she finishes.</p>
+<p>What should Megan do first?</p>
+<p>A. Assign herself the Privileged Role Administrator role in Microsoft Entra ID.<br />
+B. In Microsoft Entra ID &gt; Properties, set Access management for Azure resources to Yes.<br />
+C. Add herself to a role-assignable group that has the Global Administrator role.<br />
+D. Create a Microsoft Entra custom role that includes Azure RBAC permissions.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Yes/No series</span><span class="skill-tag">Evaluate effective permissions for Microsoft Entra roles</span></div><p>Tom holds the Helpdesk Administrator role at tenant scope. Consider these users:</p>
+<ul>
+<li>Lina holds the User Administrator role.</li>
+<li>Omar has no administrative role, but he is a member of a role-assignable group.</li>
+<li>Sara holds the Password Administrator role.</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Tom can reset Lina's password.</li>
+<li>Tom can reset Omar's password.</li>
+<li>Tom can reset Sara's password.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Select two</span><span class="skill-tag">Configure and manage domains in Microsoft Entra ID and Microsoft 365</span></div><p>Contoso's tenant was created as contoso.onmicrosoft.com. You added contoso.com as a custom domain, but it shows as Unverified. New users created in the Microsoft Entra admin center must get contoso.com as the default domain suffix.</p>
+<p>Which two actions should you perform? Each correct answer presents part of the solution.</p>
+<p>A. At the DNS registrar, create the TXT (or MX) record shown in the admin center for contoso.com, and then select Verify.<br />
+B. After verification, select contoso.com and select Make primary.<br />
+C. Rename contoso.onmicrosoft.com to contoso.com.<br />
+D. Delete the contoso.onmicrosoft.com domain so that contoso.com becomes the only domain.<br />
+E. Configure contoso.com as a federated domain before you make it primary.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Yes/No series</span><span class="skill-tag">Configure Company branding settings</span></div><p>Contoso configured company branding: a default sign-in experience with a banner logo, a background image, and sign-in page text, plus a customization for the Spanish browser language. Contoso employees use https://myapps.microsoft.com. Guest users from Fabrikam (another Microsoft Entra tenant) access Contoso resources through B2B collaboration.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Users whose browser language is Spanish see the Spanish customization instead of the default branding for the elements that were customized.</li>
+<li>An employee who opens https://myapps.microsoft.com sees Contoso's branding on the first screen, before typing a username.</li>
+<li>When Fabrikam guests perform a cross-tenant sign-in, they see the branding of their home tenant.</li>
+</ol></div>
+<h3 class="sub">Subdominio 2: Create, configure, and manage Microsoft Entra identities</h3>
+<div class="q"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Multiple choice</span><span class="skill-tag">Automate bulk operations by using the Microsoft Entra admin center and PowerShell</span></div><p>HR sends Contoso a spreadsheet with 450 new employees. You plan to use Bulk create in the Microsoft Entra admin center and you download the CSV template.</p>
+<p>Which columns must have a value for every user for the upload to succeed?</p>
+<p>A. Name, User name, Initial password, and Block sign in (Yes/No)<br />
+B. Name, User name, Usage location, and Department<br />
+C. Email address to invite and Redirection url<br />
+D. User name, Initial password, Usage location, and Manager</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Multiple choice</span><span class="skill-tag">Assign, modify, and report on licenses</span></div><p>A PowerShell script creates 200 users with <code>New-MgUser</code> from a CSV file, and then runs <code>Set-MgUserLicense</code> to assign Microsoft 365 E5 directly to each user. The users are created, but the license assignment fails for all of them. The CSV contains UserPrincipalName, DisplayName, MailNickname, and Department.</p>
+<p>What should you add to the <code>New-MgUser</code> command to fix the issue?</p>
+<p>A. <code>-UsageLocation</code> with a two-letter ISO country code<br />
+B. <code>-Country</code> with the full country name<br />
+C. <code>-PreferredDataLocation</code><br />
+D. <code>-UserType "Member"</code></p></div>
+<div class="q"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create, configure, and manage groups</span></div><p>Contoso uses Microsoft Entra ID Free. Users must be able to request membership to security groups from the My Groups portal, and group owners must approve or deny the requests. In Groups &gt; General, "Owners can manage group membership requests in My Groups" is Yes and "Restrict user ability to access groups features in My Groups" is No. Users still can't request to join groups that require owner approval.</p>
+<p>What should you do?</p>
+<p>A. Purchase and assign Microsoft Entra ID P1 or P2 licenses.<br />
+B. Set "Users can create security groups in Azure portals, API or PowerShell" to Yes.<br />
+C. Convert the security groups to dynamic membership groups.<br />
+D. Make the security groups role-assignable.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Yes/No series</span><span class="skill-tag">Create, configure, and manage groups</span></div><p>Contoso has Microsoft Entra ID P1. You configure a group expiration policy with a lifetime of 180 days, applied to All groups, and an alternate notification email for groups without owners.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>A cloud security group that nobody has used for 200 days is deleted by this policy.</li>
+<li>A Microsoft 365 group whose members regularly visit its Teams channel is renewed automatically, without any owner action.</li>
+<li>If a Microsoft 365 group expires and is deleted, it can be restored within 30 days.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create, configure, and manage groups</span></div><p>You need a dynamic membership security group that contains only member users (no guests) from the Sales or Marketing departments.</p>
+<p>Which membership rule should you use?</p>
+<p>A. <code>(user.department -in ["Sales","Marketing"]) -and (user.userType -eq "Member")</code><br />
+B. <code>(user.department -eq "Sales") -or (user.department -eq "Marketing") -and (user.userType -eq "Member")</code><br />
+C. <code>(user.department -in ["Sales","Marketing"]) -and (user.objectId -ne null)</code><br />
+D. <code>(device.department -in ["Sales","Marketing"]) -and (user.userType -eq "Member")</code></p></div>
+<div class="q"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Select two</span><span class="skill-tag">Manage device join and device registration in Microsoft Entra ID</span></div><p>You need a group that automatically contains all Windows devices that are Microsoft Entra hybrid joined. The group must update by itself when new hybrid joined Windows devices appear.</p>
+<p>Which two actions should you perform? Each correct answer presents part of the solution.</p>
+<p>A. Create a security group with the membership type set to Dynamic Device.<br />
+B. Build the rule in the rule builder by adding two expressions.<br />
+C. In the rule syntax text box, enter <code>(device.deviceOSType -eq "Windows") -and (device.deviceTrustType -eq "ServerAD")</code>.<br />
+D. Create a Microsoft 365 group with the membership type set to Dynamic Device.<br />
+E. In the rule syntax text box, enter <code>(device.deviceOSType -eq "Windows") -and (device.deviceTrustType -eq "AzureAD")</code>.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Drag/order</span><span class="skill-tag">Assign, modify, and report on licenses</span></div><p>Contoso uses group-based licensing. The group LIC-E3 assigns Microsoft 365 E3 and the group LIC-E5 assigns Microsoft 365 E5. Pedro is moving to a role that needs E5. He must not lose access to licensed services at any point during the change.</p>
+<p>Which three actions should you perform in sequence? (Two actions aren't used.)</p>
+<p>A. Remove Pedro from LIC-E3.<br />
+B. Add Pedro to LIC-E5.<br />
+C. On Pedro's Licenses page, confirm that the E5 license is applied.<br />
+D. Assign E5 to Pedro directly, and then remove the direct assignment.<br />
+E. Remove Pedro from LIC-E3 and wait for the next license processing cycle before adding him to LIC-E5.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Multiple choice</span><span class="skill-tag">Assign, modify, and report on licenses</span></div><p>At Contoso, the group G-Frontline assigns Office 365 E1. You add Julia, who is a member of G-Frontline, to the group G-Knowledge, which assigns Office 365 E3. The admin center shows an error for Julia's E3 assignment from G-Knowledge. There are 150 unassigned E3 licenses, and Julia has a usage location.</p>
+<p>What is the most likely cause of the error?</p>
+<p>A. Conflicting service plans: Exchange Online (Plan 2) in E3 can't be assigned together with Exchange Online (Plan 1) in E1.<br />
+B. The E3 subscription doesn't have enough licenses.<br />
+C. G-Knowledge is nested inside G-Frontline, and group-based licensing doesn't support nested groups.<br />
+D. Julia's usage location doesn't allow Office 365 E3.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Yes/No series</span><span class="skill-tag">Manage device join and device registration in Microsoft Entra ID</span></div><p>Contoso has these device settings:</p>
+<ul>
+<li>Users may join devices to Microsoft Entra ID: Selected (group IT-Joiners)</li>
+<li>Require multifactor authentication to register or join devices with Microsoft Entra ID: No (a Conditional Access policy for the "Register or join devices" user action requires MFA)</li>
+<li>Maximum number of devices: 50</li>
+</ul>
+<p>Contoso also uses Microsoft Entra Connect to make domain-joined Windows 11 PCs Microsoft Entra hybrid joined.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>A domain-joined Windows 11 PC used by someone who isn't in IT-Joiners can still become Microsoft Entra hybrid joined.</li>
+<li>A user who already has 50 Microsoft Entra registered devices can register one more personal phone.</li>
+<li>If you disable a device in Microsoft Entra ID, the device's Primary Refresh Token (PRT) is revoked.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Multiple choice</span><span class="skill-tag">Manage custom security attributes</span></div><p>You are a Global Administrator at Contoso. The Attribute Definition Administrator created an attribute set named HR that contains an attribute named CostCenter. Five HR analysts must assign CostCenter values to users. They must not be able to assign attributes from other attribute sets or define new attributes. The solution must follow the principle of least privilege.</p>
+<p>Which role should you assign to the five analysts?</p>
+<p>A. Attribute Assignment Administrator, scoped to the HR attribute set<br />
+B. Attribute Definition Administrator, at tenant scope<br />
+C. User Administrator, at tenant scope<br />
+D. Attribute Assignment Reader, scoped to the HR attribute set</p></div>
+<h3 class="sub">Subdominio 3: Implement and manage identities for external users and tenants</h3>
+<div class="q"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Multiple choice</span><span class="skill-tag">Manage External collaboration settings in Microsoft Entra ID</span></div><p>Contoso's policy says regular employees must not invite guest users, while administrators who hold specific roles can. Carla, a marketing coordinator with no administrative role, must be able to invite guests. The solution must follow the principle of least privilege.</p>
+<p>What should you do?</p>
+<p>A. Set Guest invite settings to "Only users assigned to specific admin roles can invite guest users," and assign Carla the Guest Inviter role.<br />
+B. Set Guest invite settings to "Member users and users assigned to specific admin roles can invite guest users including guests with member permissions."<br />
+C. Set Guest invite settings to "Only users assigned to specific admin roles can invite guest users," and assign Carla the User Administrator role.<br />
+D. Set Guest invite settings to "No one in the organization can invite guest users including admins," and assign Carla the Guest Inviter role.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span><span class="skill-tag">Manage External collaboration settings in Microsoft Entra ID</span></div><p>Contoso sets Collaboration restrictions to "Deny invitations to the specified domains" and adds gmail.com and outlook.com.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>A gmail.com guest who redeemed an invitation last month can still access Contoso resources.</li>
+<li>A gmail.com user whose invitation is still pending can redeem it after the policy is saved.</li>
+<li>Contoso can also add an allow list that contains fabrikam.com to the same policy.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Select two</span><span class="skill-tag">Invite external users, individually or in bulk</span></div><p>Contoso must invite 250 partner users as B2B guests with the least administrative effort. After redeeming the invitation, the guests must land on the My Apps portal.</p>
+<p>Which two actions should you perform? Each correct answer presents part of the solution.</p>
+<p>A. In Users, select Bulk operations &gt; Bulk invite and download the CSV template.<br />
+B. In each row, set Email address to invite, and set Redirection url to https://myapplications.microsoft.com.<br />
+C. Use Bulk create and set the user type to Guest in the CSV.<br />
+D. Run <code>New-MgInvitation</code> for each address without the <code>-SendInvitationMessage</code> parameter, so that the default invitation email is sent.<br />
+E. Remove the version row from the CSV template before you upload it.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Yes/No series</span><span class="skill-tag">Manage external user accounts in Microsoft Entra ID</span></div><p>Ana (ana@fabrikam.com) was invited to Contoso as a B2B guest two years ago. She belongs to five Contoso groups and has access to three apps. Ana now works for Litware, and her Fabrikam account was deleted. She must keep the same access in Contoso by using her new ana@litware.com account.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>If you reset Ana's redemption status and invite ana@litware.com, her object ID, group memberships, and app assignments are kept.</li>
+<li>If you change Ana's UserType from Guest to Member, she authenticates with Contoso credentials instead of an external account.</li>
+<li>The Helpdesk Administrator role is enough to reset Ana's redemption status.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement Cross-tenant access settings</span></div><p>Contoso has a Conditional Access policy that requires MFA for all guest users. Users from Fabrikam (a Microsoft Entra tenant) already complete MFA in their home tenant and complain about a second MFA prompt in Contoso. Users from all other partner organizations must keep completing MFA in Contoso. Contoso has Microsoft Entra ID P1.</p>
+<p>What should you do?</p>
+<p>A. In Contoso's cross-tenant access default settings, configure the inbound trust settings to trust MFA from Microsoft Entra tenants.<br />
+B. In Contoso's cross-tenant access settings, add Fabrikam under Organizational settings and configure its inbound trust settings to trust MFA.<br />
+C. In Contoso's cross-tenant access settings, add Fabrikam under Organizational settings and configure its outbound settings to trust MFA.<br />
+D. Exclude guest users from the Conditional Access policy.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Drag/order</span><span class="skill-tag">Implement and manage cross-tenant synchronization</span></div><p>Contoso (source tenant) must synchronize its internal users into Fabrikam (target tenant). Both tenants are in the Azure commercial cloud.</p>
+<p>Which five actions should you perform in the sequence documented by Microsoft? (Two actions aren't used.)</p>
+<p>A. In Fabrikam, add Contoso under Organizational settings and select Allow user synchronization into this tenant.<br />
+B. In Fabrikam, in the inbound trust settings for Contoso, select Automatically redeem invitations with the tenant.<br />
+C. In Contoso, add Fabrikam under Organizational settings and, in the outbound trust settings, select Automatically redeem invitations with the tenant.<br />
+D. In Contoso, create a cross-tenant synchronization configuration, enter Fabrikam's tenant ID, and select Test connection.<br />
+E. In Contoso, assign users or groups to the configuration, and then start provisioning.<br />
+F. In Fabrikam, create the cross-tenant synchronization configuration and the scoping filters.<br />
+G. In Fabrikam, send B2B invitations to the Contoso users by using Bulk invite.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage cross-tenant synchronization</span></div><p>In Contoso (source tenant), you create a cross-tenant synchronization configuration for Fabrikam. When you select Test connection, it fails with this message: "Error code: AzureActiveDirectoryCrossTenantSyncPolicyCheckFailure. Details: The source tenant has not enabled automatic user consent with the target tenant."</p>
+<p>What should you do?</p>
+<p>A. In Contoso, in the outbound trust settings for Fabrikam, select Automatically redeem invitations with the tenant.<br />
+B. In Fabrikam, select Allow user synchronization into this tenant for Contoso.<br />
+C. In Fabrikam, assign the Contoso administrator the Hybrid Identity Administrator role.<br />
+D. In Contoso, enable outbound B2B direct connect for Fabrikam.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure external identity providers, including protocols such as SAML and WS-Fed</span></div><p>Contoso wants users from the partner Tailwind Traders to redeem B2B invitations with their own corporate credentials. Tailwind uses a third-party SAML 2.0 identity provider, not Microsoft Entra ID. Tailwind users have email addresses in tailwindtraders.com. The IdP passive authentication endpoint is https://login.tailwind-idp.net/saml2.</p>
+<p>What must happen for the federation to work?</p>
+<p>A. Tailwind must add a DNS TXT record to tailwindtraders.com with the value <code>DirectFedAuthUrl=https://login.tailwind-idp.net/saml2</code>.<br />
+B. Contoso must add and verify tailwindtraders.com as a custom domain in its own tenant.<br />
+C. Tailwind must configure its IdP to send the NameID claim in transient format.<br />
+D. Contoso must add Tailwind under cross-tenant access Organizational settings and trust its MFA.</p></div>
+<div class="case"><h4>Case study 1: Northwind Group (usar para Q29 y Q30)</h4>
+<p>Northwind Group owns three Microsoft Entra tenants in the Azure commercial cloud: NW-HQ, NW-Retail, and NW-Labs. All employees are homed in NW-HQ, which has Microsoft Entra ID P1 licenses for every user. NW-Retail and NW-Labs have no premium licenses.</p>
+<p>Business requirements:</p>
+<ul>
+<li>HQ employees must get accounts in NW-Retail and NW-Labs automatically, with member-level access, and without invitation emails or consent prompts.</li>
+<li>When an employee leaves HQ or moves out of scope, the account in the other tenants must be removed automatically.</li>
+<li>NW-Retail and NW-Labs administrators must be able to stop the synchronization at any time.</li>
+<li>Administrative effort must be minimized.</li>
+</ul>
+<p>Technical note: after an old hardening project, NW-Labs has Guest invite settings set to "No one in the organization can invite guest users including admins (most restrictive)."</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Case study (Multiple choice)</span><span class="skill-tag">Implement and manage cross-tenant synchronization</span></div><p>Refer to Case study 1. Which solution meets the requirements for NW-Retail?</p>
+<p>A. In NW-HQ, configure cross-tenant synchronization to NW-Retail, enable automatic redemption in both tenants, and keep the default userType mapping of Member.<br />
+B. In NW-Retail, configure cross-tenant synchronization that pulls users from NW-HQ.<br />
+C. In NW-Retail, bulk invite the HQ users every week with a CSV export from NW-HQ, and set their UserType to Member.<br />
+D. Configure B2B direct connect between NW-HQ and NW-Retail.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Case study (Multiple choice)</span><span class="skill-tag">Implement and manage cross-tenant synchronization</span></div><p>Refer to Case study 1. You configure synchronization from NW-HQ to NW-Labs the same way as for NW-Retail. Test connection succeeds, but the provisioning logs show that users fail with AzureActiveDirectoryForbidden: "Guest invitations not allowed for your company."</p>
+<p>What should you do?</p>
+<p>A. In NW-Labs, change Guest invite settings to a less restrictive option.<br />
+B. In NW-Labs, assign the Guest Inviter role to the synchronization service principal.<br />
+C. In NW-HQ, enable automatic redemption in the outbound settings for NW-Labs.<br />
+D. Purchase Microsoft Entra ID P1 licenses for NW-Labs.</p></div>
+<h3 class="sub">Subdominio 4: Implement and manage hybrid identity</h3>
+<div class="q"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage pass-through authentication</span></div><p>Contoso uses pass-through authentication with three authentication agents: one on the Microsoft Entra Connect Sync server, which runs as a VM in Azure, and two on on-premises servers. Password hash synchronization was enabled months ago as well. A ransomware attack takes all on-premises domain controllers and both on-premises agent servers offline. Users can't sign in to Microsoft 365. You must restore cloud sign-in as fast as possible.</p>
+<p>What should you do?</p>
+<p>A. Nothing. Microsoft Entra ID automatically fails over to password hash synchronization.<br />
+B. On the Microsoft Entra Connect server, change the user sign-in method to password hash synchronization.<br />
+C. Enable seamless single sign-on.<br />
+D. Install two more pass-through authentication agents on new servers in Azure.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage password hash synchronization</span></div><p>Contoso uses password hash synchronization through Microsoft Entra Connect Sync with default settings. CloudPasswordPolicyForPasswordSyncedUsersEnabled isn't enabled.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Password hash synchronization runs every 2 minutes, independently of the 30-minute object sync cycle.</li>
+<li>A user whose on-premises password has expired can still sign in to Microsoft 365 with that password.</li>
+<li>An Active Directory account that reaches its accountExpires date is automatically blocked from signing in to Microsoft Entra ID.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage pass-through authentication</span></div><p>Contoso enabled pass-through authentication. The only authentication agent runs on the Microsoft Entra Connect server. For production, sign-ins must continue if that server fails.</p>
+<p>What should you do?</p>
+<p>A. Install standalone authentication agents on at least two additional servers, close to the domain controllers.<br />
+B. Install a second authentication agent on the Microsoft Entra Connect server.<br />
+C. Deploy a second Microsoft Entra Connect Sync server in staging mode and rely on it for sign-in failover.<br />
+D. Publish the agents behind an inbound load balancer in the perimeter network.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Select two</span><span class="skill-tag">Implement and manage seamless single sign-on (SSO)</span></div><p>Contoso uses password hash synchronization and just enabled Seamless SSO in Microsoft Entra Connect. Users on domain-joined Windows 8.1 devices inside the corporate network are still prompted for a password in Microsoft Edge.</p>
+<p>Which two actions should you perform? Each correct answer presents part of the solution.</p>
+<p>A. Use Group Policy to add https://autologon.microsoftazuread-sso.com to the users' Intranet zone (Site to Zone Assignment List, value 1).<br />
+B. Use Group Policy to enable "Allow updates to status bar via script" for the Intranet zone.<br />
+C. Convert the contoso.com domain to federated.<br />
+D. Assign Microsoft Entra ID P1 licenses to the users.<br />
+E. Add https://autologon.microsoftazuread-sso.com to the Restricted sites zone (value 4).</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage Microsoft Entra Cloud Sync</span></div><p>Contoso acquired Fabrikam. Fabrikam's Active Directory forest has no network connectivity or trust with Contoso's forest, and it won't be connected for at least a year. Contoso already syncs its own forest with Microsoft Entra Connect Sync. About 8,000 Fabrikam users must appear in Contoso's Microsoft Entra tenant. The solution must be highly available and must minimize on-premises infrastructure.</p>
+<p>What should you do?</p>
+<p>A. Install Microsoft Entra Cloud Sync provisioning agents on three servers in Fabrikam's forest, and create a Cloud Sync configuration for fabrikam.com.<br />
+B. Add an Active Directory connector for fabrikam.com to the existing Microsoft Entra Connect Sync server.<br />
+C. Install a second Microsoft Entra Connect Sync server in Fabrikam's forest in active mode.<br />
+D. Configure cross-tenant synchronization from Fabrikam's tenant to Contoso's tenant.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage Microsoft Entra Cloud Sync</span></div><p>Contoso is evaluating whether to replace Microsoft Entra Connect Sync with Cloud Sync. The environment has one forest and one domain with 90,000 objects. Also, 3,000 Windows 11 PCs are Microsoft Entra hybrid joined through Microsoft Entra Connect. Contoso uses password hash synchronization and OU-based filtering only.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Cloud Sync can synchronize the computer objects needed for Microsoft Entra hybrid join of those PCs.</li>
+<li>Cloud Sync supports password hash synchronization.</li>
+<li>Cloud Sync can run several active agents at the same time, with automatic failover.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage Microsoft Entra Connect Sync</span></div><p>Contoso has two Microsoft Entra Connect Sync servers. SYNC1 is active. SYNC2 is in staging mode, has its scheduler enabled, and has synchronized recently. SYNC1's hardware fails permanently. You must resume exports to Microsoft Entra ID as fast as possible.</p>
+<p>What should you do?</p>
+<p>A. On SYNC2, run the Microsoft Entra Connect wizard, select Configure staging mode, clear the staging mode checkbox, and start synchronization.<br />
+B. On SYNC2, run <code>Start-ADSyncSyncCycle -PolicyType Initial</code>.<br />
+C. Install Microsoft Entra Connect on a new server by using express settings.<br />
+D. On SYNC2, enable password writeback so that it takes over from SYNC1.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Drag/order</span><span class="skill-tag">Migrate from AD FS to other authentication and authorization mechanisms</span></div><p>Contoso's domain contoso.com is federated with AD FS. Microsoft Entra Connect Sync is installed. Contoso wants to move to password hash synchronization, test with a pilot group first, and decommission the Microsoft 365 relying party trust at the end.</p>
+<p>Which five actions should you perform in sequence? (Two actions aren't used.)</p>
+<p>A. Enable password hash synchronization in Microsoft Entra Connect, without changing the sign-in method yet.<br />
+B. Create a cloud security group and add the pilot users.<br />
+C. Enable staged rollout for password hash sync and add the pilot group.<br />
+D. Convert contoso.com from federated to managed by running <code>Update-MgDomain -DomainId contoso.com -AuthenticationType "Managed"</code>.<br />
+E. After Microsoft Entra Connect Health shows no more authentication requests on AD FS, remove the Microsoft 365 relying party trust.<br />
+F. Add a dynamic membership group that contains all users to staged rollout.<br />
+G. Convert the domain to managed first, and then enable staged rollout to test.</p></div>
+<div class="case"><h4>Case study 2: Litware, Inc. (usar para Q39 y Q40)</h4>
+<p>Litware, Inc. has one Active Directory forest (litware.com) with 12,000 users in two datacenters. The domain is federated with AD FS (two AD FS servers and two Web Application Proxy servers). Microsoft Entra Connect Sync runs on LIT-SYNC1. Every user has Microsoft 365 E3, which includes Microsoft Entra ID P1.</p>
+<p>Requirements:</p>
+<ul>
+<li>Decommission AD FS within six months.</li>
+<li>At sign-in time, Microsoft Entra ID must enforce on-premises account states (disabled, locked out) and the allowed logon hours.</li>
+<li>If the on-premises authentication infrastructure fails, administrators must be able to switch users to a cloud sign-in method without deploying new infrastructure.</li>
+<li>The security team requires the leaked credentials detection of Microsoft Entra ID Protection.</li>
+<li>Before the relying party trust is removed, the identity operations team must see which applications still authenticate through AD FS, and the mailbox IdentityOps@litware.com must receive Connect Health alerts.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Case study (Multiple choice)</span><span class="skill-tag">Implement and manage pass-through authentication</span></div><p>Refer to Case study 2. Which sign-in configuration should Litware implement after AD FS?</p>
+<p>A. Pass-through authentication with at least three authentication agents, and password hash synchronization enabled as well<br />
+B. Password hash synchronization only, with Seamless SSO<br />
+C. Keep AD FS federation and enable password hash synchronization<br />
+D. Pass-through authentication only, with at least three authentication agents</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Case study (Select two)</span><span class="skill-tag">Implement and manage Microsoft Entra Connect Health</span></div><p>Refer to Case study 2. Which two actions should you perform to meet the monitoring requirements? Each correct answer presents part of the solution.</p>
+<p>A. Install the Microsoft Entra Connect Health agent for AD FS on the AD FS and Web Application Proxy servers, and enable AD FS auditing.<br />
+B. In Connect Health notification settings, add IdentityOps@litware.com as a custom notification email.<br />
+C. Manually install the Connect Health agent for sync on LIT-SYNC1.<br />
+D. Purchase Microsoft Entra ID P2 licenses, because Connect Health requires P2.<br />
+E. Install the Connect Health agent for AD DS on all domain controllers.</p></div>
+<h2>5. Respuestas y explicaciones</h2>
+<p class="meta">Lee siempre el "por qué las otras no". El SC-300 se pierde en los distractores, no en la teoría.</p>
+<h3 class="sub">Subdominio 1: Configure and manage a Microsoft Entra tenant</h3>
+<div class="a"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> En la matriz "Who can reset passwords", el Helpdesk Administrator puede resetear a usuarios sin rol y a otros Helpdesk Administrators, pero no a User Administrators. Cumple el requisito exacto y es el rol más chico que alcanza.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Password Administrator solo resetea a non-admins, Directory Readers, Guest Inviter y otros Password Admins. <strong>No puede resetear a un Helpdesk Administrator.</strong></li>
+<li>C. User Administrator sí resetea Helpdesk Admins, pero también a otros User Admins y administra usuarios y grupos completos. Rompe el requisito y no es least privilege.</li>
+<li>D. Authentication Administrator suena a "passwords", pero en la matriz no puede resetear a un Helpdesk Administrator. Su foco son los métodos de autenticación.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/privileged-roles-permissions#who-can-reset-passwords</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Un custom role son dos pasos: la definición (lista de permisos) y la asignación con scope. Learn usa justo esos dos permisos como ejemplo y dice que el custom role se puede asignar a nivel directorio o a nivel de una app registration. Ojo: cada usuario con custom role necesita <strong>licencia Microsoft Entra ID P1</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Application Administrator a nivel tenant les da control sobre todas las apps. Demasiado privilegio.</li>
+<li>C. <strong>No puedes clonar un rol built-in</strong>, solo un custom role. Además, el scope de tenant les daría acceso a todas las app registrations.</li>
+<li>D. Application Developer sirve para que alguien pueda crear app registrations cuando ese permiso está apagado para usuarios. No da permisos sobre Payroll-API.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/custom-create#create-a-custom-role</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Un User Administrator con scope de AU puede cambiar el nombre y la membresía de un grupo que está dentro del AU.</li>
+<li>2 No. Meter el grupo al AU mete <strong>al grupo, no a sus miembros</strong>. Para resetear passwords, los usuarios tienen que estar agregados directo al AU.</li>
+<li>3 No. <strong>Los AUs no se pueden anidar.</strong> Además, crear AUs lo hace un Privileged Role Administrator, no un User Admin con scope.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 2 es pensar que el AU "hereda" a los miembros del grupo.</li>
+<li>La trampa de la 3 es pensar en AUs como OUs de Active Directory, que sí se anidan.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units#groups y https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units#constraints</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Un restricted management AU bloquea cambios de cualquier admin con scope de tenant, <strong>incluido el Global Admin</strong>, salvo que tenga una asignación explícita en el scope de ese AU. El GA puede asignarse a sí mismo y eso queda en los audit logs. No hay que quitar roles a nadie.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Un AU normal limita lo que hace el admin con scope, pero <strong>no protege al objeto</strong> de los admins de tenant. El Helpdesk de tenant sigue pudiendo resetear.</li>
+<li>C. El role-assignable group frena al Helpdesk, pero los Privileged Authentication Admins y GAs de tenant siguen pudiendo. No limita la gestión a ExecSupport.</li>
+<li>D. PIM controla cuándo y cómo se activa un rol, no sobre qué cuentas actúa.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management#who-can-modify-objects</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn lo dice literal: con "Users can register applications" en No, los usuarios ya no crean app registrations, y <strong>devuelves el permiso a personas específicas con el rol Application Developer</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. "Restrict access to Microsoft Entra admin center" <strong>no es un control de seguridad</strong>. No bloquea PowerShell ni Graph. Y Global Reader es solo lectura.</li>
+<li>C. Cloud Application Administrator funciona, pero da control sobre todas las apps. No es least privilege.</li>
+<li>D. Conditional Access controla el acceso a apps. No cambia el permiso por default de registrar aplicaciones.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/fundamentals/users-default-permissions#restrict-member-users-default-permissions</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> B, E, D, A</p>
+<p><strong>Por qué es correcta:</strong> Es el flujo de Learn: creas el AU, metes a los usuarios, entras al AU, abres Roles and administrators, eliges el rol y haces Add assignments. Un <strong>role-assignable group sí puede recibir un rol con scope de AU</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. Scope de Directory significa todo el tenant. Podrían resetear a cualquier non-admin de Contoso.</li>
+<li>F. No se puede clonar un built-in. Y el recorte por región se hace con el AU, no con el rol.</li>
+<li>Orden: si asignas el rol antes de meter a los usuarios, el scope estaría vacío cuando se crea la asignación y no cumple el requisito.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal#assign-roles-with-administrative-unit-scope</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Entra roles y Azure RBAC son <strong>sistemas separados</strong>. Un GA no ve Azure por default, pero puede elevarse: el toggle le da User Access Administrator en el root scope (/), sobre todas las suscripciones y management groups. Es un setting por usuario y al terminar se regresa a No.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Privileged Role Administrator administra roles de Entra, no roles de Azure.</li>
+<li>C. Ya es GA. Tener el mismo rol vía grupo no cambia su acceso a Azure.</li>
+<li>D. Los permisos de Entra y los de Azure no se mezclan en custom roles.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/azure/role-based-access-control/elevate-access-global-admin#how-does-elevated-access-work</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. Un Helpdesk Administrator no puede resetear a un User Administrator. Ese rol está "arriba" en la matriz.</li>
+<li>2 No. Los miembros y owners de un role-assignable group <strong>solo los resetea un Privileged Authentication Administrator o un Global Admin</strong>, aunque no tengan rol propio.</li>
+<li>3 Yes. El Helpdesk Administrator sí puede resetear a un Password Administrator.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 2 es pensar "Omar no tiene rol, entonces es un usuario normal". Estar en un role-assignable group lo protege.</li>
+<li>La trampa de la 3 es pensar que cualquier rol admin está fuera del alcance del Helpdesk.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/privileged-roles-permissions#who-can-reset-passwords y https://learn.microsoft.com/entra/identity/role-based-access-control/groups-concept#how-are-role-assignable-groups-protected</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Primero pruebas que el dominio es tuyo con el registro TXT o MX y Verify. Luego Make primary, porque <strong>el primary es el dominio por default al crear usuarios</strong>. Cambiar el primary no cambia el UPN de los usuarios que ya existen.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. <strong>El dominio inicial onmicrosoft.com no se puede cambiar.</strong></li>
+<li>D. Tampoco se puede borrar el dominio inicial.</li>
+<li>E. Solo puede ser primary un dominio verificado que no esté federado.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/fundamentals/add-custom-domain#add-your-dns-information-to-the-domain-registrar y https://learn.microsoft.com/entra/identity/users/domains-manage#set-the-primary-domain-name-for-your-microsoft-entra-organization</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. La customización por idioma del navegador <strong>sobrescribe el branding default</strong> en los elementos que cambiaste.</li>
+<li>2 No. En apps multitenant como My Apps, el branding sale <strong>después de escribir el correo</strong> y dar Next. Para verlo desde el inicio se usa un hint como <code>https://myapps.microsoft.com/?whr=contoso.com</code>.</li>
+<li>3 Yes. En B2B, el usuario ve el branding de su home tenant.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 2 es pensar que el branding siempre sale en la primera pantalla.</li>
+<li>La trampa de la 3 es pensar que el guest ve el branding del tenant que lo invitó.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/fundamentals/how-to-customize-branding#software-as-a-service-saas-and-multitenant-applications y https://learn.microsoft.com/entra/fundamentals/how-to-customize-branding#b2b-scenarios</p></div>
+<h3 class="sub">Subdominio 2: Create, configure, and manage Microsoft Entra identities</h3>
+<div class="a"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> En la plantilla de Bulk create <strong>solo las primeras cuatro columnas son obligatorias</strong>. El bulk create hace usuarios internos con el password del CSV y <strong>no manda correos de invitación</strong>. Deja intactas la fila de versión y los encabezados.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Usage location y Department son opcionales en la plantilla. Usage location importa después para licencias directas, pero no para crear.</li>
+<li>C. Esas son las columnas de Bulk invite, que es para guests.</li>
+<li>D. Usage location y Manager no son obligatorios para crear el usuario.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/users-bulk-add#example-csv-file</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn dice que <strong>no puedes asignar una licencia a un usuario que no tiene UsageLocation</strong> (código ISO 3166-1 alpha-2, por ejemplo US o MX). Dato extra: en group-based licensing, si el usuario no tiene ubicación, hereda la del tenant.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Country es un dato de perfil. El requisito para licenciar es UsageLocation.</li>
+<li>C. PreferredDataLocation no tiene que ver con asignar licencias.</li>
+<li>D. UserType define la relación con la organización. No bloquea la licencia.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/microsoft-365/enterprise/create-user-accounts-with-microsoft-365-powershell#create-multiple-user-accounts y https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn: pedir unirse a un grupo y que el owner apruebe <strong>requiere Microsoft Entra ID P1 o P2</strong>. Sin P1, los usuarios manejan sus grupos pero no pueden crear grupos con aprobación ni pedir unirse.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Ese setting controla quién crea grupos, no las solicitudes de membresía.</li>
+<li>C. En un grupo dinámico no se agregan miembros a mano ni por solicitud. La regla manda.</li>
+<li>D. Role-assignable es para asignar roles de Entra. Complica más la gestión y no habilita solicitudes.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/groups-self-service-management#make-a-group-available-for-user-self-service</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. <strong>La expiration policy solo aplica a Microsoft 365 groups.</strong> "All" significa todos los M365 groups.</li>
+<li>2 Yes. Hay renovación automática por actividad (Outlook, SharePoint, Teams, Viva Engage). Visitar un canal de Teams cuenta.</li>
+<li>3 Yes. Un M365 group borrado se puede restaurar dentro de 30 días, y ese plazo no se cambia.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 1 es leer "All" como "todos los grupos del tenant".</li>
+<li>En la 2, mucha gente cree que el owner siempre tiene que renovar a mano.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/groups-lifecycle#overview y https://learn.microsoft.com/entra/identity/users/groups-lifecycle#activity-based-automatic-renewal</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> <code>-in</code> compara contra una lista entre corchetes, y <code>-and (user.userType -eq "Member")</code> saca a los guests.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. <strong><code>-and</code> tiene más precedencia que <code>-or</code></strong>. Se evalúa como Sales OR (Marketing AND Member), así que entran los guests de Sales. Se arregla con paréntesis.</li>
+<li>C. <code>user.objectId -ne null</code> es la regla de "todos los usuarios" e incluye members y guests B2B.</li>
+<li>D. <code>device.</code> es para reglas de dispositivos. Una regla no puede mezclar users y devices.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership#operator-precedence y https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership#create-a-rule-for-all-users</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y C</p>
+<p><strong>Por qué es correcta:</strong> Los devices solo van en security groups. En <code>deviceTrustType</code>, <strong>AzureAD = joined, ServerAD = hybrid joined, Workplace = registered</strong>. Hybrid joined es ServerAD.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. El rule builder solo sirve para reglas de usuarios. <strong>Las reglas de devices se escriben en el text box.</strong></li>
+<li>D. Los Microsoft 365 groups solo aceptan usuarios.</li>
+<li>E. AzureAD son los equipos Microsoft Entra joined, no los hybrid.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership#rules-for-devices y https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership#rule-builder-in-the-azure-portal</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> B, C, A</p>
+<p><strong>Por qué es correcta:</strong> Learn lo pide en ese orden: <strong>primero agregas al grupo destino, confirmas que ya tiene la licencia nueva y al final lo quitas del grupo original</strong>. Así no hay hueco sin licencia.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>D. Es trabajo manual extra y no es el flujo documentado.</li>
+<li>E. Si lo quitas primero, queda sin licencia hasta que se procese el grupo nuevo. En tenants grandes eso puede tardar.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/microsoft-365/admin/manage/manage-group-licenses#move-users-between-licensed-groups</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn pone este caso como ejemplo: E1 y E3 juntos fallan porque <strong>Exchange Online Plan 1 y Plan 2 son mutuamente excluyentes</strong>. En group-based licensing sale como conflicto de service plans. En PowerShell sale como MutuallyExclusiveViolation. Se arregla sacándola de G-Frontline o apagando el plan en conflicto.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. El escenario dice que hay 150 licencias libres.</li>
+<li>C. Nada indica anidamiento. Y con grupos anidados el efecto es que los miembros de segundo nivel no reciben licencia, no un conflicto.</li>
+<li>D. Julia tiene usage location. Sería otro tipo de error.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/licensing-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. <strong>"Users may join devices" no aplica a hybrid join</strong>, solo a Microsoft Entra join en Windows 10 o posterior, macOS y Linux.</li>
+<li>2 No. El límite cuenta devices joined o registered. Llegando a 50, tiene que borrar uno antes de agregar otro.</li>
+<li>3 Yes. Deshabilitar un device revoca el PRT y los refresh tokens del equipo.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 1 es pensar que el setting de join controla todos los tipos de join.</li>
+<li>La 2 prueba que el límite es duro. Además, ese límite no aplica a hybrid joined.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/devices/manage-device-identities#configure-device-settings y https://learn.microsoft.com/entra/identity/devices/manage-device-identities#enable-or-disable-a-microsoft-entra-device</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Attribute Assignment Administrator es el rol mínimo para <strong>asignar valores</strong> de custom security attributes. Se puede asignar a nivel tenant o <strong>a nivel de un attribute set</strong>, y así se queda solo en HR.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Definition Admin define atributos, no asigna valores. Y con scope de tenant ve todo.</li>
+<li>C. <strong>Global Admin y los otros roles admin no tienen permisos de custom security attributes por default.</strong> User Administrator no sirve.</li>
+<li>D. Reader solo lee, no asigna.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/fundamentals/custom-security-attributes-overview#custom-security-attribute-roles</p></div>
+<h3 class="sub">Subdominio 3: Implement and manage identities for external users and tenants</h3>
+<div class="a"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Con "Only users assigned to specific admin roles" solo invitan User Admins y Guest Inviters. <strong>Guest Inviter sí puede invitar aunque ese setting esté activo</strong>, y es el rol más chico para eso.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Deja invitar a todos los members. Rompe la política.</li>
+<li>C. User Administrator funciona, pero es mucho más privilegio.</li>
+<li>D. "No one... including admins" bloquea a todos, incluido el Guest Inviter.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure#to-configure-guest-invite-settings y https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure#assign-the-guest-inviter-role-to-a-user</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. <strong>La lista no aplica a usuarios que ya redimieron.</strong> Se aplica de ahí en adelante.</li>
+<li>2 No. Si la invitación estaba pendiente y bloqueas el dominio, la redención falla.</li>
+<li>3 No. <strong>Es allow list o block list, nunca las dos.</strong> Y hay una sola política por organización.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 1 es pensar que el block list "corre" a los guests existentes. Para eso tienes que quitarlos o bloquearlos aparte.</li>
+<li>La trampa de la 3 es querer combinar listas.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/allow-deny-list#important-considerations</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Bulk invite es el camino de menor esfuerzo. Las columnas obligatorias son <strong>Email address to invite y Redirection url</strong>, y para caer en My Apps pones https://myapplications.microsoft.com (o myapps).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. <strong>Bulk create hace usuarios internos con password y no manda invitaciones.</strong></li>
+<li>D. En <code>New-MgInvitation</code>, si no pones <code>-SendInvitationMessage</code>, <strong>no se manda correo</strong>. El default es no enviar.</li>
+<li>E. La fila de versión y los encabezados no se tocan o el archivo no se procesa.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/tutorial-bulk-invite#invite-guest-users-in-bulk y https://learn.microsoft.com/entra/external-id/b2b-quickstart-invite-powershell#send-an-invitation</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Reset redemption status existe justo para esto: <strong>conserva object ID, grupos y app assignments</strong> y deja que se autentique con otra cuenta. El UPN no cambia.</li>
+<li>2 No. <strong>UserType solo indica la relación con la organización, no dónde se autentica.</strong> Para que sea interno de verdad se usa "Convert to internal user".</li>
+<li>3 Yes. Learn marca a Helpdesk Administrator como el rol de menor privilegio para esto (también sirve User Administrator).</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 1 es la solución vieja: borrar al guest y reinvitar, que pierde todo.</li>
+<li>La trampa de la 2 es confundir Member con "cuenta interna".</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/reset-redemption-status#required-microsoft-entra-roles y https://learn.microsoft.com/entra/external-id/user-properties#user-type</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Los trust settings son <strong>inbound y viven en el tenant de recursos</strong> (Contoso). Para que solo aplique a Fabrikam, lo agregas en Organizational settings, que <strong>tienen prioridad sobre los default</strong>. La política de MFA sigue aplicando, pero acepta el MFA que ya hizo en casa. Configurar trust requiere P1.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. El default aplica a todas las organizaciones externas. Rompe el requisito.</li>
+<li>C. Outbound controla a dónde van tus usuarios. El trust no vive ahí.</li>
+<li>D. Quita el MFA a todos los guests.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview#manage-external-access-with-inbound-and-outbound-settings y https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview#organizational-settings</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D, E</p>
+<p><strong>Por qué es correcta:</strong> El target solo <strong>abre la puerta</strong> (inbound: allow sync + automatic redemption). <strong>El source empuja todo lo demás</strong>: automatic redemption outbound, crea la configuración, prueba la conexión, define el scope y arranca el provisioning. El Test connection falla si falta el automatic redemption en cualquiera de los dos lados.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>F. <strong>Es push desde el source, no pull desde el target.</strong> La configuración, el scope y los mappings viven en el source.</li>
+<li>G. La sincronización sustituye las invitaciones. Los usuarios sincronizados no reciben correo ni consent prompt.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure#step-4-automatically-redeem-invitations-in-the-source-tenant y https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#properties</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El mensaje dice "the source tenant" y "automatic user consent". Falta el <strong>automatic redemption outbound en el source</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Ese setting vive en el target. El mensaje que apunta al target es otro ("The target tenant has not enabled inbound synchronization"). Este error nombra al source, así que lee bien cuál tenant menciona.</li>
+<li>C. Cada admin trabaja en su propio tenant. No hace falta un rol en el otro.</li>
+<li>D. B2B direct connect es para Teams shared channels. No tiene que ver con la sincronización.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure#symptom---test-connection-fails-with-azureactivedirectorycrosstenantsyncpolicycheckfailure</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El endpoint (tailwind-idp.net) no es el dominio tailwindtraders.com ni un host dentro de él. En ese caso <strong>el partner agrega un TXT DirectFedAuthUrl</strong> en su DNS. Del lado de Contoso, el IdP se agrega en All identity providers &gt; Custom &gt; SAML/WS-Fed y conviene poner la metadata URL para que el certificado se renueve solo.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. El dominio del partner no debe estar verificado en el tenant de Contoso. Es un dominio de Tailwind.</li>
+<li>C. SAML requiere <strong>NameID persistent</strong> y el claim de emailaddress.</li>
+<li>D. Cross-tenant access settings son para organizaciones que usan Microsoft Entra ID. Tailwind no lo usa.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/external-id/direct-federation#step-1-determine-if-the-partner-needs-to-update-their-dns-text-records y https://learn.microsoft.com/entra/external-id/direct-federation#to-configure-a-saml-20-identity-provider</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Case study (Multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Cross-tenant sync crea, actualiza y <strong>borra (soft delete) automáticamente</strong> a los usuarios cuando salen del scope. Con automatic redemption en ambos lados no hay correo ni consent prompt. <strong>Por default se crean como external member</strong> (userType Member). La licencia P1 solo se necesita en el source (NW-HQ), y el target puede frenar la sync cuando quiera quitando el inbound.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. No existe el pull. <strong>Es push desde el source.</strong></li>
+<li>C. Mucho esfuerzo manual, manda invitaciones y no borra solo.</li>
+<li>D. B2B direct connect no crea cuentas en el directorio. Se usa para Teams shared channels.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-overview#properties y https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure#step-9-review-attribute-mappings</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Case study (Multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn documenta este error exacto. Aparece cuando el target tiene Guest invite settings en la opción más restrictiva. <strong>La solución es relajar ese setting en el target.</strong></p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. No es la solución documentada. Con "No one... including admins" nadie puede invitar.</li>
+<li>C. Si el Test connection pasó, el automatic redemption ya está bien.</li>
+<li>D. <strong>El target no necesita licencias</strong> para cross-tenant sync.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure#symptom---users-fail-to-provision-with-error-azureactivedirectoryforbidden</p></div>
+<h3 class="sub">Subdominio 4: Implement and manage hybrid identity</h3>
+<div class="a"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> PHS sirve de respaldo para PTA, pero <strong>el failover no es automático</strong>. Tienes que cambiar el método de sign-in manualmente en Microsoft Entra Connect. Por eso Learn recomienda tener PHS habilitado antes de que pase algo.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Es la trampa principal: PHS no se activa solo.</li>
+<li>C. Seamless SSO solo evita que el usuario escriba el password. No autentica si PTA está caído.</li>
+<li>D. Los agentes nuevos también validan contra los DCs, y los DCs están caídos.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/choose-ad-authn#detailed-considerations</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. PHS corre <strong>cada 2 minutos y esa frecuencia no se puede cambiar</strong>. Los demás atributos van en el ciclo de 30 minutos.</li>
+<li>2 Yes. Por default el password en la nube queda como <strong>Never Expire</strong>. El usuario puede seguir entrando con el password vencido hasta que lo cambie on-prem.</li>
+<li>3 No. <strong>accountExpires no se sincroniza.</strong> Learn sugiere un script que deshabilite la cuenta en AD cuando expire.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 2 es pensar que la expiración de AD se respeta en la nube. Para eso existe CloudPasswordPolicyForPasswordSyncedUsersEnabled.</li>
+<li>La trampa de la 3 es confundir "cuenta expirada" con "cuenta deshabilitada".</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-password-hash-synchronization#password-expiration-policy y https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-password-hash-synchronization#account-expiration</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn recomienda <strong>mínimo 3 authentication agents en producción</strong>, en servidores distintos al de Connect y cerca de los DCs.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. <strong>Solo cabe un agente por servidor.</strong></li>
+<li>C. Staging mode es para disaster recovery de la sincronización. No es el método documentado de HA para PTA.</li>
+<li>D. Los agentes solo hacen conexiones de salida (443 y 80), así que no necesitan DMZ ni publicarse hacia adentro. Además, varios agentes dan alta disponibilidad, no load balancing.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta-quick-start#step-4-ensure-high-availability y https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-pta-faq#can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> El navegador no manda el ticket de Kerberos a un endpoint en la nube <strong>si la URL no está en la Intranet zone</strong>. Learn pide las dos políticas de GPO: la URL autologon con valor 1 y "Allow updates to status bar via script".</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. <strong>Seamless SSO solo funciona con PHS o PTA, no con AD FS.</strong></li>
+<li>D. Seamless SSO es gratis.</li>
+<li>E. El valor 4 es Restricted zone y hace que Seamless SSO falle siempre. Se usa a propósito para kioscos compartidos.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sso-quick-start#roll-out-the-feature</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> <strong>Forests desconectados son escenario de Cloud Sync</strong>, y Connect Sync no los soporta. Cloud Sync usa agentes ligeros, recomienda 3 agentes activos para HA y puede convivir con Connect Sync (forest existente con Connect, forest nuevo con Cloud Sync). Cada objeto debe estar en el scope de una sola herramienta.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. El conector de Connect Sync necesita conectividad con el forest. No hay.</li>
+<li>C. Connect Sync es Active-Passive. <strong>Solo un servidor activo</strong> por tenant.</li>
+<li>D. Cross-tenant sync mueve usuarios entre tenants de Entra, no desde un AD on-prem.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/connect-to-cloud-sync-decision-guide#comparison-between-microsoft-entra-connect-and-cloud-sync y https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/plan-cloud-sync-topologies#active-directory-to-microsoft-entra-id-supported-topologies</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. <strong>Device synchronization para hybrid join es solo de Connect Sync.</strong> Es el bloqueador típico para migrar.</li>
+<li>2 Yes. PHS tiene paridad total en las dos herramientas.</li>
+<li>3 Yes. Múltiples agentes activos con failover automático es una ventaja clave de Cloud Sync. Connect Sync es Active-Passive.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>La trampa de la 1 es pensar que Cloud Sync ya hace todo lo de Connect Sync.</li>
+<li>Ojo: 90,000 objetos entra en el límite de 150,000 por dominio de Cloud Sync, así que el tamaño no es el problema aquí.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/connect-to-cloud-sync-decision-guide#comparison-between-microsoft-entra-connect-and-cloud-sync y https://learn.microsoft.com/entra/identity/hybrid/common-scenarios#supported-sync-scenarios</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Un servidor en staging mode <strong>importa y sincroniza, pero no exporta ni hace password sync ni writeback</strong>. Para que tome el control, quitas el staging mode en el wizard. Antes, asegúrate de que SYNC1 no vuelva a encender. <strong>Solo puede haber un servidor activo.</strong></p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Un ciclo completo en staging sigue sin exportar.</li>
+<li>C. Reconstruir es más lento. Para eso tienes el standby listo.</li>
+<li>D. Password writeback no activa las exportaciones. En staging mode, PHS y writeback están apagados hasta que sales de staging.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-staging-server#staging-mode y https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-sync-staging-server#change-current-staging-sync-server-to-active-mode</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D, E</p>
+<p><strong>Por qué es correcta:</strong> Primero la prework de PHS, luego el grupo piloto (Learn recomienda <strong>grupos cloud</strong>), luego staged rollout para probar, luego el cutover del dominio a Managed y al final quitar el relying party trust cuando Connect Health confirme que ya no hay tráfico. Después del cutover también apagas staged rollout.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>F. <strong>Staged rollout no soporta grupos dinámicos ni anidados</strong>, y hay un máximo de 10 grupos por feature.</li>
+<li>G. Staged rollout es para probar antes del cutover. <strong>No convierte dominios</strong> y no tiene sentido después.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication#convert-domains-from-federated-to-managed y https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-staged-rollout#unsupported-scenarios</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Case study (Multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> <strong>PTA aplica en el momento del sign-in</strong> el estado de la cuenta en AD (disabled, locked out, logon hours). PHS encima da leaked credentials y queda como respaldo para cambiar manualmente si falla on-prem. Learn recomienda habilitar PHS sin importar el método principal.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Con solo PHS, Entra no revisa en vivo el estado de AD ni los logon hours.</li>
+<li>C. El requisito es quitar AD FS.</li>
+<li>D. Sin PHS no hay leaked credentials ni respaldo para cambiar el método de sign-in.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/choose-ad-authn#detailed-considerations y https://learn.microsoft.com/entra/identity/hybrid/connect/choose-ad-authn#recommendations</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Case study (Select two)</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> El agente de AD FS va en los AD FS y en los WAP. <strong>Usage analytics necesita el AD FS auditing habilitado</strong>, porque no viene prendido por default. Con esos agentes también se ve qué apps siguen usando AD FS. Las notificaciones por correo vienen activas por default, y para que lleguen al buzón de IdentityOps se agrega en Custom notification emails.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. <strong>El agente de sync se instala solo</strong> con la versión actual de Microsoft Entra Connect.</li>
+<li>D. Connect Health pide P1 (1 licencia para el primer agente y 25 por cada agente extra). Litware ya tiene P1 con Microsoft 365 E3.</li>
+<li>E. No se pidió monitorear AD DS.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-health-adfs#install-the-agent-for-ad-fs y https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-health-operations#enable-email-notifications</p></div>
+
+<h2>6. Plan de la semana y ritual post-examen</h2>
+<div class="box cyan">
+  <b>Checklist antes de la sesión 2 (Authentication and access, 25 a 30% del examen)</b>
+  <ul class="checklist">
+    <li>Leí el mapa y las 12 trampas de M1.</li>
+    <li>Contesté las 40 preguntas de M1 sin ver respuestas y revisé el "por qué las otras no".</li>
+    <li>Anoté las preguntas que fallé para el Kahoot.</li>
+    <li>Hice una vez el practice assessment oficial de Learn, sin estudiar antes.</li>
+    <li>Recibí la guía de M2 y empecé su banco de 44 preguntas.</li>
+  </ul>
+</div>
+<div class="box amber">
+  <b>Si presentas el examen esta semana: llena el debrief el mismo día.</b> Temas sí, preguntas no. Así el cohort acumula señal legítima y nadie arriesga su certificación.
+  <table>
+    <tr><th style="width:30%">Campo</th><th>Qué anotar</th></tr>
+    <tr><td>Resultado</td><td>Pass o no pass y el score por dominio que trae el reporte</td></tr>
+    <tr><td>Dominios que pesaron</td><td>Por sensación: cuál dominó y cuál casi no salió</td></tr>
+    <tr><td>Escenarios que costaron</td><td>Por tema, por ejemplo "AU vs restricted AU", "cross-tenant sync con error de consent"</td></tr>
+    <tr><td>Labs que salieron</td><td>Por tarea, por ejemplo "crear un AU y asignar un rol con scope", nunca pasos exactos</td></tr>
+    <tr><td>Qué hubiera estudiado más</td><td>Libre, en dos líneas</td></tr>
+  </table>
+</div>
+<div class="box"><b>Objetivo de la sesión en vivo, para que sepas qué esperar.</b> <p>El presenter no tiene que recitar límites ni números. Tiene que entender que casi todas las preguntas de M1 se resuelven con tres preguntas: <strong>el alcance</strong> (quién puede hacer qué y sobre quién: AU, restricted AU, custom role, matriz de reset), <strong>la dirección</strong> (en qué tenant y en qué lado se configura: inbound vs outbound, source vs target, member vs guest) y <strong>la dependencia de on-prem</strong> (qué deja de funcionar si se cae AD: PTA y federación sí, PHS no). Si el presenter puede tomar cualquier pregunta del banco, señalar las dos o tres palabras que la delatan y explicar con sus palabras por qué cada distractor falla, la sesión cumplió. Los números (50 devices, 500 deletes, 40 minutos, 150K objetos) se quedan en la guía para consulta, no se memorizan en vivo.</p></div>
+
+</body></html>

@@ -1,0 +1,24 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-24T21:47:00Z"},
+  "title": "SC-300 Tips and Tricks · Sesión 1 · Identities",
+  "order": [
+    "cover", "cohort", "exam-facts", "exam-mindset",
+    "m1-overview", "magic",
+    "t-delegar", "t-reset", "t-dynamic", "t-licensing", "t-guest", "t-crosstenant", "t-phs", "t-adfs", "t-sync",
+    "kahoot-intro", "k01", "k02", "k03", "k04", "k05", "k06", "k07", "k08", "k09", "k10",
+    "week", "ritual", "resources"
+  ],
+  "sections": {
+    "intro": {"description": "Cómo funciona el cohort y cómo piensa el examen SC-300", "start": "cover"},
+    "m1": {"description": "Módulo 1, Identities: las 12 trampas en 9 slides", "start": "m1-overview"},
+    "kahoot": {"description": "Kahoot de 10 preguntas y el debrief con el porqué de cada distractor", "start": "kahoot-intro"},
+    "cierre": {"description": "Tarea de la semana, ritual post-examen y recursos", "start": "week"}
+  },
+  "faces": {
+    "manrope": {"family": "Manrope", "href": "https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap"},
+    "inter": {"family": "Inter", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

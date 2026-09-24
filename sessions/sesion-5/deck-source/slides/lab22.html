@@ -1,0 +1,37 @@
+<section id="lab22" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Lab 22 · M4 · Entitlement management: catalogs</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">Un catalog con dueño y recursos</h2>
+  <div style="display:flex; gap:40px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px">
+      <div style="background:#F6F8FB; border:2px solid #E2E8F0; border-radius:16px; padding:16px 24px; display:flex; gap:14px; align-items:center">
+        <x-icon name="Home" style="color:#0E7490; width:30px; height:30px"></x-icon>
+        <p style="font-size:24px; line-height:1.4; color:#334155"><b>Ruta:</b> ID Governance &gt; Entitlement management &gt; Catalogs · Access reviews</p>
+      </div>
+      <ol style="font-size:25px; line-height:1.45; color:#334155">
+        <li><b>New catalog</b> Marketing: Enabled Yes, external No</li>
+        <li>Resources: grupo Retail, Box, Salesforce, sitio Brand</li>
+        <li>Roles and administrators &gt; <b>Add catalog owner</b>: Adele</li>
+        <li>Access reviews &gt; New: <b>Teams + Groups</b> con guests</li>
+        <li>Reviewers <b>Group owner(s)</b>, Auto apply, Remove access</li>
+      </ol>
+      <div style="background:#FFF1E6; border-radius:20px; padding:20px 28px; display:flex; flex-direction:column; gap:8px">
+        <p style="font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#9A3412">Trampas del lab</p>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Pide <b>Governance</b>; lo crea Identity Governance Admin.</p>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <x-icon name="Warning" style="color:#9A3412; width:28px; height:28px"></x-icon>
+          <p style="font-size:24px; line-height:1.4; color:#7C2D12">Solo grupos cloud; no borras un catalog con packages.</p>
+        </div>
+      </div>
+    </div>
+    <div style="width:720px; display:flex; flex-direction:column; gap:16px">
+      <img src="/_blob/69539d770bf24c753dc03fa0a927a8f2" alt="Identity Governance, Catalogs, con el botón New catalog" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+      <img src="/_blob/aa2f534f04d174161697bce6ce4c97c1" alt="Editar un catalog: Enabled y Enabled for external users" style="width:720px; height:308px; object-fit:contain; border-radius:16px; background:#FFFFFF; border:2px solid #E2E8F0" />
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Lab oficial: <a href="https://microsoftlearning.github.io/SC-300-Identity-and-Access-Administrator/Instructions/Labs/Lab_22_CreateAndManageACatalogOfResourcesInAADEntitlementManagement.html"><span style="color:#0E7490">Lab 22 · Catalog in entitlement management</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">14 / 19</p>
+  <aside>Objetivo: el catalog como contenedor de recursos y de delegación. Estado final: catalog Marketing con Enabled Yes y Enabled for external users No, con el grupo Retail, las apps Box y Salesforce y el sitio Brand como recursos, Adele Vance como catalog owner, y un access review de guests en todos los grupos Microsoft 365 con Group owner(s) como revisores. Frase clave: "Primero el catalog, luego los access packages; el catalog owner administra su área sin ser admin". Trampa favorita: licencia Microsoft Entra ID Governance (algunas capacidades con P2) aunque el lab viejo diga P1; User Administrator ya no crea catalogs, el rol es Identity Governance Administrator. Grupos sincronizados de AD y distribution groups no se agregan; la búsqueda de sitios distingue mayúsculas. Auto apply con Remove access puede sacar a todos si nadie revisa. Practican: M4 Q1, Q2, Q3. Tiempo: 2 minutos.</aside>
+</section>

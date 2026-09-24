@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Access reviews: decisions and results</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Access reviews: de scope a resultados</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Quién revisa, qué decide y qué pasa cuando nadie responde</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- top boxes -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5">
+<rect x="48" y="124" width="272" height="280" rx="12"/>
+<rect x="352" y="124" width="272" height="280" rx="12"/>
+<rect x="656" y="124" width="272" height="280" rx="12"/>
+<rect x="960" y="124" width="272" height="280" rx="12"/>
+</g>
+<g fill="#22D3EE">
+<circle cx="80" cy="162" r="16"/>
+<circle cx="384" cy="162" r="16"/>
+<circle cx="688" cy="162" r="16"/>
+<circle cx="992" cy="162" r="16"/>
+</g>
+<g font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">
+<text x="80" y="169">1</text>
+<text x="384" y="169">2</text>
+<text x="688" y="169">3</text>
+<text x="992" y="169">4</text>
+</g>
+<g font-size="22" font-weight="700" fill="#F8FAFC">
+<text x="106" y="170">Scope</text>
+<text x="410" y="170">Reviewers</text>
+<text x="712" y="170">Recommendations</text>
+<text x="1018" y="170">Decisions</text>
+</g>
+
+<!-- 1 Scope -->
+<g font-size="20" fill="#F8FAFC">
+<text x="68" y="212">• Group members</text>
+<text x="68" y="244">• App users</text>
+<text x="68" y="276">• Guests only</text>
+<text x="68" y="308">• Roles (via PIM)</text>
+<text x="68" y="340">• Access packages</text>
+</g>
+<text x="68" y="382" font-size="20" fill="#94A3B8">Qué acceso se revisa</text>
+
+<!-- 2 Reviewers -->
+<g font-size="20" fill="#F8FAFC">
+<text x="372" y="212">• Self-review</text>
+<text x="372" y="244">• Managers</text>
+<text x="372" y="276">• Group owners</text>
+<text x="372" y="308">• Selected users</text>
+<text x="372" y="340">• Multi-stage (hasta 3)</text>
+</g>
+<text x="372" y="382" font-size="20" fill="#94A3B8">+ fallback reviewers</text>
+
+<!-- 3 Recommendations -->
+<text x="676" y="212" font-size="20" fill="#94A3B8">Basadas en:</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="676" y="246">• Inactividad</text>
+<text x="696" y="274" fill="#94A3B8">(30 días por defecto)</text>
+<text x="676" y="308">• User-to-group</text>
+<text x="696" y="336">affiliation</text>
+</g>
+<text x="676" y="382" font-size="20" fill="#94A3B8">Sugieren, no deciden</text>
+
+<!-- 4 Decisions -->
+<rect x="984" y="192" width="224" height="40" rx="20" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-width="2"/>
+<rect x="984" y="244" width="224" height="40" rx="20" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-width="2"/>
+<rect x="984" y="296" width="224" height="40" rx="20" fill="#FBBF24" fill-opacity="0.15" stroke="#FBBF24" stroke-width="2"/>
+<g font-size="20" font-weight="700" text-anchor="middle">
+<text x="1096" y="219" fill="#4ADE80">Approve</text>
+<text x="1096" y="271" fill="#F87171">Deny</text>
+<text x="1096" y="323" fill="#FBBF24">Don't know</text>
+</g>
+<text x="984" y="382" font-size="20" fill="#94A3B8">+ justification</text>
+
+<!-- arrows top -->
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M322 264H344"/>
+<path d="M626 264H648"/>
+<path d="M930 264H952"/>
+<path d="M1096 406V444"/>
+<path d="M690 570H712"/>
+</g>
+
+<!-- 5 If reviewers don't respond -->
+<rect x="48" y="452" width="640" height="236" rx="12" fill="#132B4F" stroke="#FBBF24" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="80" cy="490" r="16" fill="#FBBF24"/>
+<text x="80" y="497" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">5</text>
+<text x="106" y="498" font-size="22" font-weight="700" fill="#F8FAFC">If reviewers don't respond</text>
+<text x="72" y="532" font-size="20" fill="#94A3B8">Qué pasa con los usuarios no revisados</text>
+<rect x="72" y="550" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#94A3B8" stroke-width="1.5"/>
+<rect x="376" y="550" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#F87171" stroke-width="1.5"/>
+<rect x="72" y="608" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#4ADE80" stroke-width="1.5"/>
+<rect x="376" y="608" width="288" height="44" rx="10" fill="#0B1F3A" stroke="#22D3EE" stroke-width="1.5"/>
+<g font-size="20" font-weight="600" text-anchor="middle">
+<text x="216" y="579" fill="#F8FAFC">No change</text>
+<text x="520" y="579" fill="#F87171">Remove access</text>
+<text x="216" y="637" fill="#4ADE80">Approve access</text>
+<text x="520" y="637" fill="#22D3EE">Take recommendations</text>
+</g>
+
+<!-- 6 Apply results -->
+<rect x="720" y="452" width="512" height="236" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="752" cy="490" r="16" fill="#22D3EE"/>
+<text x="752" y="497" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">6</text>
+<text x="778" y="498" font-size="22" font-weight="700" fill="#F8FAFC">Apply results</text>
+<rect x="744" y="534" width="64" height="34" rx="17" fill="#4ADE80"/>
+<circle cx="791" cy="551" r="13" fill="#F8FAFC"/>
+<text x="828" y="558" font-size="20" font-weight="700" fill="#F8FAFC">Auto apply ON</text>
+<text x="828" y="586" font-size="20" fill="#94A3B8">Denied se remueve automáticamente</text>
+<rect x="744" y="614" width="64" height="34" rx="17" fill="#0B1F3A" stroke="#94A3B8" stroke-width="2"/>
+<circle cx="761" cy="631" r="13" fill="#94A3B8"/>
+<text x="828" y="638" font-size="20" font-weight="700" fill="#F8FAFC">Auto apply OFF</text>
+<text x="828" y="666" font-size="20" fill="#94A3B8">Aplicar manualmente al terminar</text>
+</svg>

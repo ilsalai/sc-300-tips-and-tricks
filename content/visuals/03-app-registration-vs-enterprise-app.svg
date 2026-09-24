@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>App registration vs enterprise application</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">App registration vs enterprise application</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Application object (definición global) vs service principal (instancia local)</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- App registration -->
+<rect x="48" y="124" width="480" height="286" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<text x="72" y="164" font-size="26" font-weight="700" fill="#F8FAFC">App registration</text>
+<text x="72" y="194" font-size="20" font-weight="600" fill="#7DD3FC">Application object</text>
+<text x="72" y="224" font-size="20" fill="#94A3B8">Vive en el home tenant</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="262">• Redirect URIs</text>
+<text x="72" y="292">• API permissions (requested)</text>
+<text x="72" y="322">• App roles</text>
+<text x="72" y="352">• Credentials: secret / certificate</text>
+<text x="72" y="382">• Expose an API (scopes)</text>
+</g>
+
+<!-- middle -->
+<text x="640" y="220" font-size="26" font-weight="700" fill="#22D3EE" text-anchor="middle">1 : N</text>
+<path d="M536 244H742" stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+<g font-size="20" fill="#F8FAFC" text-anchor="middle">
+<text x="640" y="284">Register once,</text>
+<text x="640" y="310">service principal</text>
+<text x="640" y="336">per tenant</text>
+</g>
+
+<!-- Enterprise application -->
+<rect x="752" y="124" width="480" height="286" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<text x="776" y="164" font-size="26" font-weight="700" fill="#F8FAFC">Enterprise application</text>
+<text x="776" y="194" font-size="20" font-weight="600" fill="#7DD3FC">Service principal</text>
+<text x="776" y="224" font-size="20" fill="#94A3B8">Uno por cada tenant donde se usa</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="776" y="262">• User / group assignments</text>
+<text x="776" y="292">• SSO config (SAML / OIDC)</text>
+<text x="776" y="322">• Consent granted</text>
+<text x="776" y="352">• Assignment required? (Yes / No)</text>
+<text x="776" y="382">• Visible to users? (Yes / No)</text>
+</g>
+
+<!-- permissions -->
+<text x="48" y="448" font-size="22" font-weight="700" fill="#7DD3FC">Permisos y consentimiento</text>
+<rect x="48" y="462" width="580" height="226" rx="12" fill="#132B4F" stroke="#4ADE80" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="72" y="500" font-size="24" font-weight="700" fill="#F8FAFC">Delegated permissions</text>
+<text x="72" y="536" font-size="20" fill="#F8FAFC">La app actúa en nombre del usuario</text>
+<text x="72" y="570" font-size="20" fill="#94A3B8">Consent: <tspan font-weight="700" fill="#4ADE80">user o admin</tspan></text>
+<text x="72" y="604" font-size="20" fill="#94A3B8">User consent según consent settings</text>
+<text x="72" y="638" font-size="20" fill="#94A3B8">Permisos de alto privilegio: admin</text>
+<text x="72" y="672" font-size="20" fill="#94A3B8">Token claim: <tspan fill="#7DD3FC">scp</tspan></text>
+
+<rect x="652" y="462" width="580" height="226" rx="12" fill="#132B4F" stroke="#FBBF24" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="676" y="500" font-size="24" font-weight="700" fill="#F8FAFC">Application permissions</text>
+<text x="676" y="536" font-size="20" fill="#F8FAFC">La app actúa como ella misma, sin usuario</text>
+<text x="676" y="570" font-size="20" fill="#94A3B8">Consent: <tspan font-weight="700" fill="#FBBF24">admin siempre</tspan></text>
+<text x="676" y="604" font-size="20" fill="#94A3B8">Daemons y servicios (client credentials)</text>
+<text x="676" y="638" font-size="20" fill="#94A3B8">Acceso a nivel de todo el tenant</text>
+<text x="676" y="672" font-size="20" fill="#94A3B8">Token claim: <tspan fill="#7DD3FC">roles</tspan></text>
+</svg>

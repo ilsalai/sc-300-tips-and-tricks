@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>PIM lifecycle</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">PIM: lifecycle de un rol privilegiado</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Privileged Identity Management: just-in-time, con aprobación y auditoría</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- Row 1 boxes -->
+<g fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5">
+<rect x="48" y="124" width="272" height="240" rx="12"/>
+<rect x="348" y="124" width="272" height="240" rx="12"/>
+<rect x="648" y="124" width="272" height="240" rx="12"/>
+<rect x="648" y="408" width="272" height="180" rx="12"/>
+<rect x="348" y="408" width="272" height="180" rx="12"/>
+<rect x="48" y="408" width="272" height="180" rx="12"/>
+</g>
+
+<!-- badges -->
+<g fill="#22D3EE">
+<circle cx="84" cy="162" r="16"/>
+<circle cx="384" cy="162" r="16"/>
+<circle cx="684" cy="162" r="16"/>
+<circle cx="684" cy="446" r="16"/>
+<circle cx="384" cy="446" r="16"/>
+<circle cx="84" cy="446" r="16"/>
+</g>
+<g font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">
+<text x="84" y="169">1</text>
+<text x="384" y="169">2</text>
+<text x="684" y="169">3</text>
+<text x="684" y="453">4</text>
+<text x="384" y="453">5</text>
+<text x="84" y="453">6</text>
+</g>
+<g font-size="24" font-weight="700" fill="#F8FAFC">
+<text x="112" y="171">Assignment</text>
+<text x="412" y="171">Activation</text>
+<text x="712" y="171">Approval</text>
+<text x="712" y="455">Active</text>
+<text x="412" y="455">Expires</text>
+<text x="112" y="455">Audit</text>
+</g>
+
+<!-- 1 Assignment chips -->
+<rect x="58" y="186" width="124" height="34" rx="17" fill="#22D3EE" fill-opacity="0.2" stroke="#22D3EE" stroke-width="2"/>
+<rect x="188" y="186" width="124" height="34" rx="17" fill="none" stroke="#7DD3FC" stroke-width="2"/>
+<rect x="58" y="230" width="124" height="34" rx="17" fill="none" stroke="#94A3B8" stroke-width="2"/>
+<rect x="188" y="230" width="124" height="34" rx="17" fill="none" stroke="#94A3B8" stroke-width="2"/>
+<g font-size="20" text-anchor="middle">
+<text x="120" y="210" fill="#22D3EE" font-weight="600">Eligible</text>
+<text x="250" y="210" fill="#7DD3FC" font-weight="600">Active</text>
+<text x="120" y="254" fill="#F8FAFC">Time-bound</text>
+<text x="250" y="254" fill="#F8FAFC">Permanent</text>
+</g>
+<text x="64" y="304" font-size="20" fill="#94A3B8">Eligible: debe activar</text>
+<text x="64" y="334" font-size="20" fill="#94A3B8">Active: rol ya asignado</text>
+
+<!-- 2 Activation -->
+<g font-size="20" fill="#F8FAFC">
+<text x="368" y="212">• Justification</text>
+<text x="368" y="242">• MFA o auth strength</text>
+<text x="368" y="272">• Ticket number</text>
+<text x="368" y="302">• Duration (hasta max)</text>
+<text x="368" y="332">• Approval si aplica</text>
+</g>
+
+<!-- 3 Approval -->
+<g font-size="20" fill="#F8FAFC">
+<text x="668" y="212">• Approve o Deny</text>
+<text x="668" y="242">• Approvers: users</text>
+<text x="688" y="270">o groups</text>
+</g>
+<text x="668" y="310" font-size="20" fill="#94A3B8">Sin approval:</text>
+<text x="668" y="338" font-size="20" fill="#94A3B8">activación inmediata</text>
+
+<!-- 4 Active -->
+<text x="668" y="496" font-size="20" fill="#F8FAFC">• Hasta max duration</text>
+<text x="688" y="524" font-size="20" fill="#94A3B8">configurable por rol</text>
+<text x="668" y="560" font-size="20" fill="#F8FAFC">• Extend o deactivate</text>
+
+<!-- 5 Expires -->
+<text x="368" y="496" font-size="20" fill="#F8FAFC">• Vuelve a Eligible</text>
+<text x="388" y="524" font-size="20" fill="#94A3B8">al vencer la activación</text>
+<text x="368" y="560" font-size="20" fill="#F8FAFC">• Renew assignment</text>
+
+<!-- 6 Audit -->
+<g font-size="20" fill="#F8FAFC">
+<text x="68" y="496">• Audit history</text>
+<text x="68" y="528">• Alerts de PIM</text>
+<text x="68" y="560">• Access reviews</text>
+</g>
+
+<!-- arrows -->
+<g stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)">
+<path d="M322 244H340"/>
+<path d="M622 244H640"/>
+<path d="M784 366V400"/>
+<path d="M646 498H628"/>
+<path d="M346 498H328"/>
+</g>
+
+<!-- side panel -->
+<rect x="948" y="124" width="284" height="464" rx="12" fill="#132B4F" stroke="#7DD3FC" stroke-opacity="0.5" stroke-width="1.5"/>
+<text x="972" y="164" font-size="24" font-weight="700" fill="#F8FAFC">PIM cubre</text>
+<g fill="#0B1F3A" stroke="#22D3EE" stroke-opacity="0.5" stroke-width="1.5">
+<rect x="964" y="186" width="252" height="84" rx="10"/>
+<rect x="964" y="282" width="252" height="110" rx="10"/>
+<rect x="964" y="404" width="252" height="84" rx="10"/>
+</g>
+<g font-size="20">
+<text x="984" y="220" font-weight="700" fill="#22D3EE">PIM for Entra roles</text>
+<text x="984" y="250" fill="#94A3B8">Directory roles</text>
+<text x="984" y="314" font-weight="700" fill="#22D3EE">PIM for Azure</text>
+<text x="984" y="340" font-weight="700" fill="#22D3EE">resources</text>
+<text x="984" y="372" fill="#94A3B8">Discover resources</text>
+<text x="984" y="438" font-weight="700" fill="#22D3EE">PIM for Groups</text>
+<text x="984" y="468" fill="#94A3B8">Member u owner</text>
+<text x="972" y="530" fill="#94A3B8">Licencia: Entra ID P2</text>
+<text x="972" y="558" fill="#94A3B8">o ID Governance</text>
+</g>
+
+<!-- note -->
+<rect x="48" y="608" width="1184" height="80" rx="12" fill="#F87171" fill-opacity="0.1" stroke="#F87171" stroke-width="2"/>
+<circle cx="88" cy="648" r="18" fill="#F87171"/>
+<text x="88" y="656" font-size="22" font-weight="700" fill="#0B1F3A" text-anchor="middle">!</text>
+<text x="124" y="656" font-size="24" font-weight="700" fill="#F8FAFC"><tspan fill="#F87171">Break-glass:</tspan> permanente, sin PIM, sin CA, monitoreado</text>
+</svg>

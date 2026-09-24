@@ -1,0 +1,29 @@
+<section id="t-identity" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampas 2 y 3 · Identities for apps and workloads</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">¿Qué identidad le doy al workload?</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"System-assigned vive y muere con su recurso; user-assigned es roomie. Y la managed identity no sale de Azure, salvo con Arc."</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:10px">
+    <div style="background:#0F172A; color:#F6F8FB; border-radius:18px; padding:16px 28px; display:flex; gap:24px; align-items:center">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:26px; font-weight:800; color:#22D3EE; width:380px">Azure, un recurso</p>
+      <p style="font-size:25px; line-height:1.4"><b>System-assigned</b>: una identidad, un recurso, se borra con él.</p>
+    </div>
+    <div style="background:#0E7490; color:#F6F8FB; border-radius:18px; padding:16px 28px; display:flex; gap:24px; align-items:center">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:26px; font-weight:800; color:#A3E635; width:380px">Azure, compartida</p>
+      <p style="font-size:25px; line-height:1.4"><b>User-assigned</b>: se asigna a muchos, se pre-autoriza y la borras tú.</p>
+    </div>
+    <div style="background:#E2E8F0; color:#0F172A; border-radius:18px; padding:16px 28px; display:flex; gap:24px; align-items:center">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:26px; font-weight:800; width:380px">Fuera de Azure</p>
+      <p style="font-size:25px; line-height:1.4">Con Arc, system-assigned. Sin Arc, <b>service principal</b> con cert o federated.</p>
+    </div>
+    <div style="background:#F6F8FB; border:2px solid #E2E8F0; color:#0F172A; border-radius:18px; padding:16px 28px; display:flex; gap:24px; align-items:center">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:26px; font-weight:800; width:380px">Windows on-prem</p>
+      <p style="font-size:25px; line-height:1.4"><b>gMSA</b> para varios servers o load balancer; <b>sMSA</b> para uno solo.</p>
+    </div>
+  </div>
+  <p style="font-size:25px; line-height:1.45; color:#475569"><b>Roles de Azure RBAC, no de Entra:</b> crear una user-assigned pide Managed Identity Contributor; asignarla a una VM, Virtual Machine Contributor + Managed Identity Operator.</p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview#differences-between-system-assigned-and-user-assigned-managed-identities"><span style="color:#0E7490">System vs user-assigned</span></a> · Delata: "recreated frequently", "not onboarded to Azure Arc"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">6 / 27</p>
+  <aside>Objetivo: un árbol de decisión que resuelva cualquier pregunta de "qué identidad uso". Frase clave de la trampa 2: "System-assigned vive y muere con su recurso; user-assigned es roomie: la compartes y la borras tú". Frase clave de la trampa 3: "Managed identity no sale de Azure (salvo con Arc). Afuera: service principal con cert o federated. On-prem Windows: gMSA". La user-assigned es la recomendada para servicios de Microsoft y se puede pre-autorizar antes de crear las VMs. El certificate es mejor que el secret, que dura máximo 24 meses; la federated credential es para un IdP externo como GitHub Actions o Kubernetes. Después de asignar la identidad, se autoriza en el destino (por ejemplo Storage Blob Data Reader). User account como service account es la última opción. Segundo link: service-accounts-on-premises, choose the right type of service account. Delata: "same identity for all instances", "before the VMs are deployed", "least privilege to assign", "GitHub Actions", "no secrets stored", "behind a load balancer". Practican: Q1, Q2, Q4, Q5 (trampa 2) y Q3, Q6, Q24 (trampa 3). Tiempo: 2 minutos.</aside>
+</section>

@@ -1,0 +1,35 @@
+<section id="k10" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 10 de 10 · Trampa 12 · Banco Q35</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">El forest que no se ve</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <p style="font-size:28px; line-height:1.4; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px">You acquired a forest with no connectivity to yours. 8,000 users must appear in your tenant, highly available, with minimal on-prem infra. Which tool?</p>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">Cloud Sync with three provisioning agents</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">A connector on the existing Connect Sync server</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">C</p>
+        <p style="font-size:26px; color:#334155">A second Connect Sync server in active mode</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">Cross-tenant synchronization</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4"><b>Forests desconectados son escenario de Cloud Sync.</b> Agentes ligeros, tres activos para HA, y convive con Connect Sync si cada objeto está en el scope de una sola herramienta.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> El conector necesita conectividad con el forest. No hay.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>C.</b> Connect Sync es Active-Passive: un solo servidor activo por tenant.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> Cross-tenant sync mueve usuarios entre tenants de Entra, no desde AD on-prem.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/connect-to-cloud-sync-decision-guide#comparison-between-microsoft-entra-connect-and-cloud-sync"><span style="color:#0E7490">Cloud Sync decision guide</span></a> · <a href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/plan-cloud-sync-topologies#active-directory-to-microsoft-entra-id-supported-topologies"><span style="color:#0E7490">Cloud Sync topologies</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">26 / 29</p>
+  <aside>Debrief de 45 segundos. Frase clave: "Forest desconectado: Cloud Sync". Cerrar el Kahoot con el podio y pasar a la tarea de la semana.</aside>
+</section>

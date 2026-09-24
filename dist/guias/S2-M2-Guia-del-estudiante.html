@@ -1,0 +1,1404 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>SC-300 Tips and Tricks · Guía M2 Authentication and access</title><style>
+@page { size: A4; margin: 16mm 14mm; }
+* { box-sizing: border-box }
+body { font-family: "Segoe UI", Inter, Arial, sans-serif; color: #1E293B; line-height: 1.5; font-size: 10.5pt; margin: 0 }
+a { color: #0E7490; text-decoration: none; word-break: break-all }
+h1 { font-size: 30pt; color: #0B1F3A; margin: 0 0 6pt; line-height: 1.1 }
+h2 { font-size: 20pt; color: #0F172A; margin: 30pt 0 10pt; padding-bottom: 6pt; border-bottom: 3px solid #22D3EE; page-break-after: avoid; letter-spacing: -0.3px }
+h3.sub { font-size: 13.5pt; color: #0E7490; margin: 18pt 0 6pt; page-break-after: avoid }
+h4 { margin: 0 0 4pt; color: #0B1F3A }
+p { margin: 4pt 0 }
+ul, ol { margin: 4pt 0 4pt 18pt; padding: 0 }
+li { margin: 2pt 0 }
+code { font-family: Consolas, "JetBrains Mono", Menlo, monospace; font-size: 9pt; background: #F1F5F9; padding: 1px 4px; border-radius: 3px }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 9.5pt }
+th, td { border: 1px solid #CBD5E1; padding: 4pt 6pt; vertical-align: top; text-align: left }
+th { background: #0B1F3A; color: #fff }
+.cover { background: #0B1F3A; color: #F1F5F9; padding: 36pt 32pt; border-radius: 14pt; margin-bottom: 18pt; page-break-after: always; min-height: 240mm; display: flex; flex-direction: column; justify-content: space-between }
+.cover h1 { color: #fff; font-size: 40pt }
+.cover .eyebrow { color: #22D3EE; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; font-size: 10pt }
+.cover .big { font-size: 15pt; color: #BFD8F0 }
+.cover .meta { color: #94A3B8; font-size: 10pt }
+.pill { display: inline-block; background: #22D3EE; color: #0B1F3A; font-weight: 700; padding: 3pt 10pt; border-radius: 999px; font-size: 9pt; margin-right: 6pt }
+.box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 8pt 0; page-break-inside: avoid }
+.box.cyan { border-color: #22D3EE; background: #ECFEFF }
+.box.amber { border-color: #FBBF24; background: #FFFBEB }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt }
+.grid3 .box { margin: 0 }
+.mod { font-size: 9.5pt; color: #475569; margin-bottom: 8pt }
+.skill { border: 1px solid #E2E8F0; border-radius: 8pt; padding: 8pt 12pt; margin: 6pt 0; page-break-inside: avoid }
+.skill-h { font-weight: 700; color: #0B1F3A; margin-bottom: 3pt }
+.tag { display: inline-block; background: #0B1F3A; color: #22D3EE; font-size: 8pt; padding: 1pt 6pt; border-radius: 4px; margin-right: 6pt; letter-spacing: 1px }
+.punto { margin: 3pt 0 }
+.main { font-size: 9.5pt; color: #475569 }
+.deep { font-size: 9.5pt; margin-left: 16pt }
+.anchor { color: #94A3B8 }
+.trap { border: 1.5px solid #E2E8F0; border-radius: 12pt; padding: 12pt 16pt; margin: 10pt 0; page-break-inside: avoid; background: #fff }
+.trap-h { font-weight: 700; font-size: 12.5pt; color: #0B1F3A }
+.num { display: inline-block; width: 22pt; height: 22pt; line-height: 22pt; text-align: center; background: #0B1F3A; color: #22D3EE; border-radius: 50%; font-size: 10.5pt; margin-right: 6pt }
+.frase { font-size: 12.5pt; color: #9A3412; font-weight: 700; margin: 6pt 0; background: #FFF1E6; padding: 6pt 10pt; border-radius: 8pt }
+.delata { font-size: 9.5pt }
+.meta { font-size: 9pt; color: #64748B }
+.visual { margin: 10pt 0 14pt; page-break-inside: avoid }
+.visual svg { width: 100%; height: auto; border-radius: 10pt }
+.visual p { font-size: 9.5pt; color: #475569; margin-top: 4pt }
+.case { background: #FFFBEB; border: 1px solid #FBBF24; border-radius: 8pt; padding: 8pt 12pt; margin: 8pt 0; page-break-inside: avoid }
+.q, .a { border: 1.5px solid #E2E8F0; border-radius: 10pt; padding: 10pt 14pt; margin: 9pt 0; page-break-inside: avoid }
+.a { background: #F8FAFC }
+.q-h { display: flex; gap: 6pt; align-items: center; margin-bottom: 4pt; flex-wrap: wrap }
+.qid { font-weight: 800; color: #0B1F3A; font-size: 12pt }
+.fmt { background: #ECFEFF; color: #0E7490; font-size: 8.5pt; padding: 1pt 7pt; border-radius: 999px; font-weight: 600 }
+.skill-tag { color: #64748B; font-size: 8.5pt }
+.checklist li { list-style: none; margin: 4pt 0 }
+.checklist li:before { content: "\2610\00a0\00a0"; color: #0E7490 }
+.toc { columns: 2; font-size: 10pt }
+.toc li { margin: 2pt 0 }
+</style></head><body>
+
+<div class="cover">
+  <div>
+    <p class="eyebrow">SC-300 Tips and Tricks · SC-300 · Sesión 2 de 5</p>
+    <h1>Guía del estudiante<br>Módulo 2: Authentication and access</h1>
+    <p class="big">Implement authentication and access management. 25 a 30% del examen.</p>
+    <p class="big">Modelo invertido: <b>esta guía se estudia antes de la sesión</b>. En vivo cazamos trampas y jugamos Kahoot con el porqué de cada distractor.</p>
+  </div>
+  <div>
+    <p class="meta"><span class="pill">Sin dumps</span> Todo el contenido es original y está anclado a Microsoft Learn con links directos a los párrafos. Skills outline vigente: 27 de abril de 2026.</p>
+    <p class="meta">Contiene: mapa de skills con deep links · 12 trampas con frase clave · 3 visuales · 44 preguntas estilo examen con explicación por distractor · plan de la semana y ritual post-examen.</p>
+  </div>
+</div>
+
+
+<h2>0. Cómo usar esta guía (20 minutos de lectura, 90 de práctica)</h2>
+<div class="grid3">
+  <div class="box cyan"><b>1. Lee el mapa</b><p>Sección 1. Un punto clave por skill del outline. Si algo no te suena, abre el deep link: cae justo en el párrafo que el examen pregunta.</p></div>
+  <div class="box cyan"><b>2. Aprende las 12 trampas</b><p>Sección 2. Cada una trae la frase que la resume, la regla, y las palabras de la pregunta que la delatan.</p></div>
+  <div class="box cyan"><b>3. Contesta el banco sin ver respuestas</b><p>Sección 4. Anota tus respuestas. Luego revisa la sección 5 y lee el "por qué las otras no": ahí está el valor.</p></div>
+</div>
+<div class="box amber">
+  <b>Las preguntas que resuelven casi todo M2: Método, política, riesgo y tráfico.</b> Cuando no sepas la respuesta, pregúntate:
+  <ol><li><b>Método:</b> ¿qué tan fuerte es? MFA, passwordless o phishing-resistant, y dónde se configura cada uno.</li><li><b>Política:</b> ¿qué decide? Si nadie dice que no, el token sale. El block, el break-glass y el context se diseñan a propósito.</li><li><b>Riesgo:</b> ¿cuál es y cómo se cura? User risk con password o risk remediation, sign-in risk con MFA, workload identities con otra licencia.</li><li><b>Tráfico:</b> ¿por dónde pasa? Microsoft, Private o Internet profile, y qué agrega cada uno.</li></ol>
+  Con eso eliminas dos distractores en la mayoría de las preguntas del módulo.
+</div>
+<div class="box">
+  <b>Datos duros del examen.</b> 700 de 1000 para pasar (escala ajustada, no 70% de aciertos). Practice assessment oficial gratis:
+  <a href="https://learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment?assessment-type=practice&amp;assessmentId=60">learn.microsoft.com/credentials/certifications/exams/sc-300/practice/assessment</a>.
+  Exam sandbox: <a href="https://aka.ms/examdemo">aka.ms/examdemo</a>. Study guide oficial:
+  <a href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300">learn.microsoft.com/credentials/certifications/resources/study-guides/sc-300</a>.
+</div>
+
+<h2>1. Mapa del módulo: skills, punto clave y deep links</h2>
+<p class="meta">Cada fila corresponde a un bullet del skills outline oficial. El punto clave es lo que el examen realmente mide; los deep links caen en el párrafo exacto de Learn.</p>
+<h3 class="sub">Subdominio 1: Plan, implement, and manage Microsoft Entra user authentication</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/secure-aad-users-with-mfa/">secure-aad-users-with-mfa</a> · <a href="https://learn.microsoft.com/training/modules/manage-user-authentication/">manage-user-authentication</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Plan for authentication</div>
+  <p class="punto">Elegir métodos por fuerza: phishing-resistant (WHfB, platform credential de macOS, passkeys, CBA) por encima de push, OTP y SMS. Habilitar más de un método por usuario y proteger el registro con CA y TAP.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-getstarted">entra/identity/authentication/howto-mfa-getstarted</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods#phishing-resistant-authentication-methods">concept-authentication-methods <span class="anchor">#phishing-resistant-authentication-methods</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-getstarted#choose-authentication-methods-for-mfa">howto-mfa-getstarted <span class="anchor">#choose-authentication-methods-for-mfa</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-getstarted#plan-user-registration">howto-mfa-getstarted <span class="anchor">#plan-user-registration</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage authentication methods: certificate-based authentication</div>
+  <p class="punto">La CA se sube al PKI-based trust store (Privileged Authentication Administrator) con CRL por HTTP; sin CRL no hay revocación. En authentication binding el default es single-factor y la regla de policy OID gana a la de issuer. Required affinity High quita los bindings low (PrincipalName, RFC822Name, Subject, IssuerAndSubject).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-certificate-based-authentication">entra/identity/authentication/how-to-certificate-based-authentication</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-certificate-based-authentication#step-1-configure-the-cas-with-a-pki-based-trust-store">how-to-certificate-based-authentication <span class="anchor">#step-1-configure-the-cas-with-a-pki-based-trust-store</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-certificate-based-authentication#test-custom-authentication-binding-rules">how-to-certificate-based-authentication <span class="anchor">#test-custom-authentication-binding-rules</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-certificate-based-authentication-technical-deep-dive#username-binding-policy">concept-certificate-based-authentication-technical-deep-dive <span class="anchor">#username-binding-policy</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage authentication methods: Temporary Access Pass</div>
+  <p class="punto">Se habilita en la Authentication methods policy (Authentication Policy Administrator). Vida de 10 minutos a 30 días (default 1 hora), largo de 8 a 48, una TAP por usuario. One-time: registrar en 10 minutos. Authentication Admin crea TAP a members; Privileged Authentication Admin también a admins.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass">entra/identity/authentication/howto-authentication-temporary-access-pass</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass#enable-the-temporary-access-pass-policy">howto-authentication-temporary-access-pass <span class="anchor">#enable-the-temporary-access-pass-policy</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass#create-a-temporary-access-pass">howto-authentication-temporary-access-pass <span class="anchor">#create-a-temporary-access-pass</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass#limitations">howto-authentication-temporary-access-pass <span class="anchor">#limitations</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage authentication methods: OAuth 2.0 tokens (y OATH tokens)</div>
+  <p class="punto">Access token de 60 a 90 minutos (con CAE hasta 28 horas), refresh token de 90 días (24 horas en SPA). Refresh y session token lifetime ya no se configuran desde el 30 de enero de 2021: se usa sign-in frequency. OATH: TOTP de 30 o 60 segundos, hasta 5 tokens o apps por usuario, HOTP no soportado.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity-platform/refresh-tokens">entra/identity-platform/refresh-tokens</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity-platform/configurable-token-lifetimes#token-lifetime-policies-for-refresh-tokens-and-session-tokens-retired">configurable-token-lifetimes <span class="anchor">#token-lifetime-policies-for-refresh-tokens-and-session-tokens-retired</span></a></li><li><a href="https://learn.microsoft.com/entra/identity-platform/refresh-tokens#token-revocation">refresh-tokens <span class="anchor">#token-revocation</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-oath-tokens#hardware-oath-tokens-preview">concept-authentication-oath-tokens <span class="anchor">#hardware-oath-tokens-preview</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage authentication methods: Microsoft Authenticator</div>
+  <p class="punto">Tres usos distintos: push MFA con number matching, passwordless phone sign-in (no es phishing-resistant) y passkey device-bound (sí es phishing-resistant). Additional context (app y ubicación) se activa en Configure. Los passkeys de Authenticator se permiten por AAGUID en la política Passkey (FIDO2).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app">entra/identity/authentication/concept-authentication-authenticator-app</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app#passkey-sign-in">concept-authentication-authenticator-app <span class="anchor">#passkey-sign-in</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-enable-authenticator-passkey#configure-a-profile-for-passkeys-in-authenticator">how-to-enable-authenticator-passkey <span class="anchor">#configure-a-profile-for-passkeys-in-authenticator</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-additional-context#enable-additional-context-in-the-microsoft-entra-admin-center">how-to-mfa-additional-context <span class="anchor">#enable-additional-context-in-the-microsoft-entra-admin-center</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage authentication methods: passkeys (FIDO2)</div>
+  <p class="punto">Passkey profiles por grupo: tipo (device-bound o synced), enforce attestation y key restrictions por AAGUID (allow o block). Synced passkeys no soportan attestation. MFA en los últimos 5 minutos para registrar. Sin licencia extra y sin soporte para guests.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2">entra/identity/authentication/how-to-authentication-passkeys-fido2</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#passkey-profiles">how-to-authentication-passkeys-fido2 <span class="anchor">#passkey-profiles</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#synced-passkeys-fido2">how-to-authentication-passkeys-fido2 <span class="anchor">#synced-passkeys-fido2</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#enforce-passkey-fido2-sign-in">how-to-authentication-passkeys-fido2 <span class="anchor">#enforce-passkey-fido2-sign-in</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage tenant-wide multifactor authentication (MFA) settings</div>
+  <p class="punto">Report suspicious activity pone al usuario en High user risk. Trusted IPs (P1, solo IPs públicas en MFA de nube, hasta 50 rangos) contra named locations de CA. Remember MFA choca con sign-in frequency. Migración legacy: Pre-migration, Migration in Progress, Migration Complete.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-mfasettings">entra/identity/authentication/howto-mfa-mfasettings</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-mfasettings#report-suspicious-activity">howto-mfa-mfasettings <span class="anchor">#report-suspicious-activity</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-mfasettings#trusted-ips">howto-mfa-mfasettings <span class="anchor">#trusted-ips</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage#migration-between-policies">concept-authentication-methods-manage <span class="anchor">#migration-between-policies</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure and deploy self-service password reset (SSPR)</div>
+  <p class="punto">En el portal, Selected acepta un solo grupo (nested sí cuenta). Se piden 1 o 2 métodos. Admins: política two-gate fija, sin security questions. Writeback con Connect Sync o Cloud Sync, requiere P1 y se activa en Connect y en On-premises integration. No se garantiza con staged rollout.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-howitworks">entra/identity/authentication/concept-sspr-howitworks</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/tutorial-enable-sspr#enable-self-service-password-reset">tutorial-enable-sspr <span class="anchor">#enable-self-service-password-reset</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-policy#administrator-reset-policy-differences">concept-sspr-policy <span class="anchor">#administrator-reset-policy-differences</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/tutorial-enable-sspr-writeback#enable-password-writeback-for-sspr">tutorial-enable-sspr-writeback <span class="anchor">#enable-password-writeback-for-sspr</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage Windows Hello for Business</div>
+  <p class="punto">Cloud Kerberos trust es el modelo recomendado y el único híbrido sin PKI. Pasos: crear el objeto Microsoft Entra Kerberos (Set-AzureADKerberosServer), activar "Use Windows Hello for Business" y "Use cloud trust for on-premises authentication", enrolar. Si "Use certificate for on-premises authentication" está activo, gana certificate trust.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust">windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust#deploy-microsoft-entra-kerberos">hybrid-cloud-kerberos-trust <span class="anchor">#deploy-microsoft-entra-kerberos</span></a></li><li><a href="https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust#configure-windows-hello-for-business-policy-settings">hybrid-cloud-kerberos-trust <span class="anchor">#configure-windows-hello-for-business-policy-settings</span></a></li><li><a href="https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/deploy/#pki-requirements"> <span class="anchor">#pki-requirements</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Disable accounts and revoke user sessions</div>
+  <p class="punto">Híbrido: deshabilitar en AD, resetear el password dos veces, luego Revoke-MgUserSignInSession (o Revoke sessions) y deshabilitar los devices. Los access tokens siguen vivos hasta expirar, salvo en apps con CAE.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/users/users-revoke-access">entra/identity/users/users-revoke-access</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/users/users-revoke-access#revoke-access-for-a-user-in-the-hybrid-environment">users-revoke-access <span class="anchor">#revoke-access-for-a-user-in-the-hybrid-environment</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/users-revoke-access#microsoft-entra-environment">users-revoke-access <span class="anchor">#microsoft-entra-environment</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/users/users-revoke-access#when-access-is-revoked">users-revoke-access <span class="anchor">#when-access-is-revoked</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage Microsoft Entra password protection</div>
+  <p class="punto">Global list siempre activa. Custom list de hasta 1000 términos de 4 a 16 caracteres (P1). On-prem: proxy en un server del dominio, DC agent en cada DC (con reboot), los DCs nunca salen a internet. Audit registra y acepta; Enforced rechaza.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/concept-password-ban-bad">entra/identity/authentication/concept-password-ban-bad</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/tutorial-configure-custom-password-protection#configure-custom-banned-passwords">tutorial-configure-custom-password-protection <span class="anchor">#configure-custom-banned-passwords</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-password-ban-bad-on-premises#design-principles">concept-password-ban-bad-on-premises <span class="anchor">#design-principles</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-operations#modes-of-operation">howto-password-ban-bad-on-premises-operations <span class="anchor">#modes-of-operation</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Enable Microsoft Entra Kerberos authentication for hybrid identities</div>
+  <p class="punto">Entra ID actúa como KDC en la nube: Cloud TGT para KERBEROS.MICROSOFTONLINE.COM y partial TGT que se canjea en AD. En Azure Files: habilitar en el storage account, admin consent a la app generada y clientes con CloudKerberosTicketRetrievalEnabled. Un solo identity source por storage account y no soporta MFA (excluir la app de CA).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/kerberos">entra/identity/authentication/kerberos</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/kerberos#mfa-incompatibility-for-azure-files-authentication">kerberos <span class="anchor">#mfa-incompatibility-for-azure-files-authentication</span></a></li><li><a href="https://learn.microsoft.com/azure/storage/files/storage-files-identity-auth-hybrid-identities-enable#configure-the-clients-to-retrieve-kerberos-tickets">storage-files-identity-auth-hybrid-identities-enable <span class="anchor">#configure-the-clients-to-retrieve-kerberos-tickets</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-passwordless-security-key-on-premises#create-a-kerberos-server-object">howto-authentication-passwordless-security-key-on-premises <span class="anchor">#create-a-kerberos-server-object</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 2: Plan, implement, and manage Microsoft Entra Conditional Access</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/plan-implement-administer-conditional-access/">plan-implement-administer-conditional-access</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Plan Conditional Access policies</div>
+  <p class="punto">Mínimo P1 (P2 para usar riesgo). Security defaults y CA no se combinan. Si ninguna política dispara un control, el token se emite: para "solo Finance entra" hace falta una política de block aparte. Excluir break-glass. Límite de 240 políticas. Security Reader lee, CA Administrator crea.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access">entra/identity/conditional-access/plan-conditional-access</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#combining-policies">plan-conditional-access <span class="anchor">#combining-policies</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#user-exclusions">plan-conditional-access <span class="anchor">#user-exclusions</span></a></li><li><a href="https://learn.microsoft.com/entra/fundamentals/security-defaults#disabling-security-defaults">security-defaults <span class="anchor">#disabling-security-defaults</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement Conditional Access policy assignments</div>
+  <p class="punto">Users: All, guests por tipo y por tenant, directory roles (solo built-in, no AU-scoped ni custom), grupos con nested. Workload identities: solo single-tenant. Target resources: apps, user actions, authentication context y perfiles de GSA. Exclude le gana a include.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-users-groups">entra/identity/conditional-access/concept-conditional-access-users-groups</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-users-groups#include-users">concept-conditional-access-users-groups <span class="anchor">#include-users</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-users-groups#exclude-users">concept-conditional-access-users-groups <span class="anchor">#exclude-users</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps#user-actions">concept-conditional-access-cloud-apps <span class="anchor">#user-actions</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement Conditional Access policy controls</div>
+  <p class="punto">Block o grant con MFA, authentication strength, compliant, hybrid joined, app protection, password change, risk remediation, ToU. Por default es AND. No se mezclan Require MFA y Require authentication strength. Tres strengths built-in que no se editan.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-grant">entra/identity/conditional-access/concept-conditional-access-grant</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-grant#grant-access">concept-conditional-access-grant <span class="anchor">#grant-access</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths#built-in-authentication-strengths">concept-authentication-strengths <span class="anchor">#built-in-authentication-strengths</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths#limitations">concept-authentication-strengths <span class="anchor">#limitations</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Test and troubleshoot Conditional Access policies</div>
+  <p class="punto">Report-only evalúa sin aplicar y no sirve para User Actions. What If simula por identidad, solo evalúa políticas On o report-only y no incluye service dependencies. En sign-in logs: pestañas Conditional Access y Report-only.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool">entra/identity/conditional-access/what-if-tool</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool#how-it-works">what-if-tool <span class="anchor">#how-it-works</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only#policy-evaluation-results">concept-conditional-access-report-only <span class="anchor">#policy-evaluation-results</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#troubleshoot-conditional-access-policies">plan-conditional-access <span class="anchor">#troubleshoot-conditional-access-policies</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement session management</div>
+  <p class="punto">Sign-in frequency (horas, días o Every time) reemplaza a los token lifetimes retirados. Persistent browser session exige All resources y le gana al "Stay signed in?" de branding. No mezclar con Remember MFA. CAE se desactiva solo desde session con All resources y sin condiciones.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-session-lifetime">entra/identity/conditional-access/concept-session-lifetime</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-session-lifetime#user-sign-in-frequency">concept-session-lifetime <span class="anchor">#user-sign-in-frequency</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-session-lifetime#policy-2-persistent-browser-session">howto-conditional-access-session-lifetime <span class="anchor">#policy-2-persistent-browser-session</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-session#customize-continuous-access-evaluation">concept-conditional-access-session <span class="anchor">#customize-continuous-access-evaluation</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement device-enforced restrictions</div>
+  <p class="punto">Grant compliant o hybrid joined, filter for devices (con operadores negativos alcanza a devices no registrados; extensionAttributes piden device Intune, compliant o hybrid) y app enforced restrictions (SharePoint y Exchange limitados en devices no administrados).</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-condition-filters-for-devices">entra/identity/conditional-access/concept-condition-filters-for-devices</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-condition-filters-for-devices#policy-behavior-with-filter-for-devices">concept-condition-filters-for-devices <span class="anchor">#policy-behavior-with-filter-for-devices</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-session#application-enforced-restrictions">concept-conditional-access-session <span class="anchor">#application-enforced-restrictions</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-grant#require-device-to-be-marked-as-compliant">concept-conditional-access-grant <span class="anchor">#require-device-to-be-marked-as-compliant</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement continuous access evaluation</div>
+  <p class="punto">Eventos críticos: usuario deshabilitado o borrado, password cambiado o reseteado, MFA habilitado, revoke de refresh tokens y high user risk. Hasta 15 minutos de latencia; tokens de hasta 28 horas. Solo IP named locations. Guests no. Cambios de grupo o de política pueden tardar hasta un día.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation">entra/identity/conditional-access/concept-continuous-access-evaluation</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#critical-event-evaluation">concept-continuous-access-evaluation <span class="anchor">#critical-event-evaluation</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#supported-location-policies">concept-continuous-access-evaluation <span class="anchor">#supported-location-policies</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#group-membership-and-policy-update-effective-time">concept-continuous-access-evaluation <span class="anchor">#group-membership-and-policy-update-effective-time</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Configure authentication context</div>
+  <p class="punto">Etiquetas c1 a c99 con "Publish to apps"; la política las elige en Target resources. Las consumen SharePoint (sensitivity label o Set-SPOSite), Defender for Cloud Apps, apps propias, PIM y protected actions. En PIM no se combina con un directory role en la misma política.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps#authentication-context">entra/identity/conditional-access/concept-conditional-access-cloud-apps#authentication-context</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps#configure-authentication-contexts">concept-conditional-access-cloud-apps <span class="anchor">#configure-authentication-contexts</span></a></li><li><a href="https://learn.microsoft.com/sharepoint/authentication-context-example#set-up-an-authentication-context">authentication-context-example <span class="anchor">#set-up-an-authentication-context</span></a></li><li><a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#on-activation-require-microsoft-entra-conditional-access-authentication-context">pim-how-to-change-default-settings <span class="anchor">#on-activation-require-microsoft-entra-conditional-access-authentication-context</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement protected actions</div>
+  <p class="punto">CA sobre permisos (CA policies, named locations, cross-tenant access settings, hard delete) sin importar el rol. Pasos: authentication context con política en On, Roles &amp; admins &gt; Protected actions, probar. Lo hace CA Admin o Security Admin, pide P1. Azure PowerShell falla; Microsoft Graph PowerShell sí hace step-up.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-overview">entra/identity/role-based-access-control/protected-actions-overview</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-overview#what-permissions-can-be-used-with-protected-actions">protected-actions-overview <span class="anchor">#what-permissions-can-be-used-with-protected-actions</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-add#step-2-add-protected-actions">protected-actions-add <span class="anchor">#step-2-add-protected-actions</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-add#symptom---policy-is-never-satisfied">protected-actions-add <span class="anchor">#symptom---policy-is-never-satisfied</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Create a Conditional Access policy from a template</div>
+  <p class="punto">Categorías: Secure foundation, Zero Trust, Remote work, Protect administrator, Emerging threats, AI Agents. La política nace en report-only y solo excluye al usuario que la crea. Se puede editar y exportar o importar JSON.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common">entra/identity/conditional-access/concept-conditional-access-policy-common</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common#template-categories">concept-conditional-access-policy-common <span class="anchor">#template-categories</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common#user-exclusions">concept-conditional-access-policy-common <span class="anchor">#user-exclusions</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#deploy-conditional-access-policies">plan-conditional-access <span class="anchor">#deploy-conditional-access-policies</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 3: Manage risk by using Microsoft Entra ID Protection</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/manage-azure-active-directory-identity-protection/">manage-azure-active-directory-identity-protection</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage user risk by using Microsoft Entra ID Protection or Conditional Access policies</div>
+  <p class="punto">User risk High: Require risk remediation (con password: secure password change; passwordless: revoca sesiones y pide sign-in) o Require password change. Se agregan solos auth strength y SIF Every time. Pide P2. La política legacy se retira el 1 de octubre de 2026.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies">entra/id-protection/concept-identity-protection-policies</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies#user-risk-based-conditional-access-policy">concept-identity-protection-policies <span class="anchor">#user-risk-based-conditional-access-policy</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies#require-risk-remediation-control">concept-identity-protection-policies <span class="anchor">#require-risk-remediation-control</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies#migrate-risk-policies-to-conditional-access">howto-identity-protection-configure-risk-policies <span class="anchor">#migrate-risk-policies-to-conditional-access</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage sign-in risk by using Microsoft Entra ID Protection or Conditional Access policies</div>
+  <p class="punto">Sign-in risk Medium y High: auth strength MFA y SIF Every time. Completar MFA remedia el riesgo. Un usuario sin MFA registrado queda bloqueado. No combinar user risk y sign-in risk en la misma política.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies">entra/id-protection/howto-identity-protection-configure-risk-policies</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies#sign-in-risk-policy-in-conditional-access">howto-identity-protection-configure-risk-policies <span class="anchor">#sign-in-risk-policy-in-conditional-access</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies#microsoft-recommendations">howto-identity-protection-configure-risk-policies <span class="anchor">#microsoft-recommendations</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#self-remediation-of-sign-in-risk">howto-identity-protection-remediate-unblock <span class="anchor">#self-remediation-of-sign-in-risk</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Implement and manage multifactor authentication registration by using authentication methods and registration campaigns</div>
+  <p class="punto">MFA registration policy de ID Protection: 14 días para registrar (Security Administrator, P2). Registration campaign: Authenticator o passkey, uno a la vez; Authenticator en modo Any o Push; snooze de 0 a 14 días; 3 snoozes si Limited está activo.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign">entra/identity/authentication/how-to-mfa-registration-campaign</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign#prerequisites">how-to-mfa-registration-campaign <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign#snooze-experience">how-to-mfa-registration-campaign <span class="anchor">#snooze-experience</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-mfa-policy#user-experience">howto-identity-protection-configure-mfa-policy <span class="anchor">#user-experience</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Monitor, investigate and remediate risky users and risky sign-ins</div>
+  <p class="punto">Reportes Risky users, Risky sign-ins y Risk detections. Roles: Global Reader ve, Security Operator descarta riesgo, User Administrator resetea. Confirm compromised, confirm safe o dismiss. Con PHS, el cambio de password on-prem puede resetear el user risk.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock">entra/id-protection/howto-identity-protection-remediate-unblock</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#prerequisites">howto-identity-protection-remediate-unblock <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk#investigation-and-risk-remediation-framework">howto-identity-protection-investigate-risk <span class="anchor">#investigation-and-risk-remediation-framework</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#allow-on-premises-password-reset-to-remediate-user-risks">howto-identity-protection-remediate-unblock <span class="anchor">#allow-on-premises-password-reset-to-remediate-user-risks</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Monitor, investigate, and remediate risky workload identities</div>
+  <p class="punto">Las detecciones llegan sin licencia pero con poco detalle. El CA basado en riesgo pide Workload Identities Premium y solo cubre service principals single-tenant (no managed identities ni SaaS multitenant). Remediar: inventario, credencial nueva (certificado), quitar las viejas y rotar secretos de Key Vault.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/id-protection/concept-workload-identity-risk">entra/id-protection/concept-workload-identity-risk</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/id-protection/concept-workload-identity-risk#prerequisites">concept-workload-identity-risk <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/concept-workload-identity-risk#enforce-access-controls-with-risk-based-conditional-access">concept-workload-identity-risk <span class="anchor">#enforce-access-controls-with-risk-based-conditional-access</span></a></li><li><a href="https://learn.microsoft.com/entra/id-protection/concept-workload-identity-risk#remediate-risky-workload-identities">concept-workload-identity-risk <span class="anchor">#remediate-risky-workload-identities</span></a></li></ul>
+</div>
+<h3 class="sub">Subdominio 4: Implement Global Secure Access</h3>
+<p class="mod">Módulos oficiales en Learn: <a href="https://learn.microsoft.com/training/modules/deploy-configure-microsoft-entra-global-secure-access/">deploy-configure-microsoft-entra-global-secure-access</a></p>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Deploy Global Secure Access clients</div>
+  <p class="punto">Clientes para Windows, macOS, Android e iOS. En Windows: device joined, hybrid joined o registered (registered solo lleva Private Access), Windows 10 LTSC 2021 o posterior de 64 bits o Windows 11, sin AVD multi-session, admin local para instalar, /quiet o Intune. Deshabilitar QUIC y DNS over HTTPS.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-install-windows-client">entra/global-secure-access/how-to-install-windows-client</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-install-windows-client#prerequisites">how-to-install-windows-client <span class="anchor">#prerequisites</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-install-windows-client#automated-installation">how-to-install-windows-client <span class="anchor">#automated-installation</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-install-windows-client#restrict-nonprivileged-users">how-to-install-windows-client <span class="anchor">#restrict-nonprivileged-users</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Deploy and manage Private Access</div>
+  <p class="punto">Reemplaza la VPN. Quick Access es el bloque principal de FQDN e IPs; una Global Secure Access app (per-app access) da CA distinto a un subconjunto. Pasos: connector group con conector activo, Quick Access con app segments, asignar usuarios (sin nested groups), CA y habilitar el Private access profile.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/global-secure-access/concept-private-access">entra/global-secure-access/concept-private-access</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-configure-quick-access#high-level-steps">how-to-configure-quick-access <span class="anchor">#high-level-steps</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-configure-quick-access#assign-users-and-groups">how-to-configure-quick-access <span class="anchor">#assign-users-and-groups</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/concept-private-access#global-secure-access-app">concept-private-access <span class="anchor">#global-secure-access-app</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Deploy and manage Internet Access</div>
+  <p class="punto">Secure Web Gateway con web content filtering por categoría, URL o FQDN. Flujo: Internet access profile, filtering policy, security profile y CA con "All internet resources with Global Secure Access" y la sesión "Use Global Secure Access security profile". El baseline profile cubre remote networks sin CA.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering">entra/global-secure-access/how-to-configure-web-content-filtering</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#high-level-steps">how-to-configure-web-content-filtering <span class="anchor">#high-level-steps</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#create-a-security-profile">how-to-configure-web-content-filtering <span class="anchor">#create-a-security-profile</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#enable-web-content-filtering-for-remote-network-traffic">how-to-configure-web-content-filtering <span class="anchor">#enable-web-content-filtering-for-remote-network-traffic</span></a></li></ul>
+</div>
+<div class="skill">
+  <div class="skill-h"><span class="tag">Skill</span> Deploy and manage Internet Access for Microsoft 365</div>
+  <p class="punto">Microsoft traffic profile (Exchange, SharePoint y OneDrive, Teams, Microsoft 365 Common) incluido en P1. Habilita compliant network check, universal tenant restrictions (TRv2) y source IP restoration. Lo que marcas Bypass en el Microsoft profile no lo toma el Internet access profile.</p>
+  <p class="main">Link principal: <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-manage-microsoft-profile">entra/global-secure-access/how-to-manage-microsoft-profile</a></p>
+  <ul class="deep"><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-manage-microsoft-profile#microsoft-traffic-policies">how-to-manage-microsoft-profile <span class="anchor">#microsoft-traffic-policies</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-compliant-network#protect-your-resources-behind-the-compliant-network">how-to-compliant-network <span class="anchor">#protect-your-resources-behind-the-compliant-network</span></a></li><li><a href="https://learn.microsoft.com/entra/global-secure-access/how-to-universal-tenant-restrictions#enable-universal-tenant-restrictions">how-to-universal-tenant-restrictions <span class="anchor">#enable-universal-tenant-restrictions</span></a></li></ul>
+</div>
+<h2>2. Las 12 trampas de M2</h2>
+<p class="meta">Memoriza la frase, entiende la regla, reconoce las palabras que delatan. Los números son para consultar, no para memorizar.</p>
+<div class="trap">
+  <div class="trap-h"><span class="num">1</span> TAP: pase de entrada, no llave maestra</div>
+  <p class="frase">&quot;La TAP es el pase de visitante: te deja registrar tu llave, pero no es tu llave.&quot;</p>
+  <ul>
+<li>Se habilita en la Authentication methods policy y solo la usan los usuarios dentro del alcance. Vive de 10 minutos a 30 días, una por usuario, y con one-time el registro de passwordless se cierra a los 10 minutos.</li>
+<li>Authentication Administrator crea TAP a usuarios sin rol; Privileged Authentication Administrator también a admins. Nadie se crea una TAP a sí mismo, y no sirve con NPS extension ni con el adapter de AD FS.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;new hires&quot;, &quot;onboard passwordless&quot;, &quot;lost their security key&quot;, &quot;one-time use&quot;, &quot;within 10 minutes&quot;, &quot;holds an administrator role&quot;, &quot;least privilege&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass#create-a-temporary-access-pass">howto-authentication-temporary-access-pass <span class="anchor">#create-a-temporary-access-pass</span></a> · Practica con Q1</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">2</span> Passkeys y Authenticator: dónde se configura cada cosa</div>
+  <p class="frase">&quot;Passkey en Authenticator se configura en FIDO2, no en Authenticator. Y synced passkey con attestation no se llevan.&quot;</p>
+  <ul>
+<li>Passkey profiles por grupo: tipo (device-bound o synced), enforce attestation y AAGUIDs (allow o block). Hasta 3 perfiles con el Default, y el opt-in no tiene regreso. Synced passkeys no soportan attestation.</li>
+<li>En la política de Microsoft Authenticator, el modo Passwordless es phone sign-in (no es passkey). El passkey de Authenticator es device-bound y se permite por AAGUID en Passkey (FIDO2).</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;synced passkeys&quot;, &quot;iCloud Keychain&quot;, &quot;Google Password Manager&quot;, &quot;verify the make and model&quot;, &quot;specific security key models&quot;, &quot;pilot group&quot;, &quot;passkeys in Microsoft Authenticator&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#passkey-profiles">how-to-authentication-passkeys-fido2 <span class="anchor">#passkey-profiles</span></a> · Practica con Q3, Q4</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">3</span> CBA y authentication strengths: ¿es MFA? ¿es phishing-resistant?</div>
+  <p class="frase">&quot;En CBA, policy OID le gana al issuer. En strengths, phone sign-in es passwordless pero NO phishing-resistant, y TAP solo llega a MFA.&quot;</p>
+  <ul>
+<li>CBA: la CA va al trust store con CRL por HTTP (sin CRL no hay revocación); default single-factor y low affinity; con High affinity se caen PrincipalName y RFC822Name.</li>
+<li>Strengths built-in: MFA, Passwordless MFA y Phishing-resistant MFA (FIDO2, WHfB o platform credential, CBA multifactor). No se editan, y no mezclas Require MFA con Require authentication strength en la misma política.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;smart card&quot;, &quot;policy OID&quot;, &quot;certificate issuer&quot;, &quot;revoked certificate&quot;, &quot;high affinity&quot;, &quot;phishing-resistant&quot;, &quot;only FIDO2 security keys&quot;, &quot;specific key model&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths#built-in-authentication-strengths">concept-authentication-strengths <span class="anchor">#built-in-authentication-strengths</span></a> · Practica con Q2, Q16, Q27</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">4</span> OAuth vs OATH, y cómo se controla la sesión</div>
+  <p class="frase">&quot;OAuth es el token, OATH es el código de 6 dígitos. ¿Quieres forzar reauth? Sign-in frequency, no token lifetime.&quot;</p>
+  <ul>
+<li>Refresh y session token lifetime ya no se configuran desde el 30 de enero de 2021. AccessTokenLifetime solo mueve access, ID y SAML tokens (10 minutos a 1 día), y el refresh token renueva en silencio.</li>
+<li>Persistent browser session exige All resources y le gana al "Stay signed in?" de branding. Remember MFA choca con sign-in frequency: apágalo antes.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;re-enter credentials every X hours&quot;, &quot;token lifetime policy&quot;, &quot;MaxAgeMultiFactor&quot;, &quot;must not stay signed in after closing the browser&quot;, &quot;unmanaged devices&quot;, &quot;OATH hardware token&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/configurable-token-lifetimes#token-lifetime-policies-for-refresh-tokens-and-session-tokens-retired">configurable-token-lifetimes <span class="anchor">#token-lifetime-policies-for-refresh-tokens-and-session-tokens-retired</span></a> · Practica con Q5, Q21</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">5</span> Passwords: SSPR, writeback y password protection</div>
+  <p class="frase">&quot;Writeback se prende en dos lados, los admins viven en two-gate, y en Audit el password malo pasa.&quot;</p>
+  <ul>
+<li>SSPR: un solo grupo en Selected desde el portal, 1 o 2 métodos. Admins con two-gate fijo (sin security questions). Writeback pide P1 y se activa en el wizard de Connect y en On-premises integration; no se garantiza con staged rollout.</li>
+<li>Password protection: custom list de hasta 1000 términos de 4 a 16 caracteres. On-prem: proxy en server del dominio, DC agent en todos los DCs (con reboot), DCs sin internet. Audit registra y acepta; Enforced rechaza.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;contact your administrator&quot;, &quot;synchronized users can&#x27;t reset&quot;, &quot;Helpdesk Administrator can&#x27;t use security questions&quot;, &quot;some domain controllers&quot;, &quot;Audit mode&quot;, &quot;no internet access from domain controllers&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-operations#modes-of-operation">howto-password-ban-bad-on-premises-operations <span class="anchor">#modes-of-operation</span></a> · Practica con Q7, Q8, Q11</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">6</span> Kerberos en la nube: WHfB y Azure Files</div>
+  <p class="frase">&quot;Cloud Kerberos trust: cero PKI. Entra Kerberos en Azure Files: cero MFA para esa app.&quot;</p>
+  <ul>
+<li>WHfB híbrido sin certificados: crear el objeto Microsoft Entra Kerberos (Set-AzureADKerberosServer), activar "Use cloud trust for on-premises authentication" y enrolar con línea de vista al DC la primera vez. Si "Use certificate for on-premises authentication" está activo, gana certificate trust.</li>
+<li>Azure Files: habilitar Entra Kerberos en el storage account, admin consent a la app y clientes con CloudKerberosTicketRetrievalEnabled. Un solo identity source por storage account, y la app del storage se excluye de las políticas de MFA.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;no PKI&quot;, &quot;must not deploy certificates&quot;, &quot;SSO to on-premises file shares&quot;, &quot;FSLogix&quot;, &quot;Azure Virtual Desktop&quot;, &quot;profile containers fail to mount after an MFA policy&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/authentication/kerberos#mfa-incompatibility-for-azure-files-authentication">kerberos <span class="anchor">#mfa-incompatibility-for-azure-files-authentication</span></a> · Practica con Q9, Q12</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">7</span> Planear y probar CA sin lockout</div>
+  <p class="frase">&quot;Si nadie dice que no, Entra dice que sí. Para &#x27;solo Finance&#x27; necesitas un block, y antes de todo, apaga security defaults.&quot;</p>
+  <ul>
+<li>Security defaults y CA no conviven. Si ninguna política dispara un control, el token se emite. Excluye break-glass siempre; los templates nacen en report-only y solo excluyen a quien los crea.</li>
+<li>What If evalúa solo políticas On o report-only y no ve service dependencies. Report-only no sirve para User Actions (Register security information, Register or join devices).</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;security defaults are enabled&quot;, &quot;only members of Finance&quot;, &quot;users outside the group can access&quot;, &quot;without affecting users&quot;, &quot;from a template&quot;, &quot;emergency access accounts&quot;, &quot;Register or join devices&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#combining-policies">plan-conditional-access <span class="anchor">#combining-policies</span></a> · Practica con Q13, Q14, Q19, Q20, Q26, Q28</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">8</span> Assignments y device-enforced restrictions</div>
+  <p class="frase">&quot;Excluye el PAW y bloquea el resto: un device no registrado es null, y null no se excluye.&quot;</p>
+  <ul>
+<li>Directory roles en CA: solo built-in, nada con scope de AU ni custom roles. Guests: eliges tipo de usuario externo y tenant específico.</li>
+<li>Filter for devices: operadores positivos no aplican a devices no registrados, los negativos sí; extensionAttributes piden Intune, compliant o hybrid. App enforced restrictions da acceso limitado en SharePoint y Exchange sin productos extra.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;privileged access workstation&quot;, &quot;extensionAttribute&quot;, &quot;unregistered devices must be blocked&quot;, &quot;limited browser-only access&quot;, &quot;no additional products&quot;, &quot;guests from a specific partner&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-condition-filters-for-devices#policy-behavior-with-filter-for-devices">concept-condition-filters-for-devices <span class="anchor">#policy-behavior-with-filter-for-devices</span></a> · Practica con Q15, Q17, Q18</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">9</span> CAE y revocar sesiones</div>
+  <p class="frase">&quot;CAE corta por eventos, no por cambios de grupo, y solo entiende IPs, no países. Revoke sessions es tu botón de &#x27;ahora mismo&#x27;.&quot;</p>
+  <ul>
+<li>Eventos críticos: cuenta deshabilitada o borrada, password cambiado o reseteado, MFA habilitado, revoke de refresh tokens y high user risk. Hasta 15 minutos; tokens de hasta 28 horas. Guests no.</li>
+<li>Cambios de grupo o de política tardan hasta un día. Híbrido: deshabilitar en AD, reset doble, Revoke-MgUserSignInSession y deshabilitar devices; sin CAE el access token vive hasta expirar.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;near real time&quot;, &quot;terminated employee&quot;, &quot;account is synchronized&quot;, &quot;country location&quot;, &quot;added to an excluded group&quot;, &quot;immediately&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#critical-event-evaluation">concept-continuous-access-evaluation <span class="anchor">#critical-event-evaluation</span></a> · Practica con Q10, Q22</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">10</span> Authentication context, protected actions y PIM</div>
+  <p class="frase">&quot;El context es la etiqueta, la policy pone las reglas, y el que la pega es SharePoint, PIM o protected actions. Y la policy va en On, no en report-only.&quot;</p>
+  <ul>
+<li>Authentication context: c1 a c99 con Publish to apps; SharePoint lo pega con sensitivity label o Set-SPOSite; PIM lo pide al activar (sin mezclarlo con el directory role en la misma política).</li>
+<li>Protected actions: CA sobre permisos (CA policies, named locations, cross-tenant settings, hard delete) sin importar el rol. Lo configura CA Admin o Security Admin; Azure PowerShell falla, Graph PowerShell no.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;specific SharePoint site&quot;, &quot;at the moment of activation&quot;, &quot;regardless of the role&quot;, &quot;when administrators modify Conditional Access policies&quot;, &quot;step-up&quot;, &quot;Publish to apps&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-overview#what-permissions-can-be-used-with-protected-actions">protected-actions-overview <span class="anchor">#what-permissions-can-be-used-with-protected-actions</span></a> · Practica con Q23, Q24, Q25, Q27</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">11</span> Riesgo: quién se cura con qué</div>
+  <p class="frase">&quot;User risk se cura con password (o risk remediation); sign-in risk se cura con MFA. Nunca al revés y nunca en la misma policy.&quot;</p>
+  <ul>
+<li>Require risk remediation cubre usuarios con password y passwordless, y agrega auth strength y SIF Every time. Políticas basadas en riesgo piden P2; las legacy de ID Protection se retiran el 1 de octubre de 2026. Report suspicious activity pone High user risk.</li>
+<li>Registro: MFA registration policy (14 días) y campaign (un método a la vez, Authenticator en Any o Push, 3 snoozes). Workload identities: CA de riesgo pide Workload Identities Premium, solo single-tenant, sin MFA posible.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;users at risk&quot;, &quot;leaked credentials&quot;, &quot;passwordless users&quot;, &quot;self-remediate&quot;, &quot;nudge users&quot;, &quot;snooze&quot;, &quot;service principal&quot;, &quot;managed identity&quot;, &quot;least privilege to dismiss risk&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies#require-risk-remediation-control">concept-identity-protection-policies <span class="anchor">#require-risk-remediation-control</span></a> · Practica con Q6, Q29, Q30, Q31, Q32, Q33, Q34, Q35, Q36, Q37, Q38</p>
+</div>
+<div class="trap">
+  <div class="trap-h"><span class="num">12</span> Global Secure Access en un dibujo</div>
+  <p class="frase">&quot;Microsoft primero, luego Private, luego Internet. Private Access mata la VPN, compliant network mata el token robado, y tenant restrictions cierra la puerta a otros tenants.&quot;</p>
+  <ul>
+<li>Cliente Windows: joined, hybrid o registered (registered solo Private Access); sin AVD multi-session; apagar QUIC y DNS over HTTPS. Private Access: connector, Quick Access, asignar sin nested groups, habilitar el profile; per-app access para CA distinto.</li>
+<li>Internet Access: filtering policy, security profile y CA con "All internet resources with Global Secure Access". Microsoft traffic profile (P1): compliant network check, universal tenant restrictions (TRv2) y source IP restoration.</li>
+</ul>
+  <p class="delata"><b>Palabras que delatan:</b> &quot;replace the VPN&quot;, &quot;different Conditional Access for one app&quot;, &quot;block a web category for one group&quot;, &quot;stolen tokens replayed&quot;, &quot;without maintaining IP lists&quot;, &quot;sign in to other tenants&quot;, &quot;real public IP in sign-in logs&quot;.</p>
+  <p class="meta">Learn: <a href="https://learn.microsoft.com/entra/global-secure-access/concept-traffic-forwarding#traffic-forwarding">concept-traffic-forwarding <span class="anchor">#traffic-forwarding</span></a> · Practica con Q39, Q40, Q41, Q42, Q43, Q44</p>
+</div>
+<h2>3. Visuales para no olvidar</h2><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Conditional Access evaluation flow</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Conditional Access: evaluation flow</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Todas las políticas que aplican se combinan; si alguna bloquea, Block gana</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- 1. Signal -->
+<rect x="48" y="128" width="360" height="444" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="88" cy="166" r="18" fill="#22D3EE"/>
+<text x="88" y="173" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">1</text>
+<text x="118" y="175" font-size="26" font-weight="700" fill="#F8FAFC">Signal</text>
+<text x="72" y="214" font-size="20" fill="#94A3B8">Assignments y conditions</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="252">Users and groups</text>
+<text x="72" y="282">Target resources (apps)</text>
+</g>
+<text x="72" y="322" font-size="20" font-weight="700" fill="#7DD3FC">Conditions</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="354">• Sign-in risk</text>
+<text x="72" y="384">• User risk</text>
+<text x="72" y="414">• Device platforms</text>
+<text x="72" y="444">• Locations (named, IP)</text>
+<text x="72" y="474">• Client apps</text>
+<text x="72" y="504">• Filter for devices</text>
+</g>
+<text x="72" y="552" font-size="20" fill="#94A3B8">Include y exclude en cada una</text>
+
+<!-- 2. Decision -->
+<rect x="460" y="128" width="360" height="444" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="500" cy="166" r="18" fill="#22D3EE"/>
+<text x="500" y="173" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">2</text>
+<text x="530" y="175" font-size="26" font-weight="700" fill="#F8FAFC">Decision</text>
+<text x="484" y="214" font-size="20" fill="#94A3B8">Grant controls</text>
+<rect x="484" y="232" width="312" height="50" rx="10" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-width="2"/>
+<text x="508" y="264" font-size="22" font-weight="700" fill="#F87171">Block access</text>
+<rect x="484" y="296" width="312" height="232" rx="10" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="2"/>
+<text x="504" y="326" font-size="20" font-weight="700" fill="#4ADE80">Grant access, require:</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="504" y="358">• Multifactor auth (MFA)</text>
+<text x="504" y="388">• Authentication strength</text>
+<text x="504" y="418">• Compliant device</text>
+<text x="504" y="448">• Hybrid joined device</text>
+<text x="504" y="478">• App protection policy</text>
+<text x="504" y="508">• Terms of use</text>
+</g>
+<text x="484" y="556" font-size="20" fill="#94A3B8">Modo: all o one of selected</text>
+
+<!-- 3. Session -->
+<rect x="872" y="128" width="360" height="444" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="912" cy="166" r="18" fill="#22D3EE"/>
+<text x="912" y="173" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">3</text>
+<text x="942" y="175" font-size="26" font-weight="700" fill="#F8FAFC">Session</text>
+<text x="896" y="214" font-size="20" fill="#94A3B8">Controls tras el grant</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="896" y="256">• Sign-in frequency</text>
+<text x="896" y="292">• Persistent browser session</text>
+<text x="896" y="328">• App enforced restrictions</text>
+<text x="896" y="364">• CA App Control</text>
+<text x="916" y="392" fill="#94A3B8">Defender for Cloud Apps</text>
+<text x="896" y="432">• CAE</text>
+<text x="916" y="460" fill="#94A3B8">Continuous access evaluation</text>
+</g>
+<text x="896" y="552" font-size="20" fill="#94A3B8">Afinan la sesión concedida</text>
+
+<!-- arrows -->
+<path d="M412 350H452" stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+<path d="M824 350H864" stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+
+<!-- notes -->
+<rect x="48" y="592" width="660" height="96" rx="12" fill="#FBBF24" fill-opacity="0.08" stroke="#FBBF24" stroke-width="2"/>
+<text x="72" y="630" font-size="22" font-weight="700" fill="#FBBF24">Probar antes de aplicar</text>
+<text x="72" y="664" font-size="20" fill="#F8FAFC">Report-only y What If para probar antes de aplicar</text>
+<rect x="732" y="592" width="500" height="96" rx="12" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="2"/>
+<text x="756" y="630" font-size="22" font-weight="700" fill="#F87171">Cuentas de emergencia</text>
+<text x="756" y="664" font-size="20" fill="#F8FAFC">Excluir break-glass siempre</text>
+</svg>
+<p><b>Cómo evalúa Conditional Access.</b> Señales, decisión y sesión. Si ninguna política dispara un control, el token se emite. Report-only y What If para probar; break-glass siempre excluido.</p></div><div class="visual">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>User risk vs sign-in risk</title>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">User risk vs sign-in risk</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">ID Protection (Entra ID P2): qué mide cada uno y cómo se remedia</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- User risk -->
+<rect x="48" y="124" width="580" height="454" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="96" cy="168" r="24" fill="#22D3EE" fill-opacity="0.15" stroke="#22D3EE" stroke-width="2"/>
+<circle cx="96" cy="161" r="7" fill="#22D3EE"/>
+<path d="M83 181a13 11 0 0 1 26 0z" fill="#22D3EE"/>
+<text x="134" y="177" font-size="28" font-weight="700" fill="#F8FAFC">User risk</text>
+<line x1="72" y1="204" x2="604" y2="204" stroke="#22D3EE" stroke-opacity="0.2" stroke-width="1.5"/>
+<text x="72" y="238" font-size="20" fill="#94A3B8">Qué indica</text>
+<text x="72" y="268" font-size="22" font-weight="700" fill="#F8FAFC">Identity likely compromised</text>
+<text x="72" y="308" font-size="20" fill="#94A3B8">Risk levels</text>
+<rect x="72" y="322" width="100" height="36" rx="18" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-width="2"/>
+<text x="122" y="347" font-size="20" fill="#4ADE80" text-anchor="middle">Low</text>
+<rect x="184" y="322" width="120" height="36" rx="18" fill="#FBBF24" fill-opacity="0.15" stroke="#FBBF24" stroke-width="2"/>
+<text x="244" y="347" font-size="20" fill="#FBBF24" text-anchor="middle">Medium</text>
+<rect x="316" y="322" width="100" height="36" rx="18" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-width="2"/>
+<text x="366" y="347" font-size="20" fill="#F87171" text-anchor="middle">High</text>
+<text x="72" y="398" font-size="20" fill="#94A3B8">Remediation (CA grant)</text>
+<text x="72" y="428" font-size="22" font-weight="700" fill="#4ADE80">Require password change <tspan font-size="20" font-weight="400" fill="#94A3B8">(+ MFA)</tspan></text>
+<text x="72" y="468" font-size="20" fill="#94A3B8">Examples</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="498">• Leaked credentials</text>
+<text x="72" y="528">• Entra threat intelligence (user)</text>
+<text x="72" y="558">• Anomalous user activity</text>
+</g>
+
+<!-- Sign-in risk -->
+<rect x="652" y="124" width="580" height="454" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="700" cy="168" r="24" fill="#22D3EE" fill-opacity="0.15" stroke="#22D3EE" stroke-width="2"/>
+<path d="M693 165v-6a7 7 0 0 1 14 0v6" fill="none" stroke="#22D3EE" stroke-width="3"/>
+<rect x="688" y="164" width="24" height="17" rx="3" fill="#22D3EE"/>
+<text x="738" y="177" font-size="28" font-weight="700" fill="#F8FAFC">Sign-in risk</text>
+<line x1="676" y1="204" x2="1208" y2="204" stroke="#22D3EE" stroke-opacity="0.2" stroke-width="1.5"/>
+<text x="676" y="238" font-size="20" fill="#94A3B8">Qué indica</text>
+<text x="676" y="268" font-size="22" font-weight="700" fill="#F8FAFC">This sign-in likely not the owner</text>
+<text x="676" y="308" font-size="20" fill="#94A3B8">Risk levels</text>
+<rect x="676" y="322" width="100" height="36" rx="18" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-width="2"/>
+<text x="726" y="347" font-size="20" fill="#4ADE80" text-anchor="middle">Low</text>
+<rect x="788" y="322" width="120" height="36" rx="18" fill="#FBBF24" fill-opacity="0.15" stroke="#FBBF24" stroke-width="2"/>
+<text x="848" y="347" font-size="20" fill="#FBBF24" text-anchor="middle">Medium</text>
+<rect x="920" y="322" width="100" height="36" rx="18" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-width="2"/>
+<text x="970" y="347" font-size="20" fill="#F87171" text-anchor="middle">High</text>
+<text x="1036" y="347" font-size="20" fill="#94A3B8">Real-time</text>
+<text x="676" y="398" font-size="20" fill="#94A3B8">Remediation (CA grant)</text>
+<text x="676" y="428" font-size="22" font-weight="700" fill="#4ADE80">Require MFA <tspan font-size="20" font-weight="400" fill="#94A3B8">(o authentication strength)</tspan></text>
+<text x="676" y="468" font-size="20" fill="#94A3B8">Examples</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="676" y="498">• Atypical travel</text>
+<text x="676" y="528">• Anonymous IP address</text>
+<text x="676" y="558">• Unfamiliar sign-in properties</text>
+</g>
+
+<!-- banner -->
+<rect x="48" y="598" width="1184" height="90" rx="12" fill="#22D3EE" fill-opacity="0.12" stroke="#22D3EE" stroke-width="2"/>
+<line x1="640" y1="616" x2="640" y2="670" stroke="#22D3EE" stroke-opacity="0.5" stroke-width="2"/>
+<g font-size="32" font-weight="700">
+<text x="330" y="655" fill="#22D3EE" text-anchor="end">User risk</text>
+<text x="344" y="655" fill="#F8FAFC">= password.</text>
+<text x="982" y="655" fill="#22D3EE" text-anchor="end">Sign-in risk</text>
+<text x="996" y="655" fill="#F8FAFC">= MFA.</text>
+</g>
+</svg>
+<p><b>Riesgo.</b> User risk se cura con password o Require risk remediation; sign-in risk se cura con MFA. Nunca al revés y nunca en la misma policy. Las legacy se retiran el 1 de octubre de 2026.</p></div>
+<h2>4. Banco de preguntas: 44 preguntas estilo examen</h2>
+<p class="meta">En inglés, como el examen. Contesta sin ver la sección 5. En las series Yes/No cada afirmación se evalúa sola; en drag/order solo cuentan las acciones que sí van, en orden. Los case studies aplican a las dos preguntas que los siguen.</p>
+<h3 class="sub">Subdominio 1: Plan, implement, and manage Microsoft Entra user authentication</h3>
+<div class="q"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage authentication methods (Temporary Access Pass)</span></div><p>Contoso enables the Temporary Access Pass (TAP) method in the Authentication methods policy and targets it to a group named NewHires. The TAP settings are: default lifetime 1 hour, maximum lifetime 8 hours, and one-time use set to Yes. Sam is assigned only the Authentication Administrator role.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>Sam can create a TAP for Ana, a member of NewHires who holds the Helpdesk Administrator role.</li>
+<li>Sam can create a TAP for Luis, a contractor who isn't a member of NewHires, but Luis can't use it to sign in.</li>
+<li>A new hire who signs in with a TAP to register a FIDO2 security key must finish the registration within 10 minutes of that sign-in.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage authentication methods (certificate-based authentication)</span></div><p>Fabrikam enables Microsoft Entra certificate-based authentication (CBA) for a group named SmartCardUsers. A Privileged Authentication Administrator uploaded the issuing CA (CN=FabrikamIssuing) to the PKI-based trust store but left the Certificate Revocation List URL empty.</p>
+<p>The authentication binding policy is configured as follows:</p>
+<ul>
+<li>Default protection level: Single-factor authentication</li>
+<li>Rule 1: Certificate issuer CN=FabrikamIssuing, protection level Single-factor authentication</li>
+<li>Rule 2: Policy OID 1.3.6.1.4.1.311.21.8.5, protection level Multifactor authentication</li>
+</ul>
+<p>The username binding policy uses the default mapping of PrincipalName to userPrincipalName.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>If a user's certificate is revoked on the issuing CA, the user can still sign in with that certificate.</li>
+<li>A certificate issued by CN=FabrikamIssuing that contains policy OID 1.3.6.1.4.1.311.21.8.5 satisfies a Conditional Access policy that requires multifactor authentication.</li>
+<li>If you set Required affinity binding to High at the tenant level, users can keep signing in with the current username binding.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage authentication methods (passkeys FIDO2)</span></div><p>Contoso is deploying passkeys (FIDO2). The requirements are:</p>
+<ul>
+<li>Members of the IT-Admins group must use only device-bound passkeys on two approved FIDO2 security key models, and Microsoft Entra ID must verify the make and model at registration.</li>
+<li>Members of the HR group must be able to register synced passkeys stored in iCloud Keychain or Google Password Manager.</li>
+<li>Administrative effort must be minimized.</li>
+</ul>
+<p>What should you do?</p>
+<p>A. Keep a single Passkey (FIDO2) configuration for all users with Enforce attestation set to Yes and key restrictions that allow only the AAGUIDs of the two approved models.<br />
+B. Opt in to passkey profiles. Create a profile for IT-Admins with passkey type Device-bound, Enforce attestation set to Yes, and key restrictions that allow the two AAGUIDs. Create a second profile for HR with passkey types Device-bound and Synced, and Enforce attestation set to No.<br />
+C. Enable the Microsoft Authenticator method for HR with Authentication mode set to Passwordless, and enable Passkey (FIDO2) only for IT-Admins.<br />
+D. Leave the Passkey (FIDO2) method with its default settings and create a Conditional Access policy that requires the built-in Phishing-resistant MFA authentication strength for IT-Admins.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage authentication methods (Microsoft Authenticator)</span></div><p>Contoso wants a pilot group named Pilot-PK to sign in with passkeys stored in Microsoft Authenticator on their phones. All other users must keep using Authenticator push notifications for MFA and must not be able to register passkeys in Authenticator.</p>
+<p>What should you configure?</p>
+<p>A. In the Microsoft Authenticator method policy, target Pilot-PK and set Authentication mode to Passwordless.<br />
+B. In the Passkey (FIDO2) method policy, use passkey profiles: one profile for Pilot-PK that is Device-bound and allows the Microsoft Authenticator AAGUIDs, and one profile for all other users that blocks the Microsoft Authenticator AAGUIDs.<br />
+C. Create a registration campaign that targets Pilot-PK with Microsoft Authenticator as the authentication method.<br />
+D. Create a Conditional Access policy for Pilot-PK that requires the built-in Passwordless MFA authentication strength.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage authentication methods (OAuth 2.0 tokens)</span></div><p>For a finance web app, Contoso's security team requires that users re-enter their credentials at least every 8 hours. A colleague proposes creating a token lifetime policy with MaxAgeMultiFactor set to 08:00:00 and assigning it to the app.</p>
+<p>What should you do?</p>
+<p>A. Create and assign the token lifetime policy as proposed.<br />
+B. Create a token lifetime policy with AccessTokenLifetime set to 08:00:00 and assign it to the app.<br />
+C. Create a Conditional Access policy that targets the app and sets the Sign-in frequency session control to 8 hours.<br />
+D. Enable Remember multifactor authentication on trusted devices in the MFA service settings.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage tenant-wide multifactor authentication (MFA) settings</span></div><p>Contoso has Microsoft Entra ID P1 licenses only. An Authentication Policy Administrator sets Report suspicious activity to Enabled for all users in Authentication methods &gt; Settings. The legacy MFA service settings contain a trusted IP range for the head office public IP address.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>When a user reports an unexpected MFA prompt as suspicious, the user is set to high user risk.</li>
+<li>Contoso can use a user risk-based Conditional Access policy to block the reporting users automatically.</li>
+<li>Contoso can add the internal range 10.10.0.0/16 to trusted IPs so that users on the LAN skip MFA prompts.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Select two</span><span class="skill-tag">Configure and deploy self-service password reset (SSPR)</span></div><p>Contoso synchronizes users from AD DS by using Microsoft Entra Connect Sync with password hash synchronization. Contoso has Microsoft Entra ID P1. SSPR is enabled for all users, and users have registered their methods. Cloud-only users can reset their passwords, but synchronized users see a message telling them to contact their administrator.</p>
+<p>You need to ensure that synchronized users can reset their passwords by using SSPR.</p>
+<p>Which two actions should you perform? Each correct answer presents part of the solution.</p>
+<p>A. Run the Microsoft Entra Connect wizard, select Customize synchronization options, and select Password writeback on the Optional features page.<br />
+B. In the Microsoft Entra admin center, go to Password reset &gt; On-premises integration and select Write back passwords to your on-premises directory.<br />
+C. Enable staged rollout for the synchronized users.<br />
+D. Enable seamless single sign-on in Microsoft Entra Connect.<br />
+E. Change Number of methods required to reset to 2.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure and deploy self-service password reset (SSPR)</span></div><p>Contoso enables SSPR for a group named SSPR-Users by selecting Selected in the Password reset properties. Number of methods required to reset is set to 1, and the available methods are Mobile phone, Email, and Security questions.</p>
+<p>Megan is a member of SSPR-Users and holds the Helpdesk Administrator role. She registered only security questions. She can't reset her password by using SSPR, while standard users who registered only security questions can.</p>
+<p>What is the cause?</p>
+<p>A. SSPR is disabled for administrator accounts by default.<br />
+B. Administrator accounts use a two-gate policy that requires two methods and doesn't allow security questions, and the policy can't be changed.<br />
+C. Megan must be added to SSPR-Users directly because nested groups aren't supported.<br />
+D. The tenant must migrate to the Authentication methods policy before security questions can be used.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Drag/order</span><span class="skill-tag">Implement and manage Windows Hello for Business</span></div><p>Contoso has Microsoft Entra hybrid joined Windows 11 devices and uses password hash synchronization. Contoso doesn't have an enterprise PKI. Users must sign in with Windows Hello for Business and get single sign-on to on-premises file shares. The solution must not require deploying certificates.</p>
+<p>Which three actions should you perform in sequence? (Two actions aren't used.)</p>
+<p>A. Deploy AD FS as a certificate registration authority and issue authentication certificates to users.<br />
+B. On the Microsoft Entra Connect server, install the AzureADHybridAuthenticationManagement module and run Set-AzureADKerberosServer to create the Microsoft Entra Kerberos server object in each domain.<br />
+C. Deploy a Group Policy or Intune policy that enables Use Windows Hello for Business and Use cloud trust for on-premises authentication.<br />
+D. Have each user sign in to the device while it has line of sight to a domain controller and complete Windows Hello for Business provisioning.<br />
+E. Enable the Use certificate for on-premises authentication policy setting.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Drag/order</span><span class="skill-tag">Disable accounts and revoke user sessions</span></div><p>A Contoso employee is terminated effective immediately and might try to access company data. The account is synchronized from on-premises AD DS by Microsoft Entra Connect Sync, and the user has a Microsoft Entra joined laptop. You must follow Microsoft guidance for hybrid environments.</p>
+<p>Which four actions should you perform in sequence? (Two actions aren't used.)</p>
+<p>A. Disable the account in AD DS by running Disable-ADAccount.<br />
+B. Reset the user's password twice in AD DS by running Set-ADAccountPassword.<br />
+C. Revoke the user's refresh tokens by running Revoke-MgUserSignInSession.<br />
+D. Disable the user's registered devices by running Update-MgDevice with -AccountEnabled:$false.<br />
+E. Delete the user from Microsoft Entra ID.<br />
+F. Require the user to re-register for multifactor authentication.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage Microsoft Entra password protection</span></div><p>Contoso has one AD DS domain with 10 domain controllers and Microsoft Entra ID P1 licenses. You install the Microsoft Entra Password Protection proxy service on two member servers and register the proxy and the forest. You install the DC agent on 4 of the 10 domain controllers and restart them.</p>
+<p>In the Microsoft Entra admin center, Enable password protection on Windows Server Active Directory is set to Yes and Mode is set to Audit. The custom banned password list contains Contoso and Seattle.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>A user who changes the password to C0ntos0Seattle! on a domain controller that runs the DC agent receives an error, and the password isn't changed.</li>
+<li>Password changes processed by the six domain controllers without the DC agent aren't validated against the banned password lists.</li>
+<li>The domain controllers that run the DC agent need outbound internet access to download the password policy.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Multiple choice</span><span class="skill-tag">Enable Microsoft Entra Kerberos authentication for hybrid identities</span></div><p>Contoso uses Azure Virtual Desktop with Microsoft Entra joined session hosts and stores FSLogix profile containers in Azure Files. Users are hybrid identities synchronized by Microsoft Entra Connect Sync. You enabled Microsoft Entra Kerberos on the storage account, granted admin consent to the storage account application, and configured the session hosts with CloudKerberosTicketRetrievalEnabled.</p>
+<p>Everything worked until a new Conditional Access policy that requires MFA for All resources was turned on. Now profile containers fail to mount, while other apps work.</p>
+<p>What should you do?</p>
+<p>A. Exclude the storage account application from the Conditional Access policy that requires MFA.<br />
+B. Enable on-premises AD DS authentication on the same storage account as a second identity source.<br />
+C. Add the kdc_enable_cloud_group_sids tag to the storage account application manifest.<br />
+D. Configure a host name to Kerberos realm mapping on the session hosts.</p></div>
+<h3 class="sub">Subdominio 2: Plan, implement, and manage Microsoft Entra Conditional Access</h3>
+<div class="q"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span><span class="skill-tag">Plan Conditional Access policies</span></div><p>Contoso's Microsoft Entra tenant was created in 2023 and has security defaults enabled. The company buys Microsoft Entra ID P1 licenses for all users. The new requirements are:</p>
+<ul>
+<li>Users must perform MFA only when they access the Payroll app from outside the office.</li>
+<li>A service account used by a multifunction printer must be excluded from MFA.</li>
+</ul>
+<p>You need to implement the requirements by using Conditional Access. What should you do first?</p>
+<p>A. Create the Conditional Access policies and turn them on. Security defaults are disabled automatically.<br />
+B. Disable security defaults.<br />
+C. Enable per-user MFA for all users.<br />
+D. Add the office public IP range to trusted IPs in the MFA service settings.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Multiple choice</span><span class="skill-tag">Plan Conditional Access policies</span></div><p>Contoso has a Conditional Access policy named CA01 that is turned on:</p>
+<ul>
+<li>Users: include the Finance group</li>
+<li>Target resources: Payroll</li>
+<li>Grant: Require multifactor authentication</li>
+</ul>
+<p>Users outside Finance can open Payroll without any prompt. Only Finance users must be able to access Payroll. You must use only Conditional Access, and emergency access accounts must not be blocked.</p>
+<p>What should you do?</p>
+<p>A. Change CA01 to include All users.<br />
+B. Create CA02: include All users, exclude Finance and the emergency access accounts, target Payroll, and select Block access. Turn CA02 on.<br />
+C. In CA01, change the grant setting to Require one of the selected controls.<br />
+D. Create CA02 in Report-only: include All users, target Payroll, and select Block access.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement Conditional Access policy assignments</span></div><p>Contoso collaborates with two partners, Fabrikam and Tailspin, by using B2B collaboration. Guests from Fabrikam must perform MFA when they access Contoso's SharePoint Online. Guests from Tailspin must not be affected by this policy.</p>
+<p>What should you configure in the Users assignment of the policy?</p>
+<p>A. Include &gt; Select users and groups &gt; Guest or external users &gt; B2B collaboration guest users, and then specify Fabrikam's Microsoft Entra tenant.<br />
+B. Include &gt; Directory roles &gt; Guest Inviter.<br />
+C. Include a dynamic group with the membership rule (user.userType -eq "Guest").<br />
+D. Include All users, and exclude Guest or external users with all external user types selected.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Select two</span><span class="skill-tag">Implement Conditional Access policy controls</span></div><p>Contoso has a Conditional Access policy that targets administrator roles with the grant control Require authentication strength set to the built-in Phishing-resistant MFA strength. Administrators currently sign in with the following methods:</p>
+<ul>
+<li>FIDO2 security key</li>
+<li>Certificate-based authentication with certificates mapped to multifactor in the authentication binding policy</li>
+<li>Microsoft Authenticator phone sign-in</li>
+<li>Temporary Access Pass</li>
+<li>Password plus Microsoft Authenticator push notification</li>
+</ul>
+<p>Which two methods satisfy the policy? Each correct answer presents a complete solution.</p>
+<p>A. FIDO2 security key<br />
+B. Certificate-based authentication (multifactor)<br />
+C. Microsoft Authenticator phone sign-in<br />
+D. Temporary Access Pass<br />
+E. Password plus Microsoft Authenticator push notification</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement device-enforced restrictions</span></div><p>Contoso requirements for SharePoint Online and Exchange Online:</p>
+<ul>
+<li>Users on unmanaged devices can use only the browser, with a limited experience (for example, no download or sync).</li>
+<li>Users on compliant or Microsoft Entra hybrid joined devices get full access.</li>
+<li>Administrative effort must be minimized, and no additional products can be deployed.</li>
+</ul>
+<p>What should you configure in Conditional Access?</p>
+<p>A. A grant control that requires the device to be marked as compliant for SharePoint Online and Exchange Online.<br />
+B. The session control Use app enforced restrictions for SharePoint Online and Exchange Online, with limited access configured in those services.<br />
+C. The session control Use Conditional Access App Control with a Microsoft Defender for Cloud Apps session policy that blocks downloads.<br />
+D. A filter for devices condition that excludes devices with trustType equal to AzureAD, with the grant control Block access.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement device-enforced restrictions</span></div><p>Administrators must access the Windows Azure Service Management API only from privileged access workstations (PAWs). PAWs are Intune managed, compliant, and have device.extensionAttribute1 set to "PAW". Access from any other device, including devices that aren't registered in Microsoft Entra ID, must be blocked.</p>
+<p>Which Conditional Access policy should you create for the administrator roles?</p>
+<p>A. Target resource: Windows Azure Service Management API. Filter for devices: include filtered devices, rule device.extensionAttribute1 -eq "PAW". Grant: Block access.<br />
+B. Target resource: Windows Azure Service Management API. Filter for devices: exclude filtered devices, rule device.extensionAttribute1 -eq "PAW". Grant: Block access.<br />
+C. Target resource: Windows Azure Service Management API. Filter for devices: include filtered devices, rule device.extensionAttribute1 -eq "PAW". Grant: Require multifactor authentication.<br />
+D. Target resource: Microsoft Admin Portals. Device platforms: include Windows. Grant: Require Microsoft Entra hybrid joined device.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Yes/No series</span><span class="skill-tag">Test and troubleshoot Conditional Access policies</span></div><p>A user reports that she's prompted for MFA in Microsoft Teams, and you don't know which policy causes it. You open the Conditional Access What If tool.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>What If evaluates policies whose state is Off, so you can see what would happen if you turned them on.</li>
+<li>If you simulate access to Microsoft Teams, the result also lists the policies that apply to Exchange Online and SharePoint Online because Teams depends on them.</li>
+<li>For each policy that doesn't apply, What If shows the first condition that wasn't satisfied.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Multiple choice</span><span class="skill-tag">Test and troubleshoot Conditional Access policies</span></div><p>You plan a Conditional Access policy that requires MFA for the user action Register or join devices. Before you enforce it, you need to verify whether the policy would apply to a specific test user who is also covered by several other policies. No user must be prompted during the verification.</p>
+<p>What should you use?</p>
+<p>A. Set the policy to Report-only and review the Report-only tab in the sign-in logs.<br />
+B. The What If tool, with the Register or join devices user action selected.<br />
+C. The Conditional Access insights and reporting workbook.<br />
+D. The Policy impact view for the new policy.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Select two</span><span class="skill-tag">Implement session management</span></div><p>On devices that aren't compliant, users must not stay signed in after they close the browser. Users on compliant devices must not be affected. You create a Conditional Access policy that uses a filter for devices to exclude compliant devices.</p>
+<p>Which two settings must the policy include? Each correct answer presents part of the solution.</p>
+<p>A. Target resources: All resources.<br />
+B. Session: Persistent browser session set to Never persistent.<br />
+C. Target resources: Office 365 only.<br />
+D. Session: Sign-in frequency set to Every time.<br />
+E. In Company branding, set Show option to remain signed in to No.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement continuous access evaluation</span></div><p>Contoso has a Conditional Access policy that allows Exchange Online and SharePoint Online only from a named location named HQ-IPs. HQ-IPs contains all IPv4 and IPv6 egress ranges seen by Microsoft Entra ID and by the resources. Continuous access evaluation (CAE) isn't disabled. Users run the latest Outlook desktop client.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>If an administrator disables a user account, the user loses access to Exchange Online in Outlook in near real time instead of waiting for the access token to expire.</li>
+<li>If you replace HQ-IPs with a country or region location for the United States, CAE still enforces the location instantly when a user travels to another country.</li>
+<li>If you add a user to a group that's excluded from a Conditional Access policy, Exchange Online applies the change immediately.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Drag/order</span><span class="skill-tag">Configure authentication context</span></div><p>The SharePoint Online site named Legal-Confidential must require a compliant device and phishing-resistant MFA. Other SharePoint sites must not be affected. Contoso already has the Microsoft Purview licensing required, and sensitivity labels for groups and sites are enabled.</p>
+<p>Which four actions should you perform in sequence? (Two actions aren't used.)</p>
+<p>A. In Conditional Access &gt; Authentication context, create an authentication context named Sensitive sites and select Publish to apps.<br />
+B. Create a Conditional Access policy whose target resource is the Sensitive sites authentication context, with grant controls Require device to be marked as compliant and Require authentication strength (Phishing-resistant MFA). Turn the policy on.<br />
+C. In Microsoft Purview, edit a sensitivity label for groups and sites, select Use Microsoft Entra Conditional Access to protect labeled SharePoint sites, and choose the Sensitive sites authentication context.<br />
+D. Apply the sensitivity label to the Legal-Confidential site.<br />
+E. Create a Conditional Access policy that targets https://contoso.sharepoint.com/sites/Legal-Confidential as a cloud app.<br />
+F. Create a named location for the Legal department office.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Multiple choice</span><span class="skill-tag">Configure authentication context</span></div><p>Users who are eligible in Privileged Identity Management (PIM) for the Exchange Administrator role must use phishing-resistant MFA from a compliant device at the moment they activate the role. The requirement must apply at activation, not at every sign-in.</p>
+<p>What should you do?</p>
+<p>A. In the PIM role settings for Exchange Administrator, enable On activation, require multifactor authentication.<br />
+B. Create an authentication context and a Conditional Access policy that targets it, scoped to all users or the eligible users, with grant controls for a compliant device and the Phishing-resistant MFA strength. Then, in the PIM role settings, select On activation, require Microsoft Entra Conditional Access authentication context and choose that context.<br />
+C. Create a Conditional Access policy that includes the Exchange Administrator directory role and targets the authentication context used by PIM.<br />
+D. Add a protected action to the permission that assigns directory roles.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement protected actions</span></div><p>Contoso creates and publishes an authentication context named c5 Protected CA changes. It creates a Conditional Access policy that targets c5, requires the built-in Phishing-resistant MFA strength, excludes the emergency access accounts, and leaves the policy in Report-only while testing. A Security Administrator then adds protected actions for microsoft.directory/conditionalAccessPolicies/basic/update and microsoft.directory/conditionalAccessPolicies/delete by using c5.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>The Security Administrator role has enough permissions to add the protected actions.</li>
+<li>While the c5 policy is in Report-only, an administrator who completes phishing-resistant MFA can edit Conditional Access policies without issues.</li>
+<li>An administrator who uses Azure PowerShell can delete a Conditional Access policy after satisfying the step-up prompt.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Multiple choice</span><span class="skill-tag">Create a Conditional Access policy from a template</span></div><p>Carlos, a Conditional Access Administrator, creates a policy from the template Require phishing-resistant multifactor authentication for administrators. Contoso has two cloud-only emergency access accounts that hold the Global Administrator role and don't have phishing-resistant methods.</p>
+<p>What should Carlos do before he sets the policy to On?</p>
+<p>A. Nothing. Templates automatically exclude emergency access accounts.<br />
+B. Edit the policy and exclude the two emergency access accounts, because the template excludes only the user who created the policy.<br />
+C. Change the policy state from Off to Report-only, because templates create policies in the Off state.<br />
+D. Export the template JSON, add the exclusions, and create the policy again with Upload policy file, because template policies can't be edited.</p></div>
+<div class="case"><h4>Case study 1: Adatum Corporation (usar para Q27 y Q28)</h4>
+<p>Adatum Corporation has 4,000 users. Every user has a Microsoft 365 E3 license (which includes Microsoft Entra ID P1) and the Microsoft 365 E5 Compliance add-on. Adatum doesn't have Microsoft Entra ID P2. Security defaults are disabled, and Adatum has 30 Conditional Access policies. There are two cloud-only emergency access accounts.</p>
+<p>Requirements:</p>
+<ul>
+<li>R1: Any creation, change, or deletion of a Conditional Access policy or a named location must require the administrator to use a FIDO2 security key at the moment of the change, regardless of which role grants the permission.</li>
+<li>R2: Access to the SharePoint site named Board must require a compliant device.</li>
+<li>R3: When Microsoft detects that a user's credentials were leaked, the user must be forced automatically to change the password at the next sign-in.</li>
+<li>R4: Users on unmanaged devices must get limited, browser-only access to Exchange Online.</li>
+<li>Administrative effort and cost must be minimized.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Case study (Multiple choice)</span><span class="skill-tag">Implement protected actions</span></div><p>Refer to Case study 1. Which solution meets R1?</p>
+<p>A. Create an authentication context and a Conditional Access policy (turned on) that targets it with a custom authentication strength that allows only passkeys (FIDO2) restricted to the approved security key AAGUIDs. Then, in Roles &amp; admins &gt; Protected actions, assign the context to the create, update, and delete permissions of Conditional Access policies and named locations.<br />
+B. Create a Conditional Access policy that includes the Conditional Access Administrator directory role, targets Microsoft Admin Portals, and requires the Phishing-resistant MFA strength.<br />
+C. Configure PIM for the Conditional Access Administrator role with On activation, require multifactor authentication.<br />
+D. Create a custom role without Conditional Access permissions and assign it to all administrators.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Case study (Multiple choice)</span><span class="skill-tag">Plan Conditional Access policies</span></div><p>Refer to Case study 1. Which requirement can't be met with Adatum's current licenses?</p>
+<p>A. R1<br />
+B. R2<br />
+C. R3<br />
+D. R4</p></div>
+<h3 class="sub">Subdominio 3: Manage risk by using Microsoft Entra ID Protection</h3>
+<div class="q"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage user risk by using Microsoft Entra ID Protection or Conditional Access policies</span></div><p>Contoso has Microsoft Entra ID P2. Some users sign in with passwords, and others are passwordless (Windows Hello for Business and passkeys). The legacy user risk policy in ID Protection is enabled with Require password change.</p>
+<p>You need a user risk solution that lets both groups self-remediate when user risk is High and that follows Microsoft recommendations before the legacy risk policies are retired.</p>
+<p>What should you do?</p>
+<p>A. Keep the legacy ID Protection user risk policy and add Require multifactor authentication to it.<br />
+B. Create a Conditional Access policy for All users (excluding emergency access accounts) and All resources, with the condition User risk set to High and the grant control Require risk remediation. Then disable the legacy user risk policy.<br />
+C. Create a Conditional Access policy with the condition User risk set to High and the grant control Require multifactor authentication.<br />
+D. Create a Conditional Access policy with the conditions User risk High and Sign-in risk High and the grant control Require password change.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage sign-in risk by using Microsoft Entra ID Protection or Conditional Access policies</span></div><p>Contoso creates the following Conditional Access policy:</p>
+<ul>
+<li>Users: All users, excluding emergency access accounts</li>
+<li>Target resources: All resources</li>
+<li>Conditions: Sign-in risk set to Medium and High</li>
+<li>Grant: Require authentication strength (built-in Multifactor authentication)</li>
+<li>Session: Sign-in frequency set to Every time</li>
+</ul>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>A user who hasn't registered any MFA method and triggers a medium-risk sign-in is blocked and needs an administrator to intervene.</li>
+<li>When a user completes MFA on a risky sign-in, the risk state of that sign-in changes to Remediated.</li>
+<li>To reduce the number of policies, you should add the User risk High condition to this same policy.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage user risk by using Microsoft Entra ID Protection or Conditional Access policies</span></div><p>Contoso is a hybrid organization that uses password hash synchronization. Many users work on Microsoft Entra hybrid joined devices and change their passwords on-premises by pressing Ctrl+Alt+Del. When these users are flagged with user risk, the risk stays At risk after they change their password on-premises.</p>
+<p>You need on-premises password changes to remediate user risk. What should you do?</p>
+<p>A. Enable password writeback in Microsoft Entra Connect.<br />
+B. In ID Protection settings, select Allow on-premises password change to reset user risk.<br />
+C. Enable SSPR for all users.<br />
+D. Dismiss the user risk for all risky users every week.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Multiple choice</span><span class="skill-tag">Implement and manage multifactor authentication registration by using authentication methods and registration campaigns</span></div><p>Contoso users perform MFA with text messages (SMS). You create a registration campaign with the following settings: State Enabled, Authentication method Microsoft Authenticator, include All users, Days allowed to snooze 3, and Limited number of snoozes Enabled. After a week, no user has been prompted.</p>
+<p>In the Microsoft Authenticator method policy, All users are targeted and Authentication mode is set to Passwordless.</p>
+<p>What should you change?</p>
+<p>A. Set Days allowed to snooze to 0.<br />
+B. Set the Authenticator Authentication mode to Any or Push.<br />
+C. Change the campaign state to Microsoft managed.<br />
+D. Enable the multifactor authentication registration policy in ID Protection.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Yes/No series</span><span class="skill-tag">Implement and manage multifactor authentication registration by using authentication methods and registration campaigns</span></div><p>Contoso has Microsoft Entra ID P2. It enables the ID Protection multifactor authentication registration policy for all users and also runs a registration campaign in the Enabled state with Limited number of snoozes set to Enabled.</p>
+<p>For each of the following statements, select Yes or No.</p>
+<ol>
+<li>With the ID Protection MFA registration policy, users have 14 days to register, and after that they must register before they can complete sign-in.</li>
+<li>A single registration campaign can nudge users to set up Microsoft Authenticator and a passkey at the same time.</li>
+<li>With Limited number of snoozes enabled, a user can skip the campaign prompt three times before registration becomes required.</li>
+</ol></div>
+<div class="q"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Select two</span><span class="skill-tag">Monitor, investigate and remediate risky users and risky sign-ins</span></div><p>A security analyst must be able to dismiss user risk and generate temporary passwords for users directly from ID Protection &gt; Risky users. The solution must follow the principle of least privilege.</p>
+<p>Which two roles should you assign? Each correct answer presents part of the solution.</p>
+<p>A. Security Reader<br />
+B. Security Operator<br />
+C. User Administrator<br />
+D. Security Administrator<br />
+E. Global Reader</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Multiple choice</span><span class="skill-tag">Monitor, investigate and remediate risky users and risky sign-ins</span></div><p>ID Protection flags an Atypical travel detection for Diego: one sign-in from Mexico City and, 20 minutes later, one from Frankfurt. Your investigation shows that the Frankfurt IP address is the egress IP of Contoso's sanctioned corporate VPN. Several users get similar detections every week.</p>
+<p>What should you do?</p>
+<p>A. Confirm the sign-in as compromised and reset Diego's password.<br />
+B. Confirm the sign-in as safe, and add the VPN egress IP range to named locations in Microsoft Entra ID and in Microsoft Defender for Cloud Apps.<br />
+C. Dismiss Diego's user risk and exclude Diego from the sign-in risk policy.<br />
+D. Turn off the Atypical travel detection in ID Protection settings.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Multiple choice</span><span class="skill-tag">Monitor, investigate and remediate risky users and risky sign-ins</span></div><p>Contoso has Microsoft Entra ID P1 (no P2) and uses password hash synchronization. The Risky users report shows Adele with a Leaked credentials detection.</p>
+<p>Which action remediates the user risk for this detection?</p>
+<p>A. Dismiss Adele's user risk.<br />
+B. Reset Adele's password in Microsoft Entra ID, for example by generating a temporary password.<br />
+C. Require MFA at Adele's next sign-in.<br />
+D. Revoke Adele's sessions.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice</span><span class="skill-tag">Monitor, investigate, and remediate risky workload identities</span></div><p>Contoso has Microsoft Entra ID P2 for all users. A single-tenant app registration named InvoiceSync authenticates with a client secret. You need to block sign-ins from the InvoiceSync service principal automatically whenever ID Protection flags it as high risk.</p>
+<p>What do you need?</p>
+<p>A. Nothing more than P2. Create a Conditional Access policy that targets the service principal with the service principal risk condition and Block access.<br />
+B. Workload Identities Premium licenses, and then a Conditional Access policy that targets the InvoiceSync service principal with the service principal risk condition set to High and the grant control Block access.<br />
+C. A Conditional Access policy that targets the service principal and requires MFA when risk is High.<br />
+D. A user risk-based Conditional Access policy that includes the owner of the app registration.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Select two</span><span class="skill-tag">Monitor, investigate, and remediate risky workload identities</span></div><p>The InvoiceSync service principal is confirmed compromised after its client secret was found in a public GitHub repository.</p>
+<p>Which two actions should you perform to remediate the workload identity, according to Microsoft guidance? Each correct answer presents part of the solution.</p>
+<p>A. Add a new credential, preferably an X.509 certificate, and remove all existing credentials from the application and the service principal.<br />
+B. Rotate the Azure Key Vault secrets that the service principal can access.<br />
+C. Require MFA for the service principal.<br />
+D. Reset the password of the application owner.<br />
+E. Dismiss the risk in the Risky workload identities report.</p></div>
+<h3 class="sub">Subdominio 4: Implement Global Secure Access</h3>
+<div class="q"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Select two</span><span class="skill-tag">Deploy Global Secure Access clients</span></div><p>Contoso has Microsoft Entra Internet Access licenses and deploys the Global Secure Access client for Windows by using Intune. The Internet Access traffic forwarding profile is enabled for all users.</p>
+<ul>
+<li>Device1: Windows 11, Microsoft Entra joined</li>
+<li>Device2: Windows 10 Enterprise LTSC 2021 (64-bit), Microsoft Entra hybrid joined</li>
+<li>Device3: Personal Windows 11 laptop, Microsoft Entra registered</li>
+<li>Device4: Azure Virtual Desktop multi-session host</li>
+<li>Device5: Windows 365 Cloud PC</li>
+</ul>
+<p>On which two devices will Internet Access traffic NOT be tunneled by the client? Each correct answer presents part of the solution.</p>
+<p>A. Device1<br />
+B. Device2<br />
+C. Device3<br />
+D. Device4<br />
+E. Device5</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Drag/order</span><span class="skill-tag">Deploy and manage Private Access</span></div><p>Contoso wants to replace its VPN. Remote users must reach on-premises file servers (TCP 445) and Remote Desktop hosts (TCP 3389) through Microsoft Entra Private Access by using Quick Access. The Global Secure Access client is already deployed.</p>
+<p>Which four actions should you perform in sequence? (Two actions aren't used.)</p>
+<p>A. Install a Microsoft Entra private network connector on an on-premises server and add it to a connector group.<br />
+B. In Global Secure Access &gt; Applications &gt; Quick Access, enter a name, select the connector group, and add application segments with the FQDNs or IP ranges and ports 445 and 3389.<br />
+C. Assign users or groups directly to the Quick Access enterprise application.<br />
+D. Enable the Private Access traffic forwarding profile.<br />
+E. Enable the Microsoft traffic forwarding profile.<br />
+F. Publish the file servers as Application Proxy apps with an external URL.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q41</span><span class="fmt">Multiple choice</span><span class="skill-tag">Deploy and manage Private Access</span></div><p>Contoso uses Quick Access for its file servers, with a Conditional Access policy that requires MFA. A new ERP server at 10.20.5.20 (TCP 443) must be reachable only by the Finance group, and access must require a compliant device and MFA. The existing Quick Access policy for file servers must not change.</p>
+<p>What should you do?</p>
+<p>A. Add 10.20.5.20:443 to Quick Access and add Require device to be marked as compliant to the Conditional Access policy linked to Quick Access.<br />
+B. Create a Global Secure Access application (per-app access) for 10.20.5.20:443, assign the Finance group, and link a Conditional Access policy that requires a compliant device and MFA to that application.<br />
+C. Create a named location for 10.20.5.20 and a Conditional Access policy that blocks all other locations.<br />
+D. Add the Finance group as a nested member of the group that's assigned to Quick Access.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q42</span><span class="fmt">Select two</span><span class="skill-tag">Deploy and manage Internet Access</span></div><p>Contoso must block the Gambling web category for members of the Sales group only. The Internet Access traffic forwarding profile is enabled and the Global Secure Access client is deployed. You already created a web content filtering policy with a Block rule for the Gambling category.</p>
+<p>Which two additional configurations are required? Each correct answer presents part of the solution.</p>
+<p>A. A security profile that links the web content filtering policy.<br />
+B. A Conditional Access policy for the Sales group that targets All internet resources with Global Secure Access and uses the session control Use Global Secure Access security profile.<br />
+C. Linking the web content filtering policy to the baseline security profile.<br />
+D. Enabling the Microsoft traffic forwarding profile.<br />
+E. A named location for the Sales office.</p></div>
+<div class="case"><h4>Case study 2: Fabrikam Logistics (usar para Q43 y Q44)</h4>
+<p>Fabrikam Logistics has 3,000 employees. All employees have Microsoft Entra ID P1, and 600 remote employees also have Microsoft Entra Suite. Windows devices are Microsoft Entra joined and run the Global Secure Access client. The Seattle warehouse connects to Global Secure Access through a remote network (branch router). The Microsoft traffic forwarding profile is enabled.</p>
+<p>Requirements:</p>
+<ul>
+<li>R1: Stolen tokens replayed from outside Fabrikam's Global Secure Access connections must be rejected for Microsoft 365 and other Microsoft Entra integrated apps. Administrators must not maintain lists of egress IP addresses.</li>
+<li>R2: Users on corporate devices must not be able to sign in to any other Microsoft Entra tenant, except the partner tenant contoso.com.</li>
+<li>R3: Sign-in logs must show each user's real public IP address instead of the proxy egress IP address.</li>
+<li>Administrative effort must be minimized.</li>
+</ul></div>
+<div class="q"><div class="q-h"><span class="qid">Q43</span><span class="fmt">Case study (Multiple choice)</span><span class="skill-tag">Deploy and manage Internet Access for Microsoft 365</span></div><p>Refer to Case study 2. Which solution meets R1?</p>
+<p>A. Enable Conditional Access signaling in Global Secure Access (Session management &gt; Adaptive access). Then create a Conditional Access policy for All resources with the Network condition set to include Any location and exclude All Compliant Network locations, and the grant control Block access.<br />
+B. Create a named location that contains the Global Secure Access egress IP addresses, and block all other locations.<br />
+C. Enable source IP restoration and create a location-based Conditional Access policy with the office IP ranges.<br />
+D. Enable universal tenant restrictions.</p></div>
+<div class="q"><div class="q-h"><span class="qid">Q44</span><span class="fmt">Case study (Multiple choice)</span><span class="skill-tag">Deploy and manage Internet Access for Microsoft 365</span></div><p>Refer to Case study 2. Which solution meets R2?</p>
+<p>A. In cross-tenant access settings, configure the default tenant restrictions v2 policy to block external accounts and apps, add contoso.com in Organizational settings with tenant restrictions that allow it, and then turn on universal tenant restrictions in Global Secure Access (Settings &gt; Session management).<br />
+B. Configure the default outbound B2B collaboration settings to block all organizations, and allow only contoso.com.<br />
+C. Configure the default inbound B2B collaboration settings to block all organizations, and allow only contoso.com.<br />
+D. Enable source IP restoration and block sign-ins from IP addresses that aren't Fabrikam's.</p></div>
+<h2>5. Respuestas y explicaciones</h2>
+<p class="meta">Lee siempre el "por qué las otras no". El SC-300 se pierde en los distractores, no en la teoría.</p>
+<h3 class="sub">Subdominio 1: Plan, implement, and manage Microsoft Entra user authentication</h3>
+<div class="a"><div class="q-h"><span class="qid">Q1</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. El Authentication Administrator crea TAP solo para usuarios sin rol de admin (members). Para alguien con rol de admin, como Helpdesk Administrator, hace falta <strong>Privileged Authentication Administrator</strong>. Y ninguno de los dos puede crearse una TAP a sí mismo.</li>
+<li>2 Yes. Learn lo dice así: puedes crear una TAP para cualquier usuario, pero <strong>solo los usuarios dentro del alcance de la política pueden iniciar sesión con ella</strong>.</li>
+<li>3 Yes. Con una TAP de un solo uso, registrar un método passwordless tiene que terminar <strong>en 10 minutos</strong>. Ese límite no aplica a una TAP de varios usos.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que Authentication Administrator sirve para todos. La escalera es Authentication Admin (members) y Privileged Authentication Admin (members y admins).</li>
+<li>Trampa de la 2: confundir crear la TAP con poder usarla. El alcance de la política decide el uso.</li>
+<li>Trampa de la 3: creer que el lifetime (1 hora) es el límite. Con TAP one-time, el registro se cierra a los 10 minutos.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass#create-a-temporary-access-pass y https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass#limitations</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q2</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Si la CA no tiene CRL configurado, <strong>Microsoft Entra ID no revisa revocación</strong> y la autenticación no se bloquea. Por eso el CRL por HTTP es prerrequisito.</li>
+<li>2 Yes. En el ejemplo de Learn, cuando un certificado cumple una regla de issuer (single-factor) y una de policy OID (multifactor), <strong>la regla de policy OID tiene precedencia</strong> y el certificado cuenta como MFA.</li>
+<li>3 No. PrincipalName es un binding de <strong>low affinity</strong>. Con High a nivel tenant, Entra quita los bindings low de la lista y solo evalúa SKI, SHA1PublicKey o IssuerAndSerialNumber contra certificateUserIds. Learn avisa que puedes dejar fuera a todo el tenant.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que "revocado en la CA" bloquea solo. Sin CRL URL en Entra, no hay chequeo.</li>
+<li>Trampa de la 2: creer que gana la regla más general (issuer). Gana la de policy OID.</li>
+<li>Trampa de la 3: confundir affinity (qué tan único es el mapeo) con protection level (single-factor o MFA). Son dos perillas distintas.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/how-to-certificate-based-authentication#prerequisites, https://learn.microsoft.com/entra/identity/authentication/how-to-certificate-based-authentication#test-custom-authentication-binding-rules y https://learn.microsoft.com/entra/identity/authentication/concept-certificate-based-authentication-technical-deep-dive#username-binding-policy</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q3</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Los <strong>passkey profiles</strong> existen justo para esto: reglas distintas por grupo (tipo de passkey, attestation y AAGUIDs). Un perfil estricto para admins y otro flexible para HR. Recuerda: hasta <strong>3 perfiles</strong> incluyendo el Default, y después de hacer opt-in ya no puedes regresar.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. <strong>Los synced passkeys no soportan attestation</strong>. Con attestation obligatoria y una allow list de dos llaves, HR no puede registrar iCloud Keychain ni Google Password Manager.</li>
+<li>C. Authenticator en modo Passwordless es phone sign-in, no un synced passkey. No cumple el requisito de HR.</li>
+<li>D. Una authentication strength controla el sign-in, no el registro, y la built-in acepta cualquier llave FIDO2. No verifica marca y modelo al registrar.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#passkey-profiles y https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#synced-passkeys-fido2</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q4</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Un passkey en Authenticator es una credencial <strong>FIDO2 device-bound</strong>. Por eso se controla en la política <strong>Passkey (FIDO2)</strong>, con key restrictions por AAGUID (Authenticator for iOS y for Android). Learn trae este mismo patrón para un rollout piloto: un perfil que bloquea los AAGUIDs de Authenticator para todos y otro que los permite para los grupos piloto. Si un usuario está en varios perfiles, basta con que el passkey cumpla uno.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. El modo Passwordless de la política de Authenticator es <strong>passwordless phone sign-in</strong> (notificación con número), no un passkey. Es la confusión clásica.</li>
+<li>C. La campaign solo empuja a registrar algo. No habilita passkeys en Authenticator ni impide que otros los registren.</li>
+<li>D. Una authentication strength no habilita ningún método. Y Passwordless MFA también acepta phone sign-in.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/how-to-enable-authenticator-passkey#configure-a-profile-for-passkeys-in-authenticator y https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2#passkey-profiles</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q5</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Desde el <strong>30 de enero de 2021</strong> los lifetimes de refresh token y session token ya no se configuran con token lifetime policies. Learn dice que para controlar cada cuánto se vuelve a iniciar sesión se usa <strong>Conditional Access sign-in frequency</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. MaxAgeMultiFactor es una propiedad retirada. Si existe en una política, <strong>se ignora</strong>.</li>
+<li>B. AccessTokenLifetime (de 10 minutos a 1 día) cambia access, ID y SAML tokens. Cuando el access token vence, el cliente usa el refresh token en silencio y el usuario no vuelve a escribir nada.</li>
+<li>D. Remember MFA es una configuración legacy en días, reduce prompts en vez de forzarlos y Learn pide apagarla antes de usar sign-in frequency.</li>
+</ul>
+<p>Dato extra para el examen: access token por default de 60 a 90 minutos, refresh token de 90 días (24 horas para SPA). Y ojo: el outline dice OAuth, pero el método de MFA se llama <strong>OATH tokens (TOTP)</strong>.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity-platform/configurable-token-lifetimes#token-lifetime-policies-for-refresh-tokens-and-session-tokens-retired y https://learn.microsoft.com/entra/identity/conditional-access/concept-session-lifetime#user-sign-in-frequency</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q6</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Report suspicious activity está integrado con ID Protection y <strong>pone al usuario en High User Risk</strong> (no pasa si el usuario hizo passwordless).</li>
+<li>2 No. Las políticas basadas en riesgo <strong>piden Entra ID P2</strong>. Con P1 usas las risk detections para actuar a mano o automatizas con Microsoft Graph.</li>
+<li>3 No. En MFA de nube, trusted IPs <strong>solo acepta rangos públicos</strong>. Rangos privados solo con MFA Server. Learn recomienda named locations de CA en lugar de trusted IPs.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: buscar "Fraud alert". Ya no existe: Report suspicious activity lo reemplazó el 1 de marzo de 2025.</li>
+<li>Trampa de la 2: asumir que ver el riesgo es lo mismo que automatizar con él. Automatizar es P2.</li>
+<li>Trampa de la 3: pensar en la IP que ve el usuario en su tarjeta de red. Entra ve la IP pública de salida.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/howto-mfa-mfasettings#report-suspicious-activity y https://learn.microsoft.com/entra/identity/authentication/howto-mfa-mfasettings#trusted-ips</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q7</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Si el password se administra on-prem (PHS, PTA o federación) y <strong>no hay writeback</strong>, SSPR le dice al usuario que contacte a su admin. El writeback se prende <strong>en los dos lados</strong>: en el wizard de Connect (Optional features) y en Password reset &gt; On-premises integration (rol mínimo Hybrid Identity Administrator). Además, la cuenta de Connect necesita permisos en AD: Reset password, Change password, escribir lockoutTime y pwdLastSet, y Unexpire Password.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. Learn dice que SSPR con writeback <strong>no está garantizado</strong> cuando staged rollout está activo para un grupo. Empeora el escenario.</li>
+<li>D. Seamless SSO es para iniciar sesión sin escribir password en la red corporativa. No tiene nada que ver con reset.</li>
+<li>E. El número de métodos no es la causa del mensaje.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/concept-sspr-howitworks#how-does-the-password-reset-process-work, https://learn.microsoft.com/entra/identity/authentication/tutorial-enable-sspr-writeback#enable-password-writeback-in-microsoft-entra-connect y https://learn.microsoft.com/entra/identity/authentication/tutorial-enable-sspr-writeback#enable-password-writeback-for-sspr</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q8</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Las cuentas con rol de administrador (Helpdesk Administrator está en la lista) tienen SSPR habilitado por default con una <strong>política two-gate</strong>: dos métodos, <strong>sin security questions</strong>, y no se puede cambiar. Por eso Learn recomienda <strong>probar SSPR con un usuario sin rol de admin</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Al revés: SSPR para admins está habilitado por default. Se puede apagar con AllowedToUseSspr en false.</li>
+<li>C. SSPR sí soporta nested groups, y Megan ya es miembro directo. Ojo con el dato real: en el portal solo puedes elegir <strong>un grupo</strong> en Selected.</li>
+<li>D. Al revés: security questions hoy <strong>solo se habilitan en la política legacy</strong> de SSPR.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/concept-sspr-policy#administrator-reset-policy-differences y https://learn.microsoft.com/entra/identity/authentication/tutorial-enable-sspr#enable-self-service-password-reset</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q9</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> B, C, D (en ese orden)</p>
+<p><strong>Por qué es correcta:</strong> <strong>Cloud Kerberos trust</strong> es el modelo recomendado y <strong>el único híbrido que no pide PKI</strong>. Los pasos de Learn son: desplegar Microsoft Entra Kerberos (crea el objeto AzureADKerberos, que se ve como un RODC), configurar las dos políticas y enrolar. En hybrid joined, el primer sign-in con la credencial nueva necesita <strong>línea de vista a un DC</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Eso es certificate trust: pide PKI y AD FS como registration authority, y no soporta PHS ni PTA. Rompe el requisito.</li>
+<li>E. Si "Use certificate for on-premises authentication" está activo, <strong>certificate trust le gana</strong> a cloud Kerberos trust. Debe quedar sin configurar.</li>
+<li>Orden: sin el objeto Kerberos, el chequeo de prerrequisitos de provisioning en hybrid joined falla (no hay partial TGT).</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust#deploy-microsoft-entra-kerberos, https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/deploy/hybrid-cloud-kerberos-trust#configure-windows-hello-for-business-policy-settings y https://learn.microsoft.com/windows/security/identity-protection/hello-for-business/deploy/#pki-requirements</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q10</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D (en ese orden)</p>
+<p><strong>Por qué es correcta:</strong> Es el flujo de Learn para híbrido: primero on-prem (deshabilitar y <strong>resetear el password dos veces</strong> para mitigar pass-the-hash), después Entra (revocar refresh tokens) y al final deshabilitar los devices del usuario. Como la cuenta es sincronizada, el estado disabled llega a Entra con la sync; por eso también revocas sesiones.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E. Borrar al usuario no es un paso del procedimiento. Además, en un usuario sincronizado el origen de verdad es AD.</li>
+<li>F. Pedir re-registro de MFA no corta los tokens ya emitidos.</li>
+<li>Dato clave: después de revocar, las apps con <strong>access token</strong> siguen funcionando hasta que el token expira (alrededor de 1 hora). Solo las <strong>apps con CAE</strong> cortan casi en tiempo real.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/users/users-revoke-access#revoke-access-for-a-user-in-the-hybrid-environment y https://learn.microsoft.com/entra/identity/users/users-revoke-access#when-access-is-revoked</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q11</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. En <strong>modo Audit</strong> los passwords malos solo generan eventos en el log, pero <strong>se aceptan</strong>. Solo Enforced rechaza.</li>
+<li>2 Yes. La política se aplica <strong>solo donde está instalado el DC agent</strong>. Learn dice que el deployment parcial no es seguro y solo sirve para pruebas.</li>
+<li>3 No. Principio de diseño: <strong>los DCs nunca hablan directo con internet</strong>. El DC agent pide la política al proxy, y el proxy la pide a Entra.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: olvidar el modo. En la vida real primero se corre en Audit y luego se pasa a Enforced.</li>
+<li>Trampa de la 2: creer que con un DC agent ya queda protegido todo el dominio. El cliente elige cualquier DC.</li>
+<li>Trampa de la 3: pensar que el DC necesita salida a internet. Solo el proxy la necesita.</li>
+</ul>
+<p>Datos rápidos: custom list de hasta <strong>1000 términos</strong> de 4 a 16 caracteres; el DC agent revisa la política cada hora; si no hay política local, el password se acepta y se registra un evento.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-operations#modes-of-operation, https://learn.microsoft.com/entra/identity/authentication/concept-password-ban-bad-on-premises#design-principles y https://learn.microsoft.com/entra/identity/authentication/concept-password-ban-bad-on-premises#incremental-deployment</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q12</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> Learn lo marca como limitación: <strong>Microsoft Entra Kerberos para Azure Files no soporta MFA</strong>. Las políticas de CA que exigen MFA tienen que <strong>excluir la app del storage account</strong>, o la autenticación falla.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Un storage account acepta <strong>un solo identity source</strong> a la vez (Entra Kerberos, AD DS o Entra Domain Services).</li>
+<li>C. Ese tag es para identidades cloud-only y el límite de 1010 group SIDs. Aquí los usuarios son híbridos y el problema empezó con la política de MFA.</li>
+<li>D. El realm mapping es para convivir con storage accounts que usan AD DS. No arregla un bloqueo de CA.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/kerberos#mfa-incompatibility-for-azure-files-authentication y https://learn.microsoft.com/azure/storage/files/storage-files-identity-auth-hybrid-identities-enable#prerequisites</p></div>
+<h3 class="sub">Subdominio 2: Plan, implement, and manage Microsoft Entra Conditional Access</h3>
+<div class="a"><div class="q-h"><span class="qid">Q13</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Security defaults y CA <strong>no se combinan</strong>. Learn dice que las organizaciones que implementan CA para reemplazar security defaults <strong>deben deshabilitarlos</strong>. El rol mínimo para tocar security defaults es <strong>Conditional Access Administrator</strong>. Al deshabilitarlos, Microsoft ofrece Microsoft-managed policies para no perder la protección base.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. No hay apagado automático. Es un paso explícito en Properties &gt; Manage security defaults.</li>
+<li>C. Per-user MFA es legacy y no permite condiciones por app ni por ubicación.</li>
+<li>D. Trusted IPs es de la configuración legacy de MFA, no de CA, y no resuelve la exclusión de la cuenta de servicio.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/fundamentals/security-defaults#disabling-security-defaults y https://learn.microsoft.com/entra/fundamentals/security-defaults#move-from-security-defaults-to-conditional-access</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q14</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Regla de oro de Learn: <strong>si ninguna política dispara un control, el access token se emite por default</strong>. CA01 solo pone MFA a Finance; no bloquea a nadie más. Para "solo Finance entra" hace falta una <strong>segunda política de block</strong> que incluya a todos y excluya a Finance (y a break-glass).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Todos entrarían con MFA. No es "solo Finance".</li>
+<li>C. AND u OR entre controles no cambia a quién aplica la política.</li>
+<li>D. Report-only no aplica controles. Además, al incluir All users sin excluir a Finance, si la pasas a On bloqueas a Finance.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#combining-policies</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q15</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> En Guest or external users puedes elegir <strong>el tipo de usuario externo</strong> (B2B collaboration guest, B2B collaboration member, B2B direct connect, local guest, service provider, other) y <strong>uno o varios tenants</strong> específicos. Así la política pega solo a Fabrikam.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Guest Inviter es un rol para invitar, no representa a los guests.</li>
+<li>C. El grupo dinámico incluye a los guests de Tailspin también.</li>
+<li>D. Deja fuera a todos los guests, incluido Fabrikam.</li>
+</ul>
+<p>Trampa extra de assignments: en Directory roles, CA <strong>solo soporta roles built-in</strong>. No aplica a roles con scope de administrative unit ni a custom roles.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-users-groups#include-users</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q16</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> La strength built-in <strong>Phishing-resistant MFA</strong> acepta FIDO2 security key, Windows Hello for Business o platform credential, y <strong>CBA multifactor</strong>. Son métodos que necesitan interacción entre el método y la superficie de sign-in.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. Authenticator phone sign-in cumple <strong>Passwordless MFA</strong>, pero no phishing-resistant.</li>
+<li>D. TAP (one-time o multi-use) solo cumple la <strong>strength MFA</strong>.</li>
+<li>E. Password más algo que tienes solo cumple la <strong>strength MFA</strong>.</li>
+</ul>
+<p>Reglas extra: las 3 strengths built-in no se editan; no puedes usar <strong>Require multifactor authentication</strong> y <strong>Require authentication strength</strong> en la misma política; y la strength no limita la autenticación inicial (el usuario puede escribir su password y luego se le pide el método fuerte).</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths#built-in-authentication-strengths y https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths#limitations</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q17</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Con <strong>app enforced restrictions</strong>, Entra le pasa a la app la información del device (compliant o domain-joined) y la app decide: <strong>experiencia limitada</strong> en device no administrado y completa en device administrado. Funciona con SharePoint y Exchange. Hasta existe un template: "Use application enforced restrictions for unmanaged devices".</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Require compliant <strong>bloquea el device no administrado</strong>. No da acceso limitado.</li>
+<li>C. Funciona, pero necesita Defender for Cloud Apps. El requisito prohíbe productos extra.</li>
+<li>D. Bloquea en lugar de limitar.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-session#application-enforced-restrictions y https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common#template-categories</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q18</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Es el escenario de Learn: <strong>excluir los devices que cumplen el filtro y bloquear todo lo demás</strong>. En un device no registrado todas las propiedades son null, así que la regla con operador positivo (Equals) no lo excluye y <strong>queda bloqueado</strong>. Los PAW sí se excluyen porque son Intune managed y compliant (requisito para leer extensionAttributes).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Bloquearía justo a los PAW.</li>
+<li>C. Con operador positivo el filtro <strong>no aplica</strong> a devices no registrados, y pedir MFA no restringe a PAW.</li>
+<li>D. Microsoft Admin Portals no es Azure Resource Manager, y hybrid joined no significa PAW.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-condition-filters-for-devices#common-scenarios y https://learn.microsoft.com/entra/identity/conditional-access/concept-condition-filters-for-devices#policy-behavior-with-filter-for-devices</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q19</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = No, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 No. What If <strong>solo incluye políticas On o en report-only</strong>.</li>
+<li>2 No. Learn lo dice directo: What If <strong>no prueba service dependencies</strong>. Si simulas Teams, no ves la política de Exchange Online.</li>
+<li>3 Yes. La lista de políticas que no aplican trae la razón: <strong>la primera condición que no se cumplió</strong>.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: usar What If para "probar" una política apagada. Primero pásala a report-only.</li>
+<li>Trampa de la 2: pensar que What If entiende las dependencias de Teams. No las entiende; para eso target al grupo Office 365.</li>
+<li>Dato extra: en el What If nuevo (basado en API), grupos de apps como Office 365 no hacen match; se da el App ID.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool#how-it-works y https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool#evaluation</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q20</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> <strong>Report-only no soporta políticas con User Actions</strong> (Register security information o Register or join devices). What If sí te deja elegir una user action como target y simular para un usuario sin molestar a nadie.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Report-only no está disponible para user actions.</li>
+<li>C. El workbook muestra resultados de políticas en report-only o activas. No tienes esos datos para esta política.</li>
+<li>D. Policy impact también se alimenta de sign-ins reales de políticas activas o en report-only.</li>
+</ul>
+<p>Detalle de configuración: si usas la user action Register or join devices, pon en No el device setting "Require Multifactor Authentication to register or join devices", o la política no se aplica bien.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only#overview, https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool#how-it-works y https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps#user-actions</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q21</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> <strong>Persistent browser session</strong> es el control que decide si la sesión sobrevive al cerrar el navegador. Learn dice que <strong>exige "All cloud apps"</strong> (hoy All resources), porque todas las pestañas comparten el mismo session token.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. Con Office 365 solamente, el control no funciona como se espera.</li>
+<li>D. Every time pide reautenticación cuando la sesión se evalúa, no controla la persistencia. Learn pide usarlo poco para no causar fatiga de MFA.</li>
+<li>E. Branding es para todo el tenant, no distingue devices. Y si existen los dos, la política de CA le gana al "Stay signed in?".</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-session-lifetime#policy-2-persistent-browser-session y https://learn.microsoft.com/entra/identity/conditional-access/concept-session-lifetime#persistence-of-browsing-sessions</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q22</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Deshabilitar o borrar la cuenta es un <strong>evento crítico</strong> de CAE. Exchange, SharePoint y Teams lo reciben casi en tiempo real (puede haber hasta 15 minutos de latencia).</li>
+<li>2 No. CAE <strong>solo entiende IP named locations</strong>. Con country o region, o con MFA trusted IPs, Entra emite un token de una hora sin chequeo instantáneo de IP.</li>
+<li>3 No. Cambios de <strong>grupo o de política pueden tardar hasta un día</strong> en los resource providers. Para aplicarlos ya, revoca las sesiones del usuario.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que el access token siempre vive su hora completa. Con CAE no.</li>
+<li>Trampa de la 2: asumir que cualquier location sirve. Para enforcement instantáneo: IP ranges, IPv4 e IPv6.</li>
+<li>Trampa de la 3: meter "cambio de grupo" en la lista de eventos críticos. La lista es: cuenta deshabilitada o borrada, password cambiado o reseteado, MFA habilitado, revoke de refresh tokens y high user risk.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#critical-event-evaluation, https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#supported-location-policies y https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation#group-membership-and-policy-update-effective-time</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q23</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D (en ese orden)</p>
+<p><strong>Por qué es correcta:</strong> Es el orden de la guía de SharePoint: <strong>crear el authentication context (con Publish to apps), crear la política que lo usa como target, ligar el context a la etiqueta y aplicar la etiqueta al sitio</strong>. La alternativa sin etiqueta es Set-SPOSite con -ConditionalAccessPolicy AuthenticationContext (pide Microsoft 365 E5 o SharePoint Advanced Management).</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E. CA no puede apuntar a la URL de un sitio. Para granularidad dentro de una app existe el authentication context.</li>
+<li>F. La ubicación no es parte del requisito.</li>
+<li>Orden: si no marcas <strong>Publish to apps</strong>, el context no aparece para Purview ni para las apps. Hasta 99 contexts (c1 a c99). Las apps que no soportan authentication context reciben acceso denegado.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/sharepoint/authentication-context-example#set-up-an-authentication-context y https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps#configure-authentication-contexts</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q24</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> PIM puede pedir un <strong>authentication context</strong> al activar. La política de CA que usa ese context define los requisitos (strength phishing-resistant y compliant device). Learn recomienda <strong>crear y encender la política antes</strong> de configurar el context en PIM.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Solo pide MFA, y puede no pedir nada si el usuario ya hizo MFA en la sesión. No cubre phishing-resistant ni device.</li>
+<li>C. Learn dice que <strong>no combines</strong> el authentication context con el directory role en la misma política: durante la activación el usuario <strong>todavía no tiene el rol</strong>, así que la política no aplica.</li>
+<li>D. Protected actions protege permisos como administrar CA, named locations o cross-tenant settings. No es el mecanismo para activar roles en PIM.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings#on-activation-require-microsoft-entra-conditional-access-authentication-context</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q25</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Para agregar o quitar protected actions se necesita <strong>Conditional Access Administrator o Security Administrator</strong>, más licencia P1.</li>
+<li>2 No. La política que usa el context <strong>tiene que estar On</strong>. Si está en Off o Report-only, Learn documenta el síntoma "Policy is never satisfied": el admin entra en un ciclo de reautenticación. Para salir existe https://aka.ms/MSALProtectedActions.</li>
+<li>3 No. <strong>Azure PowerShell no soporta step-up</strong> para protected actions y falla. Microsoft Graph PowerShell y Graph Explorer sí.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: creer que solo Global Admin o Privileged Role Admin lo configuran.</li>
+<li>Trampa de la 2: tratar report-only como "casi On". Para protected actions no sirve.</li>
+<li>Trampa de la 3: confundir Azure PowerShell (ARM) con Microsoft Graph PowerShell.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-add#step-2-add-protected-actions, https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-add#symptom---policy-is-never-satisfied y https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-overview#what-happens-with-protected-actions-and-applications</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q26</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Learn es explícito: las políticas creadas desde template <strong>solo excluyen al usuario que las crea</strong>. Las demás exclusiones (break-glass) se agregan editando la política después.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. No hay exclusión automática de break-glass.</li>
+<li>C. Los templates crean la política <strong>en Report-only por default</strong>, no en Off.</li>
+<li>D. Las políticas de template se editan como cualquier otra. Exportar e importar JSON existe, pero no es necesario.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common#template-categories y https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common#user-exclusions</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q27</span><span class="fmt">Case study (Multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> <strong>Protected actions</strong> aplica CA <strong>en el momento de la acción</strong> y <strong>sin importar el rol</strong> que da el permiso. La lista de permisos soportados incluye CA policies y named locations. La strength custom con AAGUIDs asegura que sea una llave FIDO2; la built-in Phishing-resistant también aceptaría WHfB o CBA.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Depende del rol (Security Admin o Global Admin también pueden editar CA) y se evalúa al sign-in, no al cambio.</li>
+<li>C. Solo pide MFA al activar, y no aplica a otros roles con el mismo permiso.</li>
+<li>D. Quitar permisos no es pedir una llave FIDO2 al hacer el cambio. Learn además dice que protected actions no se usa para bloquear por identidad.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/role-based-access-control/protected-actions-overview#what-permissions-can-be-used-with-protected-actions y https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strength-advanced-options#configure-advanced-options-for-passkeys-fido2</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q28</span><span class="fmt">Case study (Multiple choice)</span></div><p><strong>Respuesta:</strong> C</p>
+<p><strong>Por qué es correcta:</strong> Forzar el cambio de password automáticamente cuando hay riesgo es una <strong>política de user risk</strong>, y las políticas basadas en riesgo <strong>piden Microsoft Entra ID P2</strong>. La detección de leaked credentials sí llega con P1, pero automatizar la respuesta con CA no.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Protected actions pide P1. Adatum lo tiene.</li>
+<li>B. Authentication context con CA es P1, y la sensitivity label de sitios la cubre el add-on E5 Compliance.</li>
+<li>D. App enforced restrictions es un session control de CA (P1).</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies y https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access#prerequisites</p></div>
+<h3 class="sub">Subdominio 3: Manage risk by using Microsoft Entra ID Protection</h3>
+<div class="a"><div class="q-h"><span class="qid">Q29</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> <strong>Require risk remediation</strong> se adapta al método del usuario: con password pide un <strong>secure password change</strong>; en passwordless <strong>revoca las sesiones</strong> y pide sign-in otra vez. Al elegirlo se agregan solos <strong>Require authentication strength</strong> y <strong>Sign-in frequency Every time</strong>. Las políticas legacy de ID Protection se retiran el <strong>1 de octubre de 2026</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. La política legacy se retira y no ofrece este control.</li>
+<li>C. MFA remedia <strong>sign-in risk</strong>, no user risk.</li>
+<li>D. Learn pide <strong>no combinar</strong> user risk y sign-in risk en la misma política. Y password change no sirve para usuarios passwordless.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies#require-risk-remediation-control y https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies#migrate-risk-policies-to-conditional-access</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q30</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = Yes, 3 = No</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. Learn: el usuario <strong>debe tener un método registrado</strong> que satisfaga MFA antes de caer en la política. Si no puede cumplir el control, queda bloqueado y necesita al admin.</li>
+<li>2 Yes. Al pasar MFA, el estado cambia de <strong>"At risk" a "Remediated"</strong> con el detalle "User passed multifactor authentication".</li>
+<li>3 No. <strong>Nunca combines sign-in risk y user risk</strong> en la misma política. Crea una para cada uno.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: pensar que el usuario se registra ahí mismo. Por eso existe la MFA registration policy o la registration campaign antes de activar riesgo.</li>
+<li>Trampa de la 3: querer "ahorrar" políticas. Las condiciones se suman con AND y el remedio de cada riesgo es distinto.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies#sign-in-risk-based-conditional-access-policy, https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#self-remediation-of-sign-in-risk y https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q31</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Con <strong>PHS habilitado</strong>, el setting <strong>"Allow on-premises password change to reset user risk"</strong> hace que un cambio de password on-prem remedie el user risk automáticamente. Es opt-in y lo configura como mínimo un Security Operator.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Writeback va de la nube hacia AD. No hace que un cambio hecho en AD cuente como remedio.</li>
+<li>C. Un reset por SSPR en la nube sí remedia, pero estos usuarios cambian el password on-prem.</li>
+<li>D. Dismiss no cambia el password y deja la identidad igual de expuesta.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#allow-on-premises-password-reset-to-remediate-user-risks</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q32</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Prerrequisito de la campaign de Authenticator: los usuarios deben estar habilitados para Authenticator con <strong>Authentication mode Any o Push</strong>. Con <strong>Passwordless no son elegibles</strong> para el nudge.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. El snooze no arregla la elegibilidad.</li>
+<li>C. En Microsoft managed también se exige estar habilitado para Authenticator push.</li>
+<li>D. La MFA registration policy pide registrar MFA a quien no tiene nada. Estos usuarios ya tienen SMS.</li>
+</ul>
+<p>Datos de la campaign: se configura como mínimo con Authentication Policy Administrator; snooze de 0 a 14 días; con snoozes limitados, después de 3 el registro es obligatorio; no hay nudge dentro de una sesión SSO.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign#prerequisites y https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign#choose-a-campaign-state</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q33</span><span class="fmt">Yes/No series</span></div><p><strong>Respuesta:</strong> 1 = Yes, 2 = No, 3 = Yes</p>
+<p><strong>Por qué es correcta:</strong></p>
+<ul>
+<li>1 Yes. La política pide registro en el siguiente sign-in interactivo y da <strong>14 días</strong>. Después ya no se puede saltar.</li>
+<li>2 No. La campaign apunta a <strong>un método a la vez</strong>: Authenticator o passkey, no los dos.</li>
+<li>3 Yes. Con snoozes limitados, el usuario puede posponer <strong>3 veces</strong>; luego el registro es obligatorio.</li>
+</ul>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>Trampa de la 1: confundir los 14 días de la MFA registration policy con el período de gracia de security defaults, que ya no existe desde julio de 2024.</li>
+<li>Trampa de la 2: la campaign nueva soporta passkeys, pero no en paralelo con Authenticator.</li>
+<li>Trampa de la 3: creer que se puede esconder el botón de snooze. No se puede; se limita a 3.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-mfa-policy#user-experience, https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign#snooze-experience y https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign#can-i-run-registration-campaigns-for-both-authenticator-and-passkeys-at-the-same-time</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q34</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> B y C</p>
+<p><strong>Por qué es correcta:</strong> Learn lo pone en los prerrequisitos: <strong>Security Operator</strong> es el rol mínimo para <strong>descartar user risk</strong>, y <strong>User Administrator</strong> es el mínimo para <strong>resetear passwords</strong>. Para generar el password temporal desde ID Protection necesitas <strong>los dos</strong>: uno abre ID Protection y el otro permite el reset.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Security Reader solo lee.</li>
+<li>D. Security Administrator sirve para crear o editar políticas de riesgo, pero no resetea passwords y da más de lo necesario.</li>
+<li>E. Global Reader es el mínimo para ver los reportes de riesgo, no para actuar.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#prerequisites y https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#generate-a-temporary-password</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q35</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> La guía de investigación de Learn para atypical travel dice: si el rango de IP es de una VPN autorizada, <strong>confirma el sign-in como safe</strong> y <strong>agrega el rango de la VPN a named locations</strong> en Entra y en Defender for Cloud Apps. Eso reduce falsos positivos futuros.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. No hay evidencia de compromiso. Confirmar compromised sube el riesgo sin razón.</li>
+<li>C. Excluir usuarios de la política debilita la protección y no arregla la causa (la VPN).</li>
+<li>D. No hay un switch documentado para apagar una detección. La vía es named locations y dar feedback (safe o compromised).</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk#atypical-travel-detections y https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk#mitigate-future-risks</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q36</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Leaked credentials es una <strong>detección nonpremium</strong> (se ve completa con Free o P1) y <strong>siempre es High</strong>. Learn dice que <strong>un reset de password en la nube remedia</strong> el riesgo de esta detección, incluso para passwords on-prem, siempre que haya <strong>PHS habilitado</strong>. Con un password temporal el estado pasa a Remediated.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Dismiss deja el estado en Dismissed, pero el password filtrado sigue siendo válido.</li>
+<li>C. MFA remedia sign-in risk, no un password filtrado.</li>
+<li>D. Revocar sesiones corta tokens, pero no cambia el password.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/concept-identity-protection-risks#leaked-credentials y https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock#generate-a-temporary-password</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q37</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Las detecciones de riesgo de workload identities llegan a todos (con detalle limitado sin licencia), pero <strong>el control de acceso basado en riesgo pide Workload Identities Premium</strong>. Y CA para workload identities solo aplica a <strong>service principals single-tenant</strong> registrados en tu tenant.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. P2 cubre usuarios, no workload identities.</li>
+<li>C. Una workload identity <strong>no puede hacer MFA</strong>. El control soportado es Block.</li>
+<li>D. El riesgo del dueño no es el riesgo del service principal.</li>
+</ul>
+<p>Recuerda: <strong>managed identities no están en scope</strong> ni para las detecciones ni para CA, y tampoco las apps SaaS multitenant.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/concept-workload-identity-risk#prerequisites y https://learn.microsoft.com/entra/id-protection/concept-workload-identity-risk#enforce-access-controls-with-risk-based-conditional-access</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q38</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> Los pasos de remediación de Learn son: <strong>inventariar credenciales</strong>, <strong>agregar una nueva</strong> (se recomiendan certificados X.509), <strong>quitar las comprometidas</strong> (si crees que la cuenta está en riesgo, quita todas) y <strong>rotar los secretos de Key Vault</strong> a los que el service principal tiene acceso.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. Las workload identities no pueden hacer MFA.</li>
+<li>D. El dueño no es la credencial filtrada.</li>
+<li>E. Dismiss no invalida el secreto filtrado. Si quieres cortar ya los sign-ins, existe "Disable service principal".</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/id-protection/concept-workload-identity-risk#remediate-risky-workload-identities</p></div>
+<h3 class="sub">Subdominio 4: Implement Global Secure Access</h3>
+<div class="a"><div class="q-h"><span class="qid">Q39</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> C y D</p>
+<p><strong>Por qué es correcta:</strong> Según los prerrequisitos del cliente para Windows: en devices <strong>Microsoft Entra registered solo se soporta Private Access</strong> (preview), y <strong>Azure Virtual Desktop multi-session no está soportado</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Entra joined con Windows 11 es el caso base.</li>
+<li>B. Windows 10 LTSC 2021 o posterior de 64 bits está soportado, y hybrid joined también.</li>
+<li>E. Windows 365 está soportado (igual que AVD single-session).</li>
+</ul>
+<p>Datos extra: instalar pide admin local; se puede instalar silencioso con /quiet o como Win32 app en Intune; Internet Access no soporta QUIC ni DNS over HTTPS, así que hay que deshabilitarlos en los navegadores; con RestrictNonPrivilegedUsers el usuario no puede apagar el cliente.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/global-secure-access/how-to-install-windows-client#prerequisites</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q40</span><span class="fmt">Drag/order</span></div><p><strong>Respuesta:</strong> A, B, C, D (en ese orden)</p>
+<p><strong>Por qué es correcta:</strong> Es el resumen de Learn: <strong>connector group con al menos un conector activo</strong>, configurar <strong>Quick Access</strong> (crea una enterprise app nueva), <strong>asignar usuarios y grupos</strong>, ligar CA (opcional aquí) y <strong>habilitar el Private Access profile</strong>. Roles: Global Secure Access Administrator y Application Administrator.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>E. El Microsoft profile es para tráfico de Microsoft 365, no para recursos privados.</li>
+<li>F. Application Proxy publica apps web con URL externa. Private Access cubre cualquier puerto y protocolo sin URL externa.</li>
+<li>Ojo en C: la asignación debe ser <strong>directa o por un grupo asignado; nested groups no se soportan</strong>. Y Quick Access acepta hasta 500 application segments.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/global-secure-access/how-to-configure-quick-access#high-level-steps y https://learn.microsoft.com/entra/global-secure-access/how-to-configure-quick-access#assign-users-and-groups</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q41</span><span class="fmt">Multiple choice</span></div><p><strong>Respuesta:</strong> B</p>
+<p><strong>Por qué es correcta:</strong> Learn: una <strong>Global Secure Access app (per-app access)</strong> es para cuando necesitas <strong>políticas de CA distintas para un subconjunto de recursos o de usuarios</strong>. Quick Access es el bloque principal; per-app es el paso de segmentación en el camino Zero Trust.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>A. Cambia la política de todo Quick Access y afecta a los file servers. Además, cualquier usuario asignado a Quick Access llegaría al ERP.</li>
+<li>C. Named locations evalúan la IP de origen del usuario, no el destino privado.</li>
+<li>D. Nested groups no se soportan en la asignación, y no resuelve el requisito de política distinta.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/global-secure-access/concept-private-access#global-secure-access-app y https://learn.microsoft.com/entra/global-secure-access/how-to-configure-quick-access#overview</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q42</span><span class="fmt">Select two</span></div><p><strong>Respuesta:</strong> A y B</p>
+<p><strong>Por qué es correcta:</strong> El flujo de Learn: filtering policy, <strong>security profile</strong> que la agrupa y <strong>política de CA</strong> que entrega ese security profile a los usuarios. CA es el mecanismo que hace la política <strong>consciente del usuario</strong>: target "All internet resources with Global Secure Access" y sesión "Use Global Secure Access security profile".</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>C. El baseline profile <strong>aplica a todo el tráfico</strong> (incluidas remote networks) sin CA. Bloquearía a todos, no solo a Sales.</li>
+<li>D. El Microsoft profile es para tráfico de Microsoft 365; no filtra categorías de internet.</li>
+<li>E. No hace falta ubicación para este requisito.</li>
+</ul>
+<p>Datos que caen: un security profile nuevo tarda de 60 a 90 minutos (viaja en el access token); un bloqueo HTTPS se ve como "Connection Reset"; sin TLS inspection solo aplican reglas por SNI.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#high-level-steps, https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#create-a-security-profile y https://learn.microsoft.com/entra/global-secure-access/how-to-configure-web-content-filtering#create-and-link-conditional-access-policy</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q43</span><span class="fmt">Case study (Multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> El <strong>compliant network check</strong> asegura que el usuario entra por Global Secure Access <strong>de tu tenant</strong>, sin mantener IPs. Si alguien repite un token robado fuera de esa red, Entra lo rechaza, y con apps que soportan CAE el access token también se rechaza casi en tiempo real. Se activa el signaling y aparece la location <strong>All Compliant Network locations</strong>.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Mantener IPs es justo lo que el requisito prohíbe, y las IPs de salida del servicio no son exclusivas de Fabrikam.</li>
+<li>C. Source IP restoration sirve para logs y políticas por IP (eso resuelve R3), pero vuelve a depender de listas de IPs.</li>
+<li>D. Tenant restrictions controla a qué tenants se entra, no el replay de tokens.</li>
+</ul>
+<p>Dato fino: si el cliente no logra conectar, el tráfico del Microsoft profile <strong>se va directo en lugar de bloquearse</strong>; por eso el compliant network check es la red de seguridad. Excluye Microsoft Intune y Microsoft Intune Enrollment para evitar una dependencia circular.</p>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/global-secure-access/how-to-compliant-network#enable-global-secure-access-signaling-for-conditional-access y https://learn.microsoft.com/entra/global-secure-access/how-to-compliant-network#protect-your-resources-behind-the-compliant-network</p></div>
+<div class="a"><div class="q-h"><span class="qid">Q44</span><span class="fmt">Case study (Multiple choice)</span></div><p><strong>Respuesta:</strong> A</p>
+<p><strong>Por qué es correcta:</strong> <strong>Tenant restrictions v2</strong> decide qué tenants externos se pueden usar desde tus devices y tu red. <strong>Universal tenant restrictions</strong> usa Global Secure Access para etiquetar el tráfico de autenticación con esa política, en cualquier navegador y plataforma, y funciona tanto con el cliente como con remote networks. Viene con el Microsoft traffic profile (P1). Para activarlo se necesitan Global Secure Access Administrator y Security Administrator.</p>
+<p><strong>Por qué las otras no:</strong></p>
+<ul>
+<li>B. Outbound controla a <strong>tus propios usuarios</strong> como guests en otros tenants. No impide que alguien use en tu device una cuenta de otro tenant.</li>
+<li>C. Inbound controla a externos que entran a <strong>tus recursos</strong>. Es la dirección contraria.</li>
+<li>D. Source IP restoration es para R3 (logs con la IP real), no para limitar tenants.</li>
+</ul>
+<p><strong>Fuente:</strong> https://learn.microsoft.com/entra/global-secure-access/how-to-universal-tenant-restrictions#enable-universal-tenant-restrictions y https://learn.microsoft.com/entra/external-id/tenant-restrictions-v2#tenant-restrictions-v2-overview</p></div>
+
+<h2>6. Plan de la semana y ritual post-examen</h2>
+<div class="box cyan">
+  <b>Checklist antes de la sesión 3 (Workload identities, 20 a 25% del examen)</b>
+  <ul class="checklist">
+    <li>Leí el mapa y las 12 trampas de M2.</li>
+    <li>Contesté las 44 preguntas de M2 sin ver respuestas y revisé el "por qué las otras no".</li>
+    <li>Anoté las preguntas que fallé para el Kahoot.</li>
+    <li>Hice una vez el practice assessment oficial de Learn, sin estudiar antes.</li>
+    <li>Recibí la guía de M3 y empecé su banco de 40 preguntas.</li>
+  </ul>
+</div>
+<div class="box amber">
+  <b>Si presentas el examen esta semana: llena el debrief el mismo día.</b> Temas sí, preguntas no. Así el cohort acumula señal legítima y nadie arriesga su certificación.
+  <table>
+    <tr><th style="width:30%">Campo</th><th>Qué anotar</th></tr>
+    <tr><td>Resultado</td><td>Pass o no pass y el score por dominio que trae el reporte</td></tr>
+    <tr><td>Dominios que pesaron</td><td>Por sensación: cuál dominó y cuál casi no salió</td></tr>
+    <tr><td>Escenarios que costaron</td><td>Por tema, por ejemplo "AU vs restricted AU", "cross-tenant sync con error de consent"</td></tr>
+    <tr><td>Labs que salieron</td><td>Por tarea, por ejemplo "crear un AU y asignar un rol con scope", nunca pasos exactos</td></tr>
+    <tr><td>Qué hubiera estudiado más</td><td>Libre, en dos líneas</td></tr>
+  </table>
+</div>
+<div class="box"><b>Objetivo de la sesión en vivo, para que sepas qué esperar.</b> <p>El presenter no tiene que recitar números ni menús. Tiene que entender que casi todas las preguntas de M2 se resuelven con cuatro preguntas: <strong>qué tan fuerte es el método</strong> (MFA, passwordless o phishing-resistant, y dónde se configura cada uno), <strong>qué decide la política</strong> (si nadie dice que no, el token sale; el block, la exclusión de break-glass y el context se diseñan a propósito), <strong>qué riesgo es y cómo se cura</strong> (user risk con password o risk remediation, sign-in risk con MFA, workload identities con otra licencia) y <strong>por dónde pasa el tráfico</strong> (Microsoft, Private o Internet profile, y qué agrega cada uno). Si el presenter puede tomar cualquier pregunta del banco, señalar las dos o tres palabras que la delatan y explicar con sus palabras por qué cada distractor falla, la sesión cumplió. Los números (10 minutos de la TAP, 1000 términos, 99 contexts, 240 políticas, 14 días, 28 horas) se quedan en la guía para consulta.</p></div>
+
+</body></html>

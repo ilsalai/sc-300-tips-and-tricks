@@ -1,0 +1,34 @@
+<section id="t-objects" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 1 · App registrations</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">El molde y la galleta</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"App registration es el molde, enterprise app es la galleta: un molde en casa, una galleta por tenant."</p>
+  </div>
+  <div style="display:flex; gap:20px; align-items:center">
+    <div style="flex:1; align-self:stretch; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 32px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Home tenant</p>
+      <h3 style="font-size:30px; font-weight:700">App registration</h3>
+      <p style="font-size:26px; line-height:1.45; color:#334155"><b>Application object</b>: uno solo. Sus cambios se reflejan en el SP del home tenant.</p>
+    </div>
+    <x-shape kind="arrow-right" style="width:64px; height:32px; background:#0E7490"></x-shape>
+    <div style="flex:1; align-self:stretch; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 32px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Cada tenant</p>
+      <h3 style="font-size:30px; font-weight:700">Enterprise app</h3>
+      <p style="font-size:26px; line-height:1.45; color:#334155"><b>Service principal</b>: uno por tenant. Multitenant crea uno en cada tenant que consiente.</p>
+    </div>
+    <div style="flex:1; align-self:stretch; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:28px 32px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#22D3EE">Sin molde</p>
+      <h3 style="font-size:30px; font-weight:700">Managed identity</h3>
+      <p style="font-size:26px; line-height:1.45; color:#CBD5E1"><b>Solo service principal</b>, sin application object. Sus permisos de Graph van directo al SP.</p>
+    </div>
+  </div>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center">
+    <p style="font-size:24px; color:#64748B">Delata:</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">home tenant</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">partner tenant grants consent</p>
+    <p style="font-size:24px; background:#FFFFFF; border:2px solid #CBD5E1; border-radius:999px; padding:8px 20px">which object is created</p>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals#relationship-between-application-objects-and-service-principals"><span style="color:#0E7490">Application objects and service principals</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">5 / 27</p>
+  <aside>Objetivo: que distingan el objeto que se registra del objeto que se usa. Frase clave: "App registration es el molde, enterprise app es la galleta: un molde en casa, una galleta por tenant". Contar el caso de Q22: Contoso registra HRPortal multitenant, Fabrikam consiente, y en Fabrikam aparece solo un service principal, nunca un application object. Trampa favorita: pensar que todo service principal tiene su app registration; el de una managed identity no lo tiene, por eso sus permisos de Graph se dan directo al SP. Delata: "home tenant", "multitenant", "partner tenant grants consent", "which object is created", "Managed application in local directory". Practican: Q7, Q8, Q22. Tiempo: 1.5 minutos.</aside>
+</section>

@@ -1,0 +1,30 @@
+<section id="t-appproxy" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 7 · Application Proxy</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">App Proxy de punta a punta</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"Sin pre-auth de Entra no hay CA, ni MFA, ni SSO. El connector solo sale, nunca entra."</p>
+  </div>
+  <div style="display:flex; gap:20px; align-items:center">
+    <div style="flex:1; align-self:stretch; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 30px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:52px; font-weight:800; color:#0E7490; line-height:1.0">1</p>
+      <h3 style="font-size:28px; font-weight:700">Pre-auth Entra ID</h3>
+      <p style="font-size:25px; line-height:1.45; color:#334155">Default. Da CA, MFA, SSO y monitoreo con Defender. <b>Passthrough no.</b></p>
+    </div>
+    <x-shape kind="arrow-right" style="width:64px; height:32px; background:#0E7490"></x-shape>
+    <div style="flex:1; align-self:stretch; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 30px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:52px; font-weight:800; color:#0E7490; line-height:1.0">2</p>
+      <h3 style="font-size:28px; font-weight:700">Connector outbound</h3>
+      <p style="font-size:25px; line-height:1.45; color:#334155">Solo sale por 80 y 443. <b>Mínimo dos</b> por connector group.</p>
+    </div>
+    <x-shape kind="arrow-right" style="width:64px; height:32px; background:#0E7490"></x-shape>
+    <div style="flex:1; align-self:stretch; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:24px; padding:28px 30px; display:flex; flex-direction:column; gap:8px">
+      <p style="font-family:'Manrope', Arial, sans-serif; font-size:52px; font-weight:800; color:#0E7490; line-height:1.0">3</p>
+      <h3 style="font-size:28px; font-weight:700">KCD a la app IWA</h3>
+      <p style="font-size:25px; line-height:1.45; color:#334155">El computer account del connector delega al <b>SPN</b>. En Entra, SSO Integrated Windows authentication.</p>
+    </div>
+  </div>
+  <p style="font-size:25px; line-height:1.45; color:#475569"><b>Custom domain:</b> PFX con private key + CNAME a msappproxy.net. <b>Dominios distintos:</b> resource-based KCD. Licencia P1 o P2.</p>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/app-proxy/how-to-configure-sso-with-kcd#configure-single-sign-on"><span style="color:#0E7490">Configure SSO with KCD</span></a> · Delata: "Passthrough", "no inbound ports", "SPN"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">9 / 27</p>
+  <aside>Objetivo: recorrer el flujo usuario, pre-auth de Entra, servicio, connector y app. Frase clave: "Sin pre-auth de Entra no hay CA, ni MFA, ni SSO. El connector solo sale, nunca entra". La receta de KCD: en AD, el computer account del connector delega al SPN de la app con "specified services only" y "any authentication protocol"; en Entra, SSO Integrated Windows authentication con el SPN. Si el connector y la app están en dominios distintos, resource-based KCD. Custom domain: PFX con private key y un CNAME a msappproxy.net, nunca un .cer ni un A record. Delata: "Integrated Windows Authentication", "Kerberos", "SPN", "Passthrough", "no inbound ports", "custom domain", "high availability", "different domains". Practican: Q10, Q11, Q12. Tiempo: 2 minutos.</aside>
+</section>

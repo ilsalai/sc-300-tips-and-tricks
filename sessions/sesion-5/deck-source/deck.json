@@ -1,0 +1,23 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-24T22:00:00Z"},
+  "title": "SC-300 Tips and Tricks · Sesión 5 · Labs, estrategia y simulacro",
+  "order": [
+    "cover", "agenda", "exam-facts", "mindset", "types",
+    "labs-intro", "lab01", "lab03", "lab04-05", "lab08-09", "lab13", "lab14", "lab19-21", "lab22", "lab25", "lab26",
+    "simulacro", "ritual", "close"
+  ],
+  "sections": {
+    "intro": {"description": "Portada y agenda de 45 minutos de la sesión de cierre", "start": "cover"},
+    "estrategia": {"description": "Datos duros del examen, cómo piensa el examen y estrategia por tipo de pregunta", "start": "exam-facts"},
+    "labs": {"description": "Los 10 labs oficiales en imágenes: ruta en el portal, pasos, trampas y capturas de Learn", "start": "labs-intro"},
+    "simulacro": {"description": "Simulacro de 30 preguntas y el ritual de debrief después del examen", "start": "simulacro"},
+    "cierre": {"description": "Qué sigue y los links para agendar y repasar", "start": "close"}
+  },
+  "faces": {
+    "manrope": {"family": "Manrope", "href": "https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap"},
+    "inter": {"family": "Inter", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

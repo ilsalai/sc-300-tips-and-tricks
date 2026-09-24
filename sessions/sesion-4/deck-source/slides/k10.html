@@ -1,0 +1,43 @@
+<section id="k10" data-transition="fade" style="background:#F6F8FB; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:24px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Kahoot 10 de 10 · Trampa 12 · Banco Q38</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:60px; font-weight:800; line-height:1.08; letter-spacing:-1px">La query que no devuelve nada</h2>
+  <div style="display:flex; gap:28px">
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px">
+      <div style="background:#FFFFFF; border:2px solid #E2E8F0; border-radius:16px; padding:22px 28px; display:flex; flex-direction:column; gap:12px">
+        <p style="font-size:28px; line-height:1.4">Diagnostic setting sends only AuditLogs and SignInLogs. How do you get data in AADNonInteractiveUserSignInLogs?</p>
+        <div style="background:#F1F5F9; border-radius:12px; padding:14px 20px; display:flex; flex-direction:column">
+          <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.4; color:#0F172A">AADNonInteractiveUserSignInLogs</p>
+          <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.4; color:#0F172A">| where TimeGenerated &gt; ago(1d)</p>
+          <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.4; color:#0F172A">| summarize CountPerIPAddress = count() by IPAddress</p>
+          <p style="font-family:'JetBrains Mono', monospace; font-size:24px; line-height:1.4; color:#0F172A">| order by CountPerIPAddress desc</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#ECFDF5; border:3px solid #10B981; border-radius:14px; padding:14px 22px">
+        <x-icon name="CheckCircle" style="color:#059669; width:34px; height:34px"></x-icon>
+        <p style="font-size:26px; font-weight:600">Add the NonInteractiveUserSignInLogs category</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">B</p>
+        <p style="font-size:26px; color:#334155">Upgrade the tenant from Entra ID P1 to P2</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">C</p>
+        <p style="font-size:26px; color:#334155">Add the ServicePrincipalSignInLogs category</p>
+      </div>
+      <div style="display:flex; gap:16px; align-items:center; background:#FFFFFF; border:2px solid #E2E8F0; border-radius:14px; padding:14px 22px">
+        <p style="font-size:26px; color:#94A3B8; width:34px; font-weight:700">D</p>
+        <p style="font-size:26px; color:#334155">Change ago(1d) to ago(30d)</p>
+      </div>
+    </div>
+    <div style="width:640px; background:#0F172A; color:#F6F8FB; border-radius:24px; padding:30px 34px; display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#22D3EE">Por qué</h3>
+      <p style="font-size:24px; line-height:1.4">Cada categoría de la diagnostic setting <b>llena su propia tabla</b>. SignInLogs llena SigninLogs (interactive). AADNonInteractiveUserSignInLogs solo recibe datos con la categoría <b>NonInteractiveUserSignInLogs</b>.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>B.</b> P1 ya alcanza para enviar logs a Log Analytics. La licencia no es el problema.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>C.</b> Llena otra tabla, la de apps y service principals.</p>
+      <p style="font-size:24px; line-height:1.4; color:#CBD5E1"><b>D.</b> Los non-interactive se registran todo el tiempo. El rango de fechas no es el problema.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-diagnostic-settings-logs-options#activity-log-options"><span style="color:#0E7490">Activity log options</span></a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">25 / 27</p>
+  <aside>Debrief de 45 segundos. En Kahoot solo sale el texto; aquí mostramos la query del banco (sin el take 100 final) para leerla juntos. Frase clave: "Cada categoría llena su tabla". Delata: "query returns no results" y una diagnostic setting con solo AuditLogs y SignInLogs. Cerrar el Kahoot con el podio y pasar a la tarea de la semana.</aside>
+</section>

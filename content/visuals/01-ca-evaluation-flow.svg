@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>Conditional Access evaluation flow</title>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22D3EE"/></marker>
+</defs>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">Conditional Access: evaluation flow</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Todas las políticas que aplican se combinan; si alguna bloquea, Block gana</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- 1. Signal -->
+<rect x="48" y="128" width="360" height="444" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="88" cy="166" r="18" fill="#22D3EE"/>
+<text x="88" y="173" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">1</text>
+<text x="118" y="175" font-size="26" font-weight="700" fill="#F8FAFC">Signal</text>
+<text x="72" y="214" font-size="20" fill="#94A3B8">Assignments y conditions</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="252">Users and groups</text>
+<text x="72" y="282">Target resources (apps)</text>
+</g>
+<text x="72" y="322" font-size="20" font-weight="700" fill="#7DD3FC">Conditions</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="354">• Sign-in risk</text>
+<text x="72" y="384">• User risk</text>
+<text x="72" y="414">• Device platforms</text>
+<text x="72" y="444">• Locations (named, IP)</text>
+<text x="72" y="474">• Client apps</text>
+<text x="72" y="504">• Filter for devices</text>
+</g>
+<text x="72" y="552" font-size="20" fill="#94A3B8">Include y exclude en cada una</text>
+
+<!-- 2. Decision -->
+<rect x="460" y="128" width="360" height="444" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="500" cy="166" r="18" fill="#22D3EE"/>
+<text x="500" y="173" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">2</text>
+<text x="530" y="175" font-size="26" font-weight="700" fill="#F8FAFC">Decision</text>
+<text x="484" y="214" font-size="20" fill="#94A3B8">Grant controls</text>
+<rect x="484" y="232" width="312" height="50" rx="10" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-width="2"/>
+<text x="508" y="264" font-size="22" font-weight="700" fill="#F87171">Block access</text>
+<rect x="484" y="296" width="312" height="232" rx="10" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="2"/>
+<text x="504" y="326" font-size="20" font-weight="700" fill="#4ADE80">Grant access, require:</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="504" y="358">• Multifactor auth (MFA)</text>
+<text x="504" y="388">• Authentication strength</text>
+<text x="504" y="418">• Compliant device</text>
+<text x="504" y="448">• Hybrid joined device</text>
+<text x="504" y="478">• App protection policy</text>
+<text x="504" y="508">• Terms of use</text>
+</g>
+<text x="484" y="556" font-size="20" fill="#94A3B8">Modo: all o one of selected</text>
+
+<!-- 3. Session -->
+<rect x="872" y="128" width="360" height="444" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5"/>
+<circle cx="912" cy="166" r="18" fill="#22D3EE"/>
+<text x="912" y="173" font-size="20" font-weight="700" fill="#0B1F3A" text-anchor="middle">3</text>
+<text x="942" y="175" font-size="26" font-weight="700" fill="#F8FAFC">Session</text>
+<text x="896" y="214" font-size="20" fill="#94A3B8">Controls tras el grant</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="896" y="256">• Sign-in frequency</text>
+<text x="896" y="292">• Persistent browser session</text>
+<text x="896" y="328">• App enforced restrictions</text>
+<text x="896" y="364">• CA App Control</text>
+<text x="916" y="392" fill="#94A3B8">Defender for Cloud Apps</text>
+<text x="896" y="432">• CAE</text>
+<text x="916" y="460" fill="#94A3B8">Continuous access evaluation</text>
+</g>
+<text x="896" y="552" font-size="20" fill="#94A3B8">Afinan la sesión concedida</text>
+
+<!-- arrows -->
+<path d="M412 350H452" stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+<path d="M824 350H864" stroke="#22D3EE" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+
+<!-- notes -->
+<rect x="48" y="592" width="660" height="96" rx="12" fill="#FBBF24" fill-opacity="0.08" stroke="#FBBF24" stroke-width="2"/>
+<text x="72" y="630" font-size="22" font-weight="700" fill="#FBBF24">Probar antes de aplicar</text>
+<text x="72" y="664" font-size="20" fill="#F8FAFC">Report-only y What If para probar antes de aplicar</text>
+<rect x="732" y="592" width="500" height="96" rx="12" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="2"/>
+<text x="756" y="630" font-size="22" font-weight="700" fill="#F87171">Cuentas de emergencia</text>
+<text x="756" y="664" font-size="20" fill="#F8FAFC">Excluir break-glass siempre</text>
+</svg>

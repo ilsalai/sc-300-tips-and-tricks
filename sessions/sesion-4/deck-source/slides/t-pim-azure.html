@@ -1,0 +1,34 @@
+<section id="t-pim-azure" data-transition="fade" style="background:#FFFFFF; color:#0F172A; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#0E7490">Trampa 10 · Azure resources y PIM for Groups</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">PIM fuera de Entra roles</h2>
+  <div style="background:#FFF1E6; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#9A3412">"En Azure, los settings no bajan de la suscripción al resource group. En Groups, el grupo no tiene que ser role-assignable."</p>
+  </div>
+  <div style="display:flex; gap:24px">
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:12px">
+      <div style="display:flex; gap:14px; align-items:center">
+        <x-icon name="Cloud" style="color:#0E7490; width:36px; height:36px"></x-icon>
+        <h3 style="font-size:30px; font-weight:700">PIM for Azure resources</h3>
+      </div>
+      <ul style="font-size:26px; line-height:1.45; color:#334155">
+        <li>Settings con Owner o User Access Administrator, por rol y por recurso. <b>Sin herencia.</b></li>
+        <li>Sin approvers por default. No hay eligible para service principals ni managed identities.</li>
+        <li>Discovery legacy pone a MS-PIM como User Access Administrator y no se deshace.</li>
+      </ul>
+    </div>
+    <div style="flex:1; background:#F6F8FB; border:2px solid #E2E8F0; border-radius:24px; padding:32px 36px; display:flex; flex-direction:column; gap:12px">
+      <div style="display:flex; gap:14px; align-items:center">
+        <x-icon name="Users" style="color:#0E7490; width:36px; height:36px"></x-icon>
+        <h3 style="font-size:30px; font-weight:700">PIM for Groups</h3>
+      </div>
+      <ul style="font-size:26px; line-height:1.45; color:#334155">
+        <li>JIT de member u owner, con dos policies por grupo. <b>No necesita role-assignable.</b></li>
+        <li>No aplica a grupos dinámicos ni synced.</li>
+        <li>Role-assignable protege credenciales y no acepta grupos anidados activos. Para Exchange o SharePoint, PIM for Entra roles.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#64748B">Learn: <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-resource-roles-configure-role-settings#overview"><span style="color:#0E7490">Azure role settings</span></a> · <a href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups#relationship-between-role-assignable-groups-and-pim-for-groups"><span style="color:#0E7490">PIM for Groups</span></a> · Delata: "resource group", "dynamic group"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#64748B">12 / 27</p>
+  <aside>Objetivo: que no lleven las reglas de roles de Entra a Azure resources ni a Groups. Frase clave: "En Azure, los settings no bajan de la suscripción al resource group. En Groups, el grupo no tiene que ser role-assignable". Trampa favorita: aprobación configurada en la suscripción y alguien activa Owner en un resource group sin aprobación, porque ese recurso tiene su propia policy. Segunda: en un grupo role-assignable nadie más cambia las credenciales de sus miembros, ni de los eligible que aún no activan. Delata: "configured on the subscription", "resource group", "managed identity", "discover resources", "not role-assignable", "dynamic group", "reset the password of an eligible member". Practican: Q24, Q25, Q26, Q27. Tiempo: 1.5 minutos.</aside>
+</section>

@@ -1,0 +1,40 @@
+<section id="t-roles" data-transition="fade" style="background:#0F172A; color:#F6F8FB; font-family:'Inter', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:30px">
+  <p style="font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#22D3EE">Trampa 6 · Roles para administrar apps</p>
+  <h2 style="font-family:'Manrope', Arial, sans-serif; font-size:68px; font-weight:800; line-height:1.08; letter-spacing:-1px">La línea roja del App Proxy</h2>
+  <div style="background:#1E293B; border-radius:20px; padding:26px 36px">
+    <p style="font-family:'Manrope', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.25; color:#A3E635">"Cloud App Admin es App Admin sin el Proxy. Y ninguno de los dos toca CA ni Graph application permissions."</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px">
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Settings" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <h3 style="font-size:28px; font-weight:700">Application Administrator</h3>
+        <p style="font-size:26px; line-height:1.45; color:#E2E8F0">Todo en enterprise apps y app registrations, <b>más Application Proxy</b> y connector groups.</p>
+      </div>
+    </div>
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Cloud" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <h3 style="font-size:28px; font-weight:700">Cloud Application Administrator</h3>
+        <p style="font-size:26px; line-height:1.45; color:#E2E8F0">Lo mismo <b>sin Application Proxy</b>. Sí configura SAML SSO y consiente delegated de Graph.</p>
+      </div>
+    </div>
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Code" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <h3 style="font-size:28px; font-weight:700">Application Developer</h3>
+        <p style="font-size:26px; line-height:1.45; color:#E2E8F0">Rol mínimo para registrar apps si <b>Users can register applications</b> está en No.</p>
+      </div>
+    </div>
+    <div style="background:#1E293B; border-radius:20px; padding:26px 32px; display:flex; gap:20px; align-items:start">
+      <x-icon name="Key" style="color:#22D3EE; width:40px; height:40px"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <h3 style="font-size:28px; font-weight:700">Privileged Role Administrator</h3>
+        <p style="font-size:26px; line-height:1.45; color:#E2E8F0">Consiente <b>application permissions de Microsoft Graph</b> (o Global Admin).</p>
+      </div>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#94A3B8">Learn: <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-app-roles#assign-built-in-application-administrator-roles"><span style="color:#22D3EE">Application administrator roles</span></a> · Delata: "connector group", "least privilege"</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; text-align:right; font-size:24px; color:#94A3B8">8 / 27</p>
+  <aside>Objetivo: que la diferencia entre los dos roles de apps quede como reflejo. Frase clave: "Cloud App Admin es App Admin sin el Proxy. Y ninguno de los dos toca CA ni Graph application permissions". Si la pregunta menciona connector groups o publicar apps on-premises, es Application Administrator. Si "Users can register applications" está en No, el mínimo para registrar es Application Developer. Ninguno de estos roles administra Conditional Access. Delata: "connector group", "publish on-premises apps", "least privilege", "users can't register applications", "configure SAML SSO", "create a Conditional Access policy for the app". Practican: Q9, Q18, Q21. Tiempo: 1.5 minutos.</aside>
+</section>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>External identities map</title>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">External identities: mapa</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">B2B collaboration, B2B direct connect, cross-tenant sync e identity providers</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- connectors -->
+<g stroke="#22D3EE" stroke-opacity="0.7" stroke-width="2.5" fill="none">
+<path d="M640 312V274"/>
+<path d="M520 340L448 300"/>
+<path d="M760 340L832 300"/>
+<path d="M520 396L448 500"/>
+<path d="M760 396L832 500"/>
+<path d="M640 420V476"/>
+</g>
+<g fill="#22D3EE">
+<circle cx="640" cy="274" r="5"/>
+<circle cx="448" cy="300" r="5"/>
+<circle cx="832" cy="300" r="5"/>
+<circle cx="448" cy="500" r="5"/>
+<circle cx="832" cy="500" r="5"/>
+<circle cx="640" cy="476" r="5"/>
+</g>
+
+<!-- center -->
+<rect x="520" y="312" width="240" height="108" rx="12" fill="#22D3EE" fill-opacity="0.18" stroke="#22D3EE" stroke-width="3"/>
+<text x="640" y="362" font-size="30" font-weight="700" fill="#F8FAFC" text-anchor="middle">Your tenant</text>
+<text x="640" y="394" font-size="20" fill="#7DD3FC" text-anchor="middle">Workforce tenant</text>
+
+<!-- B2B collaboration -->
+<rect x="48" y="124" width="400" height="236" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="72" y="164" font-size="24" font-weight="700" fill="#22D3EE">B2B collaboration</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="202">• Guest user (UserType Guest)</text>
+<text x="72" y="234">• Invitation y redemption</text>
+<text x="72" y="266">• External collaboration settings</text>
+</g>
+<text x="72" y="304" font-size="20" fill="#94A3B8">Quién invita, dominios allow/deny</text>
+<text x="72" y="336" font-size="20" fill="#94A3B8">Email, Teams, apps compartidas</text>
+
+<!-- B2B direct connect -->
+<rect x="476" y="124" width="328" height="150" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="500" y="164" font-size="24" font-weight="700" fill="#22D3EE">B2B direct connect</text>
+<text x="500" y="202" font-size="20" fill="#F8FAFC">Teams shared channels</text>
+<text x="500" y="236" font-size="20" fill="#94A3B8">Requiere mutual trust</text>
+
+<!-- Cross-tenant access settings -->
+<rect x="832" y="124" width="400" height="236" rx="12" fill="#132B4F" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="856" y="164" font-size="22" font-weight="700" fill="#22D3EE">Cross-tenant access settings</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="856" y="202">• Inbound: externos hacia ti</text>
+<text x="856" y="234">• Outbound: tus users afuera</text>
+<text x="856" y="266">• Trust MFA / compliant device</text>
+</g>
+<text x="856" y="304" font-size="20" fill="#94A3B8">Default + por organización</text>
+<text x="856" y="336" font-size="20" fill="#94A3B8">Para B2B collab y direct connect</text>
+
+<!-- External identity providers -->
+<rect x="48" y="452" width="400" height="236" rx="12" fill="#132B4F" stroke="#7DD3FC" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="72" y="492" font-size="22" font-weight="700" fill="#7DD3FC">External identity providers</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="72" y="530">• SAML / WS-Fed federation</text>
+<text x="72" y="562">• Google</text>
+<text x="72" y="594">• Facebook: <tspan fill="#F87171">no para B2B invites</tspan></text>
+</g>
+<text x="72" y="634" font-size="20" fill="#94A3B8">Default: Entra ID, MSA,</text>
+<text x="72" y="662" font-size="20" fill="#94A3B8">email one-time passcode</text>
+
+<!-- Cross-tenant synchronization -->
+<rect x="832" y="452" width="400" height="236" rx="12" fill="#132B4F" stroke="#7DD3FC" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="856" y="492" font-size="22" font-weight="700" fill="#7DD3FC">Cross-tenant synchronization</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="856" y="530">• Source tenant: outbound</text>
+<text x="856" y="562">• Target tenant: inbound (allow)</text>
+<text x="856" y="594">• Users: external members</text>
+</g>
+<text x="856" y="634" font-size="20" fill="#94A3B8">Automatic redemption en ambos</text>
+<text x="856" y="662" font-size="20" fill="#94A3B8">Misma organización multi-tenant</text>
+
+<!-- what gets created -->
+<rect x="476" y="476" width="328" height="212" rx="12" fill="#0B1F3A" stroke="#FBBF24" stroke-opacity="0.8" stroke-width="2"/>
+<text x="500" y="516" font-size="22" font-weight="700" fill="#FBBF24">Qué objeto se crea</text>
+<g font-size="20" fill="#F8FAFC">
+<text x="500" y="556"><tspan fill="#7DD3FC">B2B collab:</tspan> external Guest</text>
+<text x="500" y="594"><tspan fill="#7DD3FC">CT sync:</tspan> external Member</text>
+<text x="500" y="632"><tspan fill="#7DD3FC">Direct connect:</tspan> sin objeto</text>
+</g>
+<text x="500" y="668" font-size="20" fill="#94A3B8">en tu directorio</text>
+</svg>

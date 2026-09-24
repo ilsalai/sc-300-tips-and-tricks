@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Segoe UI, Inter, Arial, sans-serif">
+<title>PHS vs PTA vs Federation</title>
+<rect width="1280" height="720" fill="#0B1F3A"/>
+<text x="48" y="62" font-size="34" font-weight="700" fill="#F8FAFC">PHS vs PTA vs Federation</text>
+<text x="48" y="96" font-size="20" fill="#94A3B8">Autenticación híbrida: dónde se valida la contraseña y qué implica</text>
+<rect x="1122" y="34" width="110" height="38" rx="19" fill="none" stroke="#22D3EE" stroke-width="2"/>
+<text x="1177" y="60" font-size="20" font-weight="600" fill="#22D3EE" text-anchor="middle">SC-300</text>
+
+<!-- header row -->
+<rect x="48" y="124" width="1184" height="80" rx="12" fill="#22D3EE" fill-opacity="0.12"/>
+<g font-size="20" font-weight="600" fill="#7DD3FC" text-anchor="middle">
+<text x="160" y="171" fill="#94A3B8">Method</text>
+<text x="368" y="158">Password</text>
+<text x="368" y="184">validated in</text>
+<text x="560" y="158">Works if</text>
+<text x="560" y="184">on-prem down</text>
+<text x="752" y="171">Seamless SSO</text>
+<text x="944" y="171">Extra servers</text>
+<text x="1136" y="158">Leaked</text>
+<text x="1136" y="184">credentials</text>
+</g>
+
+<!-- rows -->
+<rect x="48" y="212" width="1184" height="112" rx="12" fill="#132B4F"/>
+<rect x="48" y="336" width="1184" height="112" rx="12" fill="#132B4F"/>
+<rect x="48" y="460" width="1184" height="112" rx="12" fill="#132B4F"/>
+<rect x="48" y="212" width="6" height="112" rx="3" fill="#22D3EE"/>
+<rect x="48" y="336" width="6" height="112" rx="3" fill="#7DD3FC"/>
+<rect x="48" y="460" width="6" height="112" rx="3" fill="#94A3B8"/>
+<g stroke="#0B1F3A" stroke-width="3">
+<line x1="272" y1="124" x2="272" y2="572"/>
+<line x1="464" y1="124" x2="464" y2="572"/>
+<line x1="656" y1="124" x2="656" y2="572"/>
+<line x1="848" y1="124" x2="848" y2="572"/>
+<line x1="1040" y1="124" x2="1040" y2="572"/>
+</g>
+
+<!-- PHS -->
+<text x="68" y="260" font-size="26" font-weight="700" fill="#22D3EE">PHS</text>
+<text x="68" y="292" font-size="20" fill="#94A3B8">Password hash sync</text>
+<g font-size="20" text-anchor="middle">
+<text x="368" y="260" font-weight="600" fill="#F8FAFC">Cloud</text>
+<text x="368" y="288" fill="#94A3B8">(Entra ID)</text>
+<text x="560" y="276" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+<text x="752" y="276" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+<text x="944" y="276" font-size="22" font-weight="700" fill="#4ADE80">No</text>
+<text x="1136" y="276" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+</g>
+
+<!-- PTA -->
+<text x="68" y="384" font-size="26" font-weight="700" fill="#7DD3FC">PTA</text>
+<text x="68" y="416" font-size="20" fill="#94A3B8">Pass-through auth</text>
+<g font-size="20" text-anchor="middle">
+<text x="368" y="384" font-weight="600" fill="#F8FAFC">On-prem agent</text>
+<text x="368" y="412" fill="#94A3B8">(valida en AD)</text>
+<text x="560" y="400" font-size="22" font-weight="700" fill="#F87171">No</text>
+<text x="752" y="400" font-size="22" font-weight="700" fill="#4ADE80">Yes</text>
+<text x="944" y="384" font-weight="600" fill="#FBBF24">Agents</text>
+<text x="944" y="412" fill="#94A3B8">3 recomendados</text>
+<text x="1136" y="384" font-weight="600" fill="#FBBF24">Only if PHS</text>
+<text x="1136" y="412" fill="#94A3B8">also enabled</text>
+</g>
+
+<!-- Federation -->
+<text x="68" y="508" font-size="26" font-weight="700" fill="#F8FAFC">Federation</text>
+<text x="68" y="540" font-size="20" fill="#94A3B8">AD FS</text>
+<g font-size="20" text-anchor="middle">
+<text x="368" y="508" font-weight="600" fill="#F8FAFC">On-prem</text>
+<text x="368" y="536" fill="#94A3B8">federation server</text>
+<text x="560" y="524" font-size="22" font-weight="700" fill="#F87171">No</text>
+<text x="752" y="508" font-weight="600" fill="#94A3B8">N/A</text>
+<text x="752" y="536" fill="#94A3B8">(own SSO)</text>
+<text x="944" y="524" font-weight="600" fill="#F87171">AD FS + WAP</text>
+<text x="1136" y="508" font-weight="600" fill="#FBBF24">Only if PHS</text>
+<text x="1136" y="536" fill="#94A3B8">also enabled</text>
+</g>
+
+<!-- note -->
+<rect x="48" y="592" width="1184" height="96" rx="12" fill="#FBBF24" fill-opacity="0.08" stroke="#FBBF24" stroke-width="2"/>
+<circle cx="88" cy="640" r="18" fill="#FBBF24"/>
+<text x="88" y="647" font-size="22" font-weight="700" fill="#0B1F3A" text-anchor="middle">i</text>
+<text x="124" y="630" font-size="22" font-weight="700" fill="#FBBF24">Cloud Sync no configura PTA ni federación</text>
+<text x="124" y="664" font-size="20" fill="#F8FAFC">Tip: habilita PHS como respaldo también con PTA o AD FS</text>
+</svg>

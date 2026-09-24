@@ -1,0 +1,40 @@
+name: Propuesta de pregunta
+description: Propón una pregunta original estilo examen (si prefieres, mándala directo como pull request).
+title: "Pregunta: [dominio] [tema]"
+labels: [pregunta]
+body:
+  - type: markdown
+    attributes:
+      value: "Original, en inglés, anclada a Learn, con el porqué de cada distractor. Nada de dumps."
+  - type: dropdown
+    id: dominio
+    attributes:
+      label: Dominio
+      options: [M1 Identities, M2 Authentication and access, M3 Workload identities, M4 Identity governance]
+    validations:
+      required: true
+  - type: textarea
+    id: pregunta
+    attributes:
+      label: Pregunta y opciones (en inglés)
+    validations:
+      required: true
+  - type: textarea
+    id: porque
+    attributes:
+      label: Respuesta, por qué es correcta y por qué las otras no
+    validations:
+      required: true
+  - type: input
+    id: fuente
+    attributes:
+      label: Link a Microsoft Learn (con ancla al párrafo si existe)
+    validations:
+      required: true
+  - type: checkboxes
+    id: nda
+    attributes:
+      label: Confirmación
+      options:
+        - label: Es original. No viene de un dump ni de un examen real.
+          required: true
